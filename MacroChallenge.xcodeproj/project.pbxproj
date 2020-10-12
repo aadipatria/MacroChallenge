@@ -1,0 +1,669 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		9DFAB86C2534404F00E81C87 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFAB86B2534404F00E81C87 /* AppDelegate.swift */; };
+		9DFAB86E2534404F00E81C87 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFAB86D2534404F00E81C87 /* SceneDelegate.swift */; };
+		9DFAB8702534404F00E81C87 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFAB86F2534404F00E81C87 /* ContentView.swift */; };
+		9DFAB8722534405000E81C87 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9DFAB8712534405000E81C87 /* Assets.xcassets */; };
+		9DFAB8752534405000E81C87 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9DFAB8742534405000E81C87 /* Preview Assets.xcassets */; };
+		9DFAB8782534405000E81C87 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9DFAB8762534405000E81C87 /* LaunchScreen.storyboard */; };
+		9DFAB87D2534405000E81C87 /* MacroChallenge WatchKit App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 9DFAB87C2534405000E81C87 /* MacroChallenge WatchKit App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		9DFAB8832534405000E81C87 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9DFAB8812534405000E81C87 /* Interface.storyboard */; };
+		9DFAB8852534405000E81C87 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9DFAB8842534405000E81C87 /* Assets.xcassets */; };
+		9DFAB88C2534405100E81C87 /* MacroChallenge WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 9DFAB88B2534405100E81C87 /* MacroChallenge WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		9DFAB8912534405100E81C87 /* HostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFAB8902534405100E81C87 /* HostingController.swift */; };
+		9DFAB8932534405100E81C87 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFAB8922534405100E81C87 /* ContentView.swift */; };
+		9DFAB8952534405100E81C87 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFAB8942534405100E81C87 /* ExtensionDelegate.swift */; };
+		9DFAB8972534405100E81C87 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFAB8962534405100E81C87 /* NotificationController.swift */; };
+		9DFAB8992534405100E81C87 /* NotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFAB8982534405100E81C87 /* NotificationView.swift */; };
+		9DFAB89B2534405100E81C87 /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFAB89A2534405100E81C87 /* ComplicationController.swift */; };
+		9DFAB89D2534405100E81C87 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9DFAB89C2534405100E81C87 /* Assets.xcassets */; };
+		9DFAB8A02534405100E81C87 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9DFAB89F2534405100E81C87 /* Preview Assets.xcassets */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		9DFAB87E2534405000E81C87 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9DFAB8602534404F00E81C87 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9DFAB87B2534405000E81C87;
+			remoteInfo = "MacroChallenge WatchKit App";
+		};
+		9DFAB88D2534405100E81C87 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9DFAB8602534404F00E81C87 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9DFAB88A2534405100E81C87;
+			remoteInfo = "MacroChallenge WatchKit Extension";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		9DFAB8A82534405100E81C87 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				9DFAB88C2534405100E81C87 /* MacroChallenge WatchKit Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9DFAB8AC2534405100E81C87 /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				9DFAB87D2534405000E81C87 /* MacroChallenge WatchKit App.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		9DFAB8682534404F00E81C87 /* MacroChallenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MacroChallenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9DFAB86B2534404F00E81C87 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		9DFAB86D2534404F00E81C87 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		9DFAB86F2534404F00E81C87 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		9DFAB8712534405000E81C87 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		9DFAB8742534405000E81C87 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		9DFAB8772534405000E81C87 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		9DFAB8792534405000E81C87 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9DFAB87C2534405000E81C87 /* MacroChallenge WatchKit App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MacroChallenge WatchKit App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9DFAB8822534405000E81C87 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
+		9DFAB8842534405000E81C87 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		9DFAB8862534405000E81C87 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9DFAB88B2534405100E81C87 /* MacroChallenge WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "MacroChallenge WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9DFAB8902534405100E81C87 /* HostingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostingController.swift; sourceTree = "<group>"; };
+		9DFAB8922534405100E81C87 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		9DFAB8942534405100E81C87 /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
+		9DFAB8962534405100E81C87 /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
+		9DFAB8982534405100E81C87 /* NotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationView.swift; sourceTree = "<group>"; };
+		9DFAB89A2534405100E81C87 /* ComplicationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplicationController.swift; sourceTree = "<group>"; };
+		9DFAB89C2534405100E81C87 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		9DFAB89F2534405100E81C87 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		9DFAB8A12534405100E81C87 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9DFAB8A22534405100E81C87 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		9DFAB8652534404F00E81C87 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9DFAB8882534405100E81C87 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		9DFAB85F2534404F00E81C87 = {
+			isa = PBXGroup;
+			children = (
+				9DFAB86A2534404F00E81C87 /* MacroChallenge */,
+				9DFAB8802534405000E81C87 /* MacroChallenge WatchKit App */,
+				9DFAB88F2534405100E81C87 /* MacroChallenge WatchKit Extension */,
+				9DFAB8692534404F00E81C87 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		9DFAB8692534404F00E81C87 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9DFAB8682534404F00E81C87 /* MacroChallenge.app */,
+				9DFAB87C2534405000E81C87 /* MacroChallenge WatchKit App.app */,
+				9DFAB88B2534405100E81C87 /* MacroChallenge WatchKit Extension.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9DFAB86A2534404F00E81C87 /* MacroChallenge */ = {
+			isa = PBXGroup;
+			children = (
+				9DFAB86B2534404F00E81C87 /* AppDelegate.swift */,
+				9DFAB86D2534404F00E81C87 /* SceneDelegate.swift */,
+				9DFAB86F2534404F00E81C87 /* ContentView.swift */,
+				9DFAB8712534405000E81C87 /* Assets.xcassets */,
+				9DFAB8762534405000E81C87 /* LaunchScreen.storyboard */,
+				9DFAB8792534405000E81C87 /* Info.plist */,
+				9DFAB8732534405000E81C87 /* Preview Content */,
+			);
+			path = MacroChallenge;
+			sourceTree = "<group>";
+		};
+		9DFAB8732534405000E81C87 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				9DFAB8742534405000E81C87 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		9DFAB8802534405000E81C87 /* MacroChallenge WatchKit App */ = {
+			isa = PBXGroup;
+			children = (
+				9DFAB8812534405000E81C87 /* Interface.storyboard */,
+				9DFAB8842534405000E81C87 /* Assets.xcassets */,
+				9DFAB8862534405000E81C87 /* Info.plist */,
+			);
+			path = "MacroChallenge WatchKit App";
+			sourceTree = "<group>";
+		};
+		9DFAB88F2534405100E81C87 /* MacroChallenge WatchKit Extension */ = {
+			isa = PBXGroup;
+			children = (
+				9DFAB8902534405100E81C87 /* HostingController.swift */,
+				9DFAB8922534405100E81C87 /* ContentView.swift */,
+				9DFAB8942534405100E81C87 /* ExtensionDelegate.swift */,
+				9DFAB8962534405100E81C87 /* NotificationController.swift */,
+				9DFAB8982534405100E81C87 /* NotificationView.swift */,
+				9DFAB89A2534405100E81C87 /* ComplicationController.swift */,
+				9DFAB89C2534405100E81C87 /* Assets.xcassets */,
+				9DFAB8A12534405100E81C87 /* Info.plist */,
+				9DFAB8A22534405100E81C87 /* PushNotificationPayload.apns */,
+				9DFAB89E2534405100E81C87 /* Preview Content */,
+			);
+			path = "MacroChallenge WatchKit Extension";
+			sourceTree = "<group>";
+		};
+		9DFAB89E2534405100E81C87 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				9DFAB89F2534405100E81C87 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		9DFAB8672534404F00E81C87 /* MacroChallenge */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9DFAB8AD2534405100E81C87 /* Build configuration list for PBXNativeTarget "MacroChallenge" */;
+			buildPhases = (
+				9DFAB8642534404F00E81C87 /* Sources */,
+				9DFAB8652534404F00E81C87 /* Frameworks */,
+				9DFAB8662534404F00E81C87 /* Resources */,
+				9DFAB8AC2534405100E81C87 /* Embed Watch Content */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				9DFAB87F2534405000E81C87 /* PBXTargetDependency */,
+			);
+			name = MacroChallenge;
+			productName = MacroChallenge;
+			productReference = 9DFAB8682534404F00E81C87 /* MacroChallenge.app */;
+			productType = "com.apple.product-type.application";
+		};
+		9DFAB87B2534405000E81C87 /* MacroChallenge WatchKit App */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9DFAB8A92534405100E81C87 /* Build configuration list for PBXNativeTarget "MacroChallenge WatchKit App" */;
+			buildPhases = (
+				9DFAB87A2534405000E81C87 /* Resources */,
+				9DFAB8A82534405100E81C87 /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				9DFAB88E2534405100E81C87 /* PBXTargetDependency */,
+			);
+			name = "MacroChallenge WatchKit App";
+			productName = "MacroChallenge WatchKit App";
+			productReference = 9DFAB87C2534405000E81C87 /* MacroChallenge WatchKit App.app */;
+			productType = "com.apple.product-type.application.watchapp2";
+		};
+		9DFAB88A2534405100E81C87 /* MacroChallenge WatchKit Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9DFAB8A52534405100E81C87 /* Build configuration list for PBXNativeTarget "MacroChallenge WatchKit Extension" */;
+			buildPhases = (
+				9DFAB8872534405100E81C87 /* Sources */,
+				9DFAB8882534405100E81C87 /* Frameworks */,
+				9DFAB8892534405100E81C87 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "MacroChallenge WatchKit Extension";
+			productName = "MacroChallenge WatchKit Extension";
+			productReference = 9DFAB88B2534405100E81C87 /* MacroChallenge WatchKit Extension.appex */;
+			productType = "com.apple.product-type.watchkit2-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		9DFAB8602534404F00E81C87 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1200;
+				LastUpgradeCheck = 1200;
+				TargetAttributes = {
+					9DFAB8672534404F00E81C87 = {
+						CreatedOnToolsVersion = 12.0.1;
+					};
+					9DFAB87B2534405000E81C87 = {
+						CreatedOnToolsVersion = 12.0.1;
+					};
+					9DFAB88A2534405100E81C87 = {
+						CreatedOnToolsVersion = 12.0.1;
+					};
+				};
+			};
+			buildConfigurationList = 9DFAB8632534404F00E81C87 /* Build configuration list for PBXProject "MacroChallenge" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 9DFAB85F2534404F00E81C87;
+			productRefGroup = 9DFAB8692534404F00E81C87 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				9DFAB8672534404F00E81C87 /* MacroChallenge */,
+				9DFAB87B2534405000E81C87 /* MacroChallenge WatchKit App */,
+				9DFAB88A2534405100E81C87 /* MacroChallenge WatchKit Extension */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		9DFAB8662534404F00E81C87 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9DFAB8782534405000E81C87 /* LaunchScreen.storyboard in Resources */,
+				9DFAB8752534405000E81C87 /* Preview Assets.xcassets in Resources */,
+				9DFAB8722534405000E81C87 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9DFAB87A2534405000E81C87 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9DFAB8852534405000E81C87 /* Assets.xcassets in Resources */,
+				9DFAB8832534405000E81C87 /* Interface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9DFAB8892534405100E81C87 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9DFAB8A02534405100E81C87 /* Preview Assets.xcassets in Resources */,
+				9DFAB89D2534405100E81C87 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		9DFAB8642534404F00E81C87 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9DFAB86C2534404F00E81C87 /* AppDelegate.swift in Sources */,
+				9DFAB86E2534404F00E81C87 /* SceneDelegate.swift in Sources */,
+				9DFAB8702534404F00E81C87 /* ContentView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9DFAB8872534405100E81C87 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9DFAB8932534405100E81C87 /* ContentView.swift in Sources */,
+				9DFAB8912534405100E81C87 /* HostingController.swift in Sources */,
+				9DFAB8972534405100E81C87 /* NotificationController.swift in Sources */,
+				9DFAB8952534405100E81C87 /* ExtensionDelegate.swift in Sources */,
+				9DFAB8992534405100E81C87 /* NotificationView.swift in Sources */,
+				9DFAB89B2534405100E81C87 /* ComplicationController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		9DFAB87F2534405000E81C87 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9DFAB87B2534405000E81C87 /* MacroChallenge WatchKit App */;
+			targetProxy = 9DFAB87E2534405000E81C87 /* PBXContainerItemProxy */;
+		};
+		9DFAB88E2534405100E81C87 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9DFAB88A2534405100E81C87 /* MacroChallenge WatchKit Extension */;
+			targetProxy = 9DFAB88D2534405100E81C87 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		9DFAB8762534405000E81C87 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9DFAB8772534405000E81C87 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		9DFAB8812534405000E81C87 /* Interface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9DFAB8822534405000E81C87 /* Base */,
+			);
+			name = Interface.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		9DFAB8A32534405100E81C87 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		9DFAB8A42534405100E81C87 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		9DFAB8A62534405100E81C87 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"MacroChallenge WatchKit Extension/Preview Content\"";
+				DEVELOPMENT_TEAM = P9W54VNRMY;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = "MacroChallenge WatchKit Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.ici.MacroChallenge.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 7.0;
+			};
+			name = Debug;
+		};
+		9DFAB8A72534405100E81C87 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"MacroChallenge WatchKit Extension/Preview Content\"";
+				DEVELOPMENT_TEAM = P9W54VNRMY;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = "MacroChallenge WatchKit Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.ici.MacroChallenge.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				VALIDATE_PRODUCT = YES;
+				WATCHOS_DEPLOYMENT_TARGET = 7.0;
+			};
+			name = Release;
+		};
+		9DFAB8AA2534405100E81C87 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = P9W54VNRMY;
+				IBSC_MODULE = MacroChallenge_WatchKit_Extension;
+				INFOPLIST_FILE = "MacroChallenge WatchKit App/Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ici.MacroChallenge.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 7.0;
+			};
+			name = Debug;
+		};
+		9DFAB8AB2534405100E81C87 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = P9W54VNRMY;
+				IBSC_MODULE = MacroChallenge_WatchKit_Extension;
+				INFOPLIST_FILE = "MacroChallenge WatchKit App/Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ici.MacroChallenge.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				VALIDATE_PRODUCT = YES;
+				WATCHOS_DEPLOYMENT_TARGET = 7.0;
+			};
+			name = Release;
+		};
+		9DFAB8AE2534405100E81C87 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"MacroChallenge/Preview Content\"";
+				DEVELOPMENT_TEAM = P9W54VNRMY;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = MacroChallenge/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.ici.MacroChallenge;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		9DFAB8AF2534405100E81C87 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"MacroChallenge/Preview Content\"";
+				DEVELOPMENT_TEAM = P9W54VNRMY;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = MacroChallenge/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.ici.MacroChallenge;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		9DFAB8632534404F00E81C87 /* Build configuration list for PBXProject "MacroChallenge" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9DFAB8A32534405100E81C87 /* Debug */,
+				9DFAB8A42534405100E81C87 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9DFAB8A52534405100E81C87 /* Build configuration list for PBXNativeTarget "MacroChallenge WatchKit Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9DFAB8A62534405100E81C87 /* Debug */,
+				9DFAB8A72534405100E81C87 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9DFAB8A92534405100E81C87 /* Build configuration list for PBXNativeTarget "MacroChallenge WatchKit App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9DFAB8AA2534405100E81C87 /* Debug */,
+				9DFAB8AB2534405100E81C87 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9DFAB8AD2534405100E81C87 /* Build configuration list for PBXNativeTarget "MacroChallenge" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9DFAB8AE2534405100E81C87 /* Debug */,
+				9DFAB8AF2534405100E81C87 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 9DFAB8602534404F00E81C87 /* Project object */;
+}
