@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		9DFAB86C2534404F00E81C87 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFAB86B2534404F00E81C87 /* AppDelegate.swift */; };
 		9DFAB86E2534404F00E81C87 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFAB86D2534404F00E81C87 /* SceneDelegate.swift */; };
-		9DFAB8702534404F00E81C87 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFAB86F2534404F00E81C87 /* ContentView.swift */; };
+		9DFAB8702534404F00E81C87 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFAB86F2534404F00E81C87 /* HomeView.swift */; };
 		9DFAB8722534405000E81C87 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9DFAB8712534405000E81C87 /* Assets.xcassets */; };
 		9DFAB8752534405000E81C87 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9DFAB8742534405000E81C87 /* Preview Assets.xcassets */; };
 		9DFAB8782534405000E81C87 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9DFAB8762534405000E81C87 /* LaunchScreen.storyboard */; };
@@ -25,6 +25,11 @@
 		9DFAB89B2534405100E81C87 /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFAB89A2534405100E81C87 /* ComplicationController.swift */; };
 		9DFAB89D2534405100E81C87 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9DFAB89C2534405100E81C87 /* Assets.xcassets */; };
 		9DFAB8A02534405100E81C87 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9DFAB89F2534405100E81C87 /* Preview Assets.xcassets */; };
+		CA95C11025357B3F008C0398 /* BreathListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA95C10F25357B3F008C0398 /* BreathListView.swift */; };
+		CA95C11825357B59008C0398 /* CustomBreathingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA95C11725357B59008C0398 /* CustomBreathingView.swift */; };
+		CA95C11E25357BEE008C0398 /* BreathView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA95C11D25357BEE008C0398 /* BreathView.swift */; };
+		CA95C12725357C52008C0398 /* AfterBreathingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA95C12625357C52008C0398 /* AfterBreathingView.swift */; };
+		CA95C13025357CA8008C0398 /* EmergencyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA95C12F25357CA8008C0398 /* EmergencyView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,7 +78,7 @@
 		9DFAB8682534404F00E81C87 /* MacroChallenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MacroChallenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9DFAB86B2534404F00E81C87 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9DFAB86D2534404F00E81C87 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		9DFAB86F2534404F00E81C87 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		9DFAB86F2534404F00E81C87 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		9DFAB8712534405000E81C87 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9DFAB8742534405000E81C87 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		9DFAB8772534405000E81C87 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -93,6 +98,11 @@
 		9DFAB89F2534405100E81C87 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		9DFAB8A12534405100E81C87 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9DFAB8A22534405100E81C87 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
+		CA95C10F25357B3F008C0398 /* BreathListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreathListView.swift; sourceTree = "<group>"; };
+		CA95C11725357B59008C0398 /* CustomBreathingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBreathingView.swift; sourceTree = "<group>"; };
+		CA95C11D25357BEE008C0398 /* BreathView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreathView.swift; sourceTree = "<group>"; };
+		CA95C12625357C52008C0398 /* AfterBreathingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AfterBreathingView.swift; sourceTree = "<group>"; };
+		CA95C12F25357CA8008C0398 /* EmergencyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmergencyView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,9 +146,9 @@
 		9DFAB86A2534404F00E81C87 /* MacroChallenge */ = {
 			isa = PBXGroup;
 			children = (
-				9DFAB86B2534404F00E81C87 /* AppDelegate.swift */,
+				CA95C12525357BF9008C0398 /* View */,
 				9DFAB86D2534404F00E81C87 /* SceneDelegate.swift */,
-				9DFAB86F2534404F00E81C87 /* ContentView.swift */,
+				9DFAB86B2534404F00E81C87 /* AppDelegate.swift */,
 				9DFAB8712534405000E81C87 /* Assets.xcassets */,
 				9DFAB8762534405000E81C87 /* LaunchScreen.storyboard */,
 				9DFAB8792534405000E81C87 /* Info.plist */,
@@ -188,6 +198,51 @@
 				9DFAB89F2534405100E81C87 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		CA95C10A25357B1C008C0398 /* Home Page */ = {
+			isa = PBXGroup;
+			children = (
+				9DFAB86F2534404F00E81C87 /* HomeView.swift */,
+			);
+			path = "Home Page";
+			sourceTree = "<group>";
+		};
+		CA95C10E25357B2F008C0398 /* Custom Breathing Page */ = {
+			isa = PBXGroup;
+			children = (
+				CA95C10F25357B3F008C0398 /* BreathListView.swift */,
+				CA95C11725357B59008C0398 /* CustomBreathingView.swift */,
+			);
+			path = "Custom Breathing Page";
+			sourceTree = "<group>";
+		};
+		CA95C11C25357BD3008C0398 /* Breath Page */ = {
+			isa = PBXGroup;
+			children = (
+				CA95C11D25357BEE008C0398 /* BreathView.swift */,
+				CA95C12625357C52008C0398 /* AfterBreathingView.swift */,
+			);
+			path = "Breath Page";
+			sourceTree = "<group>";
+		};
+		CA95C12525357BF9008C0398 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CA95C10A25357B1C008C0398 /* Home Page */,
+				CA95C11C25357BD3008C0398 /* Breath Page */,
+				CA95C10E25357B2F008C0398 /* Custom Breathing Page */,
+				CA95C12E25357C90008C0398 /* Emergency Page */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CA95C12E25357C90008C0398 /* Emergency Page */ = {
+			isa = PBXGroup;
+			children = (
+				CA95C12F25357CA8008C0398 /* EmergencyView.swift */,
+			);
+			path = "Emergency Page";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -322,9 +377,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CA95C13025357CA8008C0398 /* EmergencyView.swift in Sources */,
+				CA95C12725357C52008C0398 /* AfterBreathingView.swift in Sources */,
+				CA95C11025357B3F008C0398 /* BreathListView.swift in Sources */,
+				CA95C11825357B59008C0398 /* CustomBreathingView.swift in Sources */,
 				9DFAB86C2534404F00E81C87 /* AppDelegate.swift in Sources */,
 				9DFAB86E2534404F00E81C87 /* SceneDelegate.swift in Sources */,
-				9DFAB8702534404F00E81C87 /* ContentView.swift in Sources */,
+				CA95C11E25357BEE008C0398 /* BreathView.swift in Sources */,
+				9DFAB8702534404F00E81C87 /* HomeView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
