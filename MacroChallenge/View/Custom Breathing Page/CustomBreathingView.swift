@@ -94,16 +94,18 @@ struct InputName: View {
                 TextField("NAME", text: $breathName)
                     .frame(width: 311, height: 44)
                     .multilineTextAlignment(.center)
-                    
-                Button(action: {
-                    self.breathName = ""
-                }, label: {
-                    Image(systemName: "xmark.circle.fill")
-                        .frame(width: 15, height: 22)
-                        .foregroundColor(.gray)
-                        .offset(x: 145)
-                })
+                HStack {
+                    Spacer()
+                    Button(action: {
+                        self.breathName = ""
+                    }, label: {
+                        Image(systemName: "xmark.circle.fill")
+                            .frame(width: 15, height: 22)
+                            .foregroundColor(.gray)
+                    })
+                }
             }
+            .padding(.horizontal, 50)
             Rectangle()
                 .frame(width: 311, height: 1, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                 .foregroundColor(.gray)
