@@ -8,14 +8,24 @@
 import SwiftUI
 
 struct BreathListView: View {
+    
+    @FetchRequest(fetchRequest: Breathing.getAllBreathing()) var breaths: FetchedResults<Breathing>
+    
     var body: some View {
-        NavigationLink(
-            destination: CustomBreathingView(),
-            label: {
-                Text("Custom Breathing View")
-            })
-        
-            .navigationBarTitle("Breath List", displayMode: .inline)
+        VStack{
+            NavigationLink(
+                destination: CustomBreathingView(),
+                label: {
+                    Text("Custom Breathing View")
+                })
+                .navigationBarTitle("Breath List", displayMode: .inline)
+            
+            List {
+                ForEach(self.breaths) { breath in
+                    Text("\(breath.name ?? "My Breath") = \(breath.inhale) inhale || \(breath.hold1) hold || \(breath.exhale) exhale || \(breath.hold2) hold || sound \(breath.sound == true ? "on" : "off") || haptic \(breath.haptic == true ? "on" : "off")")
+                }
+            }
+        }
     }
 }
 

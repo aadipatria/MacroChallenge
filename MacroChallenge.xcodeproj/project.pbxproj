@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9D7D26EA25381317006D35D2 /* MacroChallenge.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9D7D26E825381317006D35D2 /* MacroChallenge.xcdatamodeld */; };
+		9D7D26EB25381317006D35D2 /* MacroChallenge.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9D7D26E825381317006D35D2 /* MacroChallenge.xcdatamodeld */; };
+		9D7D2713253818B8006D35D2 /* BreathingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7D2712253818B8006D35D2 /* BreathingModel.swift */; };
+		9D7D2714253818B8006D35D2 /* BreathingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7D2712253818B8006D35D2 /* BreathingModel.swift */; };
 		9DFAB86C2534404F00E81C87 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFAB86B2534404F00E81C87 /* AppDelegate.swift */; };
 		9DFAB86E2534404F00E81C87 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFAB86D2534404F00E81C87 /* SceneDelegate.swift */; };
 		9DFAB8702534404F00E81C87 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFAB86F2534404F00E81C87 /* HomeView.swift */; };
@@ -75,6 +79,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		9D7D26E925381317006D35D2 /* MacroChallenge.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MacroChallenge.xcdatamodel; sourceTree = "<group>"; };
+		9D7D2712253818B8006D35D2 /* BreathingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreathingModel.swift; sourceTree = "<group>"; };
 		9DFAB8682534404F00E81C87 /* MacroChallenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MacroChallenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9DFAB86B2534404F00E81C87 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9DFAB86D2534404F00E81C87 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -123,6 +129,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9D7D26F62538151E006D35D2 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				9D7D2712253818B8006D35D2 /* BreathingModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		9DFAB85F2534404F00E81C87 = {
 			isa = PBXGroup;
 			children = (
@@ -146,12 +160,14 @@
 		9DFAB86A2534404F00E81C87 /* MacroChallenge */ = {
 			isa = PBXGroup;
 			children = (
+				9D7D26F62538151E006D35D2 /* Model */,
 				CA95C12525357BF9008C0398 /* View */,
 				9DFAB86D2534404F00E81C87 /* SceneDelegate.swift */,
 				9DFAB86B2534404F00E81C87 /* AppDelegate.swift */,
 				9DFAB8712534405000E81C87 /* Assets.xcassets */,
 				9DFAB8762534405000E81C87 /* LaunchScreen.storyboard */,
 				9DFAB8792534405000E81C87 /* Info.plist */,
+				9D7D26E825381317006D35D2 /* MacroChallenge.xcdatamodeld */,
 				9DFAB8732534405000E81C87 /* Preview Content */,
 			);
 			path = MacroChallenge;
@@ -378,12 +394,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				CA95C13025357CA8008C0398 /* EmergencyView.swift in Sources */,
+				9D7D26EA25381317006D35D2 /* MacroChallenge.xcdatamodeld in Sources */,
 				CA95C12725357C52008C0398 /* AfterBreathingView.swift in Sources */,
 				CA95C11025357B3F008C0398 /* BreathListView.swift in Sources */,
 				CA95C11825357B59008C0398 /* CustomBreathingView.swift in Sources */,
 				9DFAB86C2534404F00E81C87 /* AppDelegate.swift in Sources */,
 				9DFAB86E2534404F00E81C87 /* SceneDelegate.swift in Sources */,
 				CA95C11E25357BEE008C0398 /* BreathView.swift in Sources */,
+				9D7D2713253818B8006D35D2 /* BreathingModel.swift in Sources */,
 				9DFAB8702534404F00E81C87 /* HomeView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -396,7 +414,9 @@
 				9DFAB8912534405100E81C87 /* HostingController.swift in Sources */,
 				9DFAB8972534405100E81C87 /* NotificationController.swift in Sources */,
 				9DFAB8952534405100E81C87 /* ExtensionDelegate.swift in Sources */,
+				9D7D2714253818B8006D35D2 /* BreathingModel.swift in Sources */,
 				9DFAB8992534405100E81C87 /* NotificationView.swift in Sources */,
+				9D7D26EB25381317006D35D2 /* MacroChallenge.xcdatamodeld in Sources */,
 				9DFAB89B2534405100E81C87 /* ComplicationController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -724,6 +744,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		9D7D26E825381317006D35D2 /* MacroChallenge.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				9D7D26E925381317006D35D2 /* MacroChallenge.xcdatamodel */,
+			);
+			currentVersion = 9D7D26E925381317006D35D2 /* MacroChallenge.xcdatamodel */;
+			path = MacroChallenge.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 9DFAB8602534404F00E81C87 /* Project object */;
 }
