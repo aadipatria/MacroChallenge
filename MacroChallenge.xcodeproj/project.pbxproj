@@ -27,6 +27,7 @@
 		9DFAB8A02534405100E81C87 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9DFAB89F2534405100E81C87 /* Preview Assets.xcassets */; };
 		CA8C4F25253D39BD005B99A8 /* AfterBreathingWatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8C4F24253D39BD005B99A8 /* AfterBreathingWatchView.swift */; };
 		CA8C4F2A253D39D1005B99A8 /* EmergencyWatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8C4F29253D39D1005B99A8 /* EmergencyWatchView.swift */; };
+		CA8C4F3A253D3DEC005B99A8 /* NavigationPop.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8C4F39253D3DEC005B99A8 /* NavigationPop.swift */; };
 		CA95C11025357B3F008C0398 /* BreathListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA95C10F25357B3F008C0398 /* BreathListView.swift */; };
 		CA95C11825357B59008C0398 /* CustomBreathingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA95C11725357B59008C0398 /* CustomBreathingView.swift */; };
 		CA95C11E25357BEE008C0398 /* BreathView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA95C11D25357BEE008C0398 /* BreathView.swift */; };
@@ -102,6 +103,7 @@
 		9DFAB8A22534405100E81C87 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
 		CA8C4F24253D39BD005B99A8 /* AfterBreathingWatchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AfterBreathingWatchView.swift; sourceTree = "<group>"; };
 		CA8C4F29253D39D1005B99A8 /* EmergencyWatchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmergencyWatchView.swift; sourceTree = "<group>"; };
+		CA8C4F39253D3DEC005B99A8 /* NavigationPop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationPop.swift; sourceTree = "<group>"; };
 		CA95C10F25357B3F008C0398 /* BreathListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreathListView.swift; sourceTree = "<group>"; };
 		CA95C11725357B59008C0398 /* CustomBreathingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBreathingView.swift; sourceTree = "<group>"; };
 		CA95C11D25357BEE008C0398 /* BreathView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreathView.swift; sourceTree = "<group>"; };
@@ -218,6 +220,7 @@
 		CA8C4F35253D3A28005B99A8 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				CA8C4F39253D3DEC005B99A8 /* NavigationPop.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -402,6 +405,7 @@
 				CA95C13025357CA8008C0398 /* EmergencyView.swift in Sources */,
 				CA95C12725357C52008C0398 /* AfterBreathingView.swift in Sources */,
 				CA95C11025357B3F008C0398 /* BreathListView.swift in Sources */,
+				CA8C4F3A253D3DEC005B99A8 /* NavigationPop.swift in Sources */,
 				CA95C11825357B59008C0398 /* CustomBreathingView.swift in Sources */,
 				9DFAB86C2534404F00E81C87 /* AppDelegate.swift in Sources */,
 				9DFAB86E2534404F00E81C87 /* SceneDelegate.swift in Sources */,
