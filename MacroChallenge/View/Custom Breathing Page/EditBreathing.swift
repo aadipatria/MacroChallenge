@@ -5,8 +5,9 @@
 //  Created by Kenji Surya Utama on 13/10/20.
 
 import SwiftUI
+import CoreData
 
-struct CustomBreathingView: View {
+struct EditBreathing: View {
     @State var breathName = ""
     @State var inhale = 0
     @State var hold1 = 0
@@ -14,10 +15,12 @@ struct CustomBreathingView: View {
     @State var hold2 = 0
     @State var isSoundOn = false
     @State var isHapticOn = false
-    
+    var id: UUID
+    @FetchRequest(fetchRequest: Breathing.getAllBreathing()) var breaths: FetchedResults<Breathing>
+
     var body: some View {
         VStack {
-            CancelAddView(breathName: $breathName, inhale: $inhale, hold1: $hold1, exhale: $exhale, hold2: $hold2, isSoundOn: $isSoundOn, isHapticOn: $isHapticOn)
+            EditBreathingCancelAddView(breathName: $breathName, inhale: $inhale, hold1: $hold1, exhale: $exhale, hold2: $hold2, isSoundOn: $isSoundOn, isHapticOn: $isHapticOn, id: id)
             Precautions()
             
             VStack {
@@ -26,7 +29,7 @@ struct CustomBreathingView: View {
             }
             .frame(width: 375, height: 22, alignment: .leading)
             
-            InputName(breathName: $breathName)
+            EditBreathingInputName(breathName: $breathName)
             
             VStack {
                 Text("Pattern")
@@ -47,7 +50,7 @@ struct CustomBreathingView: View {
                     .frame(width: 375/4)
             }
             
-            CustomBreathingViewPicker(inhaleSelection: $inhale, hold1Selection: $hold1, exhaleSelection: $exhale, hold2Selection: $hold2)
+            EditBreathingCustomBreathingViewPicker(inhaleSelection: $inhale, hold1Selection: $hold1, exhaleSelection: $exhale, hold2Selection: $hold2)
                 .frame(height: 275)
             
             VStack {
@@ -58,13 +61,26 @@ struct CustomBreathingView: View {
             .padding(.bottom)
             .padding(.top)
             
-            GuidingPreferences(isSoundOn: $isSoundOn, isHapticOn: $isHapticOn)
+            EditBreathingGuidingPreferences(isSoundOn: $isSoundOn, isHapticOn: $isHapticOn)
         }
         .padding()
+        .onAppear {
+            for breath in breaths {
+                if breath.id == self.id {
+                    self.breathName = breath.name!
+                    self.inhale = Int(breath.inhale)
+                    self.hold1 = Int(breath.hold1)
+                    self.exhale = Int(breath.exhale)
+                    self.hold2 = Int(breath.hold2)
+                    self.isSoundOn = breath.sound
+                    self.isHapticOn = breath.haptic
+                }
+            }
+        }
     }
 }
 
-struct GuidingPreferences: View {
+struct EditBreathingGuidingPreferences: View {
     @Binding var isSoundOn : Bool
     @Binding var isHapticOn : Bool
     var body: some View {
@@ -84,7 +100,7 @@ struct GuidingPreferences: View {
     }
 }
 
-struct InputName: View {
+struct EditBreathingInputName: View {
     @Binding var breathName : String
     var body: some View {
         VStack {
@@ -111,7 +127,7 @@ struct InputName: View {
     }
 }
 
-struct CustomBreathingViewPicker: View {
+struct EditBreathingCustomBreathingViewPicker: View {
     
     @Binding var inhaleSelection : Int
     @Binding var hold1Selection : Int
@@ -160,31 +176,10 @@ struct CustomBreathingViewPicker: View {
     }
 }
 
-struct Precautions: View {
-    var body: some View {
-        ZStack {
-            Rectangle()
-                .frame(width: 311, height: 117)
-                .cornerRadius(10)
-                .foregroundColor(.init(red: 239/255, green: 239/255, blue: 244/255))
-            VStack(alignment: .leading) {
-                Text("Precautions:")
-                    .font(.system(size: 16, weight: .semibold, design: .default))
-                Group {
-                    Text("- Make sure that the breathing pattern is as")
-                    Text("suggested as the experts")
-                    Text("- It is better when the exhale is longer than the")
-                    Text("inhale period")
-                }
-                .font(.system(size: 12, weight: .regular, design: .default))
-            }
-            .frame(width: 270, height: 103)
-        }
-    }
-}
-
-struct CancelAddView: View {
+struct EditBreathingCancelAddView: View {
     @Environment(\.managedObjectContext) var manageObjectContext
+    @FetchRequest(fetchRequest: Breathing.getAllBreathing()) var breaths: FetchedResults<Breathing>
+    
     @Binding var breathName : String
     @Binding var inhale : Int
     @Binding var hold1 : Int
@@ -192,13 +187,24 @@ struct CancelAddView: View {
     @Binding var hold2 : Int
     @Binding var isSoundOn : Bool
     @Binding var isHapticOn : Bool
+    var id: UUID
     
     var body: some View {
         HStack {
             Text("Cancel")
             Spacer()
             Button(action: {
-                let breath = Breathing(context: self.manageObjectContext)
+                updateBreath()
+            }, label: {
+                Text("Save")
+            })
+        }
+        .padding()
+    }
+    
+    func updateBreath() {
+        for breath in breaths {
+            if breath.id == self.id {
                 breath.name = breathName
                 breath.inhale = Int16(inhale)
                 breath.hold1 = Int16(hold1)
@@ -213,17 +219,14 @@ struct CancelAddView: View {
                 } catch {
                     print(error)
                 }
-                
-            }, label: {
-                Text("Add")
-            })
+            }
         }
-        .padding()
     }
 }
 
-struct CustomBreathingView_Previews: PreviewProvider {
-    static var previews: some View {
-        CustomBreathingView()
-    }
-}
+//struct EditBreathing_Previews: PreviewProvider {
+//    static var previews: some View {
+//        EditBreathing()
+//    }
+//}
+

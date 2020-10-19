@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct BreathListView: View {
-    
     @FetchRequest(fetchRequest: Breathing.getAllBreathing()) var breaths: FetchedResults<Breathing>
     
     var body: some View {
@@ -22,7 +21,11 @@ struct BreathListView: View {
             
             List {
                 ForEach(self.breaths) { breath in
-                    Text("\(breath.name ?? "My Breath") = \(breath.inhale) inhale || \(breath.hold1) hold || \(breath.exhale) exhale || \(breath.hold2) hold || sound \(breath.sound == true ? "on" : "off") || haptic \(breath.haptic == true ? "on" : "off")")
+                    NavigationLink(
+                        destination: EditBreathing(id: breath.id),
+                        label: {
+                            Text("\(breath.name ?? "My Breath") = \(breath.inhale) inhale || \(breath.hold1) hold || \(breath.exhale) exhale || \(breath.hold2) hold || sound \(breath.sound == true ? "on" : "off") || haptic \(breath.haptic == true ? "on" : "off") || \(breath.id)")
+                        })
                 }
             }
         }
