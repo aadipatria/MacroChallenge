@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7526DCA8253C0D56004488C6 /* CallFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7526DCA7253C0D56004488C6 /* CallFunction.swift */; };
 		9D7D26EA25381317006D35D2 /* MacroChallenge.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9D7D26E825381317006D35D2 /* MacroChallenge.xcdatamodeld */; };
 		9D7D26EB25381317006D35D2 /* MacroChallenge.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9D7D26E825381317006D35D2 /* MacroChallenge.xcdatamodeld */; };
 		9D7D2713253818B8006D35D2 /* BreathingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7D2712253818B8006D35D2 /* BreathingModel.swift */; };
@@ -79,6 +80,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		7526DCA7253C0D56004488C6 /* CallFunction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallFunction.swift; sourceTree = "<group>"; };
 		9D7D26E925381317006D35D2 /* MacroChallenge.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MacroChallenge.xcdatamodel; sourceTree = "<group>"; };
 		9D7D2712253818B8006D35D2 /* BreathingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreathingModel.swift; sourceTree = "<group>"; };
 		9DFAB8682534404F00E81C87 /* MacroChallenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MacroChallenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -257,6 +259,7 @@
 			isa = PBXGroup;
 			children = (
 				CA95C12F25357CA8008C0398 /* EmergencyView.swift */,
+				7526DCA7253C0D56004488C6 /* CallFunction.swift */,
 			);
 			path = "Emergency Page";
 			sourceTree = "<group>";
@@ -399,6 +402,7 @@
 				CA95C11025357B3F008C0398 /* BreathListView.swift in Sources */,
 				CA95C11825357B59008C0398 /* CustomBreathingView.swift in Sources */,
 				9DFAB86C2534404F00E81C87 /* AppDelegate.swift in Sources */,
+				7526DCA8253C0D56004488C6 /* CallFunction.swift in Sources */,
 				9DFAB86E2534404F00E81C87 /* SceneDelegate.swift in Sources */,
 				CA95C11E25357BEE008C0398 /* BreathView.swift in Sources */,
 				9D7D2713253818B8006D35D2 /* BreathingModel.swift in Sources */,

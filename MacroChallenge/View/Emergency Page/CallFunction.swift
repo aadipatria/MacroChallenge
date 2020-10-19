@@ -1,13 +1,14 @@
 //
-//  EmergencyView.swift
-//  MacroChallenge
+//  ContentView.swift
+//  testingCallFile
 //
-//  Created by Kenji Surya Utama on 13/10/20.
+//  Created by Yudis Huang on 05/10/20.
+//  Copyright © 2020 Yudis Huang. All rights reserved.
 //
 
 import SwiftUI
 
-struct EmergencyView: View {
+struct CallFunction: View {
     var body: some View {
         Button(action: {
             
@@ -24,11 +25,10 @@ struct EmergencyView: View {
             Text("Emergency Call")
         }
     }
-    
 }
 
-struct EmergencyView_Previews: PreviewProvider {
+struct CallFunction_Previews: PreviewProvider {
     static var previews: some View {
-        EmergencyView()
+        CallFunction()
     }
 }
