@@ -10,7 +10,7 @@ import SwiftUI
 struct EmergencyView: View {
     var body: some View {
         Button(action: {
-            
+            //test
             // this is where the variable emergencyPhoneNumber assigned a value of coredata
             var emergencyPhoneNumber = "123456"
             
