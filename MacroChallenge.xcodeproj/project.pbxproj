@@ -23,13 +23,16 @@
 		9DFAB8852534405000E81C87 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9DFAB8842534405000E81C87 /* Assets.xcassets */; };
 		9DFAB88C2534405100E81C87 /* MacroChallenge WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 9DFAB88B2534405100E81C87 /* MacroChallenge WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		9DFAB8912534405100E81C87 /* HostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFAB8902534405100E81C87 /* HostingController.swift */; };
-		9DFAB8932534405100E81C87 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFAB8922534405100E81C87 /* ContentView.swift */; };
+		9DFAB8932534405100E81C87 /* HomeWatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFAB8922534405100E81C87 /* HomeWatchView.swift */; };
 		9DFAB8952534405100E81C87 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFAB8942534405100E81C87 /* ExtensionDelegate.swift */; };
 		9DFAB8972534405100E81C87 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFAB8962534405100E81C87 /* NotificationController.swift */; };
 		9DFAB8992534405100E81C87 /* NotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFAB8982534405100E81C87 /* NotificationView.swift */; };
 		9DFAB89B2534405100E81C87 /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFAB89A2534405100E81C87 /* ComplicationController.swift */; };
 		9DFAB89D2534405100E81C87 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9DFAB89C2534405100E81C87 /* Assets.xcassets */; };
 		9DFAB8A02534405100E81C87 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9DFAB89F2534405100E81C87 /* Preview Assets.xcassets */; };
+		CA8C4F25253D39BD005B99A8 /* AfterBreathingWatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8C4F24253D39BD005B99A8 /* AfterBreathingWatchView.swift */; };
+		CA8C4F2A253D39D1005B99A8 /* EmergencyWatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8C4F29253D39D1005B99A8 /* EmergencyWatchView.swift */; };
+		CA8C4F3A253D3DEC005B99A8 /* NavigationPop.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8C4F39253D3DEC005B99A8 /* NavigationPop.swift */; };
 		CA95C11025357B3F008C0398 /* BreathListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA95C10F25357B3F008C0398 /* BreathListView.swift */; };
 		CA95C11825357B59008C0398 /* CustomBreathingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA95C11725357B59008C0398 /* CustomBreathingView.swift */; };
 		CA95C11E25357BEE008C0398 /* BreathView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA95C11D25357BEE008C0398 /* BreathView.swift */; };
@@ -97,7 +100,7 @@
 		9DFAB8862534405000E81C87 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9DFAB88B2534405100E81C87 /* MacroChallenge WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "MacroChallenge WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9DFAB8902534405100E81C87 /* HostingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostingController.swift; sourceTree = "<group>"; };
-		9DFAB8922534405100E81C87 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		9DFAB8922534405100E81C87 /* HomeWatchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeWatchView.swift; sourceTree = "<group>"; };
 		9DFAB8942534405100E81C87 /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
 		9DFAB8962534405100E81C87 /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
 		9DFAB8982534405100E81C87 /* NotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationView.swift; sourceTree = "<group>"; };
@@ -106,6 +109,9 @@
 		9DFAB89F2534405100E81C87 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		9DFAB8A12534405100E81C87 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9DFAB8A22534405100E81C87 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
+		CA8C4F24253D39BD005B99A8 /* AfterBreathingWatchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AfterBreathingWatchView.swift; sourceTree = "<group>"; };
+		CA8C4F29253D39D1005B99A8 /* EmergencyWatchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmergencyWatchView.swift; sourceTree = "<group>"; };
+		CA8C4F39253D3DEC005B99A8 /* NavigationPop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationPop.swift; sourceTree = "<group>"; };
 		CA95C10F25357B3F008C0398 /* BreathListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreathListView.swift; sourceTree = "<group>"; };
 		CA95C11725357B59008C0398 /* CustomBreathingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBreathingView.swift; sourceTree = "<group>"; };
 		CA95C11D25357BEE008C0398 /* BreathView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreathView.swift; sourceTree = "<group>"; };
@@ -164,8 +170,9 @@
 			children = (
 				9D7D26F62538151E006D35D2 /* Model */,
 				CA95C12525357BF9008C0398 /* View */,
-				9DFAB86D2534404F00E81C87 /* SceneDelegate.swift */,
+				CA8C4F35253D3A28005B99A8 /* Helpers */,
 				9DFAB86B2534404F00E81C87 /* AppDelegate.swift */,
+				9DFAB86D2534404F00E81C87 /* SceneDelegate.swift */,
 				9DFAB8712534405000E81C87 /* Assets.xcassets */,
 				9DFAB8762534405000E81C87 /* LaunchScreen.storyboard */,
 				9DFAB8792534405000E81C87 /* Info.plist */,
@@ -196,8 +203,8 @@
 		9DFAB88F2534405100E81C87 /* MacroChallenge WatchKit Extension */ = {
 			isa = PBXGroup;
 			children = (
+				CA8C4F34253D3A18005B99A8 /* View */,
 				9DFAB8902534405100E81C87 /* HostingController.swift */,
-				9DFAB8922534405100E81C87 /* ContentView.swift */,
 				9DFAB8942534405100E81C87 /* ExtensionDelegate.swift */,
 				9DFAB8962534405100E81C87 /* NotificationController.swift */,
 				9DFAB8982534405100E81C87 /* NotificationView.swift */,
@@ -216,6 +223,24 @@
 				9DFAB89F2534405100E81C87 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		CA8C4F34253D3A18005B99A8 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				9DFAB8922534405100E81C87 /* HomeWatchView.swift */,
+				CA8C4F29253D39D1005B99A8 /* EmergencyWatchView.swift */,
+				CA8C4F24253D39BD005B99A8 /* AfterBreathingWatchView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CA8C4F35253D3A28005B99A8 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				CA8C4F39253D3DEC005B99A8 /* NavigationPop.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		CA95C10A25357B1C008C0398 /* Home Page */ = {
@@ -400,6 +425,7 @@
 				9D7D26EA25381317006D35D2 /* MacroChallenge.xcdatamodeld in Sources */,
 				CA95C12725357C52008C0398 /* AfterBreathingView.swift in Sources */,
 				CA95C11025357B3F008C0398 /* BreathListView.swift in Sources */,
+				CA8C4F3A253D3DEC005B99A8 /* NavigationPop.swift in Sources */,
 				CA95C11825357B59008C0398 /* CustomBreathingView.swift in Sources */,
 				9DFAB86C2534404F00E81C87 /* AppDelegate.swift in Sources */,
 				7526DCA8253C0D56004488C6 /* CallFunction.swift in Sources */,
@@ -414,9 +440,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9DFAB8932534405100E81C87 /* ContentView.swift in Sources */,
+				9DFAB8932534405100E81C87 /* HomeWatchView.swift in Sources */,
 				9DFAB8912534405100E81C87 /* HostingController.swift in Sources */,
 				9DFAB8972534405100E81C87 /* NotificationController.swift in Sources */,
+				CA8C4F25253D39BD005B99A8 /* AfterBreathingWatchView.swift in Sources */,
+				CA8C4F2A253D39D1005B99A8 /* EmergencyWatchView.swift in Sources */,
 				9DFAB8952534405100E81C87 /* ExtensionDelegate.swift in Sources */,
 				9D7D2714253818B8006D35D2 /* BreathingModel.swift in Sources */,
 				9DFAB8992534405100E81C87 /* NotificationView.swift in Sources */,

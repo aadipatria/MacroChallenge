@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct HomeView: View {
+    
+    @EnvironmentObject var navPop : NavigationPopObject
+    
     var body: some View {
         NavigationView{
             VStack {
@@ -19,12 +22,20 @@ struct HomeView: View {
                         Text("Breath List")
                     })
                     .padding()
-                NavigationLink(
-                    destination: BreathView(),
-                    label: {
-                        Text("Breath Now")
+                
+                Group {
+                    Button(action: {
+                        navPop.toHome = true
+                    }, label: {
+                        Text("Breath View")
+                            .padding()
                     })
-                    .padding()
+                    NavigationLink(
+                        destination: BreathView(),
+                        isActive: $navPop.toHome, label: {
+                            EmptyView()
+                    })
+                }
                 NavigationLink(
                     destination: EmergencyView(),
                     label: {
@@ -39,6 +50,6 @@ struct HomeView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView()
+        HomeView().environmentObject(NavigationPopObject())
     }
 }
