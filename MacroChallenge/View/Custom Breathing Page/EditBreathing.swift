@@ -138,9 +138,10 @@ struct EditBreathingCancelAddView: View {
     }
 }
 
-//struct EditBreathing_Previews: PreviewProvider {
-//    static var previews: some View {
-//        EditBreathing()
-//    }
-//}
+struct EditBreathing_Previews: PreviewProvider {
+    static var previews: some View {
+        let viewContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        EditBreathing(id: UUID()).environment(\.managedObjectContext, viewContext)
+    }
+}
 

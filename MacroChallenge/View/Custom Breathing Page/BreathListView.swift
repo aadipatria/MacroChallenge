@@ -38,6 +38,7 @@ struct BreathListView: View {
 
 struct BreathListView_Previews: PreviewProvider {
     static var previews: some View {
-        BreathListView()
+        let viewContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        BreathListView().environment(\.managedObjectContext, viewContext)
     }
 }
