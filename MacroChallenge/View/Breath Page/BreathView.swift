@@ -8,19 +8,31 @@
 import SwiftUI
 
 struct BreathView: View {
+    
+    @EnvironmentObject var navPop : NavigationPopObject
+    
     var body: some View {
-        NavigationLink(
-            destination: AfterBreathingView(),
-            label: {
-                Text("After Breathing")
-            })
-        
-            .navigationBarTitle("Breath", displayMode: .inline)
+        VStack {
+            Group {
+                Button(action: {
+                    navPop.toBreathing = true
+                }, label: {
+                    Text("After Breathing")
+                })
+                NavigationLink(
+                    destination: AfterBreathingView(),
+                    isActive : $navPop.toBreathing,
+                    label: {
+                        EmptyView()
+                    })
+            }
+        }
+        .navigationBarTitle("Breath", displayMode: .inline)
     }
 }
 
 struct BreathView_Previews: PreviewProvider {
     static var previews: some View {
-        BreathView()
+        BreathView().environmentObject(NavigationPopObject())
     }
 }
