@@ -20,7 +20,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         // Create the SwiftUI view that provides the window contents.
         let managedObjectContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-        let homeView = HomeView().environment(\.managedObjectContext, managedObjectContext)
+        let homeView = HomeView().environment(\.managedObjectContext, managedObjectContext).environmentObject(NavigationPopObject())
 
         // Use a UIHostingController as window root view controller.
         if let windowScene = scene as? UIWindowScene {
