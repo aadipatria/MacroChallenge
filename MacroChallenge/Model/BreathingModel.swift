@@ -28,6 +28,8 @@ extension Breathing {
         return request
     }
     
+    //gw buat tapi ga dipake ga tau pakenya gimana
+    //pas gw coba pake ga bisa, info lanjut tanya gw langsung - Vincent
     static func getBreathing(id: UUID) -> NSFetchRequest<Breathing> {
         let request:NSFetchRequest<Breathing> = Breathing.fetchRequest() as! NSFetchRequest<Breathing>
         

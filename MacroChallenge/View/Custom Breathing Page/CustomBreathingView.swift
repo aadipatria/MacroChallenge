@@ -111,8 +111,8 @@ struct InputName: View {
     }
 }
 
+//Multi-Component picker, namanya doang keren isinya hanya Hstack + picker biasa
 struct CustomBreathingViewPicker: View {
-    
     @Binding var inhaleSelection : Int
     @Binding var hold1Selection : Int
     @Binding var exhaleSelection : Int
@@ -184,7 +184,9 @@ struct Precautions: View {
 }
 
 struct CancelAddView: View {
+    //pake ini untuk save ke core data
     @Environment(\.managedObjectContext) var manageObjectContext
+    
     @Binding var breathName : String
     @Binding var inhale : Int
     @Binding var hold1 : Int
@@ -209,6 +211,7 @@ struct CancelAddView: View {
                 breath.id = UUID()
                 
                 do{
+                    //save ke core data
                     try self.manageObjectContext.save()
                 } catch {
                     print(error)

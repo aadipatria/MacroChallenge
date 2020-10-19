@@ -22,6 +22,10 @@ struct BreathListView: View {
             List {
                 ForEach(self.breaths) { breath in
                     NavigationLink(
+                        //gw bikin page baru khusus buat yg Edit breathing karna kayaknya ribet kalau modif yg Add new breathing
+                        //mungkin ada cara lain? - Vincent
+                        
+                        //passing id (UUID) nya
                         destination: EditBreathing(id: breath.id),
                         label: {
                             Text("\(breath.name ?? "My Breath") = \(breath.inhale) inhale || \(breath.hold1) hold || \(breath.exhale) exhale || \(breath.hold2) hold || sound \(breath.sound == true ? "on" : "off") || haptic \(breath.haptic == true ? "on" : "off") || \(breath.id)")
