@@ -16,27 +16,28 @@ struct contactDetail : Identifiable {
     
 }
 
-struct ContentView: View {
+struct EmergencyView: View {
     
 //    var contacts = [contactDetail]()
     
     var contacts : [contactDetail] = [
-        .init(id: 0, name: "Yudis", phoneNumber: "0895378412968", photo: "Lmfao"),
-        .init(id: 1, name: "Henny", phoneNumber: "0928828228282", photo: "GGWP")
+        contactDetail(id: 0, name: "Yudis", phoneNumber: "0895378412968", photo: "Lmfao"),
+        contactDetail(id: 1, name: "Henny", phoneNumber: "0928828228282", photo: "GGWP")
     ]
     
     
     var body: some View {
        
         NavigationView {
-        List{
+            List{
             ForEach(contacts){
                 i in
                 VStack{
                     
                     HStack{
                         HStack{
-                            Text("Photo")// photo
+                            
+                            Text("Test")// photo
                             VStack{
                                 Text("Name")
                                 Text("Phone Number")
@@ -66,8 +67,8 @@ struct ContentView: View {
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct EmergencyView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        EmergencyView()
     }
 }
