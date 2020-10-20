@@ -69,18 +69,24 @@ struct EditBreathing: View {
         }
         .padding()
         .onAppear {
-            for breath in breaths {
-                //basically gw pake predicate ga bisa jadi gw loop manual disini
-                //maap agak barbar - Vincent
-                if breath.id == self.id {
-                    self.breathName = breath.name!
-                    self.inhale = Int(breath.inhale)
-                    self.hold1 = Int(breath.hold1)
-                    self.exhale = Int(breath.exhale)
-                    self.hold2 = Int(breath.hold2)
-                    self.isSoundOn = breath.sound
-                    self.isHapticOn = breath.haptic
-                }
+            checkIdAndChangeData()
+        }
+    }
+}
+
+extension EditBreathing {
+    func checkIdAndChangeData() {
+        for breath in breaths {
+            //basically gw pake predicate ga bisa jadi gw loop manual disini
+            //maap agak barbar - Vincent
+            if breath.id == self.id {
+                self.breathName = breath.name!
+                self.inhale = Int(breath.inhale)
+                self.hold1 = Int(breath.hold1)
+                self.exhale = Int(breath.exhale)
+                self.hold2 = Int(breath.hold2)
+                self.isSoundOn = breath.sound
+                self.isHapticOn = breath.haptic
             }
         }
     }
@@ -113,7 +119,9 @@ struct EditBreathingCancelAddView: View {
         }
         .padding()
     }
-    
+}
+
+extension EditBreathingCancelAddView {
     //sama kayak onAppear diatas
     //ambil semua breath -> cari breath yang idnya == id yang di passing kesini -> save
     func updateBreath() {

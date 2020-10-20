@@ -200,28 +200,34 @@ struct CancelAddView: View {
             Text("Cancel")
             Spacer()
             Button(action: {
-                let breath = Breathing(context: self.manageObjectContext)
-                breath.name = breathName
-                breath.inhale = Int16(inhale)
-                breath.hold1 = Int16(hold1)
-                breath.exhale = Int16(exhale)
-                breath.hold2 = Int16(hold2)
-                breath.sound = isSoundOn
-                breath.haptic = isHapticOn
-                breath.id = UUID()
-                
-                do{
-                    //save ke core data
-                    try self.manageObjectContext.save()
-                } catch {
-                    print(error)
-                }
+                saveToCoreData()
                 
             }, label: {
                 Text("Add")
             })
         }
         .padding()
+    }
+}
+
+extension CancelAddView {
+    func saveToCoreData() {
+        let breath = Breathing(context: self.manageObjectContext)
+        breath.name = breathName
+        breath.inhale = Int16(inhale)
+        breath.hold1 = Int16(hold1)
+        breath.exhale = Int16(exhale)
+        breath.hold2 = Int16(hold2)
+        breath.sound = isSoundOn
+        breath.haptic = isHapticOn
+        breath.id = UUID()
+        
+        do{
+            //save ke core data
+            try self.manageObjectContext.save()
+        } catch {
+            print(error)
+        }
     }
 }
 
