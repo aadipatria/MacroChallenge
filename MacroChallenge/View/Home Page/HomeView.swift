@@ -51,6 +51,6 @@ struct HomeView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         let viewContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-        HomeView().environment(\.managedObjectContext, viewContext).EnvironmentObject(NavigationPopObject())
+        HomeView().environment(\.managedObjectContext, viewContext).environmentObject(NavigationPopObject())
     }
 }
