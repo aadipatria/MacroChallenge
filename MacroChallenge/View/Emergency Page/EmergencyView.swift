@@ -1,28 +1,72 @@
 //
-//  EmergencyView.swift
-//  MacroChallenge
+//  ContentView.swift
+//  testingCallFile
 //
-//  Created by Kenji Surya Utama on 13/10/20.
+//  Created by Yudis Huang on 05/10/20.
+//  Copyright © 2020 Yudis Huang. All rights reserved.
 //
 
 import SwiftUI
 
-struct EmergencyView: View {
-    var body: some View {
-        Button(action: {
-            call(number: "123456")
-        }) {
-            Text("Emergency Call")
-        }
+class contactDetail : Identifiable {
+    var id : Int = 0
+    var name : String = ""
+    var phoneNumber : String = ""
+    var photo : String = ""
+    
+    init(id: Int, name: String, phoneNumber: String, photo: String) {
+        self.id = id
+        self.name = name
+        self.phoneNumber = phoneNumber
+        self.photo = photo
     }
     
 }
+
+struct EmergencyView: View {
+    
+    var contacts : [contactDetail] = [
+        contactDetail(id: 0, name: "Yudis", phoneNumber: "0895378412968", photo: "Lmfao"),
+        contactDetail(id: 1, name: "Henny", phoneNumber: "0928828228282", photo: "GGWP")
+    ]
+    
+    
+    var body: some View {
+       
+        NavigationView {
+            List{
+            ForEach(contacts){i in
+                VStack{
+                    HStack{
+                        HStack{
+                            Text("A")// photo
+                            VStack{
+                                Text("Name")
+                                Text("Phone Number")
+                                }
+                        }
+                        Spacer()
+                        
+                        Button(action: {self.call(number: "123456")
+                            
+                        }){
+                            Text("Call")}
+                    }
+                }.foregroundColor(.gray)
+            }
+            
+        }.navigationBarTitle(Text("My Contacts"))
+        }
+    }
+    
+
+}
 extension EmergencyView{
     func call(number : String){
-        // this is where the variable emergencyPhoneNumber assigned a value of coredata
         guard let phoneNumber =  number as String?, let url = URL(string:"telprompt://\(phoneNumber)") else {
             return
         }
+        
         UIApplication.shared.open(url)
     }
 }
