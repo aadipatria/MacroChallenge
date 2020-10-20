@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9D267F42253C941200882D7F /* EditBreathing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D267F41253C941200882D7F /* EditBreathing.swift */; };
 		9D7D26EA25381317006D35D2 /* MacroChallenge.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9D7D26E825381317006D35D2 /* MacroChallenge.xcdatamodeld */; };
 		9D7D26EB25381317006D35D2 /* MacroChallenge.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9D7D26E825381317006D35D2 /* MacroChallenge.xcdatamodeld */; };
 		9D7D2713253818B8006D35D2 /* BreathingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7D2712253818B8006D35D2 /* BreathingModel.swift */; };
@@ -82,6 +83,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		9D267F41253C941200882D7F /* EditBreathing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditBreathing.swift; sourceTree = "<group>"; };
 		9D7D26E925381317006D35D2 /* MacroChallenge.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MacroChallenge.xcdatamodel; sourceTree = "<group>"; };
 		9D7D2712253818B8006D35D2 /* BreathingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreathingModel.swift; sourceTree = "<group>"; };
 		9DFAB8682534404F00E81C87 /* MacroChallenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MacroChallenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -254,6 +256,7 @@
 			children = (
 				CA95C10F25357B3F008C0398 /* BreathListView.swift */,
 				CA95C11725357B59008C0398 /* CustomBreathingView.swift */,
+				9D267F41253C941200882D7F /* EditBreathing.swift */,
 			);
 			path = "Custom Breathing Page";
 			sourceTree = "<group>";
@@ -418,6 +421,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9D267F42253C941200882D7F /* EditBreathing.swift in Sources */,
 				CA95C13025357CA8008C0398 /* EmergencyView.swift in Sources */,
 				9D7D26EA25381317006D35D2 /* MacroChallenge.xcdatamodeld in Sources */,
 				CA95C12725357C52008C0398 /* AfterBreathingView.swift in Sources */,
