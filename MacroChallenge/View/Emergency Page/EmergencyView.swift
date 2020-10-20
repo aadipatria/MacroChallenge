@@ -8,18 +8,23 @@
 
 import SwiftUI
 
-struct contactDetail : Identifiable {
+class contactDetail : Identifiable {
     var id : Int = 0
     var name : String = ""
     var phoneNumber : String = ""
     var photo : String = ""
     
+    init(id: Int, name: String, phoneNumber: String, photo: String) {
+        self.id = id
+        self.name = name
+        self.phoneNumber = phoneNumber
+        self.photo = photo
+    }
+    
 }
 
 struct EmergencyView: View {
     
-//    var contacts = [contactDetail]()
-    //test
     var contacts : [contactDetail] = [
         contactDetail(id: 0, name: "Yudis", phoneNumber: "0895378412968", photo: "Lmfao"),
         contactDetail(id: 1, name: "Henny", phoneNumber: "0928828228282", photo: "GGWP")
@@ -30,20 +35,18 @@ struct EmergencyView: View {
        
         NavigationView {
             List{
-            ForEach(contacts){
-                i in
+            ForEach(contacts){i in
                 VStack{
-                    
                     HStack{
                         HStack{
-                            
-                            Text("Test")// photo
+                            Text("A")// photo
                             VStack{
                                 Text("Name")
                                 Text("Phone Number")
                                 }
                         }
-                    Spacer()
+                        Spacer()
+                        
                         Button(action: {self.call()
                             
                         }){
