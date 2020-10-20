@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct BreathListView: View {
-    
     @FetchRequest(fetchRequest: Breathing.getAllBreathing()) var breaths: FetchedResults<Breathing>
     
     var body: some View {
@@ -22,7 +21,15 @@ struct BreathListView: View {
             
             List {
                 ForEach(self.breaths) { breath in
-                    Text("\(breath.name ?? "My Breath") = \(breath.inhale) inhale || \(breath.hold1) hold || \(breath.exhale) exhale || \(breath.hold2) hold || sound \(breath.sound == true ? "on" : "off") || haptic \(breath.haptic == true ? "on" : "off")")
+                    NavigationLink(
+                        //gw bikin page baru khusus buat yg Edit breathing karna kayaknya ribet kalau modif yg Add new breathing
+                        //mungkin ada cara lain? - Vincent
+                        
+                        //passing id (UUID) nya
+                        destination: EditBreathing(id: breath.id),
+                        label: {
+                            Text("\(breath.name ?? "My Breath") = \(breath.inhale) inhale || \(breath.hold1) hold || \(breath.exhale) exhale || \(breath.hold2) hold || sound \(breath.sound == true ? "on" : "off") || haptic \(breath.haptic == true ? "on" : "off") || \(breath.id)")
+                        })
                 }
             }
         }
@@ -31,6 +38,7 @@ struct BreathListView: View {
 
 struct BreathListView_Previews: PreviewProvider {
     static var previews: some View {
-        BreathListView()
+        let viewContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        BreathListView().environment(\.managedObjectContext, viewContext)
     }
 }

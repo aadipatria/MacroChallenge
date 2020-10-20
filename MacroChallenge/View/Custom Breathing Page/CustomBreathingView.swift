@@ -3,12 +3,10 @@
 //  MacroChallenge
 //
 //  Created by Kenji Surya Utama on 13/10/20.
-//
 
 import SwiftUI
 
 struct CustomBreathingView: View {
-    
     @State var breathName = ""
     @State var inhale = 0
     @State var hold1 = 0
@@ -107,14 +105,14 @@ struct InputName: View {
             }
             .padding(.horizontal, 50)
             Rectangle()
-                .frame(width: 311, height: 1, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                .frame(width: 311, height: 1, alignment: .center)
                 .foregroundColor(.gray)
         }
     }
 }
 
+//Multi-Component picker, namanya doang keren isinya hanya Hstack + picker biasa
 struct CustomBreathingViewPicker: View {
-    
     @Binding var inhaleSelection : Int
     @Binding var hold1Selection : Int
     @Binding var exhaleSelection : Int
@@ -186,7 +184,9 @@ struct Precautions: View {
 }
 
 struct CancelAddView: View {
+    //pake ini untuk save ke core data
     @Environment(\.managedObjectContext) var manageObjectContext
+    
     @Binding var breathName : String
     @Binding var inhale : Int
     @Binding var hold1 : Int
@@ -208,8 +208,10 @@ struct CancelAddView: View {
                 breath.hold2 = Int16(hold2)
                 breath.sound = isSoundOn
                 breath.haptic = isHapticOn
+                breath.id = UUID()
                 
                 do{
+                    //save ke core data
                     try self.manageObjectContext.save()
                 } catch {
                     print(error)
