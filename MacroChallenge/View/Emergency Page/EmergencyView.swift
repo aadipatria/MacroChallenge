@@ -47,7 +47,7 @@ struct EmergencyView: View {
                         }
                         Spacer()
                         
-                        Button(action: {self.call()
+                        Button(action: {self.call(number: "123456")
                             
                         }){
                             Text("Call")}
@@ -59,10 +59,11 @@ struct EmergencyView: View {
         }
     }
     
-    func call(){
-        var emergencyPhoneNumber = "123456"
-        
-        guard var phoneNumber =  emergencyPhoneNumber as String?, let url = URL(string:"telprompt://\(phoneNumber)") else {
+
+}
+extension EmergencyView{
+    func call(number : String){
+        guard let phoneNumber =  number as String?, let url = URL(string:"telprompt://\(phoneNumber)") else {
             return
         }
         
