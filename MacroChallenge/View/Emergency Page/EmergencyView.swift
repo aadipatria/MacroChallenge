@@ -19,7 +19,7 @@ struct contactDetail : Identifiable {
 struct EmergencyView: View {
     
 //    var contacts = [contactDetail]()
-    
+    //test
     var contacts : [contactDetail] = [
         contactDetail(id: 0, name: "Yudis", phoneNumber: "0895378412968", photo: "Lmfao"),
         contactDetail(id: 1, name: "Henny", phoneNumber: "0928828228282", photo: "GGWP")
