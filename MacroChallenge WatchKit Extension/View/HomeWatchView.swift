@@ -8,9 +8,12 @@
 import SwiftUI
 
 struct HomeWatchView: View {
+    
+    var tes = "lolo"
+    
     var body: some View {
         VStack {
-            Text("Hello, World!")
+            Text(tes)
                 .padding()
             NavigationLink(
                 destination: AfterBreathingWatchView(),
