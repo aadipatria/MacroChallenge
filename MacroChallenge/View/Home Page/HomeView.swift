@@ -10,40 +10,70 @@ import SwiftUI
 struct HomeView: View {
     
     @EnvironmentObject var navPop : NavigationPopObject
+    @State var page = 1
     
     var body: some View {
         NavigationView{
+//            VStack {
+//                Text("Navigation")
+//                    .padding()
+//                NavigationLink(
+//                    destination: BreathListView(),
+//                    label: {
+//                        Text("Breath List")
+//                    })
+//                    .padding()
+//
+//                Group {
+//                    Button(action: {
+//                        navPop.toHome = true
+//                    }, label: {
+//                        Text("Breath View")
+//                            .padding()
+//                    })
+//                    NavigationLink(
+//                        destination: BreathView(),
+//                        isActive: $navPop.toHome, label: {
+//                            EmptyView()
+//                    })
+//                }
+//                NavigationLink(
+//                    destination: EmergencyView(),
+//                    label: {
+//                        Text("Emergency")
+//                    })
+//                    .padding()
+//            }
             VStack {
-                Text("Navigation")
-                    .padding()
-                NavigationLink(
-                    destination: BreathListView(),
-                    label: {
-                        Text("Breath List")
-                    })
-                    .padding()
-                
-                Group {
-                    Button(action: {
-                        navPop.toHome = true
-                    }, label: {
-                        Text("Breath View")
-                            .padding()
-                    })
-                    NavigationLink(
-                        destination: BreathView(),
-                        isActive: $navPop.toHome, label: {
-                            EmptyView()
-                    })
+                if page == 0 || navPop.toEmergency {
+                    EmergencyView()
+                }else if page == 1{
+                    BreathView()
+                }else if page == 2{
+                    BreathListView()
                 }
-                NavigationLink(
-                    destination: EmergencyView(),
-                    label: {
-                        Text("Emergency")
-                    })
-                    .padding()
+                Spacer()
+                HStack {
+                    Button(action: {
+                        navPop.toEmergency = false
+                        page = 0
+                    }, label: {
+                        Text("Call")
+                    }).padding()
+                    Button(action: {
+                        navPop.toEmergency = false
+                        page = 1
+                    }, label: {
+                        Text("Home")
+                    }).padding()
+                    Button(action: {
+                        navPop.toEmergency = false
+                        page = 2
+                    }, label: {
+                        Text("Custom")
+                    }).padding()
+                }
             }
-            .navigationBarTitle("Home")
         }
     }
 }
