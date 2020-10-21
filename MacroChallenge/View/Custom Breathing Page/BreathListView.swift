@@ -47,11 +47,13 @@ struct BreathListView: View {
     
     let sendWatchHelper = WatchHelper()
     
+    @State var breathingArray: [Breathing] = []
+    
     var body: some View {
         VStack{
             
             Button {
-                sendWatchHelper.sendString(breath: "hello")
+                sendWatchHelper.sendWatchMessage(breath: breathingArray)
             } label: {
                 Text("Sync With Apple Watch")
             }
@@ -75,6 +77,18 @@ struct BreathListView: View {
                         label: {
                             Text("\(breath.name ?? "My Breath") = \(breath.inhale) inhale || \(breath.hold1) hold || \(breath.exhale) exhale || \(breath.hold2) hold || sound \(breath.sound == true ? "on" : "off") || haptic \(breath.haptic == true ? "on" : "off") || \(breath.id)")
                         })
+                        .onAppear() {
+                            let currBreathing = Breathing()
+                            currBreathing.name = breath.name
+                            currBreathing.inhale = breath.inhale
+                            currBreathing.hold1 = breath.hold1
+                            currBreathing.exhale = breath.exhale
+                            currBreathing.hold2 = breath.hold2
+                            currBreathing.sound = breath.sound
+                            currBreathing.haptic = breath.haptic
+                            currBreathing.id = breath.id
+                            breathingArray.append(currBreathing)
+                        }
                 }
             }
         }

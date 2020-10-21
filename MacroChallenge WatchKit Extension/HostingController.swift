@@ -11,7 +11,8 @@ import SwiftUI
 import WatchConnectivity
 
 class HostingController: WKHostingController<HomeWatchView>, WCSessionDelegate {
-    var tes = ""
+    
+    var dummy: [Breathing] = []
     
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
@@ -28,9 +29,8 @@ class HostingController: WKHostingController<HomeWatchView>, WCSessionDelegate {
     }
     
     func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
-        let message = message["Message"] as! String
-        tes = message
-        print(tes)
+        let message = message["Message"] as! [Breathing]
+        dummy = message
         setNeedsBodyUpdate()
     }
     
@@ -39,7 +39,14 @@ class HostingController: WKHostingController<HomeWatchView>, WCSessionDelegate {
     
     override var body: HomeWatchView {
         var hwv = HomeWatchView()
-        hwv.tes = tes
-        return HomeWatchView()
+        hwv.breathName = dummy[0].name ?? "empty"
+        hwv.inhale = dummy[0].inhale
+        hwv.hold1 = dummy[0].inhale
+        hwv.exhale = dummy[0].inhale
+        hwv.hold2 = dummy[0].inhale
+        hwv.sound = dummy[0].sound
+        hwv.haptic = dummy[0].haptic
+
+        return hwv
     }
 }
