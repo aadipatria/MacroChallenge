@@ -15,21 +15,24 @@ struct AfterBreathingView: View {
         VStack {
             Button(action: {
                 navPop.toBreathing = false
+                // gmn cara start lansung yg baru
             }, label: {
                 Text("Repeat")
             }).padding()
             
             Button(action: {
-                navPop.toHome = false
+                navPop.toBreathing = false
             }, label: {
                 Text("Go Home")
             }).padding()
             
-            NavigationLink(
-                destination: EmergencyView(),
-                label: {
-                    Text("Emergency")
-                }).padding()
+            Button(action: {
+                navPop.toEmergency = true
+                navPop.toBreathing = false
+            }, label: {
+                Text("Emergency")
+            }).padding()
+            
             
                 
         }

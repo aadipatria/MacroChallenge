@@ -30,10 +30,11 @@ struct EmergencyView: View {
         contactDetail(id: 1, name: "Henny", phoneNumber: "0928828228282", photo: "GGWP")
     ]
     
+    @EnvironmentObject var navPop : NavigationPopObject
+    
     
     var body: some View {
        
-        NavigationView {
             List{
             ForEach(contacts){i in
                 VStack{
@@ -55,8 +56,8 @@ struct EmergencyView: View {
                 }.foregroundColor(.gray)
             }
             
-        }.navigationBarTitle(Text("My Contacts"))
-        }
+            }
+            .navigationBarTitle("Emergency List", displayMode: .inline)
     }
     
 
@@ -73,6 +74,6 @@ extension EmergencyView{
 
 struct EmergencyView_Previews: PreviewProvider {
     static var previews: some View {
-        EmergencyView()
+        EmergencyView().environmentObject(NavigationPopObject())
     }
 }

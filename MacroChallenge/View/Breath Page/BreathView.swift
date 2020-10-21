@@ -33,6 +33,7 @@ struct BreathView: View {
             Group {
                 Button(action: {
                     navPop.toBreathing = true
+                    navPop.toEmergency = false
                 }, label: {
                     Text("After Breathing")
                         .padding()
