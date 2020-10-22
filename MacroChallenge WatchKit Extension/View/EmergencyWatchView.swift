@@ -10,7 +10,7 @@ import SwiftUI
 struct EmergencyWatchView: View {
     var body: some View {
         Text("Ini Emergency")
-            .navigationBarTitle("try")
+            .navigationBarTitle("Call")
     }
 }
 

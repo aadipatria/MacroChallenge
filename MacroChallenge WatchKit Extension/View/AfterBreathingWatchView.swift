@@ -10,6 +10,7 @@ import SwiftUI
 struct AfterBreathingWatchView: View {
     var body: some View {
         Text("Ini After Breathing")
+            .navigationBarTitle("After")
     }
 }
 

@@ -30,6 +30,7 @@
 		9DFAB89B2534405100E81C87 /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFAB89A2534405100E81C87 /* ComplicationController.swift */; };
 		9DFAB89D2534405100E81C87 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9DFAB89C2534405100E81C87 /* Assets.xcassets */; };
 		9DFAB8A02534405100E81C87 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9DFAB89F2534405100E81C87 /* Preview Assets.xcassets */; };
+		CA86588625417C8300FD5CB4 /* BreathWatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA86588525417C8300FD5CB4 /* BreathWatchView.swift */; };
 		CA8C4F25253D39BD005B99A8 /* AfterBreathingWatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8C4F24253D39BD005B99A8 /* AfterBreathingWatchView.swift */; };
 		CA8C4F2A253D39D1005B99A8 /* EmergencyWatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8C4F29253D39D1005B99A8 /* EmergencyWatchView.swift */; };
 		CA8C4F3A253D3DEC005B99A8 /* NavigationPop.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8C4F39253D3DEC005B99A8 /* NavigationPop.swift */; };
@@ -109,6 +110,7 @@
 		9DFAB89F2534405100E81C87 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		9DFAB8A12534405100E81C87 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9DFAB8A22534405100E81C87 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
+		CA86588525417C8300FD5CB4 /* BreathWatchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreathWatchView.swift; sourceTree = "<group>"; };
 		CA8C4F24253D39BD005B99A8 /* AfterBreathingWatchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AfterBreathingWatchView.swift; sourceTree = "<group>"; };
 		CA8C4F29253D39D1005B99A8 /* EmergencyWatchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmergencyWatchView.swift; sourceTree = "<group>"; };
 		CA8C4F39253D3DEC005B99A8 /* NavigationPop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationPop.swift; sourceTree = "<group>"; };
@@ -229,6 +231,7 @@
 			isa = PBXGroup;
 			children = (
 				9DFAB8922534405100E81C87 /* HomeWatchView.swift */,
+				CA86588525417C8300FD5CB4 /* BreathWatchView.swift */,
 				CA8C4F29253D39D1005B99A8 /* EmergencyWatchView.swift */,
 				CA8C4F24253D39BD005B99A8 /* AfterBreathingWatchView.swift */,
 			);
@@ -442,6 +445,7 @@
 			files = (
 				9DFAB8932534405100E81C87 /* HomeWatchView.swift in Sources */,
 				9DFAB8912534405100E81C87 /* HostingController.swift in Sources */,
+				CA86588625417C8300FD5CB4 /* BreathWatchView.swift in Sources */,
 				9DFAB8972534405100E81C87 /* NotificationController.swift in Sources */,
 				CA8C4F25253D39BD005B99A8 /* AfterBreathingWatchView.swift in Sources */,
 				CA8C4F2A253D39D1005B99A8 /* EmergencyWatchView.swift in Sources */,
