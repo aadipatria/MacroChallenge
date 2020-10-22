@@ -12,7 +12,6 @@
 		9D7D26EB25381317006D35D2 /* MacroChallenge.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9D7D26E825381317006D35D2 /* MacroChallenge.xcdatamodeld */; };
 		9D7D2713253818B8006D35D2 /* BreathingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7D2712253818B8006D35D2 /* BreathingModel.swift */; };
 		9D7D2714253818B8006D35D2 /* BreathingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7D2712253818B8006D35D2 /* BreathingModel.swift */; };
-		9DE77AA42541699D00BCCDB3 /* WatchBreathingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE77AA32541699D00BCCDB3 /* WatchBreathingModel.swift */; };
 		9DE77ABB25416FF000BCCDB3 /* SendBreath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE77ABA25416FF000BCCDB3 /* SendBreath.swift */; };
 		9DE77ABC25416FF000BCCDB3 /* SendBreath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE77ABA25416FF000BCCDB3 /* SendBreath.swift */; };
 		9DFAB86C2534404F00E81C87 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFAB86B2534404F00E81C87 /* AppDelegate.swift */; };
@@ -89,7 +88,6 @@
 		9D267F41253C941200882D7F /* EditBreathing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditBreathing.swift; sourceTree = "<group>"; };
 		9D7D26E925381317006D35D2 /* MacroChallenge.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MacroChallenge.xcdatamodel; sourceTree = "<group>"; };
 		9D7D2712253818B8006D35D2 /* BreathingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreathingModel.swift; sourceTree = "<group>"; };
-		9DE77AA32541699D00BCCDB3 /* WatchBreathingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchBreathingModel.swift; sourceTree = "<group>"; };
 		9DE77ABA25416FF000BCCDB3 /* SendBreath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendBreath.swift; sourceTree = "<group>"; };
 		9DFAB8682534404F00E81C87 /* MacroChallenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MacroChallenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9DFAB86B2534404F00E81C87 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -154,7 +152,6 @@
 		9DE77AA22541696F00BCCDB3 /* WatchModel */ = {
 			isa = PBXGroup;
 			children = (
-				9DE77AA32541699D00BCCDB3 /* WatchBreathingModel.swift */,
 			);
 			path = WatchModel;
 			sourceTree = "<group>";
@@ -466,7 +463,6 @@
 				9D7D2714253818B8006D35D2 /* BreathingModel.swift in Sources */,
 				9DFAB8992534405100E81C87 /* NotificationView.swift in Sources */,
 				9D7D26EB25381317006D35D2 /* MacroChallenge.xcdatamodeld in Sources */,
-				9DE77AA42541699D00BCCDB3 /* WatchBreathingModel.swift in Sources */,
 				9DFAB89B2534405100E81C87 /* ComplicationController.swift in Sources */,
 				9DE77ABC25416FF000BCCDB3 /* SendBreath.swift in Sources */,
 			);
