@@ -9,19 +9,10 @@ import SwiftUI
 
 struct HomeWatchView: View {
     var body: some View {
-        VStack {
-            Text("Hello, World!")
-                .padding()
-            NavigationLink(
-                destination: AfterBreathingWatchView(),
-                label: {
-                    Text("After Breathing")
-                })
-            NavigationLink(
-                destination: EmergencyWatchView(),
-                label: {
-                    Text("Emergency")
-                })
+        TabView{
+            BreathWatchView()
+            EmergencyWatchView()
+            AfterBreathingWatchView()
         }
     }
 }
