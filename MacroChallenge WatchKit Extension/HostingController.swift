@@ -12,7 +12,7 @@ import WatchConnectivity
 
 class HostingController: WKHostingController<HomeWatchView>, WCSessionDelegate {
     
-    var dummy: [Breathing] = []
+    var dummy: [SendBreath] = []
     
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
@@ -29,7 +29,7 @@ class HostingController: WKHostingController<HomeWatchView>, WCSessionDelegate {
     }
     
     func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
-        let message = message["Message"] as! [Breathing]
+        let message = message["Message"] as! [SendBreath]
         dummy = message
         setNeedsBodyUpdate()
     }

@@ -18,7 +18,7 @@ class WatchHelper: NSObject, WCSessionDelegate {
         }
     }
     
-    func sendWatchMessage(breath: [Breathing]) {
+    func sendWatchMessage(breath: [SendBreath]) {
         let message = ["Message" : breath]
         WCSession.default.sendMessage(message, replyHandler: nil)
     }
@@ -42,18 +42,40 @@ class WatchHelper: NSObject, WCSessionDelegate {
     }
 }
 
+class SendBreath {
+    var name : String
+    var inhale: Int16
+    var hold1: Int16
+    var exhale: Int16
+    var hold2: Int16
+    var sound : Bool
+    var haptic : Bool
+    var id: UUID
+    
+    init(name: String, inhale: Int16, hold1: Int16, exhale: Int16, hold2: Int16, sound: Bool, haptic: Bool, id: UUID) {
+        self.name = name
+        self.inhale = inhale
+        self.hold1 = hold1
+        self.exhale = exhale
+        self.hold2 = hold2
+        self.sound = sound
+        self.haptic = haptic
+        self.id = id
+    }
+}
+
 struct BreathListView: View {
     @FetchRequest(fetchRequest: Breathing.getAllBreathing()) var breaths: FetchedResults<Breathing>
     
     let sendWatchHelper = WatchHelper()
     
-    @State var breathingArray: [Breathing] = []
+    @State var breathingArray: [SendBreath] = []
     
     var body: some View {
         VStack{
             
             Button {
-                sendWatchHelper.sendWatchMessage(breath: breathingArray)
+//                sendWatchHelper.sendWatchMessage(breath: breathingArray)
             } label: {
                 Text("Sync With Apple Watch")
             }
@@ -78,16 +100,10 @@ struct BreathListView: View {
                             Text("\(breath.name ?? "My Breath") = \(breath.inhale) inhale || \(breath.hold1) hold || \(breath.exhale) exhale || \(breath.hold2) hold || sound \(breath.sound == true ? "on" : "off") || haptic \(breath.haptic == true ? "on" : "off") || \(breath.id)")
                         })
                         .onAppear() {
-                            let currBreathing = Breathing()
-                            currBreathing.name = breath.name
-                            currBreathing.inhale = breath.inhale
-                            currBreathing.hold1 = breath.hold1
-                            currBreathing.exhale = breath.exhale
-                            currBreathing.hold2 = breath.hold2
-                            currBreathing.sound = breath.sound
-                            currBreathing.haptic = breath.haptic
-                            currBreathing.id = breath.id
-                            breathingArray.append(currBreathing)
+                            if !self.breaths.isEmpty {
+                                let currBreathing = SendBreath(name: breath.name ?? "My Breath", inhale: breath.inhale, hold1: breath.hold1, exhale: breath.exhale, hold2: breath.hold2, sound: breath.sound, haptic: breath.haptic, id: breath.id)
+                                breathingArray.append(currBreathing)
+                            }
                         }
                 }
             }
