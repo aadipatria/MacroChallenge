@@ -44,6 +44,7 @@ class WatchHelper: NSObject, WCSessionDelegate {
 
 struct BreathListView: View {
     @FetchRequest(fetchRequest: Breathing.getAllBreathing()) var breaths: FetchedResults<Breathing>
+    @Environment(\.managedObjectContext) var manageObjectContext
     
     let sendWatchHelper = WatchHelper()
     
@@ -53,7 +54,9 @@ struct BreathListView: View {
         VStack{
             
             Button {
-                sendWatchHelper.sendWatchMessage(breath: breathingArray)
+//                sendWatchHelper.sendWatchMessage(breath: breathingArray)
+                sendWatchHelper.sendString(breath: "aa")
+                
             } label: {
                 Text("Sync With Apple Watch")
             }
@@ -84,6 +87,16 @@ struct BreathListView: View {
                             }
                         }
                 }
+                .onDelete(perform: { indexSet in
+                    let deleteItem = self.breaths[indexSet.first!]
+                    self.manageObjectContext.delete(deleteItem)
+                    
+                    do {
+                        try self.manageObjectContext.save()
+                    } catch {
+                        print("error deleting")
+                    }
+                })
             }
         }
     }

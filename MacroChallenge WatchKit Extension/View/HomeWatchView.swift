@@ -9,7 +9,7 @@ import SwiftUI
 
 struct HomeWatchView: View {
     
-    var breathName = ""
+    var breathName = "lol"
     var inhale: Int16 = 0
     var hold1: Int16 = 0
     var exhale: Int16 = 0
