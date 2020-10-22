@@ -52,16 +52,12 @@ struct BreathListView: View {
     
     var body: some View {
         VStack{
-            
             Button {
-//                sendWatchHelper.sendWatchMessage(breath: breathingArray)
-                sendWatchHelper.sendString(breath: "aa")
-                
+                sendWatchHelper.sendWatchMessage(breath: breathingArray)
             } label: {
                 Text("Sync With Apple Watch")
             }
 
-            
             NavigationLink(
                 destination: CustomBreathingView(),
                 label: {

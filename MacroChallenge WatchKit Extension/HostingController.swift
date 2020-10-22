@@ -30,14 +30,14 @@ class HostingController: WKHostingController<HomeWatchView>, WCSessionDelegate {
     }
     
     func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
-//        let message = message["Message"] as! [SendBreath]
-//        dummy = message
-//        print("received")
-//        setNeedsBodyUpdate()
-        let message = message["Message"] as! String
-        dummyText = message
+        let message = message["Message"] as! [SendBreath]
+        dummy = message
         print("received")
         setNeedsBodyUpdate()
+//        let message = message["Message"] as! String
+//        dummyText = message
+//        print("received")
+//        setNeedsBodyUpdate()
     }
     
     func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
