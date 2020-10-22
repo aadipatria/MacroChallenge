@@ -39,15 +39,16 @@ struct EmergencyView: View {
                 VStack{
                     HStack{
                         HStack{
-                            Text("A")// photo
+                            
+                            Text("\(i.id)")// photo
                             VStack{
-                                Text("Name")
-                                Text("Phone Number")
+                                Text("\(i.name)")
+                                Text("\(i.phoneNumber)")
                                 }
                         }
                         Spacer()
                         
-                        Button(action: {self.call(number: "123456")
+                        Button(action: {self.call(number: i.phoneNumber)
                             
                         }){
                             Text("Call")}
