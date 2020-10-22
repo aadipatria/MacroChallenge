@@ -13,6 +13,8 @@
 		9D7D2713253818B8006D35D2 /* BreathingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7D2712253818B8006D35D2 /* BreathingModel.swift */; };
 		9D7D2714253818B8006D35D2 /* BreathingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7D2712253818B8006D35D2 /* BreathingModel.swift */; };
 		9DE77AA42541699D00BCCDB3 /* WatchBreathingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE77AA32541699D00BCCDB3 /* WatchBreathingModel.swift */; };
+		9DE77ABB25416FF000BCCDB3 /* SendBreath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE77ABA25416FF000BCCDB3 /* SendBreath.swift */; };
+		9DE77ABC25416FF000BCCDB3 /* SendBreath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE77ABA25416FF000BCCDB3 /* SendBreath.swift */; };
 		9DFAB86C2534404F00E81C87 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFAB86B2534404F00E81C87 /* AppDelegate.swift */; };
 		9DFAB86E2534404F00E81C87 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFAB86D2534404F00E81C87 /* SceneDelegate.swift */; };
 		9DFAB8702534404F00E81C87 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFAB86F2534404F00E81C87 /* HomeView.swift */; };
@@ -88,6 +90,7 @@
 		9D7D26E925381317006D35D2 /* MacroChallenge.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MacroChallenge.xcdatamodel; sourceTree = "<group>"; };
 		9D7D2712253818B8006D35D2 /* BreathingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreathingModel.swift; sourceTree = "<group>"; };
 		9DE77AA32541699D00BCCDB3 /* WatchBreathingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchBreathingModel.swift; sourceTree = "<group>"; };
+		9DE77ABA25416FF000BCCDB3 /* SendBreath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendBreath.swift; sourceTree = "<group>"; };
 		9DFAB8682534404F00E81C87 /* MacroChallenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MacroChallenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9DFAB86B2534404F00E81C87 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9DFAB86D2534404F00E81C87 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -143,6 +146,7 @@
 			isa = PBXGroup;
 			children = (
 				9D7D2712253818B8006D35D2 /* BreathingModel.swift */,
+				9DE77ABA25416FF000BCCDB3 /* SendBreath.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -370,6 +374,7 @@
 					};
 					9DFAB87B2534405000E81C87 = {
 						CreatedOnToolsVersion = 12.0.1;
+						LastSwiftMigration = 1210;
 					};
 					9DFAB88A2534405100E81C87 = {
 						CreatedOnToolsVersion = 12.0.1;
@@ -434,6 +439,7 @@
 			files = (
 				9D267F42253C941200882D7F /* EditBreathing.swift in Sources */,
 				CA95C13025357CA8008C0398 /* EmergencyView.swift in Sources */,
+				9DE77ABB25416FF000BCCDB3 /* SendBreath.swift in Sources */,
 				9D7D26EA25381317006D35D2 /* MacroChallenge.xcdatamodeld in Sources */,
 				CA95C12725357C52008C0398 /* AfterBreathingView.swift in Sources */,
 				CA95C11025357B3F008C0398 /* BreathListView.swift in Sources */,
@@ -462,6 +468,7 @@
 				9D7D26EB25381317006D35D2 /* MacroChallenge.xcdatamodeld in Sources */,
 				9DE77AA42541699D00BCCDB3 /* WatchBreathingModel.swift in Sources */,
 				9DFAB89B2534405100E81C87 /* ComplicationController.swift in Sources */,
+				9DE77ABC25416FF000BCCDB3 /* SendBreath.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -666,14 +673,22 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = P9W54VNRMY;
 				IBSC_MODULE = MacroChallenge_WatchKit_Extension;
 				INFOPLIST_FILE = "MacroChallenge WatchKit App/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ici.MacroChallenge.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "MacroChallenge/Model/MacroChallenge WatchKit App-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 7.0;
@@ -686,14 +701,21 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = P9W54VNRMY;
 				IBSC_MODULE = MacroChallenge_WatchKit_Extension;
 				INFOPLIST_FILE = "MacroChallenge WatchKit App/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ici.MacroChallenge.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "MacroChallenge/Model/MacroChallenge WatchKit App-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
 				VALIDATE_PRODUCT = YES;
