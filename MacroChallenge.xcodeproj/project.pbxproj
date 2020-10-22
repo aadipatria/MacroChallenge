@@ -12,8 +12,8 @@
 		9D7D26EB25381317006D35D2 /* MacroChallenge.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9D7D26E825381317006D35D2 /* MacroChallenge.xcdatamodeld */; };
 		9D7D2713253818B8006D35D2 /* BreathingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7D2712253818B8006D35D2 /* BreathingModel.swift */; };
 		9D7D2714253818B8006D35D2 /* BreathingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7D2712253818B8006D35D2 /* BreathingModel.swift */; };
-		9DE77ABB25416FF000BCCDB3 /* SendBreath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE77ABA25416FF000BCCDB3 /* SendBreath.swift */; };
-		9DE77ABC25416FF000BCCDB3 /* SendBreath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE77ABA25416FF000BCCDB3 /* SendBreath.swift */; };
+		9DE77AEA2541CF5100BCCDB3 /* SendBreath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE77ABA25416FF000BCCDB3 /* SendBreath.swift */; };
+		9DE77AF12541CF6900BCCDB3 /* SendBreath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE77ABA25416FF000BCCDB3 /* SendBreath.swift */; };
 		9DFAB86C2534404F00E81C87 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFAB86B2534404F00E81C87 /* AppDelegate.swift */; };
 		9DFAB86E2534404F00E81C87 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFAB86D2534404F00E81C87 /* SceneDelegate.swift */; };
 		9DFAB8702534404F00E81C87 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFAB86F2534404F00E81C87 /* HomeView.swift */; };
@@ -436,7 +436,7 @@
 			files = (
 				9D267F42253C941200882D7F /* EditBreathing.swift in Sources */,
 				CA95C13025357CA8008C0398 /* EmergencyView.swift in Sources */,
-				9DE77ABB25416FF000BCCDB3 /* SendBreath.swift in Sources */,
+				9DE77AF12541CF6900BCCDB3 /* SendBreath.swift in Sources */,
 				9D7D26EA25381317006D35D2 /* MacroChallenge.xcdatamodeld in Sources */,
 				CA95C12725357C52008C0398 /* AfterBreathingView.swift in Sources */,
 				CA95C11025357B3F008C0398 /* BreathListView.swift in Sources */,
@@ -458,13 +458,13 @@
 				9DFAB8912534405100E81C87 /* HostingController.swift in Sources */,
 				9DFAB8972534405100E81C87 /* NotificationController.swift in Sources */,
 				CA8C4F25253D39BD005B99A8 /* AfterBreathingWatchView.swift in Sources */,
+				9DE77AEA2541CF5100BCCDB3 /* SendBreath.swift in Sources */,
 				CA8C4F2A253D39D1005B99A8 /* EmergencyWatchView.swift in Sources */,
 				9DFAB8952534405100E81C87 /* ExtensionDelegate.swift in Sources */,
 				9D7D2714253818B8006D35D2 /* BreathingModel.swift in Sources */,
 				9DFAB8992534405100E81C87 /* NotificationView.swift in Sources */,
 				9D7D26EB25381317006D35D2 /* MacroChallenge.xcdatamodeld in Sources */,
 				9DFAB89B2534405100E81C87 /* ComplicationController.swift in Sources */,
-				9DE77ABC25416FF000BCCDB3 /* SendBreath.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

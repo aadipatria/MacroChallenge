@@ -28,6 +28,11 @@ class WatchHelper: NSObject, WCSessionDelegate {
         WCSession.default.sendMessage(message, replyHandler: nil)
     }
     
+    func sendArrayOfString(breath: [[String]]) {
+        let message = ["Message" : breath]
+        WCSession.default.sendMessage(message, replyHandler: nil)
+    }
+    
     
     func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
         
@@ -48,12 +53,14 @@ struct BreathListView: View {
     
     let sendWatchHelper = WatchHelper()
     
-    @State var breathingArray: [SendBreath] = []
+//    @State var breathingArray: [SendBreath] = []
+    
+    @State var breathing2DArray = [[String]]()
     
     var body: some View {
         VStack{
             Button {
-                sendWatchHelper.sendWatchMessage(breath: breathingArray)
+                sync()
             } label: {
                 Text("Sync With Apple Watch")
             }
@@ -76,24 +83,41 @@ struct BreathListView: View {
                         label: {
                             Text("\(breath.name ?? "My Breath") = \(breath.inhale) inhale || \(breath.hold1) hold || \(breath.exhale) exhale || \(breath.hold2) hold || sound \(breath.sound == true ? "on" : "off") || haptic \(breath.haptic == true ? "on" : "off") || \(breath.id)")
                         })
-                        .onAppear() {
-                            if !self.breaths.isEmpty {
-                                let currBreathing = SendBreath(name: breath.name ?? "My Breath", inhale: breath.inhale, hold1: breath.hold1, exhale: breath.exhale, hold2: breath.hold2, sound: breath.sound, haptic: breath.haptic, id: breath.id)
-                                breathingArray.append(currBreathing)
-                            }
-                        }
                 }
                 .onDelete(perform: { indexSet in
-                    let deleteItem = self.breaths[indexSet.first!]
-                    self.manageObjectContext.delete(deleteItem)
-                    
-                    do {
-                        try self.manageObjectContext.save()
-                    } catch {
-                        print("error deleting")
-                    }
+                    deleteItem(indexSet: indexSet)
                 })
             }
+        }
+    }
+}
+
+extension BreathListView {
+    func sync() {
+        for breath in self.breaths {
+            var breathingArray = [String]()
+            breathingArray.append(breath.name!)
+            breathingArray.append(String(breath.inhale))
+            breathingArray.append(String(breath.hold1))
+            breathingArray.append(String(breath.exhale))
+            breathingArray.append(String(breath.hold2))
+            breathingArray.append(String(breath.sound))
+            breathingArray.append(String(breath.haptic))
+            breathingArray.append(breath.id.uuidString)
+            breathing2DArray.append(breathingArray)
+        }
+        
+        sendWatchHelper.sendArrayOfString(breath: breathing2DArray)
+    }
+    
+    func deleteItem(indexSet: IndexSet) {
+        let deleteItem = self.breaths[indexSet.first!]
+        self.manageObjectContext.delete(deleteItem)
+        
+        do {
+            try self.manageObjectContext.save()
+        } catch {
+            print("error deleting")
         }
     }
 }
