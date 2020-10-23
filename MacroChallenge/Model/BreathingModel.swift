@@ -17,26 +17,16 @@ public class Breathing: NSManagedObject, Identifiable {
     @NSManaged public var sound: Bool
     @NSManaged public var haptic: Bool
     @NSManaged public var id: UUID
+    @NSManaged public var favorite: Bool
 }
 
 extension Breathing {
     static func getAllBreathing() -> NSFetchRequest<Breathing> {
         let request:NSFetchRequest<Breathing> = Breathing.fetchRequest() as! NSFetchRequest<Breathing>
         
-        request.sortDescriptors = []
+        let sortDescriptor = NSSortDescriptor(key: "favorite", ascending: false)
         
-        return request
-    }
-    
-    //gw buat tapi ga dipake ga tau pakenya gimana
-    //pas gw coba pake ga bisa, info lanjut tanya gw langsung - Vincent
-    static func getBreathing(id: UUID) -> NSFetchRequest<Breathing> {
-        let request:NSFetchRequest<Breathing> = Breathing.fetchRequest() as! NSFetchRequest<Breathing>
-        
-        let predicate = NSPredicate(format: "id == %@", id as CVarArg)
-        
-        request.sortDescriptors = []
-        request.predicate = predicate
+        request.sortDescriptors = [sortDescriptor]
         
         return request
     }

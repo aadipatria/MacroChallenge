@@ -14,10 +14,11 @@ struct CustomBreathingView: View {
     @State var hold2 = 0
     @State var isSoundOn = false
     @State var isHapticOn = false
+    @State var isFavorite = false
     
     var body: some View {
         VStack {
-            CancelAddView(breathName: $breathName, inhale: $inhale, hold1: $hold1, exhale: $exhale, hold2: $hold2, isSoundOn: $isSoundOn, isHapticOn: $isHapticOn)
+            CancelAddView(breathName: $breathName, inhale: $inhale, hold1: $hold1, exhale: $exhale, hold2: $hold2, isSoundOn: $isSoundOn, isHapticOn: $isHapticOn, isFavorite: $isFavorite)
             Precautions()
             
             VStack {
@@ -48,7 +49,7 @@ struct CustomBreathingView: View {
             }
             
             CustomBreathingViewPicker(inhaleSelection: $inhale, hold1Selection: $hold1, exhaleSelection: $exhale, hold2Selection: $hold2)
-                .frame(height: 275)
+                .frame(height: 250)
             
             VStack {
                 Text("Guiding Preferences")
@@ -58,15 +59,16 @@ struct CustomBreathingView: View {
             .padding(.bottom)
             .padding(.top)
             
-            GuidingPreferences(isSoundOn: $isSoundOn, isHapticOn: $isHapticOn)
+            GuidingPreferences(isSoundOn: $isSoundOn, isHapticOn: $isHapticOn, isFavorite: $isFavorite)
         }
         .padding()
     }
 }
 
 struct GuidingPreferences: View {
-    @Binding var isSoundOn : Bool
-    @Binding var isHapticOn : Bool
+    @Binding var isSoundOn: Bool
+    @Binding var isHapticOn: Bool
+    @Binding var isFavorite: Bool
     var body: some View {
         VStack{
             Toggle(isOn: $isSoundOn, label: {
@@ -78,6 +80,12 @@ struct GuidingPreferences: View {
             Toggle(isOn: $isHapticOn, label: {
                 Text("Haptic")
             })
+            .padding(.leading)
+            .padding(.trailing)
+            
+            Toggle(isOn: $isFavorite) {
+                Text("Favorite")
+            }
             .padding(.leading)
             .padding(.trailing)
         }
@@ -130,7 +138,7 @@ struct CustomBreathingViewPicker: View {
                     Text("\(self.inhale[index])").tag(index)
                 }
             }
-            .frame(width: 375/4, height: 250, alignment: .center)
+            .frame(width: 375/4, height: 220, alignment: .center)
             .clipped()
             
             Picker("", selection: self.$hold1Selection) {
@@ -138,7 +146,7 @@ struct CustomBreathingViewPicker: View {
                     Text("\(self.hold1[index])").tag(index)
                 }
             }
-            .frame(width: 375/4, height: 250, alignment: .center)
+            .frame(width: 375/4, height: 220, alignment: .center)
             .clipped()
             
             Picker("", selection: self.$exhaleSelection) {
@@ -146,7 +154,7 @@ struct CustomBreathingViewPicker: View {
                     Text("\(self.exhale[index])").tag(index)
                 }
             }
-            .frame(width: 375/4, height: 250, alignment: .center)
+            .frame(width: 375/4, height: 220, alignment: .center)
             .clipped()
             
             Picker("", selection: self.$hold2Selection) {
@@ -154,7 +162,7 @@ struct CustomBreathingViewPicker: View {
                     Text("\(self.hold2[index])").tag(index)
                 }
             }
-            .frame(width: 375/4, height: 250, alignment: .center)
+            .frame(width: 375/4, height: 220, alignment: .center)
             .clipped()
         }
     }
@@ -194,6 +202,7 @@ struct CancelAddView: View {
     @Binding var hold2 : Int
     @Binding var isSoundOn : Bool
     @Binding var isHapticOn : Bool
+    @Binding var isFavorite : Bool
     
     var body: some View {
         HStack {
@@ -221,6 +230,7 @@ extension CancelAddView {
         breath.sound = isSoundOn
         breath.haptic = isHapticOn
         breath.id = UUID()
+        breath.favorite = isFavorite
         
         do{
             //save ke core data

@@ -2,6 +2,7 @@
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17192" systemVersion="19H2" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Breathing" representedClassName=".Breathing" syncable="YES">
         <attribute name="exhale" optional="YES" attributeType="Integer 16" usesScalarValueType="YES"/>
+        <attribute name="favorite" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="haptic" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="hold1" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="hold2" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
@@ -11,6 +12,6 @@
         <attribute name="sound" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
     </entity>
     <elements>
-        <element name="Breathing" positionX="-54" positionY="-9" width="128" height="163"/>
+        <element name="Breathing" positionX="-54" positionY="-9" width="128" height="178"/>
     </elements>
 </model>
