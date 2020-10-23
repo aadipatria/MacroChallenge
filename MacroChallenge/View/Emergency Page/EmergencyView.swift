@@ -21,7 +21,7 @@ struct EmergencyView: View {
     var body: some View {
         VStack{
             Button {
-                
+                sync()
             } label: {
                 Text("Sync With Apple Watch")
             }
@@ -82,6 +82,8 @@ extension EmergencyView{
             contactArray.append(contact.number!)
             contact2DArray.append(contactArray)
         }
+        
+        print(contact2DArray[0][1])
         
         sendWatchHelper.sendArrayOfContact(contact: contact2DArray)
     }

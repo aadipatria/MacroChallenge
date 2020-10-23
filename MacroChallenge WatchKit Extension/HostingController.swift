@@ -54,6 +54,10 @@ class HostingController: WKHostingController<HomeWatchView>, WCSessionDelegate {
             hwv.breath2DArray = ArrayOfBreathing
         }
         
+        if !ArrayOfContact.isEmpty {
+            hwv.contact2DArray = ArrayOfContact
+        }
+        
         return hwv
     }
 }

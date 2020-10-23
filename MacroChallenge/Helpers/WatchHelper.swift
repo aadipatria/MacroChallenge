@@ -24,7 +24,7 @@ class WatchHelper: NSObject, WCSessionDelegate {
     }
     
     func sendArrayOfContact(contact: [[String]]) {
-        let message = ["Contact" : contact]
+        let message = ["Message" : contact]
         WCSession.default.sendMessage(message, replyHandler: nil)
     }
     

@@ -24,7 +24,12 @@ struct BreathWatchView: View {
                 .foregroundColor(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/)
                 .ignoresSafeArea(.all)
                 .frame(width: 500, height: 500, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-            Text("Breath")
+            if !breath2DArray.isEmpty {
+                Text(breath2DArray[0][0])
+            }
+            else {
+                Text("Breath")
+            }
         }
         .navigationBarHidden(true)
         .ignoresSafeArea(.all)

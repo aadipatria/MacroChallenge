@@ -15,14 +15,26 @@ import SwiftUI
 //}
 
 struct EmergencyWatchView: View {
+    
+    //String 2 dimensi untuk attribute contack
+    //CEK INDEX, SEMUA DALAM STRING -> HARUS DI CAST KALAU MAU DIPAKE
+    //String -> 0 = id, 1 = name
+    //UUID -> 2 = id
+    var contact2DArray = [[String]]()
+    
     var nomorAku = "02828282"
     var body: some View {
-        
-        Button(action: {self.call(number: nomorAku)
-            
-        }){
-            Text("Call")}
-        
+    
+        Button {
+            self.call(number: nomorAku)
+        } label: {
+            if !contact2DArray.isEmpty {
+                Text("\(contact2DArray[0][1])")
+            }
+            else {
+                Text("no contacts")
+            }
+        }
     }
 }
 
