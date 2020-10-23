@@ -9,10 +9,12 @@ import SwiftUI
 
 struct HomeWatchView: View {
     var body: some View {
-        TabView{
-            BreathWatchView()
-            EmergencyWatchView()
-            AfterBreathingWatchView()
+        ZStack {
+            TabView{
+                BreathWatchView()
+                EmergencyWatchView()
+                AfterBreathingWatchView()
+            }
         }
     }
 }

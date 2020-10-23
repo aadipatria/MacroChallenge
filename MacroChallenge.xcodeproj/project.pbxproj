@@ -609,7 +609,7 @@
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"MacroChallenge WatchKit Extension/Preview Content\"";
-				DEVELOPMENT_TEAM = D89FSBU974;
+				DEVELOPMENT_TEAM = Z9N2TD73TY;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "MacroChallenge WatchKit Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -633,7 +633,7 @@
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"MacroChallenge WatchKit Extension/Preview Content\"";
-				DEVELOPMENT_TEAM = D89FSBU974;
+				DEVELOPMENT_TEAM = Z9N2TD73TY;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "MacroChallenge WatchKit Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -659,7 +659,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = D89FSBU974;
+				DEVELOPMENT_TEAM = Z9N2TD73TY;
 				IBSC_MODULE = MacroChallenge_WatchKit_Extension;
 				INFOPLIST_FILE = "MacroChallenge WatchKit App/Info.plist";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ici.MacroChallenge.watchkitapp;
@@ -679,7 +679,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = D89FSBU974;
+				DEVELOPMENT_TEAM = Z9N2TD73TY;
 				IBSC_MODULE = MacroChallenge_WatchKit_Extension;
 				INFOPLIST_FILE = "MacroChallenge WatchKit App/Info.plist";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ici.MacroChallenge.watchkitapp;
@@ -700,10 +700,10 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"MacroChallenge/Preview Content\"";
-				DEVELOPMENT_TEAM = D89FSBU974;
+				DEVELOPMENT_TEAM = Z9N2TD73TY;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = MacroChallenge/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -723,10 +723,10 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"MacroChallenge/Preview Content\"";
-				DEVELOPMENT_TEAM = D89FSBU974;
+				DEVELOPMENT_TEAM = Z9N2TD73TY;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = MacroChallenge/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

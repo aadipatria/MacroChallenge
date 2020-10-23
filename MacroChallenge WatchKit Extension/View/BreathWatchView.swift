@@ -9,8 +9,15 @@ import SwiftUI
 
 struct BreathWatchView: View {
     var body: some View {
-        Text("Breath")
-            .navigationBarTitle("Breath")
+        ZStack {
+            Circle()
+                .foregroundColor(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/)
+                .ignoresSafeArea(.all)
+                .frame(width: 500, height: 500, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+            Text("Breath")
+        }
+        .navigationBarHidden(true)
+        .ignoresSafeArea(.all)
     }
 }
 
