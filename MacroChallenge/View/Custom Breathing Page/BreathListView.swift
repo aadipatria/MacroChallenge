@@ -8,52 +8,11 @@
 import SwiftUI
 import WatchConnectivity
 
-class WatchHelper: NSObject, WCSessionDelegate {
-    override init() {
-        super.init()
-        if WCSession.isSupported() {
-            let session = WCSession.default
-            session.delegate = self
-            session.activate()
-        }
-    }
-    
-    func sendWatchMessage(breath: [SendBreath]) {
-        let message = ["Message" : breath]
-        WCSession.default.sendMessage(message, replyHandler: nil)
-    }
-    
-    func sendString(breath: String) {
-        let message = ["Message" : breath]
-        WCSession.default.sendMessage(message, replyHandler: nil)
-    }
-    
-    func sendArrayOfString(breath: [[String]]) {
-        let message = ["Message" : breath]
-        WCSession.default.sendMessage(message, replyHandler: nil)
-    }
-    
-    
-    func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
-        
-    }
-    
-    func sessionDidBecomeInactive(_ session: WCSession) {
-        
-    }
-    
-    func sessionDidDeactivate(_ session: WCSession) {
-        
-    }
-}
-
 struct BreathListView: View {
     @FetchRequest(fetchRequest: Breathing.getAllBreathing()) var breaths: FetchedResults<Breathing>
     @Environment(\.managedObjectContext) var manageObjectContext
     
     let sendWatchHelper = WatchHelper()
-    
-//    @State var breathingArray: [SendBreath] = []
     
     @State var breathing2DArray = [[String]]()
     

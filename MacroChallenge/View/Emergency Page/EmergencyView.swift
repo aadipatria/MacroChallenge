@@ -8,57 +8,59 @@
 
 import SwiftUI
 
-class contactDetail : Identifiable {
-    var id : Int = 0
-    var name : String = ""
-    var phoneNumber : String = ""
-    var photo : String = ""
-    
-    init(id: Int, name: String, phoneNumber: String, photo: String) {
-        self.id = id
-        self.name = name
-        self.phoneNumber = phoneNumber
-        self.photo = photo
-    }
-    
-}
-
 struct EmergencyView: View {
-    
-    var contacts : [contactDetail] = [
-        contactDetail(id: 0, name: "Yudis", phoneNumber: "0895378412968", photo: "Lmfao"),
-        contactDetail(id: 1, name: "Henny", phoneNumber: "0928828228282", photo: "GGWP")
-    ]
-    
     @EnvironmentObject var navPop : NavigationPopObject
     
+    @FetchRequest(fetchRequest: Emergency.getAllEmergency()) var contacts: FetchedResults<Emergency>
+    @Environment(\.managedObjectContext) var manageObjectContext
+    
+    let sendWatchHelper = WatchHelper()
+    
+    @State var contact2DArray = [[String]]()
     
     var body: some View {
-       
-            List{
-            ForEach(contacts){i in
-                VStack{
-                    HStack{
-                        HStack{
-                            
-                            Text("\(i.id)")// photo
-                            VStack{
-                                Text("\(i.name)")
-                                Text("\(i.phoneNumber)")
-                                }
-                        }
-                        Spacer()
-                        
-                        Button(action: {self.call(number: i.phoneNumber)
-                            
-                        }){
-                            Text("Call")}
-                    }
-                }.foregroundColor(.gray)
+        VStack{
+            Button {
+                
+            } label: {
+                Text("Sync With Apple Watch")
             }
             
+            NavigationLink("Add Contact", destination: AddEmergencyContact())
+                .padding()
+            
+            List{
+                ForEach(self.contacts){ contact in
+                    VStack{
+                        HStack{
+                            HStack{
+                                Text("\(contact.id)")// photo
+                                
+                                VStack{
+                                    Text("\(contact.name!)")
+                                    Text("\(contact.number!)")
+                                }
+                            }
+                            
+                            Spacer()
+                            
+                            Button {
+                                self.call(number: contact.number!)
+                            } label : {
+                                Text("Call")
+                                
+                            }
+                        }
+                    }
+                    .foregroundColor(.gray)
+                }
+                .onDelete { indexSet in
+                    deleteItem(indexSet: indexSet)
+                }
             }
             .navigationBarTitle("Emergency List", displayMode: .inline)
+        }
+
     }
     
 
@@ -70,6 +72,29 @@ extension EmergencyView{
         }
         
         UIApplication.shared.open(url)
+    }
+    
+    func sync() {
+        for contact in self.contacts {
+            var contactArray = [String]()
+            contactArray.append(contact.id.uuidString)
+            contactArray.append(contact.name!)
+            contactArray.append(contact.number!)
+            contact2DArray.append(contactArray)
+        }
+        
+        sendWatchHelper.sendArrayOfContact(contact: contact2DArray)
+    }
+    
+    func deleteItem(indexSet: IndexSet) {
+        let deleteItem = self.contacts[indexSet.first!]
+        self.manageObjectContext.delete(deleteItem)
+        
+        do {
+            try self.manageObjectContext.save()
+        } catch {
+            print("error deleting")
+        }
     }
 }
 
