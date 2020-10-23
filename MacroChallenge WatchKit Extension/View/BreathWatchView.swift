@@ -8,6 +8,16 @@
 import SwiftUI
 
 struct BreathWatchView: View {
+    
+    //String 2 dimensi untuk attribute breath
+    //CEK INDEX, SEMUA DALAM STRING -> HARUS DI CAST KALAU MAU DIPAKE
+    //String -> 0 = name,
+    //Int16 -> 1 = inhale, 2 = hold1, 3 = exhale, 4 = hold2,
+    //Boolean -> 5 = sound, 6 = haptic, 7 = favorite,
+    //UUID -> 8 = id
+    //kalau user ada 3 favorite, 3 pertama di array itu favorite
+    var breath2DArray = [[String]]()
+    
     var body: some View {
         ZStack {
             Circle()

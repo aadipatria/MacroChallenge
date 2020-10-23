@@ -9,18 +9,12 @@ import SwiftUI
 
 struct HomeWatchView: View {
     
-    var breathName = "lol"
-    var inhale: Int16 = 0
-    var hold1: Int16 = 0
-    var exhale: Int16 = 0
-    var hold2: Int16 = 0
-    var sound = false
-    var haptic = false
+    var breath2DArray = [[String]]()
     
     var body: some View {
         ZStack {
             TabView{
-                BreathWatchView()
+                BreathWatchView(breath2DArray: breath2DArray)
                 EmergencyWatchView()
                 AfterBreathingWatchView()
             }
