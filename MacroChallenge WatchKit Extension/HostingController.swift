@@ -49,13 +49,7 @@ class HostingController: WKHostingController<HomeWatchView>, WCSessionDelegate {
     override var body: HomeWatchView {
         var hwv = HomeWatchView()
         if !dummyArrayOfText.isEmpty {
-            hwv.breathName = dummyArrayOfText[0][0]
-            hwv.inhale = Int16(dummyArrayOfText[0][1])!
-            hwv.hold1 = Int16(dummyArrayOfText[0][2])!
-            hwv.exhale = Int16(dummyArrayOfText[0][3])!
-            hwv.hold2 = Int16(dummyArrayOfText[0][4])!
-            hwv.sound = Bool(dummyArrayOfText[0][5])!
-            hwv.haptic = Bool(dummyArrayOfText[0][6])!
+            hwv.breath2DArray = dummyArrayOfText
         }
         
         return hwv

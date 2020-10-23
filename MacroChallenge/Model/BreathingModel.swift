@@ -24,9 +24,11 @@ extension Breathing {
     static func getAllBreathing() -> NSFetchRequest<Breathing> {
         let request:NSFetchRequest<Breathing> = Breathing.fetchRequest() as! NSFetchRequest<Breathing>
         
-        let sortDescriptor = NSSortDescriptor(key: "favorite", ascending: false)
+        let sortDescriptorFav = NSSortDescriptor(key: "favorite", ascending: false)
+        let sortDescroptorName = NSSortDescriptor(key: "name", ascending: true)
         
-        request.sortDescriptors = [sortDescriptor]
+        
+        request.sortDescriptors = [sortDescriptorFav, sortDescroptorName]
         
         return request
     }
