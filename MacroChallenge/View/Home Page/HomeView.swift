@@ -47,9 +47,11 @@ struct HomeView: View {
             VStack {
                 if page == 0 || navPop.toEmergency {
                     EmergencyView()
-                }else if page == 1{
+                }
+                else if page == 1{
                     BreathView()
-                }else if page == 2{
+                }
+                else if page == 2{
                     BreathListView()
                 }
                 Spacer()
