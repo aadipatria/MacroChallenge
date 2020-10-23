@@ -16,6 +16,7 @@ struct EditBreathing: View {
     @State var isSoundOn = false
     @State var isHapticOn = false
     var id: UUID
+    @State var isFavorite = false
     
     //fetch semua breathing dari core data -> next step di onAppear
     @FetchRequest(fetchRequest: Breathing.getAllBreathing()) var breaths: FetchedResults<Breathing>
@@ -24,7 +25,7 @@ struct EditBreathing: View {
     //kalau ada cara yang lebih bagus ajarin gw - Vincent
     var body: some View {
         VStack {
-            EditBreathingCancelAddView(breathName: $breathName, inhale: $inhale, hold1: $hold1, exhale: $exhale, hold2: $hold2, isSoundOn: $isSoundOn, isHapticOn: $isHapticOn, id: id)
+            EditBreathingCancelAddView(breathName: $breathName, inhale: $inhale, hold1: $hold1, exhale: $exhale, hold2: $hold2, isSoundOn: $isSoundOn, isHapticOn: $isHapticOn, id: id, isFavorite: $isFavorite)
             Precautions()
             
             VStack {
@@ -55,7 +56,7 @@ struct EditBreathing: View {
             }
             
             CustomBreathingViewPicker(inhaleSelection: $inhale, hold1Selection: $hold1, exhaleSelection: $exhale, hold2Selection: $hold2)
-                .frame(height: 275)
+                .frame(height: 250)
             
             VStack {
                 Text("Guiding Preferences")
@@ -65,7 +66,7 @@ struct EditBreathing: View {
             .padding(.bottom)
             .padding(.top)
             
-            GuidingPreferences(isSoundOn: $isSoundOn, isHapticOn: $isHapticOn)
+            GuidingPreferences(isSoundOn: $isSoundOn, isHapticOn: $isHapticOn, isFavorite: $isFavorite)
         }
         .padding()
         .onAppear {
@@ -106,6 +107,7 @@ struct EditBreathingCancelAddView: View {
     @Binding var isSoundOn : Bool
     @Binding var isHapticOn : Bool
     var id: UUID
+    @Binding var isFavorite: Bool
     
     var body: some View {
         HStack {
@@ -135,6 +137,7 @@ extension EditBreathingCancelAddView {
                 breath.sound = isSoundOn
                 breath.haptic = isHapticOn
                 breath.id = self.id
+                breath.favorite = isFavorite
                 
                 do{
                     try self.manageObjectContext.save()
