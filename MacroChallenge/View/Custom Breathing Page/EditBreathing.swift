@@ -16,6 +16,7 @@ struct EditBreathing: View {
     @State var isSoundOn = false
     @State var isHapticOn = false
     var id: UUID
+    @State var isFavorite = false
     
     //fetch semua breathing dari core data -> next step di onAppear
     @FetchRequest(fetchRequest: Breathing.getAllBreathing()) var breaths: FetchedResults<Breathing>
@@ -24,7 +25,7 @@ struct EditBreathing: View {
     //kalau ada cara yang lebih bagus ajarin gw - Vincent
     var body: some View {
         VStack {
-            EditBreathingCancelAddView(breathName: $breathName, inhale: $inhale, hold1: $hold1, exhale: $exhale, hold2: $hold2, isSoundOn: $isSoundOn, isHapticOn: $isHapticOn, id: id)
+            EditBreathingCancelAddView(breathName: $breathName, inhale: $inhale, hold1: $hold1, exhale: $exhale, hold2: $hold2, isSoundOn: $isSoundOn, isHapticOn: $isHapticOn, id: id, isFavorite: $isFavorite)
             Precautions()
             
             VStack {
@@ -55,7 +56,7 @@ struct EditBreathing: View {
             }
             
             CustomBreathingViewPicker(inhaleSelection: $inhale, hold1Selection: $hold1, exhaleSelection: $exhale, hold2Selection: $hold2)
-                .frame(height: 275)
+                .frame(height: 250)
             
             VStack {
                 Text("Guiding Preferences")
@@ -65,22 +66,28 @@ struct EditBreathing: View {
             .padding(.bottom)
             .padding(.top)
             
-            GuidingPreferences(isSoundOn: $isSoundOn, isHapticOn: $isHapticOn)
+            GuidingPreferences(isSoundOn: $isSoundOn, isHapticOn: $isHapticOn, isFavorite: $isFavorite)
         }
         .padding()
         .onAppear {
-            for breath in breaths {
-                //basically gw pake predicate ga bisa jadi gw loop manual disini
-                //maap agak barbar - Vincent
-                if breath.id == self.id {
-                    self.breathName = breath.name!
-                    self.inhale = Int(breath.inhale)
-                    self.hold1 = Int(breath.hold1)
-                    self.exhale = Int(breath.exhale)
-                    self.hold2 = Int(breath.hold2)
-                    self.isSoundOn = breath.sound
-                    self.isHapticOn = breath.haptic
-                }
+            checkIdAndChangeData()
+        }
+    }
+}
+
+extension EditBreathing {
+    func checkIdAndChangeData() {
+        for breath in breaths {
+            //basically gw pake predicate ga bisa jadi gw loop manual disini
+            //maap agak barbar - Vincent
+            if breath.id == self.id {
+                self.breathName = breath.name!
+                self.inhale = Int(breath.inhale)
+                self.hold1 = Int(breath.hold1)
+                self.exhale = Int(breath.exhale)
+                self.hold2 = Int(breath.hold2)
+                self.isSoundOn = breath.sound
+                self.isHapticOn = breath.haptic
             }
         }
     }
@@ -100,6 +107,7 @@ struct EditBreathingCancelAddView: View {
     @Binding var isSoundOn : Bool
     @Binding var isHapticOn : Bool
     var id: UUID
+    @Binding var isFavorite: Bool
     
     var body: some View {
         HStack {
@@ -113,7 +121,9 @@ struct EditBreathingCancelAddView: View {
         }
         .padding()
     }
-    
+}
+
+extension EditBreathingCancelAddView {
     //sama kayak onAppear diatas
     //ambil semua breath -> cari breath yang idnya == id yang di passing kesini -> save
     func updateBreath() {
@@ -127,6 +137,7 @@ struct EditBreathingCancelAddView: View {
                 breath.sound = isSoundOn
                 breath.haptic = isHapticOn
                 breath.id = self.id
+                breath.favorite = isFavorite
                 
                 do{
                     try self.manageObjectContext.save()

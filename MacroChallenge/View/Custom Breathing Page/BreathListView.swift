@@ -6,16 +6,28 @@
 //
 
 import SwiftUI
+import WatchConnectivity
 
 struct BreathListView: View {
     @FetchRequest(fetchRequest: Breathing.getAllBreathing()) var breaths: FetchedResults<Breathing>
+    @Environment(\.managedObjectContext) var manageObjectContext
+    
+    let sendWatchHelper = WatchHelper()
+    
+    @State var breathing2DArray = [[String]]()
     
     var body: some View {
         VStack{
+            Button {
+                sync()
+            } label: {
+                Text("Sync With Apple Watch")
+            }
+
             NavigationLink(
                 destination: CustomBreathingView(),
                 label: {
-                    Text("Custom Breathing View")
+                    Text("Add New Breathing")
                 })
                 .navigationBarTitle("Breath List", displayMode: .inline)
             
@@ -31,7 +43,41 @@ struct BreathListView: View {
                             Text("\(breath.name ?? "My Breath") = \(breath.inhale) inhale || \(breath.hold1) hold || \(breath.exhale) exhale || \(breath.hold2) hold || sound \(breath.sound == true ? "on" : "off") || haptic \(breath.haptic == true ? "on" : "off") || \(breath.id)")
                         })
                 }
+                .onDelete(perform: { indexSet in
+                    deleteItem(indexSet: indexSet)
+                })
             }
+        }
+    }
+}
+
+extension BreathListView {
+    func sync() {
+        for breath in self.breaths {
+            var breathingArray = [String]()
+            breathingArray.append(breath.name!)
+            breathingArray.append(String(breath.inhale))
+            breathingArray.append(String(breath.hold1))
+            breathingArray.append(String(breath.exhale))
+            breathingArray.append(String(breath.hold2))
+            breathingArray.append(String(breath.sound))
+            breathingArray.append(String(breath.haptic))
+            breathingArray.append(String(breath.favorite))
+            breathingArray.append(breath.id.uuidString)
+            breathing2DArray.append(breathingArray)
+        }
+        
+        sendWatchHelper.sendArrayOfString(breath: breathing2DArray)
+    }
+    
+    func deleteItem(indexSet: IndexSet) {
+        let deleteItem = self.breaths[indexSet.first!]
+        self.manageObjectContext.delete(deleteItem)
+        
+        do {
+            try self.manageObjectContext.save()
+        } catch {
+            print("error deleting")
         }
     }
 }

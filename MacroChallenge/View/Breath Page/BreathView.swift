@@ -16,8 +16,11 @@ struct BreathView: View {
     var body: some View {
         VStack {
             // show data by index
-            Text(String(breaths[index].name ?? ""))
-                .padding()
+            if !self.breaths.isEmpty {
+                Text(String(breaths[index].name ?? ""))
+                    .padding()
+            }
+            
             HStack {
                 Button(action: {
                     changeLeft()
