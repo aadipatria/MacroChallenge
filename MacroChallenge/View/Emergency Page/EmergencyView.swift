@@ -58,7 +58,6 @@ struct EmergencyView: View {
                     deleteItem(indexSet: indexSet)
                 }
             }
-            .navigationBarTitle("Emergency List", displayMode: .inline)
         }
 
     }

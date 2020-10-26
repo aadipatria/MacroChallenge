@@ -29,7 +29,6 @@ struct BreathListView: View {
                 label: {
                     Text("Add New Breathing")
                 })
-                .navigationBarTitle("Breath List", displayMode: .inline)
             
             List {
                 ForEach(self.breaths) { breath in
