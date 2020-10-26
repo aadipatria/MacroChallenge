@@ -18,12 +18,14 @@ struct AfterBreathingView: View {
                 // gmn cara start lansung yg baru
             }, label: {
                 Text("Repeat")
+                    .foregroundColor(.black)
             }).padding()
             
             Button(action: {
                 navPop.toBreathing = false
             }, label: {
-                Text("Go Home")
+                Text("Finish")
+                    .foregroundColor(.black)
             }).padding()
             
             Button(action: {
@@ -32,11 +34,11 @@ struct AfterBreathingView: View {
             }, label: {
                 Text("Emergency")
             }).padding()
-            
-            
-                
         }
         .navigationBarHidden(true)
+        .background(Image("ocean")
+                        .blurBackgroundImageModifier()
+                        .blur(radius: 2))
     }
 }
 
