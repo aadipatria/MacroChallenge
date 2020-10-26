@@ -19,6 +19,7 @@ struct BreathView: View {
             if !breaths.isEmpty{
                 Text(String(breaths[index].name ?? ""))
                     .padding()
+                    .foregroundColor(.white)
             }
             
             HStack {
@@ -26,11 +27,13 @@ struct BreathView: View {
                     changeLeft()
                 }, label: {
                     Text ("Left")
+                        .foregroundColor(.white)
                 })
                 Button(action: {
                     changeRight()
                 }, label: {
                     Text ("Right")
+                        .foregroundColor(.white)
                 })
             }
             Group {
@@ -40,6 +43,7 @@ struct BreathView: View {
                 }, label: {
                     Text("After Breathing")
                         .padding()
+                        .foregroundColor(.white)
                 })
                 NavigationLink(
                     destination: AfterBreathingView(),
@@ -49,7 +53,7 @@ struct BreathView: View {
                     })
             }
         }
-        .navigationBarTitle("Breath", displayMode: .inline)
+        .background(Image("ocean").backgroundImageModifier())
         .gesture(DragGesture(minimumDistance: 0, coordinateSpace: .local)
                     .onEnded({ value in
                         //left

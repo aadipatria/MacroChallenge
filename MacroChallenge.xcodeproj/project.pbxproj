@@ -42,6 +42,7 @@
 		CA95C11E25357BEE008C0398 /* BreathView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA95C11D25357BEE008C0398 /* BreathView.swift */; };
 		CA95C12725357C52008C0398 /* AfterBreathingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA95C12625357C52008C0398 /* AfterBreathingView.swift */; };
 		CA95C13025357CA8008C0398 /* EmergencyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA95C12F25357CA8008C0398 /* EmergencyView.swift */; };
+		CAF3CC312546A29700D987D0 /* CustomModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF3CC302546A29700D987D0 /* CustomModifier.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -125,6 +126,7 @@
 		CA95C11D25357BEE008C0398 /* BreathView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreathView.swift; sourceTree = "<group>"; };
 		CA95C12625357C52008C0398 /* AfterBreathingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AfterBreathingView.swift; sourceTree = "<group>"; };
 		CA95C12F25357CA8008C0398 /* EmergencyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmergencyView.swift; sourceTree = "<group>"; };
+		CAF3CC302546A29700D987D0 /* CustomModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomModifier.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -258,6 +260,7 @@
 			children = (
 				CA8C4F39253D3DEC005B99A8 /* NavigationPop.swift */,
 				9DE77B3C2542DE8D00BCCDB3 /* WatchHelper.swift */,
+				CAF3CC302546A29700D987D0 /* CustomModifier.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -451,6 +454,7 @@
 				CA8C4F3A253D3DEC005B99A8 /* NavigationPop.swift in Sources */,
 				CA95C11825357B59008C0398 /* CustomBreathingView.swift in Sources */,
 				9DFAB86C2534404F00E81C87 /* AppDelegate.swift in Sources */,
+				CAF3CC312546A29700D987D0 /* CustomModifier.swift in Sources */,
 				9DFAB86E2534404F00E81C87 /* SceneDelegate.swift in Sources */,
 				CA95C11E25357BEE008C0398 /* BreathView.swift in Sources */,
 				9DE77B212542D5A800BCCDB3 /* EmergencyModel.swift in Sources */,
@@ -739,7 +743,7 @@
 				DEVELOPMENT_TEAM = Z9N2TD73TY;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = MacroChallenge/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -762,7 +766,7 @@
 				DEVELOPMENT_TEAM = Z9N2TD73TY;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = MacroChallenge/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
