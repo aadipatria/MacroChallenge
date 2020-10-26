@@ -101,6 +101,8 @@ extension EmergencyView{
 
 struct EmergencyView_Previews: PreviewProvider {
     static var previews: some View {
-        EmergencyView().environmentObject(NavigationPopObject())
+        let viewContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        EmergencyView().environmentObject(NavigationPopObject()).environment(\.managedObjectContext, viewContext)
+        
     }
 }

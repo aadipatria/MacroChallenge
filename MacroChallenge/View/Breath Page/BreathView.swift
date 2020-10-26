@@ -12,29 +12,34 @@ struct BreathView: View {
     @EnvironmentObject var navPop : NavigationPopObject
     @FetchRequest(fetchRequest: Breathing.getAllBreathing()) var breaths: FetchedResults<Breathing>
     @State var index = 0
+    @State var inhale = 0
+    @State var hold1 = 0
+    @State var exhale = 0
+    @State var hold2 = 0
+    
     
     var body: some View {
         VStack {
             // show data by index
             if !breaths.isEmpty{
-                Text(String(breaths[index].name ?? ""))
-                    .padding()
-                    .foregroundColor(.white)
-            }
-            
-            HStack {
-                Button(action: {
-                    changeLeft()
-                }, label: {
-                    Text ("Left")
-                        .foregroundColor(.white)
-                })
-                Button(action: {
-                    changeRight()
-                }, label: {
-                    Text ("Right")
-                        .foregroundColor(.white)
-                })
+                HStack {
+                    Button(action: {
+                        changeLeft()
+                    }, label: {
+                        Image (systemName: "chevron.left")
+                            .foregroundColor(.black)
+                    })
+                    VStack {
+                        Text(String(breaths[index].name ?? ""))
+                        Text("\(inhale)-\(hold1)-\(exhale)-\(hold2)")
+                    }
+                    Button(action: {
+                        changeRight()
+                    }, label: {
+                        Image (systemName: "chevron.right")
+                            .foregroundColor(.black)
+                    })
+                }
             }
             Group {
                 Button(action: {
@@ -52,6 +57,7 @@ struct BreathView: View {
                         EmptyView()
                     })
             }
+            Spacer()
         }
         .background(Image("ocean").backgroundImageModifier())
         .gesture(DragGesture(minimumDistance: 0, coordinateSpace: .local)
@@ -60,9 +66,15 @@ struct BreathView: View {
                         if value.translation.width < 0 {
                             changeLeft()
                         }
+                        //right
                         if value.translation.width > 0 {
                             changeRight()
                         }
+                        inhale = Int(breaths[index].inhale)
+                        hold1 = Int(breaths[index].hold1)
+                        exhale = Int(breaths[index].exhale)
+                        hold2 = Int(breaths[index].hold2)
+                        
                     }))
     }
 }
