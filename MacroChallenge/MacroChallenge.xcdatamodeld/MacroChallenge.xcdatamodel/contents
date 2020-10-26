@@ -11,7 +11,13 @@
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="sound" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
     </entity>
+    <entity name="Emergency" representedClassName=".Emergency" syncable="YES">
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="number" optional="YES" attributeType="String"/>
+    </entity>
     <elements>
         <element name="Breathing" positionX="-54" positionY="-9" width="128" height="178"/>
+        <element name="Emergency" positionX="-54" positionY="63" width="128" height="88"/>
     </elements>
 </model>

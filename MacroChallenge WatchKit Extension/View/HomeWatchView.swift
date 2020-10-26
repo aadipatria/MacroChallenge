@@ -10,12 +10,13 @@ import SwiftUI
 struct HomeWatchView: View {
     
     var breath2DArray = [[String]]()
+    var contact2DArray = [[String]]()
     
     var body: some View {
         ZStack {
             TabView{
                 BreathWatchView(breath2DArray: breath2DArray)
-                EmergencyWatchView()
+                EmergencyWatchView(contact2DArray: contact2DArray)
                 AfterBreathingWatchView()
             }
         }
