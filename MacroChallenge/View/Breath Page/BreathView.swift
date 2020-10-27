@@ -44,7 +44,6 @@ struct BreathView: View {
             Group {
                 Button(action: {
                     navPop.toBreathing = true
-                    navPop.toEmergency = false
                 }, label: {
                     Text("After Breathing")
                         .padding()
@@ -59,6 +58,7 @@ struct BreathView: View {
             }
             Spacer()
         }
+        .navigationBarHidden(true)
         .background(Image("ocean").backgroundImageModifier())
         .gesture(DragGesture(minimumDistance: 0, coordinateSpace: .local)
                     .onEnded({ value in

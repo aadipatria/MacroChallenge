@@ -17,16 +17,30 @@ struct ScreenSize {
     static func windowWidth() -> CGFloat {
         return UIScreen.main.bounds.width
     }
-}
-
+    static func plusBackground() -> some View{
+        RoundedRectangle(cornerRadius: 8).fill(Color(UIColor(.white)))
+            .frame(width: ScreenSize.windowWidth() * (28/375), height: ScreenSize.windowHeight() * (28/812), alignment: .center)
+        }
+    }
 struct ButtonModifier: ViewModifier {
     func body(content: Content) -> some View {
         content
             .frame(width: ScreenSize.windowWidth()*0.9, height: ScreenSize.windowHeight() * 0.05, alignment: .center)
-            .background(RoundedRectangle(cornerRadius: 20).fill(Color("button")))
+            .background(RoundedRectangle(cornerRadius: 20).fill(Color(UIColor(.white))))
             
     }
 }
+struct ButtonStrokeModifier: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .frame(width: ScreenSize.windowWidth()*0.9, height: ScreenSize.windowHeight() * 0.05, alignment: .center)
+            .overlay(RoundedRectangle(cornerRadius: 20)
+                            .stroke(Color.white, lineWidth: 5)
+                    )
+            
+    }
+}
+
 extension Image {
     
     func imageIconModifier() -> some View {
@@ -34,7 +48,14 @@ extension Image {
             .resizable()
             .aspectRatio(contentMode: .fit)
             // inget ganti ke dynamic
-            .frame(width: 36, height: 36, alignment: .center)
+            .frame(width: ScreenSize.windowWidth() * (36/375), height: ScreenSize.windowHeight() * (36/812), alignment: .center)
+    }
+    func callIconModifier() -> some View {
+        self
+            .resizable()
+            .aspectRatio(contentMode: .fit)
+            // inget ganti ke dynamic
+            .frame(width: ScreenSize.windowWidth() * (46/375), height: ScreenSize.windowHeight() * (46/812), alignment: .center)
     }
     
     func backgroundImageModifier() -> some View{

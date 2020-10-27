@@ -8,6 +8,8 @@
 import SwiftUI
 import WatchConnectivity
 
+
+
 struct BreathListView: View {
     @FetchRequest(fetchRequest: Breathing.getAllBreathing()) var breaths: FetchedResults<Breathing>
     @Environment(\.managedObjectContext) var manageObjectContext
@@ -16,8 +18,25 @@ struct BreathListView: View {
     
     @State var breathing2DArray = [[String]]()
     
+    init() {
+        UITableView.appearance().tableFooterView = UIView()
+        UITableView.appearance().separatorStyle = .none
+        UITableView.appearance().separatorColor = .clear
+        UITableViewCell.appearance().backgroundColor = UIColor(Color.clear)
+        UITableView.appearance().backgroundColor = UIColor(Color.clear)
+      }
+    
     var body: some View {
+        
         VStack{
+            HStack {
+                Text("Breathing Library")
+                Spacer()
+                ZStack {
+                    ScreenSize.plusBackground()
+                    Image(systemName: "plus")
+                }
+            }.frame(width : ScreenSize.windowWidth() * 0.9)
             Button {
                 sync()
             } label: {
@@ -39,14 +58,25 @@ struct BreathListView: View {
                         //passing id (UUID) nya
                         destination: EditBreathing(id: breath.id),
                         label: {
-                            Text("\(breath.name ?? "My Breath") = \(breath.inhale) inhale || \(breath.hold1) hold || \(breath.exhale) exhale || \(breath.hold2) hold || sound \(breath.sound == true ? "on" : "off") || haptic \(breath.haptic == true ? "on" : "off") || \(breath.id)")
+//                            Text("\(breath.name ?? "My Breath") = \(breath.inhale) inhale || \(breath.hold1) hold || \(breath.exhale) exhale || \(breath.hold2) hold || sound \(breath.sound == true ? "on" : "off") || haptic \(breath.haptic == true ? "on" : "off") || \(breath.id)")
+                            HStack{
+                                VStack{
+                                    Text(breath.name ?? "")
+                                    Text("\(breath.inhale)-\(breath.hold1)-\(breath.exhale)-\(breath.hold2)")
+                                }
+                                Image(systemName: "heart")
+                            }
                         })
                 }
                 .onDelete(perform: { indexSet in
                     deleteItem(indexSet: indexSet)
                 })
             }
+//            .environment(\.defaultMinListRowHeight, 100)
+            .listStyle(SidebarListStyle())
+            
         }
+        .background(Image("ocean").backgroundImageModifier())
     }
 }
 

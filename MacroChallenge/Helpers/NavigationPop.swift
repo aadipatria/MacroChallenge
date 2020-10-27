@@ -10,5 +10,5 @@ import Foundation
 final class NavigationPopObject: ObservableObject {
     @Published var toHome: Bool = false
     @Published var toBreathing : Bool = false
-    @Published var toEmergency : Bool  = false
+    @Published var page : Int = 1
 }
