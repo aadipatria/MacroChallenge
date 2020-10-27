@@ -19,6 +19,7 @@ struct AfterBreathingView: View {
             }, label: {
                 Text("Repeat")
                     .foregroundColor(.black)
+                    .modifier(ButtonModifier())
             }).padding()
             
             Button(action: {
@@ -26,13 +27,19 @@ struct AfterBreathingView: View {
             }, label: {
                 Text("Finish")
                     .foregroundColor(.black)
+                    .modifier(ButtonStrokeModifier())
             }).padding()
             
             Button(action: {
-                navPop.toEmergency = true
                 navPop.toBreathing = false
+                navPop.page = 0
             }, label: {
-                Text("Emergency")
+                HStack {
+                    Text("Emergency Contact")
+                        .foregroundColor(.black)
+                    Image("call")
+                        .callIconModifier()
+                }
             }).padding()
         }
         .navigationBarHidden(true)
