@@ -34,7 +34,12 @@ struct BreathListView: View {
                 Spacer()
                 ZStack {
                     ScreenSize.plusBackground()
-                    Image(systemName: "plus")
+                    NavigationLink(
+                        destination: CustomBreathingView(),
+                        label: {
+                            Image(systemName: "plus")
+                                .foregroundColor(.black)
+                        })
                 }
             }.frame(width : ScreenSize.windowWidth() * 0.9)
             Button {
@@ -43,11 +48,6 @@ struct BreathListView: View {
                 Text("Sync With Apple Watch")
             }
 
-            NavigationLink(
-                destination: CustomBreathingView(),
-                label: {
-                    Text("Add New Breathing")
-                })
             
             List {
                 ForEach(self.breaths) { breath in
@@ -73,7 +73,8 @@ struct BreathListView: View {
                 })
             }
 //            .environment(\.defaultMinListRowHeight, 100)
-            .listStyle(SidebarListStyle())
+            .listStyle(InsetListStyle())
+            .listRowBackground(EmptyView())
             
         }
         .background(Image("ocean").backgroundImageModifier())

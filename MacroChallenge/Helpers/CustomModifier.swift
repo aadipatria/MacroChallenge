@@ -70,6 +70,7 @@ extension Image {
             .resizable()
             .aspectRatio(contentMode: .fit)
             .frame(width: ScreenSize.windowWidth() * 1.05, height: ScreenSize.windowHeight() * 1.05, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+            .blur(radius: 2)
             .ignoresSafeArea(.all)
     }
 }

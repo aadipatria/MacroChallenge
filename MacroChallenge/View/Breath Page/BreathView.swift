@@ -70,10 +70,7 @@ struct BreathView: View {
                         if value.translation.width > 0 {
                             changeRight()
                         }
-                        inhale = Int(breaths[index].inhale)
-                        hold1 = Int(breaths[index].hold1)
-                        exhale = Int(breaths[index].exhale)
-                        hold2 = Int(breaths[index].hold2)
+                        
                         
                     }))
     }
@@ -86,6 +83,7 @@ extension BreathView{
         }else{
             index += 1
         }
+        update()
     }
     func changeLeft(){
         if index == 0 {
@@ -93,6 +91,13 @@ extension BreathView{
         }else{
             index -= 1
         }
+        update()
+    }
+    func update(){
+        inhale = Int(breaths[index].inhale)
+        hold1 = Int(breaths[index].hold1)
+        exhale = Int(breaths[index].exhale)
+        hold2 = Int(breaths[index].hold2)
     }
 }
 
