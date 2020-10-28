@@ -43,9 +43,7 @@ struct AfterBreathingView: View {
             }).padding()
         }
         .navigationBarHidden(true)
-        .background(Image("ocean")
-                        .blurBackgroundImageModifier()
-                        .blur(radius: 2))
+        .background(Image("ocean").blurBackgroundImageModifier())
     }
 }
 
