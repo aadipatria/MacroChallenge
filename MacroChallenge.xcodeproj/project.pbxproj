@@ -33,6 +33,13 @@
 		9DFAB89B2534405100E81C87 /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFAB89A2534405100E81C87 /* ComplicationController.swift */; };
 		9DFAB89D2534405100E81C87 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9DFAB89C2534405100E81C87 /* Assets.xcassets */; };
 		9DFAB8A02534405100E81C87 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9DFAB89F2534405100E81C87 /* Preview Assets.xcassets */; };
+		BC8B2B2C254AA55D0091F892 /* AnimationTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8B2B2B254AA55D0091F892 /* AnimationTimer.swift */; };
+		BC8B2B31254AA5900091F892 /* AnimationSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8B2B30254AA5900091F892 /* AnimationSet.swift */; };
+		BC8B2B36254AA5D30091F892 /* AnimationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8B2B35254AA5D30091F892 /* AnimationData.swift */; };
+		BC8B2B3B254AA6530091F892 /* DonutShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8B2B3A254AA6530091F892 /* DonutShape.swift */; };
+		BC8B2B40254AA67D0091F892 /* OrbitalEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8B2B3F254AA67D0091F892 /* OrbitalEffect.swift */; };
+		BC8B2B48254AA7790091F892 /* AnimatedRing.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8B2B47254AA7790091F892 /* AnimatedRing.swift */; };
+		BC8B2B4D254AA7E00091F892 /* Blur.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8B2B4C254AA7E00091F892 /* Blur.swift */; };
 		CA86588625417C8300FD5CB4 /* BreathWatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA86588525417C8300FD5CB4 /* BreathWatchView.swift */; };
 		CA8C4F25253D39BD005B99A8 /* AfterBreathingWatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8C4F24253D39BD005B99A8 /* AfterBreathingWatchView.swift */; };
 		CA8C4F2A253D39D1005B99A8 /* EmergencyWatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8C4F29253D39D1005B99A8 /* EmergencyWatchView.swift */; };
@@ -117,6 +124,13 @@
 		9DFAB89F2534405100E81C87 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		9DFAB8A12534405100E81C87 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9DFAB8A22534405100E81C87 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
+		BC8B2B2B254AA55D0091F892 /* AnimationTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationTimer.swift; sourceTree = "<group>"; };
+		BC8B2B30254AA5900091F892 /* AnimationSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationSet.swift; sourceTree = "<group>"; };
+		BC8B2B35254AA5D30091F892 /* AnimationData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationData.swift; sourceTree = "<group>"; };
+		BC8B2B3A254AA6530091F892 /* DonutShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DonutShape.swift; sourceTree = "<group>"; };
+		BC8B2B3F254AA67D0091F892 /* OrbitalEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrbitalEffect.swift; sourceTree = "<group>"; };
+		BC8B2B47254AA7790091F892 /* AnimatedRing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedRing.swift; sourceTree = "<group>"; };
+		BC8B2B4C254AA7E00091F892 /* Blur.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Blur.swift; sourceTree = "<group>"; };
 		CA86588525417C8300FD5CB4 /* BreathWatchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreathWatchView.swift; sourceTree = "<group>"; };
 		CA8C4F24253D39BD005B99A8 /* AfterBreathingWatchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AfterBreathingWatchView.swift; sourceTree = "<group>"; };
 		CA8C4F29253D39D1005B99A8 /* EmergencyWatchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmergencyWatchView.swift; sourceTree = "<group>"; };
@@ -288,6 +302,13 @@
 			children = (
 				CA95C11D25357BEE008C0398 /* BreathView.swift */,
 				CA95C12625357C52008C0398 /* AfterBreathingView.swift */,
+				BC8B2B2B254AA55D0091F892 /* AnimationTimer.swift */,
+				BC8B2B30254AA5900091F892 /* AnimationSet.swift */,
+				BC8B2B35254AA5D30091F892 /* AnimationData.swift */,
+				BC8B2B3F254AA67D0091F892 /* OrbitalEffect.swift */,
+				BC8B2B3A254AA6530091F892 /* DonutShape.swift */,
+				BC8B2B4C254AA7E00091F892 /* Blur.swift */,
+				BC8B2B47254AA7790091F892 /* AnimatedRing.swift */,
 			);
 			path = "Breath Page";
 			sourceTree = "<group>";
@@ -445,11 +466,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BC8B2B48254AA7790091F892 /* AnimatedRing.swift in Sources */,
 				9DE77B292542D7CA00BCCDB3 /* AddEmergencyContact.swift in Sources */,
+				BC8B2B31254AA5900091F892 /* AnimationSet.swift in Sources */,
 				9D267F42253C941200882D7F /* EditBreathing.swift in Sources */,
 				CA95C13025357CA8008C0398 /* EmergencyView.swift in Sources */,
 				9D7D26EA25381317006D35D2 /* MacroChallenge.xcdatamodeld in Sources */,
 				CA95C12725357C52008C0398 /* AfterBreathingView.swift in Sources */,
+				BC8B2B3B254AA6530091F892 /* DonutShape.swift in Sources */,
 				CA95C11025357B3F008C0398 /* BreathListView.swift in Sources */,
 				CA8C4F3A253D3DEC005B99A8 /* NavigationPop.swift in Sources */,
 				CA95C11825357B59008C0398 /* CustomBreathingView.swift in Sources */,
@@ -459,7 +483,11 @@
 				CA95C11E25357BEE008C0398 /* BreathView.swift in Sources */,
 				9DE77B212542D5A800BCCDB3 /* EmergencyModel.swift in Sources */,
 				9D7D2713253818B8006D35D2 /* BreathingModel.swift in Sources */,
+				BC8B2B40254AA67D0091F892 /* OrbitalEffect.swift in Sources */,
+				BC8B2B4D254AA7E00091F892 /* Blur.swift in Sources */,
 				9DFAB8702534404F00E81C87 /* HomeView.swift in Sources */,
+				BC8B2B36254AA5D30091F892 /* AnimationData.swift in Sources */,
+				BC8B2B2C254AA55D0091F892 /* AnimationTimer.swift in Sources */,
 				9DE77B3D2542DE8D00BCCDB3 /* WatchHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

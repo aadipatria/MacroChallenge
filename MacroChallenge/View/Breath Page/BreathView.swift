@@ -17,6 +17,7 @@ struct BreathView: View {
     @State var exhale = 0
     @State var hold2 = 0
     
+    @State var orbitalEffectScaling: CGFloat = 0.0
     
     var body: some View {
         VStack {
@@ -57,6 +58,20 @@ struct BreathView: View {
                     })
             }
             Spacer()
+            
+            AnimatedRing(binding: self.$orbitalEffectScaling)
+                .padding(30)
+            Spacer()
+            
+            Button(action: {
+                let orbitalSet = OrbitalAnimationSet(binding: self.$orbitalEffectScaling).getAnimationSets()
+
+                AnimationTimer().performAnimationforBreath(breath: breaths[index], animation: [orbitalSet])
+            }) {
+                RoundedRectangle(cornerRadius: 10)
+            }
+            .frame(maxWidth: 200, maxHeight: 80)
+            .padding(.bottom, 60)
         }
         .navigationBarHidden(true)
         .background(Image("ocean").backgroundImageModifier())
