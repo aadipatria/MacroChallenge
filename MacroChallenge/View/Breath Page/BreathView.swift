@@ -73,6 +73,9 @@ struct BreathView: View {
             .frame(maxWidth: 200, maxHeight: 80)
             .padding(.bottom, 60)
         }
+        .onAppear(perform: {
+            update()
+        })
         .navigationBarHidden(true)
         .background(Image("ocean").backgroundImageModifier())
         .gesture(DragGesture(minimumDistance: 0, coordinateSpace: .local)

@@ -258,6 +258,20 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		CA88C2DE254ADA6F0046D393 /* Animation */ = {
+			isa = PBXGroup;
+			children = (
+				BC8B2B2B254AA55D0091F892 /* AnimationTimer.swift */,
+				BC8B2B30254AA5900091F892 /* AnimationSet.swift */,
+				BC8B2B35254AA5D30091F892 /* AnimationData.swift */,
+				BC8B2B3F254AA67D0091F892 /* OrbitalEffect.swift */,
+				BC8B2B3A254AA6530091F892 /* DonutShape.swift */,
+				BC8B2B4C254AA7E00091F892 /* Blur.swift */,
+				BC8B2B47254AA7790091F892 /* AnimatedRing.swift */,
+			);
+			path = Animation;
+			sourceTree = "<group>";
+		};
 		CA8C4F34253D3A18005B99A8 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -302,13 +316,7 @@
 			children = (
 				CA95C11D25357BEE008C0398 /* BreathView.swift */,
 				CA95C12625357C52008C0398 /* AfterBreathingView.swift */,
-				BC8B2B2B254AA55D0091F892 /* AnimationTimer.swift */,
-				BC8B2B30254AA5900091F892 /* AnimationSet.swift */,
-				BC8B2B35254AA5D30091F892 /* AnimationData.swift */,
-				BC8B2B3F254AA67D0091F892 /* OrbitalEffect.swift */,
-				BC8B2B3A254AA6530091F892 /* DonutShape.swift */,
-				BC8B2B4C254AA7E00091F892 /* Blur.swift */,
-				BC8B2B47254AA7790091F892 /* AnimatedRing.swift */,
+				CA88C2DE254ADA6F0046D393 /* Animation */,
 			);
 			path = "Breath Page";
 			sourceTree = "<group>";

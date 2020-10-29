@@ -29,6 +29,8 @@ struct HomeView: View {
                         Color(UIColor.white)
                             .frame(width : ScreenSize.windowWidth(), height : ScreenSize.windowHeight() * 0.127)
                             .opacity(0.12)
+                            .background(Blur(style: .systemThinMaterialDark).opacity(0.95))
+                            .cornerRadius(24)
                         HStack {
                             Button(action: {
                                 navPop.page = 0
