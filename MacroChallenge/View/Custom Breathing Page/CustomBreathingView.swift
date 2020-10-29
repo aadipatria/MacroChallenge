@@ -45,6 +45,8 @@ struct CustomBreathingView: View {
                     }
                     CustomBreathingViewPicker(inhaleSelection: $inhale, hold1Selection: $hold1, exhaleSelection: $exhale, hold2Selection: $hold2)
                         .frame(height: 250)
+//                        .background(Blur(style: .systemMaterial))
+                        
 
 //                        .blur(radius : 0.2, opaque: false)
                 }
@@ -156,11 +158,11 @@ struct CustomBreathingViewPicker: View {
     var body: some View {
         ZStack {
             Rectangle()
+                .fill(Color.clear)
+                .background(Blur(style: .systemThinMaterial)
+                                .opacity(0.95))
                 .cornerRadius(8)
-                .foregroundColor(.init(red: 239/255, green: 239/255, blue: 244/255))
-                .opacity(0.6)
-                .blur(radius : 24, opaque : false)
-            HStack {
+                HStack {
                 Picker("", selection: self.$inhaleSelection) {
                     ForEach(0..<self.inhale.count) { index in
                         Text("\(self.inhale[index])").tag(index)
