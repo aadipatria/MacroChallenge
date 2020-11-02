@@ -74,7 +74,9 @@ struct BreathView: View {
             .padding(.bottom, 60)
         }
         .onAppear(perform: {
-            update()
+            if !breaths.isEmpty{
+                update()
+            }
         })
         .navigationBarHidden(true)
         .background(Image("ocean").backgroundImageModifier())
