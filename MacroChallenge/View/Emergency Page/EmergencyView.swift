@@ -13,6 +13,7 @@ struct EmergencyView: View {
     
     @FetchRequest(fetchRequest: Emergency.getAllEmergency()) var contacts: FetchedResults<Emergency>
     @Environment(\.managedObjectContext) var manageObjectContext
+    
     @State var isEdited : Bool = false
     
     let sendWatchHelper = WatchHelper()
@@ -20,107 +21,89 @@ struct EmergencyView: View {
     @State var contact2DArray = [[String]]()
     
     var body: some View {
-        VStack{
-            Button {
-                sync()
-            } label: {
-                Text("Sync With Apple Watch")
-            }
-            
-            NavigationLink("Add Contact", destination: AddEmergencyContact())
-                .padding()
-            Button(action: {
-                isEdited.toggle()
-            }, label: {
-                if isEdited{
-                    Text("Done")
-                }else{
-                    Text("Edit")
+        ZStack {
+            VStack{
+                Button {
+                    sync()
+                } label: {
+                    Text("Sync With Apple Watch")
                 }
                 
-            })
-            
-//            List{
-            ForEach(self.contacts){ contact in
-                NavigationLink(
-                    destination: AddEmergencyContact(), /// harusnya ke edit, pake id biar tau mana yg di edit
-                    isActive: $navPop.emergency,
-                    label: {
-                        EmptyView()
-                    })
+                NavigationLink("Add Contact", destination: AddEmergencyContact())
+                    .padding()
                 Button(action: {
+                    isEdited.toggle()
+                }, label: {
                     if isEdited{
-                        navPop.emergency = true
+                        Text("Done")
                     }else{
-                        call(number: contact.number!)
+                        Text("Edit")
                     }
                     
-                }, label: {
-                    HStack {
+                })
+                
+                ForEach(self.contacts){ contact in
+                    NavigationLink(
+                        destination: AddEmergencyContact(), /// harusnya ke edit, pake id biar tau mana yg di edit
+                        isActive: $navPop.emergency,
+                        label: {
+                            EmptyView()
+                        })
+                    Button(action: {
                         if isEdited{
-                            Button(action: {
-                                //hapus contact tsb
-                                print("x")
-                            }, label: {
-                                Image(systemName: "x.circle")
-                            })
-                        }
-                        VStack {
-                            Text("\(contact.name!)")
-                            Text("\(contact.number!)")
-                        }
-                        Spacer()
-                        if !isEdited{
-                            Button(action: {
-                                call(number: contact.number!)
-                            }, label: {
-                                Image(systemName: "phone.fill")
-                            })
+                            navPop.emergency = true
+                        }else{
+                            call(number: contact.number!)
                         }
                         
-                    }
-                    .padding()
-                    .frame(width: ScreenSize.windowWidth() * 0.9, height: ScreenSize.windowHeight() * 0.1)
-                    .background(Rectangle()
-                                    .fill(Color.clear)
-                                    .background(Blur(style: .systemThinMaterial)
-                                                    .opacity(0.95))
-                                    .cornerRadius(8))
-                })
-//                VStack{
-//                    HStack{
-//                        HStack{
-//                            Text("\(contact.id)")// photo
-//
-//                            VStack{
-//                                Text("\(contact.name!)")
-//                                Text("\(contact.number!)")
-//                            }
-//                        }
-//
-//                        Spacer()
-//
-//                        Button {
-//                            self.call(number: contact.number!)
-//                        } label : {
-//                            Text("Call")
-//
-//                        }
-//                    }
-//                }
-//                .foregroundColor(.gray)
+                    }, label: {
+                        HStack {
+                            if isEdited{
+                                Button(action: {
+                                    //hapus contact tsb
+                                    print("x")
+                                }, label: {
+                                    Image(systemName: "x.circle")
+                                })
+                            }
+                            VStack {
+                                Text("\(contact.name!)")
+                                Text("\(contact.number!)")
+                            }
+                            Spacer()
+                            if !isEdited{
+                                Button(action: {
+                                    call(number: contact.number!)
+                                }, label: {
+                                    Image(systemName: "phone.fill")
+                                })
+                            }
+                            
+                        }
+                        .padding()
+                        .frame(width: ScreenSize.windowWidth() * 0.9, height: ScreenSize.windowHeight() * 0.1)
+                        .background(Rectangle()
+                                        .fill(Color.clear)
+                                        .background(Blur(style: .systemThinMaterial)
+                                                        .opacity(0.95))
+                                        .cornerRadius(8))
+                    })
+                }
+                Spacer()
             }
-//            .onDelete { indexSet in
-//                deleteItem(indexSet: indexSet)
-//            }
-            Spacer()
+            .background(Image("ocean").backgroundImageModifier())
+            .edgesIgnoringSafeArea(.vertical)
+            
+            HalfModalView(isShown: $isEdited) {
+                VStack {
+                    Text("Hello")
+                    Text("world")
+                }
+            }
         }
-        .background(Image("ocean").backgroundImageModifier())
-
     }
-    
-
 }
+
 extension EmergencyView{
     func call(number : String){
         guard let phoneNumber =  number as String?, let url = URL(string:"telprompt://\(phoneNumber)") else {
