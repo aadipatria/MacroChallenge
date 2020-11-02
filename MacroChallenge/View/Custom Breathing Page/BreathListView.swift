@@ -78,6 +78,7 @@ struct BreathListView: View {
             
         }
         .background(Image("ocean").backgroundImageModifier())
+        
     }
 }
 
