@@ -34,7 +34,7 @@ struct CustomBreathingView: View {
                         Text("Pattern (Seconds)")
                             .padding()
                             .font(.system(size: 16, weight: .bold, design: .default))
-                            .frame(width: ScreenSize.windowWidth() * (331.5/375), height: 44, alignment: .leading)
+                            .frame(width: ScreenSize.windowWidth() * 0.9, height: ScreenSize.windowHeight() * 0.054, alignment: .leading)
                     }
                     ZStack {
                         Rectangle()
@@ -45,13 +45,13 @@ struct CustomBreathingView: View {
                         VStack {
                             HStack {
                                 Text("Inhale")
-                                    .frame(width: ScreenSize.windowWidth() * (310/375)/4)
+                                    .frame(width: ScreenSize.windowWidth() * 0.2075)
                                 Text("Hold")
-                                    .frame(width: ScreenSize.windowWidth() * (310/375)/4)
+                                    .frame(width: ScreenSize.windowWidth() * 0.2075)
                                 Text("Exhale")
-                                    .frame(width: ScreenSize.windowWidth() * (310/375)/4)
+                                    .frame(width: ScreenSize.windowWidth() * 0.2075)
                                 Text("Hold")
-                                    .frame(width: ScreenSize.windowWidth() * (310/375)/4)
+                                    .frame(width: ScreenSize.windowWidth() * 0.2075)
                             }.padding(.top)
                             CustomBreathingViewPicker(inhaleSelection: $inhale, hold1Selection: $hold1, exhaleSelection: $exhale, hold2Selection: $hold2)
                                 .frame(height: (226-40))
@@ -70,7 +70,7 @@ struct CustomBreathingView: View {
                 Text("Guiding Preferences")
                     .padding()
                     .font(.system(size: 20, weight: .bold, design: .default))
-                    .frame(width: ScreenSize.windowWidth() * (331.5/375), height: 28, alignment: .leading)
+                    .frame(width: ScreenSize.windowWidth() * 0.9, height: 28, alignment: .leading)
                     .background(headerBackground())
                     .padding(.top)
                     
@@ -102,7 +102,7 @@ struct CustomBreathingView: View {
             .background(Blur(style: .systemMaterial)
                             .opacity(0.95))
             .cornerRadius(8, corners: [.topLeft, .topRight])
-            .frame(width: ScreenSize.windowWidth() * (0.9), height: 44, alignment: .leading)
+            .frame(width: ScreenSize.windowWidth() * (0.9), height: ScreenSize.windowHeight() * 0.054, alignment: .leading)
     }
 }
 
@@ -114,7 +114,7 @@ struct Precautions: View {
                 .background(Blur(style: .systemThinMaterial)
                                 .opacity(0.95))
                 .cornerRadius(8)
-                .frame(width: ScreenSize.windowWidth() * (327/375), height: ScreenSize.windowHeight() * (110/812))
+                .frame(width: ScreenSize.windowWidth() * 0.87, height: ScreenSize.windowHeight() * 0.135)
             VStack(alignment: .leading) {
                 Text("Precautions:")
                     .font(.system(size: 16, weight: .semibold, design: .default))
@@ -126,7 +126,7 @@ struct Precautions: View {
                 }
                 .font(.system(size: 12, weight: .regular, design: .default))
             }
-            .frame(width: ScreenSize.windowWidth() * (270/375), height: ScreenSize.windowHeight() * (103/812))
+//            .frame(width: ScreenSize.windowWidth() * (270/375), height: ScreenSize.windowHeight() * (103/812))
         }
     }
 }
@@ -141,10 +141,10 @@ struct InputName: View {
                     .background(Blur(style: .systemThinMaterial)
                                     .opacity(0.95))
                     .cornerRadius(8)
-                    .frame(width: ScreenSize.windowWidth() * (327/375), height: ScreenSize.windowHeight() * (60/812))
+                    .frame(width: ScreenSize.windowWidth() * 0.87, height: ScreenSize.windowHeight() * 0.074)
                 HStack {
                     TextField("Name", text: $breathName)
-                        .frame(width: ScreenSize.windowWidth() * (300/375), height: ScreenSize.windowHeight() * (40/812))
+                        .frame(width: ScreenSize.windowWidth() * 0.8, height: ScreenSize.windowHeight() * 0.05)
                         .multilineTextAlignment(.leading)
                         .padding(.horizontal)
                 }
@@ -154,16 +154,16 @@ struct InputName: View {
                         self.breathName = ""
                     }, label: {
                         Image(systemName: "xmark.circle.fill")
-                            .frame(width: ScreenSize.windowWidth() * (15/375), height: ScreenSize.windowHeight() * (22/812))
+//                            .frame(width: ScreenSize.windowWidth() * (15/375), height: ScreenSize.windowHeight() * (22/812))
                             .foregroundColor(.gray)
                             .padding()
                     })
                 }
             }
             Rectangle()
-                .frame(width: ScreenSize.windowWidth() * (310/375), height: 0.5, alignment: .center)
+                .frame(width: ScreenSize.windowWidth() * 0.83, height: 0.5, alignment: .center)
                 .foregroundColor(.gray)
-                .padding(.vertical, -ScreenSize.windowWidth() * (15/375))
+                .padding(.vertical, -ScreenSize.windowWidth() * 0.04)
         }
     }
 }
@@ -195,7 +195,7 @@ struct CustomBreathingViewPicker: View {
                         Text("\(self.inhale[index])").tag(index)
                     }
                 }
-                .frame(width: ScreenSize.windowWidth() * (310/375)/4, height: 220, alignment: .center)
+                .frame(width: ScreenSize.windowWidth() * 0.2075, height: ScreenSize.windowHeight() * 0.185, alignment: .center)
                 .clipped()
                 
                 Picker("", selection: self.$hold1Selection) {
@@ -203,7 +203,7 @@ struct CustomBreathingViewPicker: View {
                         Text("\(self.hold1[index])").tag(index)
                     }
                 }
-                .frame(width: ScreenSize.windowWidth() * (310/375)/4, height: 220, alignment: .center)
+                .frame(width: ScreenSize.windowWidth() * 0.2075, height: ScreenSize.windowHeight() * 0.185, alignment: .center)
                 .clipped()
                 
                 Picker("", selection: self.$exhaleSelection) {
@@ -211,7 +211,7 @@ struct CustomBreathingViewPicker: View {
                         Text("\(self.exhale[index])").tag(index)
                     }
                 }
-                .frame(width: ScreenSize.windowWidth() * (310/375)/4, height: 220, alignment: .center)
+                .frame(width: ScreenSize.windowWidth() * 0.2075, height: ScreenSize.windowHeight() * 0.185, alignment: .center)
                 .clipped()
                 
                 Picker("", selection: self.$hold2Selection) {
@@ -219,7 +219,7 @@ struct CustomBreathingViewPicker: View {
                         Text("\(self.hold2[index])").tag(index)
                     }
                 }
-                .frame(width: ScreenSize.windowWidth() * (310/375)/4, height: 220, alignment: .center)
+                .frame(width: ScreenSize.windowWidth() * 0.2075, height: ScreenSize.windowHeight() * 0.185, alignment: .center)
                 .clipped()
             }
         }
