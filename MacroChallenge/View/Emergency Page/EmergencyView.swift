@@ -82,6 +82,7 @@ struct EmergencyView: View {
                             }
                             
                         }
+                        .animation(.easeIn(duration: 0.6))
                         .padding()
                         .frame(width: ScreenSize.windowWidth() * 0.9, height: ScreenSize.windowHeight() * 0.1)
                         .background(Rectangle()

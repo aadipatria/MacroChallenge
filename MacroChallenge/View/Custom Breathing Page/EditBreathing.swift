@@ -17,6 +17,7 @@ struct EditBreathing: View {
     @State var isHapticOn = false
     var id: UUID
     @State var isFavorite = false
+    @Environment(\.managedObjectContext) var manageObjectContext
     
     //fetch semua breathing dari core data -> next step di onAppear
     @FetchRequest(fetchRequest: Breathing.getAllBreathing()) var breaths: FetchedResults<Breathing>
@@ -88,6 +89,20 @@ extension EditBreathing {
                 self.hold2 = Int(breath.hold2)
                 self.isSoundOn = breath.sound
                 self.isHapticOn = breath.haptic
+            }
+
+        }
+    }
+    func deleteBreathing(){
+        for breath in breaths {
+            if breath.id == self.id{
+                self.manageObjectContext.delete(breath)
+
+                do {
+                    try self.manageObjectContext.save()
+                } catch {
+                    print("error deleting")
+                }
             }
         }
     }
