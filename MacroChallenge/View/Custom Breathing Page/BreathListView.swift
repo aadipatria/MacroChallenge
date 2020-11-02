@@ -50,47 +50,47 @@ struct BreathListView: View {
 
             
 //            List {
-            ForEach(self.breaths) { breath in
-                NavigationLink(
-                    //gw bikin page baru khusus buat yg Edit breathing karna kayaknya ribet kalau modif yg Add new breathing
-                    //mungkin ada cara lain? - Vincent
-                    
-                    //passing id (UUID) nya
-                    destination: EditBreathing(id: breath.id),
-                    label: {
-//                            Text("\(breath.name ?? "My Breath") = \(breath.inhale) inhale || \(breath.hold1) hold || \(breath.exhale) exhale || \(breath.hold2) hold || sound \(breath.sound == true ? "on" : "off") || haptic \(breath.haptic == true ? "on" : "off") || \(breath.id)")
-                        HStack{
-                            VStack{
-                                Text(breath.name ?? "")
-                                Text("\(breath.inhale)-\(breath.hold1)-\(breath.exhale)-\(breath.hold2)")
-                            }.padding()
-                            Spacer()
-                            Button(action: {
-                                breath.favorite.toggle()
-                            }, label: {
-                                if breath.favorite{
-                                    Image(systemName: "heart.fill")
-                                        .padding()
-                                }else{
-                                    Image(systemName: "heart")
-                                        .padding()
-                                }
+            if !breaths.isEmpty{
+                ForEach(self.breaths) { breath in
+                    NavigationLink(
+                        //gw bikin page baru khusus buat yg Edit breathing karna kayaknya ribet kalau modif yg Add new breathing
+                        //mungkin ada cara lain? - Vincent
+                        
+                        //passing id (UUID) nya
+                        destination: EditBreathing(id: breath.id),
+                        label: {
+    //                            Text("\(breath.name ?? "My Breath") = \(breath.inhale) inhale || \(breath.hold1) hold || \(breath.exhale) exhale || \(breath.hold2) hold || sound \(breath.sound == true ? "on" : "off") || haptic \(breath.haptic == true ? "on" : "off") || \(breath.id)")
+                            HStack{
+                                VStack{
+                                    Text(breath.name ?? "")
+                                    Text("\(breath.inhale)-\(breath.hold1)-\(breath.exhale)-\(breath.hold2)")
+                                }.padding()
+                                Spacer()
+                                Button(action: {
+                                    breath.favorite.toggle()
+                                }, label: {
+                                    if breath.favorite{
+                                        Image(systemName: "heart.fill")
+                                            .padding()
+                                    }else{
+                                        Image(systemName: "heart")
+                                            .padding()
+                                    }
+                                    
+                                })
                                 
-                            })
-                            
-                        }
-                        .padding()
-                        .frame(width: ScreenSize.windowWidth() * 0.9, height: ScreenSize.windowHeight() * 0.1)
-                        .background(Rectangle()
-                                        .fill(Color.clear)
-                                        .background(Blur(style: .systemThinMaterial)
-                                                        .opacity(0.95))
-                                        .cornerRadius(8))
-                    })
+                            }
+                            .padding()
+                            .frame(width: ScreenSize.windowWidth() * 0.9, height: ScreenSize.windowHeight() * 0.1)
+                            .background(Rectangle()
+                                            .fill(Color.clear)
+                                            .background(Blur(style: .systemThinMaterial)
+                                                            .opacity(0.95))
+                                            .cornerRadius(8))
+                        })
+                }
             }
-            .onDelete(perform: { indexSet in
-                deleteItem(indexSet: indexSet)
-            })
+            
             Spacer()
 //            }
 //            .environment(\.defaultMinListRowHeight, 100)

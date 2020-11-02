@@ -26,9 +26,11 @@ struct EmergencyView: View {
             } label: {
                 Text("Sync With Apple Watch")
             }
+            if contacts.count < 3{
+                NavigationLink("Add Contact", destination: AddEmergencyContact())
+                    .padding()
+            }
             
-            NavigationLink("Add Contact", destination: AddEmergencyContact())
-                .padding()
             Button(action: {
                 isEdited.toggle()
             }, label: {
@@ -41,78 +43,78 @@ struct EmergencyView: View {
             })
             
 //            List{
-            ForEach(self.contacts){ contact in
-                NavigationLink(
-                    destination: AddEmergencyContact(), /// harusnya ke edit, pake id biar tau mana yg di edit
-                    isActive: $navPop.emergency,
-                    label: {
-                        EmptyView()
-                    })
-                Button(action: {
-                    if isEdited{
-                        navPop.emergency = true
-                    }else{
-                        call(number: contact.number!)
-                    }
-                    
-                }, label: {
-                    HStack {
+            if !contacts.isEmpty{
+                ForEach(self.contacts){ contact in
+                    NavigationLink(
+                        destination: AddEmergencyContact(), /// harusnya ke edit, pake id biar tau mana yg di edit
+                        isActive: $navPop.emergency,
+                        label: {
+                            EmptyView()
+                        })
+                    Button(action: {
                         if isEdited{
-                            Button(action: {
-                                //hapus contact tsb
-                                print("x")
-                            }, label: {
-                                Image(systemName: "x.circle")
-                            })
-                        }
-                        VStack {
-                            Text("\(contact.name!)")
-                            Text("\(contact.number!)")
-                        }
-                        Spacer()
-                        if !isEdited{
-                            Button(action: {
-                                call(number: contact.number!)
-                            }, label: {
-                                Image(systemName: "phone.fill")
-                            })
+                            navPop.emergency = true
+                        }else{
+                            call(number: contact.number!)
                         }
                         
-                    }
-                    .padding()
-                    .frame(width: ScreenSize.windowWidth() * 0.9, height: ScreenSize.windowHeight() * 0.1)
-                    .background(Rectangle()
-                                    .fill(Color.clear)
-                                    .background(Blur(style: .systemThinMaterial)
-                                                    .opacity(0.95))
-                                    .cornerRadius(8))
-                })
-//                VStack{
-//                    HStack{
-//                        HStack{
-//                            Text("\(contact.id)")// photo
-//
-//                            VStack{
-//                                Text("\(contact.name!)")
-//                                Text("\(contact.number!)")
-//                            }
-//                        }
-//
-//                        Spacer()
-//
-//                        Button {
-//                            self.call(number: contact.number!)
-//                        } label : {
-//                            Text("Call")
-//
-//                        }
-//                    }
-//                }
-//                .foregroundColor(.gray)
+                    }, label: {
+                        HStack {
+                            if isEdited{
+                                Button(action: {
+                                    //hapus contact tsb
+                                    print("x")
+                                }, label: {
+                                    Image(systemName: "x.circle")
+                                })
+                            }
+                            VStack {
+                                Text("\(contact.name!)")
+                                Text("\(contact.number!)")
+                            }
+                            Spacer()
+                            if !isEdited{
+                                Button(action: {
+                                    call(number: contact.number!)
+                                }, label: {
+                                    Image(systemName: "phone.fill")
+                                })
+                            }
+                            
+                        }
+                        .padding()
+                        .frame(width: ScreenSize.windowWidth() * 0.9, height: ScreenSize.windowHeight() * 0.1)
+                        .background(Rectangle()
+                                        .fill(Color.clear)
+                                        .background(Blur(style: .systemThinMaterial)
+                                                        .opacity(0.95))
+                                        .cornerRadius(8))
+                    })
+    //                VStack{
+    //                    HStack{
+    //                        HStack{
+    //                            Text("\(contact.id)")// photo
+    //
+    //                            VStack{
+    //                                Text("\(contact.name!)")
+    //                                Text("\(contact.number!)")
+    //                            }
+    //                        }
+    //
+    //                        Spacer()
+    //
+    //                        Button {
+    //                            self.call(number: contact.number!)
+    //                        } label : {
+    //                            Text("Call")
+    //
+    //                        }
+    //                    }
+    //                }
+    //                .foregroundColor(.gray)
+                }
             }
-//            .onDelete { indexSet in
-//                deleteItem(indexSet: indexSet)
-//            }
+            
             Spacer()
         }
         .background(Image("ocean").backgroundImageModifier())
