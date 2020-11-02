@@ -88,6 +88,28 @@ struct EmergencyView: View {
                                                         .opacity(0.95))
                                         .cornerRadius(8))
                     })
+    //                VStack{
+    //                    HStack{
+    //                        HStack{
+    //                            Text("\(contact.id)")// photo
+    //
+    //                            VStack{
+    //                                Text("\(contact.name!)")
+    //                                Text("\(contact.number!)")
+    //                            }
+    //                        }
+    //
+    //                        Spacer()
+    //
+    //                        Button {
+    //                            self.call(number: contact.number!)
+    //                        } label : {
+    //                            Text("Call")
+    //
+    //                        }
+    //                    }
+    //                }
+    //                .foregroundColor(.gray)
                 }
                 Spacer()
             }
