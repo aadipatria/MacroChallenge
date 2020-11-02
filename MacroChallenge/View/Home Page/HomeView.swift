@@ -26,11 +26,6 @@ struct HomeView: View {
                 VStack {
                     Spacer()
                     ZStack {
-                        Color(UIColor.white)
-                            .frame(width : ScreenSize.windowWidth(), height : ScreenSize.windowHeight() * 0.127)
-                            .opacity(0.12)
-                            .background(Blur(style: .systemThinMaterialDark).opacity(0.95))
-                            .cornerRadius(24)
                         HStack {
                             Button(action: {
                                 navPop.page = 0
@@ -79,13 +74,19 @@ struct HomeView: View {
                             }).padding()
                         }
                         .frame(width : ScreenSize.windowWidth() * 0.95)
-                        .padding(.bottom)
+                        .background(Color(UIColor.white)
+                                        .frame(width : ScreenSize.windowWidth(), height : ScreenSize.windowHeight() * 0.12)
+                                        .opacity(0.12)
+                                        .background(Blur(style: .systemThinMaterialDark).opacity(0.95))
+                                        .cornerRadius(24))
+                                            
+//                        .padding(.bottom)
                     }
                     
                 }.edgesIgnoringSafeArea(.bottom)
                 
             }
-        }
+        }.accentColor( .black) /// ini buat ganti back button jd item
     }
 }
 
