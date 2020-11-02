@@ -96,6 +96,7 @@ struct EmergencyView: View {
             
             HalfModalView(isShown: $isEdited) {
                 VStack {
+                    Spacer()
                     Text("Hello")
                     Text("world")
                 }
