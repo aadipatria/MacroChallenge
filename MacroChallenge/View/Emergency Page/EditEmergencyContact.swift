@@ -13,7 +13,7 @@ struct EditEmergencyContact: View {
     @State var number: String = ""
     
     var id: UUID
-    @Binding var isEdited: Bool
+    @Binding var contactEdited: Bool
     
     @Environment(\.managedObjectContext) var manageObjectContext
     @FetchRequest(fetchRequest: Emergency.getAllEmergency()) var contacts: FetchedResults<Emergency>
@@ -22,7 +22,7 @@ struct EditEmergencyContact: View {
         VStack{
             HStack{
                 Button(action: {
-                    self.isEdited = false
+                    self.contactEdited = false
                 }, label: {
                     Text("Cancel")
                 })
@@ -61,10 +61,13 @@ struct EditEmergencyContact: View {
 
 extension EditEmergencyContact {
     func checkIdAndChangeData() {
+        print(self.id)
         for contact in contacts {
+            print(contact.id)
             if contact.id == self.id {
                 self.name = contact.name!
                 self.number = contact.number!
+                break
             }
         }
     }
@@ -80,6 +83,8 @@ extension EditEmergencyContact {
                 } catch {
                     print(error)
                 }
+                
+                break
             }
         }
     }
@@ -88,6 +93,7 @@ extension EditEmergencyContact {
 struct EditEmergencyContact_Previews: PreviewProvider {
     @State static var isEdited = true
     static var previews: some View {
-        EditEmergencyContact(id: UUID(), isEdited: $isEdited)
+        let viewContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        EditEmergencyContact(id: UUID(), contactEdited: $isEdited).environment(\.managedObjectContext, viewContext)
     }
 }

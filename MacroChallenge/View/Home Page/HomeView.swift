@@ -16,6 +16,7 @@ struct HomeView: View {
             ZStack {
                 if navPop.page == 0 {
                     EmergencyView()
+//                    EmptyView()
                 }
                 else if navPop.page == 1{
                     BreathView()
@@ -48,7 +49,6 @@ struct ContentView_Previews: PreviewProvider {
 
 struct ExtractedView: View {
     @EnvironmentObject var navPop : NavigationPopObject
-    
     var body: some View {
         HStack {
             Button(action: {

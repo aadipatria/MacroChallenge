@@ -19,7 +19,7 @@ struct EmergencyWatchView: View {
     //String 2 dimensi untuk attribute contack
     //CEK INDEX, SEMUA DALAM STRING -> HARUS DI CAST KALAU MAU DIPAKE
     //String -> 0 = id, 1 = name
-    //UUID -> 2 = id
+    //UUID -> 2 = number
     var contact2DArray = [[String]]()
     
     var nomorAku = "02828282"

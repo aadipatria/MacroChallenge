@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		9D267F42253C941200882D7F /* EditBreathing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D267F41253C941200882D7F /* EditBreathing.swift */; };
 		9D2F8000255008050055ABCF /* HalfModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D2F7FFF255008050055ABCF /* HalfModalView.swift */; };
+		9D697C8C25514C580087A64C /* EditEmergencyContact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D697C8B25514C580087A64C /* EditEmergencyContact.swift */; };
 		9D7D26EA25381317006D35D2 /* MacroChallenge.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9D7D26E825381317006D35D2 /* MacroChallenge.xcdatamodeld */; };
 		9D7D26EB25381317006D35D2 /* MacroChallenge.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9D7D26E825381317006D35D2 /* MacroChallenge.xcdatamodeld */; };
 		9D7D2713253818B8006D35D2 /* BreathingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7D2712253818B8006D35D2 /* BreathingModel.swift */; };
@@ -34,7 +35,6 @@
 		9DFAB89B2534405100E81C87 /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFAB89A2534405100E81C87 /* ComplicationController.swift */; };
 		9DFAB89D2534405100E81C87 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9DFAB89C2534405100E81C87 /* Assets.xcassets */; };
 		9DFAB8A02534405100E81C87 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9DFAB89F2534405100E81C87 /* Preview Assets.xcassets */; };
-		9DFCA378255138710051E580 /* EditEmergencyContact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFCA377255138710051E580 /* EditEmergencyContact.swift */; };
 		BC8B2B2C254AA55D0091F892 /* AnimationTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8B2B2B254AA55D0091F892 /* AnimationTimer.swift */; };
 		BC8B2B31254AA5900091F892 /* AnimationSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8B2B30254AA5900091F892 /* AnimationSet.swift */; };
 		BC8B2B36254AA5D30091F892 /* AnimationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8B2B35254AA5D30091F892 /* AnimationData.swift */; };
@@ -99,6 +99,7 @@
 /* Begin PBXFileReference section */
 		9D267F41253C941200882D7F /* EditBreathing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditBreathing.swift; sourceTree = "<group>"; };
 		9D2F7FFF255008050055ABCF /* HalfModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HalfModalView.swift; sourceTree = "<group>"; };
+		9D697C8B25514C580087A64C /* EditEmergencyContact.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditEmergencyContact.swift; sourceTree = "<group>"; };
 		9D7D26E925381317006D35D2 /* MacroChallenge.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MacroChallenge.xcdatamodel; sourceTree = "<group>"; };
 		9D7D2712253818B8006D35D2 /* BreathingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreathingModel.swift; sourceTree = "<group>"; };
 		9DE77B202542D5A800BCCDB3 /* EmergencyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmergencyModel.swift; sourceTree = "<group>"; };
@@ -127,7 +128,6 @@
 		9DFAB89F2534405100E81C87 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		9DFAB8A12534405100E81C87 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9DFAB8A22534405100E81C87 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
-		9DFCA377255138710051E580 /* EditEmergencyContact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditEmergencyContact.swift; sourceTree = "<group>"; };
 		BC8B2B2B254AA55D0091F892 /* AnimationTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationTimer.swift; sourceTree = "<group>"; };
 		BC8B2B30254AA5900091F892 /* AnimationSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationSet.swift; sourceTree = "<group>"; };
 		BC8B2B35254AA5D30091F892 /* AnimationData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationData.swift; sourceTree = "<group>"; };
@@ -340,9 +340,9 @@
 			isa = PBXGroup;
 			children = (
 				CA95C12F25357CA8008C0398 /* EmergencyView.swift */,
+				9D697C8B25514C580087A64C /* EditEmergencyContact.swift */,
 				9DE77B282542D7CA00BCCDB3 /* AddEmergencyContact.swift */,
 				9D2F7FFF255008050055ABCF /* HalfModalView.swift */,
-				9DFCA377255138710051E580 /* EditEmergencyContact.swift */,
 			);
 			path = "Emergency Page";
 			sourceTree = "<group>";
@@ -502,7 +502,7 @@
 				BC8B2B4D254AA7E00091F892 /* Blur.swift in Sources */,
 				9DFAB8702534404F00E81C87 /* HomeView.swift in Sources */,
 				BC8B2B36254AA5D30091F892 /* AnimationData.swift in Sources */,
-				9DFCA378255138710051E580 /* EditEmergencyContact.swift in Sources */,
+				9D697C8C25514C580087A64C /* EditEmergencyContact.swift in Sources */,
 				BC8B2B2C254AA55D0091F892 /* AnimationTimer.swift in Sources */,
 				9DE77B3D2542DE8D00BCCDB3 /* WatchHelper.swift in Sources */,
 			);
@@ -678,7 +678,7 @@
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"MacroChallenge WatchKit Extension/Preview Content\"";
-				DEVELOPMENT_TEAM = D89FSBU974;
+				DEVELOPMENT_TEAM = P9W54VNRMY;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "MacroChallenge WatchKit Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -702,7 +702,7 @@
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"MacroChallenge WatchKit Extension/Preview Content\"";
-				DEVELOPMENT_TEAM = D89FSBU974;
+				DEVELOPMENT_TEAM = P9W54VNRMY;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "MacroChallenge WatchKit Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -729,7 +729,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = D89FSBU974;
+				DEVELOPMENT_TEAM = P9W54VNRMY;
 				IBSC_MODULE = MacroChallenge_WatchKit_Extension;
 				INFOPLIST_FILE = "MacroChallenge WatchKit App/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -757,7 +757,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = D89FSBU974;
+				DEVELOPMENT_TEAM = P9W54VNRMY;
 				IBSC_MODULE = MacroChallenge_WatchKit_Extension;
 				INFOPLIST_FILE = "MacroChallenge WatchKit App/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -784,7 +784,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"MacroChallenge/Preview Content\"";
-				DEVELOPMENT_TEAM = D89FSBU974;
+				DEVELOPMENT_TEAM = P9W54VNRMY;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = MacroChallenge/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -807,7 +807,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"MacroChallenge/Preview Content\"";
-				DEVELOPMENT_TEAM = D89FSBU974;
+				DEVELOPMENT_TEAM = P9W54VNRMY;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = MacroChallenge/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
