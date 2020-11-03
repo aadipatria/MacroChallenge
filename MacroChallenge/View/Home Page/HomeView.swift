@@ -26,61 +26,64 @@ struct HomeView: View {
                 VStack {
                     Spacer()
                     ZStack {
-                        HStack {
-                            Button(action: {
-                                navPop.page = 0
-                            }, label: {
-                                VStack {
-                                    if navPop.page == 0{
-                                        Image("water").imageIconModifier()
-                                        Text("Contact").foregroundColor(.white)       
-                                    }else{
-                                        Image("water_gray").imageIconModifier()
-                                        Text("Contact").foregroundColor(.gray)
+                        if !navPop.tabIsHidden{
+                            HStack {
+                                Button(action: {
+                                    navPop.page = 0
+                                }, label: {
+                                    VStack {
+                                        if navPop.page == 0{
+                                            Image("water").imageIconModifier()
+                                            Text("Contact").foregroundColor(.white)
+                                        }else{
+                                            Image("water_gray").imageIconModifier()
+                                            Text("Contact").foregroundColor(.gray)
+                                        }
                                     }
-                                }
-                                .frame(width : 80)
-                            }).padding()
-                            Spacer()
-                            Button(action: {
-                                navPop.page = 1
-                            }, label: {
-                                VStack {
-                                    if navPop.page == 1{
-                                        Image("wind").imageIconModifier()
-                                        Text("Breath").foregroundColor(.white)
-                                    }else{
-                                        Image("wind_gray").imageIconModifier()
-                                        Text("Breath").foregroundColor(.gray)
+                                    .frame(width : 80)
+                                }).padding()
+                                Spacer()
+                                Button(action: {
+                                    navPop.page = 1
+                                }, label: {
+                                    VStack {
+                                        if navPop.page == 1{
+                                            Image("wind").imageIconModifier()
+                                            Text("Breath").foregroundColor(.white)
+                                        }else{
+                                            Image("wind_gray").imageIconModifier()
+                                            Text("Breath").foregroundColor(.gray)
+                                        }
                                     }
-                                }
-                                .frame(width : 80)
-                            }).padding()
-                            Spacer()
-                            Button(action: {
-                                navPop.page = 2
-                            }, label: {
-                                VStack {
-                                    if navPop.page == 2{
-                                        Image("earth").imageIconModifier()
-                                        Text("Collection").foregroundColor(.white)
+                                    .frame(width : 80)
+                                }).padding()
+                                Spacer()
+                                Button(action: {
+                                    navPop.page = 2
+                                }, label: {
+                                    VStack {
+                                        if navPop.page == 2{
+                                            Image("earth").imageIconModifier()
+                                            Text("Collection").foregroundColor(.white)
 
-                                    }else{
-                                        Image("earth_gray").imageIconModifier()
-                                        Text("Collection").foregroundColor(.gray)
+                                        }else{
+                                            Image("earth_gray").imageIconModifier()
+                                            Text("Collection").foregroundColor(.gray)
+                                        }
                                     }
-                                }
-                                .frame(width : 80)
-                            }).padding()
+                                    .frame(width : 80)
+                                }).padding()
+                            }
+                            .frame(width : ScreenSize.windowWidth() * 0.95)
+                            .background(Color(UIColor.white)
+                                            .frame(width : ScreenSize.windowWidth(), height : ScreenSize.windowHeight() * 0.12)
+                                            .opacity(0.12)
+                                            .background(Blur(style: .systemThinMaterialDark).opacity(0.95))
+                                            .cornerRadius(24))
+                                                
+    //                        .padding(.bottom)
                         }
-                        .frame(width : ScreenSize.windowWidth() * 0.95)
-                        .background(Color(UIColor.white)
-                                        .frame(width : ScreenSize.windowWidth(), height : ScreenSize.windowHeight() * 0.12)
-                                        .opacity(0.12)
-                                        .background(Blur(style: .systemThinMaterialDark).opacity(0.95))
-                                        .cornerRadius(24))
-                                            
-//                        .padding(.bottom)
+
                     }
                     
                 }.edgesIgnoringSafeArea(.bottom)

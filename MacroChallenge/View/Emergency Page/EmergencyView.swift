@@ -33,6 +33,8 @@ struct EmergencyView: View {
                     .padding()
                 Button(action: {
                     isEdited.toggle()
+                    // buat ngilangin tab bar
+//                    navPop.tabIsHidden = true
                 }, label: {
                     if isEdited{
                         Text("Done")
