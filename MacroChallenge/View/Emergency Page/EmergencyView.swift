@@ -62,8 +62,13 @@ struct EmergencyView: View {
                         HStack {
                             if isEdited{
                                 Button(action: {
-                                    //hapus contact tsb
-                                    print("x")
+                                    self.manageObjectContext.delete(contact)
+                                    
+                                    do {
+                                        try self.manageObjectContext.save()
+                                    } catch {
+                                        print("error deleting")
+                                    }
                                 }, label: {
                                     Image(systemName: "x.circle")
                                 })
@@ -91,41 +96,18 @@ struct EmergencyView: View {
                                                         .opacity(0.95))
                                         .cornerRadius(8))
                     })
-    //                VStack{
-    //                    HStack{
-    //                        HStack{
-    //                            Text("\(contact.id)")// photo
-    //
-    //                            VStack{
-    //                                Text("\(contact.name!)")
-    //                                Text("\(contact.number!)")
-    //                            }
-    //                        }
-    //
-    //                        Spacer()
-    //
-    //                        Button {
-    //                            self.call(number: contact.number!)
-    //                        } label : {
-    //                            Text("Call")
-    //
-    //                        }
-    //                    }
-    //                }
-    //                .foregroundColor(.gray)
                 }
                 Spacer()
             }
             .background(Image("ocean").backgroundImageModifier())
-            .edgesIgnoringSafeArea(.vertical)
             
-            HalfModalView(isShown: $isEdited) {
-                VStack {
-                    Spacer()
-                    Text("Hello")
-                    Text("world")
-                }
-            }
+//            HalfModalView(isShown: $isEdited) {
+//                VStack {
+//                    Spacer()
+//                    Text("Hello")
+//                    Text("world")
+//                }
+//            }
         }
     }
 }
