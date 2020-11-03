@@ -33,7 +33,7 @@ struct BreathListView: View {
                 Text("Breathing Library")
                 Spacer()
                 ZStack {
-                    ScreenSize.plusBackground()
+                    SomeBackground.plusBackground()
                     NavigationLink(
                         destination: CustomBreathingView(),
                         label: {
@@ -59,7 +59,6 @@ struct BreathListView: View {
                         //passing id (UUID) nya
                         destination: EditBreathing(id: breath.id),
                         label: {
-    //                            Text("\(breath.name ?? "My Breath") = \(breath.inhale) inhale || \(breath.hold1) hold || \(breath.exhale) exhale || \(breath.hold2) hold || sound \(breath.sound == true ? "on" : "off") || haptic \(breath.haptic == true ? "on" : "off") || \(breath.id)")
                             HStack{
                                 VStack{
                                     Text(breath.name ?? "")

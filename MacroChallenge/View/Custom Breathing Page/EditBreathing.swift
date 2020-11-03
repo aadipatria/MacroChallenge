@@ -26,50 +26,64 @@ struct EditBreathing: View {
     //kalau ada cara yang lebih bagus ajarin gw - Vincent
     var body: some View {
         VStack {
-            EditBreathingCancelAddView(breathName: $breathName, inhale: $inhale, hold1: $hold1, exhale: $exhale, hold2: $hold2, isSoundOn: $isSoundOn, isHapticOn: $isHapticOn, id: id, isFavorite: $isFavorite)
             Precautions()
-            
-            VStack {
-                Text("Name")
-                    .font(.system(size: 16, weight: .bold, design: .default))
-            }
-            .frame(width: 375, height: 22, alignment: .leading)
-            
             InputName(breathName: $breathName)
             
-            VStack {
-                Text("Pattern")
+            ZStack {
+                SomeBackground.headerBackground()
+                Text("Pattern (Seconds)")
+                    .padding()
                     .font(.system(size: 16, weight: .bold, design: .default))
+                    .frame(width: ScreenSize.windowWidth() * 0.9, height: ScreenSize.windowHeight() * 0.054, alignment: .leading)
             }
-            .frame(width: 375, height: 22, alignment: .leading)
-            .padding(.bottom)
-            .padding(.top)
 
-            HStack {
-                Text("Inhale")
-                    .frame(width: 375/4)
-                Text("Hold")
-                    .frame(width: 375/4)
-                Text("Exhale")
-                    .frame(width: 375/4)
-                Text("Hold")
-                    .frame(width: 375/4)
+            ZStack {
+                Rectangle()
+                    .fill(Color.clear)
+                    .background(Blur(style: .systemThinMaterial)
+                                    .opacity(0.95))
+                    .cornerRadius(8, corners: [.bottomLeft, .bottomRight])
+                VStack {
+                    HStack {
+                        Text("Inhale")
+                            .frame(width: ScreenSize.windowWidth() * 0.2075)
+                        Text("Hold")
+                            .frame(width: ScreenSize.windowWidth() * 0.2075)
+                        Text("Exhale")
+                            .frame(width: ScreenSize.windowWidth() * 0.2075)
+                        Text("Hold")
+                            .frame(width: ScreenSize.windowWidth() * 0.2075)
+                    }.padding(.top)
+                    CustomBreathingViewPicker(inhaleSelection: $inhale, hold1Selection: $hold1, exhaleSelection: $exhale, hold2Selection: $hold2)
+                        .frame(height: (226-40))
+//                        .background(Blur(style: .systemMaterial))
+                }
             }
-            
-            CustomBreathingViewPicker(inhaleSelection: $inhale, hold1Selection: $hold1, exhaleSelection: $exhale, hold2Selection: $hold2)
-                .frame(height: 250)
+            .frame(height: (215))
             
             VStack {
                 Text("Guiding Preferences")
-                    .font(.system(size: 16, weight: .bold, design: .default))
+                    .padding()
+                    .font(.system(size: 20, weight: .bold, design: .default))
+                    .frame(width: ScreenSize.windowWidth() * 0.9, height: 28, alignment: .leading)
+                    .background(SomeBackground.headerBackground())
+                    .padding(.top)
+                    
+                GuidingPreferences(isSoundOn: $isSoundOn, isHapticOn: $isHapticOn, isFavorite: $isFavorite)
+                    .padding()
+                    .background(Rectangle()
+                                    .fill(Color.clear)
+                                    .background(Blur(style: .systemThinMaterial)
+                                                    .opacity(0.95))
+                                    .cornerRadius(8, corners: [.bottomLeft, .bottomRight]))
+                
             }
-            .frame(width: 375, height: 22, alignment: .leading)
-            .padding(.bottom)
-            .padding(.top)
-            
-            GuidingPreferences(isSoundOn: $isSoundOn, isHapticOn: $isHapticOn, isFavorite: $isFavorite)
+            .frame(width: ScreenSize.windowWidth() * 0.9, alignment: .leading)
         }
-        .padding()
+        .background(Image("ocean").blurBackgroundImageModifier())
+        .navigationBarItems(trailing: EditBreathingCancelAddView(breathName: $breathName, inhale: $inhale, hold1: $hold1, exhale: $exhale, hold2: $hold2, isSoundOn: $isSoundOn, isHapticOn: $isHapticOn, id: id, isFavorite: $isFavorite))
+        .frame(width : ScreenSize.windowWidth() * 0.9)
+        .navigationBarTitle("Edit Breathing",displayMode: .inline)
         .onAppear {
             checkIdAndChangeData()
         }
@@ -126,7 +140,6 @@ struct EditBreathingCancelAddView: View {
     
     var body: some View {
         HStack {
-            Text("Cancel")
             Spacer()
             Button(action: {
                 updateBreath()
@@ -134,7 +147,6 @@ struct EditBreathingCancelAddView: View {
                 Text("Save")
             })
         }
-        .padding()
     }
 }
 

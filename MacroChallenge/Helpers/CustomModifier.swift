@@ -17,11 +17,22 @@ struct ScreenSize {
     static func windowWidth() -> CGFloat {
         return UIScreen.main.bounds.width
     }
+
+    }
+struct SomeBackground{
     static func plusBackground() -> some View{
         RoundedRectangle(cornerRadius: 8).fill(Color(UIColor(.white)))
             .frame(width: ScreenSize.windowWidth() * (28/375), height: ScreenSize.windowHeight() * (28/812), alignment: .center)
         }
-    }
+    static func headerBackground() -> some View{
+        Rectangle()
+            .fill(Color.clear)
+            .background(Blur(style: .systemMaterial)
+                            .opacity(0.95))
+            .cornerRadius(8, corners: [.topLeft, .topRight])
+            .frame(width: ScreenSize.windowWidth() * (0.9), height: ScreenSize.windowHeight() * 0.054, alignment: .leading)
+        }
+}
 struct ButtonModifier: ViewModifier {
     func body(content: Content) -> some View {
         content

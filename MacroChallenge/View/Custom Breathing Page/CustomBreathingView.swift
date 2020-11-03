@@ -30,7 +30,7 @@ struct CustomBreathingView: View {
             VStack {
                 Group {
                     ZStack {
-                        headerBackground()
+                        SomeBackground.headerBackground()
                         Text("Pattern (Seconds)")
                             .padding()
                             .font(.system(size: 16, weight: .bold, design: .default))
@@ -55,7 +55,6 @@ struct CustomBreathingView: View {
                             }.padding(.top)
                             CustomBreathingViewPicker(inhaleSelection: $inhale, hold1Selection: $hold1, exhaleSelection: $exhale, hold2Selection: $hold2)
                                 .frame(height: (226-40))
-        //                        .background(Blur(style: .systemMaterial))
                         }
                     }
                     .frame(height: (215))
@@ -71,7 +70,7 @@ struct CustomBreathingView: View {
                     .padding()
                     .font(.system(size: 20, weight: .bold, design: .default))
                     .frame(width: ScreenSize.windowWidth() * 0.9, height: 28, alignment: .leading)
-                    .background(headerBackground())
+                    .background(SomeBackground.headerBackground())
                     .padding(.top)
                     
                 GuidingPreferences(isSoundOn: $isSoundOn, isHapticOn: $isHapticOn, isFavorite: $isFavorite)
@@ -88,21 +87,10 @@ struct CustomBreathingView: View {
             
             
         }
-//        .padding()
-        
         .background(Image("ocean").blurBackgroundImageModifier())
         .navigationBarItems(trailing: CancelAddView(breathName: $breathName, inhale: $inhale, hold1: $hold1, exhale: $exhale, hold2: $hold2, isSoundOn: $isSoundOn, isHapticOn: $isHapticOn, isFavorite: $isFavorite))
         .frame(width : ScreenSize.windowWidth() * 0.9)
         .navigationBarTitle("Add Breathing",displayMode: .inline)
-    }
-    
-    func headerBackground() -> some View{
-        Rectangle()
-            .fill(Color.clear)
-            .background(Blur(style: .systemMaterial)
-                            .opacity(0.95))
-            .cornerRadius(8, corners: [.topLeft, .topRight])
-            .frame(width: ScreenSize.windowWidth() * (0.9), height: ScreenSize.windowHeight() * 0.054, alignment: .leading)
     }
 }
 
@@ -126,7 +114,6 @@ struct Precautions: View {
                 }
                 .font(.system(size: 12, weight: .regular, design: .default))
             }
-//            .frame(width: ScreenSize.windowWidth() * (270/375), height: ScreenSize.windowHeight() * (103/812))
         }
     }
 }
@@ -154,7 +141,6 @@ struct InputName: View {
                         self.breathName = ""
                     }, label: {
                         Image(systemName: "xmark.circle.fill")
-//                            .frame(width: ScreenSize.windowWidth() * (15/375), height: ScreenSize.windowHeight() * (22/812))
                             .foregroundColor(.gray)
                             .padding()
                     })
@@ -184,11 +170,6 @@ struct CustomBreathingViewPicker: View {
     
     var body: some View {
         ZStack {
-//            Rectangle()
-//                .fill(Color.clear)
-//                .background(Blur(style: .systemThinMaterial)
-//                                .opacity(0.95))
-//                .cornerRadius(8)
                 HStack {
                 Picker("", selection: self.$inhaleSelection) {
                     ForEach(0..<self.inhale.count) { index in
