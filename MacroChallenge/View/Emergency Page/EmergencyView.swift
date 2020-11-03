@@ -26,6 +26,48 @@ struct EmergencyView: View {
     var body: some View {
         ZStack {
             VStack{
+                HStack {
+                    Text("Top Contacts")
+                        .font(.title)
+                        .frame(height: ScreenSize.windowHeight() * (40/812))
+                        .padding()
+                    Spacer()
+                    Button(action: {
+                        isEdited.toggle()
+                        // buat ngilangin tab bar
+    //                    navPop.tabIsHidden = true
+                    }, label: {
+                        if isEdited{
+                            Text("Done")
+                                .padding()
+                                .background(SomeBackground.editBackground())
+                        }else{
+                            Text("Edit")
+                                .padding()
+                                .background(SomeBackground.editBackground())
+                        }
+
+                    })
+                    if !isEdited {
+                        ZStack {
+                            SomeBackground.plusBackground()
+                            NavigationLink(
+                                destination: AddEmergencyContact(),
+                                isActive : $navPop.halfModal,
+                                label: {
+                                    EmptyView()
+                                })
+                            Button(action: {
+                                navPop.halfModal = true
+                            }, label: {
+                                Image(systemName: "plus")
+                                    .foregroundColor(.black)
+                            })
+                            
+                        }
+                    }
+                }.animation(.easeInOut(duration: 0.6))
+                .frame(width : ScreenSize.windowWidth() * 0.9)
                 Button {
                     sync()
                 } label: {
@@ -63,6 +105,7 @@ struct EmergencyView: View {
                                     }
                                 }, label: {
                                     Image(systemName: "x.circle")
+                                        .padding()
                                 })
                             }
                             VStack {
@@ -79,7 +122,7 @@ struct EmergencyView: View {
                             }
                             
                         }
-                        .animation(.easeIn(duration: 0.6))
+                        .animation(.easeInOut(duration: 0.6))
                         .padding()
                         .frame(width: ScreenSize.windowWidth() * 0.9, height: ScreenSize.windowHeight() * 0.1)
                         .background(Rectangle()
@@ -89,6 +132,7 @@ struct EmergencyView: View {
                                         .cornerRadius(8))
                     })
                 }
+                .padding(.bottom, 8)
                 Spacer()
             }
             .background(Image("ocean").backgroundImageModifier())

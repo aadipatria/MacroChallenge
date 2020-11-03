@@ -60,6 +60,7 @@ extension AddEmergencyContact {
         
         do {
             try self.manageObjectContext.save()
+            navPop.halfModal = false
         } catch {
             print(error)
         }

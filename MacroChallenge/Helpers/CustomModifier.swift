@@ -32,6 +32,11 @@ struct SomeBackground{
             .cornerRadius(8, corners: [.topLeft, .topRight])
             .frame(width: ScreenSize.windowWidth() * (0.9), height: ScreenSize.windowHeight() * 0.054, alignment: .leading)
         }
+    static func editBackground() -> some View{
+        RoundedRectangle(cornerRadius: 8).fill(Color(UIColor(.white)))
+            .frame(width: ScreenSize.windowWidth() * (60/375), height: ScreenSize.windowHeight() * (28/812), alignment: .center)
+        }
+    
 }
 struct ButtonModifier: ViewModifier {
     func body(content: Content) -> some View {
