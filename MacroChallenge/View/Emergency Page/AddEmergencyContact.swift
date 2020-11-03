@@ -11,6 +11,7 @@ struct AddEmergencyContact: View {
     @Environment(\.managedObjectContext) var manageObjectContext
     @State var name: String = ""
     @State var number: String = ""
+    @EnvironmentObject var navPop : NavigationPopObject
     
     
     var body: some View {
@@ -41,6 +42,7 @@ extension AddEmergencyContact {
         
         do {
             try self.manageObjectContext.save()
+            navPop.halfModal = false
         } catch {
             print(error)
         }
@@ -49,6 +51,6 @@ extension AddEmergencyContact {
 
 struct AddEmergencyContact_Previews: PreviewProvider {
     static var previews: some View {
-        AddEmergencyContact()
+        AddEmergencyContact().environmentObject(NavigationPopObject())
     }
 }

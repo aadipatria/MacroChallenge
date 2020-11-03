@@ -98,6 +98,7 @@ struct EmergencyView: View {
                                     }
                                 }, label: {
                                     Image(systemName: "x.circle")
+                                        .padding()
                                 })
                             }
                             VStack {
@@ -124,6 +125,7 @@ struct EmergencyView: View {
                                         .cornerRadius(8))
                     })
                 }
+                .padding(.bottom, 8)
                 Spacer()
             }
             .background(Image("ocean").backgroundImageModifier())
