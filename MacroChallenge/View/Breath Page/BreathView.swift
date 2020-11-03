@@ -74,7 +74,7 @@ struct BreathView: View {
             .padding(.bottom, 60)
         }
         .onAppear(perform: {
-            if !breaths.isEmpty{
+            if !breaths.isEmpty {
                 update()
             }
         })

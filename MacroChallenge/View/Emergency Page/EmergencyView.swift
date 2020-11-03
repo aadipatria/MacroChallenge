@@ -13,6 +13,7 @@ struct EmergencyView: View {
     
     @FetchRequest(fetchRequest: Emergency.getAllEmergency()) var contacts: FetchedResults<Emergency>
     @Environment(\.managedObjectContext) var manageObjectContext
+    
     @State var isEdited : Bool = false
     
     let sendWatchHelper = WatchHelper()
@@ -20,30 +21,29 @@ struct EmergencyView: View {
     @State var contact2DArray = [[String]]()
     
     var body: some View {
-        VStack{
-            Button {
-                sync()
-            } label: {
-                Text("Sync With Apple Watch")
-            }
-            if contacts.count < 3{
-                NavigationLink("Add Contact", destination: AddEmergencyContact())
-                    .padding()
-            }
-            
-            Button(action: {
-                isEdited.toggle()
-            }, label: {
-                if isEdited{
-                    Text("Done")
-                }else{
-                    Text("Edit")
+        ZStack {
+            VStack{
+                Button {
+                    sync()
+                } label: {
+                    Text("Sync With Apple Watch")
                 }
                 
-            })
-            
-//            List{
-            if !contacts.isEmpty{
+                NavigationLink("Add Contact", destination: AddEmergencyContact())
+                    .padding()
+                Button(action: {
+                    isEdited.toggle()
+                    // buat ngilangin tab bar
+//                    navPop.tabIsHidden = true
+                }, label: {
+                    if isEdited{
+                        Text("Done")
+                    }else{
+                        Text("Edit")
+                    }
+                    
+                })
+                
                 ForEach(self.contacts){ contact in
                     NavigationLink(
                         destination: AddEmergencyContact(), /// harusnya ke edit, pake id biar tau mana yg di edit
@@ -82,6 +82,7 @@ struct EmergencyView: View {
                             }
                             
                         }
+                        .animation(.easeIn(duration: 0.6))
                         .padding()
                         .frame(width: ScreenSize.windowWidth() * 0.9, height: ScreenSize.windowHeight() * 0.1)
                         .background(Rectangle()
@@ -113,16 +114,22 @@ struct EmergencyView: View {
     //                }
     //                .foregroundColor(.gray)
                 }
+                Spacer()
             }
+            .background(Image("ocean").backgroundImageModifier())
+            .edgesIgnoringSafeArea(.vertical)
             
-            Spacer()
+            HalfModalView(isShown: $isEdited) {
+                VStack {
+                    Spacer()
+                    Text("Hello")
+                    Text("world")
+                }
+            }
         }
-        .background(Image("ocean").backgroundImageModifier())
-
     }
-    
-
 }
+
 extension EmergencyView{
     func call(number : String){
         guard let phoneNumber =  number as String?, let url = URL(string:"telprompt://\(phoneNumber)") else {
