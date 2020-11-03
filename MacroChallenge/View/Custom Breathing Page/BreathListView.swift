@@ -13,6 +13,7 @@ import WatchConnectivity
 struct BreathListView: View {
     @FetchRequest(fetchRequest: Breathing.getAllBreathing()) var breaths: FetchedResults<Breathing>
     @Environment(\.managedObjectContext) var manageObjectContext
+    @EnvironmentObject var navPop : NavigationPopObject
     
     let sendWatchHelper = WatchHelper()
     
@@ -36,10 +37,17 @@ struct BreathListView: View {
                     SomeBackground.plusBackground()
                     NavigationLink(
                         destination: CustomBreathingView(),
+                        isActive : $navPop.addBreath,
                         label: {
-                            Image(systemName: "plus")
-                                .foregroundColor(.black)
+                            EmptyView()
                         })
+                    Button(action: {
+                        navPop.addBreath = true
+                    }, label: {
+                        Image(systemName: "plus")
+                            .foregroundColor(.black)
+                    })
+                    
                 }
             }.frame(width : ScreenSize.windowWidth() * 0.9)
             Button {
@@ -58,35 +66,41 @@ struct BreathListView: View {
                         
                         //passing id (UUID) nya
                         destination: EditBreathing(id: breath.id),
+                        isActive : $navPop.editBreath,
                         label: {
-                            HStack{
-                                VStack{
-                                    Text(breath.name ?? "")
-                                    Text("\(breath.inhale)-\(breath.hold1)-\(breath.exhale)-\(breath.hold2)")
-                                }.padding()
-                                Spacer()
-                                Button(action: {
-                                    breath.favorite.toggle()
-                                }, label: {
-                                    if breath.favorite{
-                                        Image(systemName: "heart.fill")
-                                            .padding()
-                                    }else{
-                                        Image(systemName: "heart")
-                                            .padding()
-                                    }
-                                    
-                                })
-                                
-                            }
-                            .padding()
-                            .frame(width: ScreenSize.windowWidth() * 0.9, height: ScreenSize.windowHeight() * 0.1)
-                            .background(Rectangle()
-                                            .fill(Color.clear)
-                                            .background(Blur(style: .systemThinMaterial)
-                                                            .opacity(0.95))
-                                            .cornerRadius(8))
+                            EmptyView()
                         })
+                    Button(action: {
+                        navPop.editBreath = true
+                    }, label: {
+                        HStack{
+                            VStack{
+                                Text(breath.name ?? "")
+                                Text("\(breath.inhale)-\(breath.hold1)-\(breath.exhale)-\(breath.hold2)")
+                            }.padding()
+                            Spacer()
+                            Button(action: {
+                                breath.favorite.toggle()
+                            }, label: {
+                                if breath.favorite{
+                                    Image(systemName: "heart.fill")
+                                        .padding()
+                                }else{
+                                    Image(systemName: "heart")
+                                        .padding()
+                                }
+                                
+                            })
+                            
+                        }
+                        .padding()
+                        .frame(width: ScreenSize.windowWidth() * 0.9, height: ScreenSize.windowHeight() * 0.1)
+                        .background(Rectangle()
+                                        .fill(Color.clear)
+                                        .background(Blur(style: .systemThinMaterial)
+                                                        .opacity(0.95))
+                                        .cornerRadius(8))
+                    })
                 }
             }
             
@@ -136,6 +150,6 @@ extension BreathListView {
 struct BreathListView_Previews: PreviewProvider {
     static var previews: some View {
         let viewContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-        BreathListView().environment(\.managedObjectContext, viewContext)
+        BreathListView().environment(\.managedObjectContext, viewContext).environmentObject(NavigationPopObject())
     }
 }

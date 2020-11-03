@@ -62,8 +62,13 @@ struct EmergencyView: View {
                         HStack {
                             if isAddNewContact{
                                 Button(action: {
-                                    //hapus contact tsb
-                                    print("x")
+                                    self.manageObjectContext.delete(contact)
+                                    
+                                    do {
+                                        try self.manageObjectContext.save()
+                                    } catch {
+                                        print("error deleting")
+                                    }
                                 }, label: {
                                     Image(systemName: "x.circle")
                                 })

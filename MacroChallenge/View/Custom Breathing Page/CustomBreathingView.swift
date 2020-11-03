@@ -7,6 +7,7 @@
 import SwiftUI
 
 struct CustomBreathingView: View {
+    
     @State var breathName = ""
     @State var inhale = 0
     @State var hold1 = 0
@@ -237,6 +238,7 @@ struct GuidingPreferences: View {
 struct CancelAddView: View {
     //pake ini untuk save ke core data
     @Environment(\.managedObjectContext) var manageObjectContext
+    @EnvironmentObject var navPop : NavigationPopObject
     
     @Binding var breathName : String
     @Binding var inhale : Int
@@ -250,6 +252,7 @@ struct CancelAddView: View {
     var body: some View {
         Button(action: {
             saveToCoreData()
+            navPop.addBreath = false
             
         }, label: {
             Text("Add")
@@ -280,6 +283,6 @@ extension CancelAddView {
 }
 struct CustomBreathingView_Previews: PreviewProvider {
     static var previews: some View {
-        CustomBreathingView()
+        CustomBreathingView().environmentObject(NavigationPopObject())
     }
 }
