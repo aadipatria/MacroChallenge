@@ -15,6 +15,7 @@ struct EmergencyView: View {
     @Environment(\.managedObjectContext) var manageObjectContext
     
     @State var isEdited : Bool = false
+    @State var isAlert : Bool = false
     
     let sendWatchHelper = WatchHelper()
     
@@ -26,7 +27,6 @@ struct EmergencyView: View {
                 HStack {
                     Text("Top Contacts")
                         .font(.title)
-                        .frame(height: ScreenSize.windowHeight() * (40/812))
                         .padding()
                     Spacer()
                     Button(action: {
@@ -89,17 +89,22 @@ struct EmergencyView: View {
                         HStack {
                             if isEdited{
                                 Button(action: {
-                                    self.manageObjectContext.delete(contact)
-                                    
-                                    do {
-                                        try self.manageObjectContext.save()
-                                    } catch {
-                                        print("error deleting")
-                                    }
+                                    isAlert = true
                                 }, label: {
                                     Image(systemName: "x.circle")
                                         .padding()
                                 })
+                                .alert(isPresented: $isAlert){
+                                    Alert(title: Text("Delete"), message: Text("Yakin mau dihapus? :)"), primaryButton: .destructive(Text("Delete")) {
+                                        self.manageObjectContext.delete(contact)
+
+                                        do {
+                                            try self.manageObjectContext.save()
+                                        } catch {
+                                            print("error deleting")
+                                        }
+                                        }, secondaryButton: .cancel())
+                                }
                             }
                             VStack {
                                 Text("\(contact.name!)")

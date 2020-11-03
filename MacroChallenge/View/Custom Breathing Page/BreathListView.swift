@@ -29,7 +29,7 @@ struct BreathListView: View {
     
     var body: some View {
         
-        VStack{
+        VStack(spacing : 0){
             HStack {
                 Text("Breathing Library")
                     .font(.title)

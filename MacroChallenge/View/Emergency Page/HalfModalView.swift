@@ -32,8 +32,6 @@ enum DragState {
 
 struct HalfModalView<Content: View>: View {
     
-    
-    
     @GestureState var dragState = DragState.inactive
     @Binding var isShown: Bool
     

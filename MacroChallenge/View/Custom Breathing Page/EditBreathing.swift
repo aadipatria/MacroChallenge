@@ -17,6 +17,7 @@ struct EditBreathing: View {
     @State var isHapticOn = false
     var id: UUID
     @State var isFavorite = false
+    @State var isAlert = false
     @Environment(\.managedObjectContext) var manageObjectContext
     
     //fetch semua breathing dari core data -> next step di onAppear
@@ -82,12 +83,17 @@ struct EditBreathing: View {
             }
             .frame(width: ScreenSize.windowWidth() * 0.9, alignment: .leading)
             Button(action: {
-                deleteBreathing()
+                isAlert = true
             }, label: {
                 Text("Delete")
                     .foregroundColor(.white)
                     .modifier(ButtonStrokeModifier())
             })
+            .alert(isPresented: $isAlert){
+                Alert(title: Text("Delete"), message: Text("Yakin mau dihapus? :)"), primaryButton: .destructive(Text("Delete")) {
+                    deleteBreathing()
+                    }, secondaryButton: .cancel())
+            }
         }
         .background(Image("ocean").blurBackgroundImageModifier())
         .navigationBarItems(trailing: EditBreathingCancelAddView(breathName: $breathName, inhale: $inhale, hold1: $hold1, exhale: $exhale, hold2: $hold2, isSoundOn: $isSoundOn, isHapticOn: $isHapticOn, id: id, isFavorite: $isFavorite))
@@ -128,6 +134,7 @@ extension EditBreathing {
                 }
             }
         }
+        isAlert = false
     }
 }
 
