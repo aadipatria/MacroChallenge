@@ -9,10 +9,11 @@ import SwiftUI
 
 struct EditEmergencyContact: View {
     
-    @State var name: String = ""
-    @State var number: String = ""
+    @Binding var name: String
+    @Binding var number: String
     
     var id: UUID
+    
     @Binding var contactEdited: Bool
     
     @Environment(\.managedObjectContext) var manageObjectContext
@@ -53,17 +54,18 @@ struct EditEmergencyContact: View {
             }
             .frame(width: 327, height: 60)
         }
-        .onAppear(perform: {
-            checkIdAndChangeData()
-        })
+//        .onAppear(perform: {
+//            checkIdAndChangeData()
+//        })
+//        .onChange(of: self.id, perform: { _ in
+//            checkIdAndChangeData()
+//        })
     }
 }
 
 extension EditEmergencyContact {
     func checkIdAndChangeData() {
-        print(self.id)
         for contact in contacts {
-            print(contact.id)
             if contact.id == self.id {
                 self.name = contact.name!
                 self.number = contact.number!
@@ -89,11 +91,12 @@ extension EditEmergencyContact {
         }
     }
 }
-
-struct EditEmergencyContact_Previews: PreviewProvider {
-    @State static var isEdited = true
-    static var previews: some View {
-        let viewContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-        EditEmergencyContact(id: UUID(), contactEdited: $isEdited).environment(\.managedObjectContext, viewContext)
-    }
-}
+//
+//struct EditEmergencyContact_Previews: PreviewProvider {
+//    @State static var isEdited = true
+//    @State static var id = UUID()
+//    static var previews: some View {
+//        let viewContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+//        EditEmergencyContact(id: $id, contactEdited: $isEdited).environment(\.managedObjectContext, viewContext)
+//    }
+//}

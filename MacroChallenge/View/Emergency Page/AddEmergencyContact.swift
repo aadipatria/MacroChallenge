@@ -30,6 +30,8 @@ struct AddEmergencyContact: View {
                 
                 Button {
                     saveToCoreData()
+                    self.name = ""
+                    self.number = ""
                 } label: {
                     Text("Done")
                 }

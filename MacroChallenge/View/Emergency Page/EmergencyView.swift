@@ -20,6 +20,8 @@ struct EmergencyView: View {
     @State var isEdited: Bool = false
 
     @State var id: UUID = UUID()
+    @State var name: String = ""
+    @State var number: String = ""
 
     let sendWatchHelper = WatchHelper()
 
@@ -76,10 +78,15 @@ struct EmergencyView: View {
                             navPop.tabIsHidden = true
                             
                             self.id = contact.id
+                            self.name = contact.name!
+                            self.number = contact.number!
                             
-                            self.contactEdited = true
                             
-                            print(self.id)
+                            //pake ini biar textfieldnya udh ada isinya waktu modal dipanggil
+                            //entah knp harus diginiin baru bisa
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                                self.contactEdited = true
+                            }
                         }else{
                             call(number: contact.number!)
                         }
@@ -134,7 +141,7 @@ struct EmergencyView: View {
             }
 
             HalfModalView(isShown: $contactEdited) {
-                EditEmergencyContact(id: self.id, contactEdited: $contactEdited)
+                EditEmergencyContact(name: self.$name, number: self.$number, id: self.id, contactEdited: self.$contactEdited)
             }
         }
     }
@@ -179,8 +186,6 @@ struct EmergencyView_Previews: PreviewProvider {
 
     static var previews: some View {
         let viewContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-//        EmergencyView(id: UUID()).environmentObject(NavigationPopObject()).environment(\.managedObjectContext, viewContext)
-
         EmergencyView().environmentObject(NavigationPopObject()).environment(\.managedObjectContext, viewContext)
 
     }
