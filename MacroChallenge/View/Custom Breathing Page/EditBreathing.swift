@@ -29,37 +29,39 @@ struct EditBreathing: View {
             Precautions()
             InputName(breathName: $breathName)
             
-            ZStack {
-                SomeBackground.headerBackground()
-                Text("Pattern (Seconds)")
-                    .padding()
-                    .font(.system(size: 16, weight: .bold, design: .default))
-                    .frame(width: ScreenSize.windowWidth() * 0.9, height: ScreenSize.windowHeight() * 0.054, alignment: .leading)
-            }
-
-            ZStack {
-                Rectangle()
-                    .fill(Color.clear)
-                    .background(Blur(style: .systemThinMaterial)
-                                    .opacity(0.95))
-                    .cornerRadius(8, corners: [.bottomLeft, .bottomRight])
-                VStack {
-                    HStack {
-                        Text("Inhale")
-                            .frame(width: ScreenSize.windowWidth() * 0.2075)
-                        Text("Hold")
-                            .frame(width: ScreenSize.windowWidth() * 0.2075)
-                        Text("Exhale")
-                            .frame(width: ScreenSize.windowWidth() * 0.2075)
-                        Text("Hold")
-                            .frame(width: ScreenSize.windowWidth() * 0.2075)
-                    }.padding(.top)
-                    CustomBreathingViewPicker(inhaleSelection: $inhale, hold1Selection: $hold1, exhaleSelection: $exhale, hold2Selection: $hold2)
-                        .frame(height: (226-40))
-//                        .background(Blur(style: .systemMaterial))
+            VStack {
+                ZStack {
+                    SomeBackground.headerBackground()
+                    Text("Pattern (Seconds)")
+                        .padding()
+                        .font(.system(size: 16, weight: .bold, design: .default))
+                        .frame(width: ScreenSize.windowWidth() * 0.9, height: ScreenSize.windowHeight() * 0.054, alignment: .leading)
                 }
-            }
-            .frame(height: (215))
+                ZStack {
+                    Rectangle()
+                        .fill(Color.clear)
+                        .background(Blur(style: .systemThinMaterial)
+                                        .opacity(0.95))
+                        .cornerRadius(8, corners: [.bottomLeft, .bottomRight])
+                    VStack {
+                        HStack {
+                            Text("Inhale")
+                                .frame(width: ScreenSize.windowWidth() * 0.2075)
+                            Text("Hold")
+                                .frame(width: ScreenSize.windowWidth() * 0.2075)
+                            Text("Exhale")
+                                .frame(width: ScreenSize.windowWidth() * 0.2075)
+                            Text("Hold")
+                                .frame(width: ScreenSize.windowWidth() * 0.2075)
+                        }.padding(.top)
+                        CustomBreathingViewPicker(inhaleSelection: $inhale, hold1Selection: $hold1, exhaleSelection: $exhale, hold2Selection: $hold2)
+                            .frame(height: (226-40))
+                    }
+                }
+                .frame(height: (215))
+            }.padding(.vertical)
+
+            
             
             VStack {
                 Text("Guiding Preferences")
@@ -79,6 +81,13 @@ struct EditBreathing: View {
                 
             }
             .frame(width: ScreenSize.windowWidth() * 0.9, alignment: .leading)
+            Button(action: {
+                deleteBreathing()
+            }, label: {
+                Text("Delete")
+                    .foregroundColor(.white)
+                    .modifier(ButtonStrokeModifier())
+            })
         }
         .background(Image("ocean").blurBackgroundImageModifier())
         .navigationBarItems(trailing: EditBreathingCancelAddView(breathName: $breathName, inhale: $inhale, hold1: $hold1, exhale: $exhale, hold2: $hold2, isSoundOn: $isSoundOn, isHapticOn: $isHapticOn, id: id, isFavorite: $isFavorite))
@@ -127,6 +136,7 @@ struct EditBreathingCancelAddView: View {
     //bikin 2 ini karena update = fetch -> modif -> save
     @Environment(\.managedObjectContext) var manageObjectContext
     @FetchRequest(fetchRequest: Breathing.getAllBreathing()) var breaths: FetchedResults<Breathing>
+    @EnvironmentObject var navPop : NavigationPopObject
     
     @Binding var breathName : String
     @Binding var inhale : Int
@@ -143,6 +153,7 @@ struct EditBreathingCancelAddView: View {
             Spacer()
             Button(action: {
                 updateBreath()
+                navPop.editBreath = false
             }, label: {
                 Text("Save")
             })
