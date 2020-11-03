@@ -10,15 +10,23 @@ import SwiftUI
 
 struct EmergencyView: View {
     @EnvironmentObject var navPop : NavigationPopObject
-    
+
     @FetchRequest(fetchRequest: Emergency.getAllEmergency()) var contacts: FetchedResults<Emergency>
     @Environment(\.managedObjectContext) var manageObjectContext
-    
-    @State var isEdited : Bool = false
     @State var isAlert : Bool = false
     
-    let sendWatchHelper = WatchHelper()
+
+    @State var isAddNewContact: Bool = false
+    @State var contactEdited: Bool = false
     
+    @State var isEdited: Bool = false
+
+    @State var id: UUID = UUID()
+    @State var name: String = ""
+    @State var number: String = ""
+
+    let sendWatchHelper = WatchHelper()
+
     @State var contact2DArray = [[String]]()
     
     var body: some View {
@@ -31,8 +39,6 @@ struct EmergencyView: View {
                     Spacer()
                     Button(action: {
                         isEdited.toggle()
-                        // buat ngilangin tab bar
-    //                    navPop.tabIsHidden = true
                     }, label: {
                         if isEdited{
                             Text("Done")
@@ -48,19 +54,14 @@ struct EmergencyView: View {
                     if !isEdited {
                         ZStack {
                             SomeBackground.plusBackground()
-                            NavigationLink(
-                                destination: AddEmergencyContact(),
-                                isActive : $navPop.halfModal,
-                                label: {
-                                    EmptyView()
-                                })
                             Button(action: {
-                                navPop.halfModal = true
+                                self.isAddNewContact = true
+                                navPop.tabIsHidden = true
                             }, label: {
                                 Image(systemName: "plus")
                                     .foregroundColor(.black)
                             })
-                            
+
                         }
                     }
                 }.animation(.easeInOut(duration: 0.6))
@@ -70,21 +71,27 @@ struct EmergencyView: View {
                 } label: {
                     Text("Sync With Apple Watch")
                 }
-                
+
                 ForEach(self.contacts){ contact in
-                    NavigationLink(
-                        destination: AddEmergencyContact(), /// harusnya ke edit, pake id biar tau mana yg di edit
-                        isActive: $navPop.emergency,
-                        label: {
-                            EmptyView()
-                        })
                     Button(action: {
                         if isEdited{
                             navPop.emergency = true
+                            navPop.tabIsHidden = true
+                            
+                            self.id = contact.id
+                            self.name = contact.name!
+                            self.number = contact.number!
+                            
+                            
+                            //pake ini biar textfieldnya udh ada isinya waktu modal dipanggil
+                            //entah knp harus diginiin baru bisa
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                                self.contactEdited = true
+                            }
                         }else{
                             call(number: contact.number!)
                         }
-                        
+
                     }, label: {
                         HStack {
                             if isEdited{
@@ -118,7 +125,7 @@ struct EmergencyView: View {
                                     Image(systemName: "phone.fill")
                                 })
                             }
-                            
+
                         }
                         .animation(.easeInOut(duration: 0.6))
                         .padding()
@@ -134,14 +141,14 @@ struct EmergencyView: View {
                 Spacer()
             }
             .background(Image("ocean").backgroundImageModifier())
-            
-//            HalfModalView(isShown: $isEdited) {
-//                VStack {
-//                    Spacer()
-//                    Text("Hello")
-//                    Text("world")
-//                }
-//            }
+
+            HalfModalView(isShown: $isAddNewContact) {
+                AddEmergencyContact(isAddNewContact: $isAddNewContact)
+            }
+
+            HalfModalView(isShown: $contactEdited) {
+                EditEmergencyContact(name: self.$name, number: self.$number, id: self.id, contactEdited: self.$contactEdited)
+            }
         }
     }
 }
@@ -182,9 +189,10 @@ extension EmergencyView{
 }
 
 struct EmergencyView_Previews: PreviewProvider {
+
     static var previews: some View {
         let viewContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         EmergencyView().environmentObject(NavigationPopObject()).environment(\.managedObjectContext, viewContext)
-        
+
     }
 }
