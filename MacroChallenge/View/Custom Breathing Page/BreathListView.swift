@@ -32,6 +32,8 @@ struct BreathListView: View {
         VStack{
             HStack {
                 Text("Breathing Library")
+                    .font(.title)
+                    .padding()
                 Spacer()
                 ZStack {
                     SomeBackground.plusBackground()
