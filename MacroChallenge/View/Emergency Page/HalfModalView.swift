@@ -32,8 +32,6 @@ enum DragState {
 
 struct HalfModalView<Content: View>: View {
     
-    
-    
     @GestureState var dragState = DragState.inactive
     @Binding var isShown: Bool
     
@@ -51,8 +49,8 @@ struct HalfModalView<Content: View>: View {
         
         ZStack {
             Spacer()
-                .edgesIgnoringSafeArea(.all)
-                .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+                .frame(width: UIScreen.main.bounds.width, height: 800)
+                .edgesIgnoringSafeArea(.vertical)
                 .background(isShown ? Color.black.opacity(0.5 * fractionProgress(lowerLimit: 0, upperLimit: Double(modalHeight), current: Double(dragState.translation.height), inverted: true)) : Color.clear)
                 .animation(.interpolatingSpring(stiffness: 300, damping: 30, initialVelocity: 10))
                 .gesture(
@@ -61,6 +59,7 @@ struct HalfModalView<Content: View>: View {
                             self.isShown = false
                         })
                 )
+                .offset(y: -100)
             
             VStack {
                 Spacer()

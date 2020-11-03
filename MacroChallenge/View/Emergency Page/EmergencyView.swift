@@ -14,7 +14,7 @@ struct EmergencyView: View {
     @FetchRequest(fetchRequest: Emergency.getAllEmergency()) var contacts: FetchedResults<Emergency>
     @Environment(\.managedObjectContext) var manageObjectContext
     
-    @State var isEdited : Bool = false
+    @State var isAddNewContact : Bool = false
     
     let sendWatchHelper = WatchHelper()
     
@@ -32,11 +32,11 @@ struct EmergencyView: View {
                 NavigationLink("Add Contact", destination: AddEmergencyContact())
                     .padding()
                 Button(action: {
-                    isEdited.toggle()
+                    isAddNewContact.toggle()
                     // buat ngilangin tab bar
 //                    navPop.tabIsHidden = true
                 }, label: {
-                    if isEdited{
+                    if isAddNewContact{
                         Text("Done")
                     }else{
                         Text("Edit")
@@ -52,7 +52,7 @@ struct EmergencyView: View {
                             EmptyView()
                         })
                     Button(action: {
-                        if isEdited{
+                        if isAddNewContact{
                             navPop.emergency = true
                         }else{
                             call(number: contact.number!)
@@ -60,7 +60,7 @@ struct EmergencyView: View {
                         
                     }, label: {
                         HStack {
-                            if isEdited{
+                            if isAddNewContact{
                                 Button(action: {
                                     //hapus contact tsb
                                     print("x")
@@ -73,7 +73,7 @@ struct EmergencyView: View {
                                 Text("\(contact.number!)")
                             }
                             Spacer()
-                            if !isEdited{
+                            if !isAddNewContact{
                                 Button(action: {
                                     call(number: contact.number!)
                                 }, label: {
@@ -91,39 +91,14 @@ struct EmergencyView: View {
                                                         .opacity(0.95))
                                         .cornerRadius(8))
                     })
-    //                VStack{
-    //                    HStack{
-    //                        HStack{
-    //                            Text("\(contact.id)")// photo
-    //
-    //                            VStack{
-    //                                Text("\(contact.name!)")
-    //                                Text("\(contact.number!)")
-    //                            }
-    //                        }
-    //
-    //                        Spacer()
-    //
-    //                        Button {
-    //                            self.call(number: contact.number!)
-    //                        } label : {
-    //                            Text("Call")
-    //
-    //                        }
-    //                    }
-    //                }
-    //                .foregroundColor(.gray)
                 }
                 Spacer()
             }
             .background(Image("ocean").backgroundImageModifier())
-            .edgesIgnoringSafeArea(.vertical)
             
-            HalfModalView(isShown: $isEdited) {
+            HalfModalView(isShown: $isAddNewContact) {
                 VStack {
-                    Spacer()
-                    Text("Hello")
-                    Text("world")
+                    Text("A")
                 }
             }
         }
