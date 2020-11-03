@@ -23,26 +23,53 @@ struct EmergencyView: View {
     var body: some View {
         ZStack {
             VStack{
+                HStack {
+                    Text("Top Contacts")
+                        .font(.title)
+                        .frame(height: ScreenSize.windowHeight() * (40/812))
+                        .padding()
+                    Spacer()
+                    Button(action: {
+                        isEdited.toggle()
+                        // buat ngilangin tab bar
+    //                    navPop.tabIsHidden = true
+                    }, label: {
+                        if isEdited{
+                            Text("Done")
+                                .padding()
+                                .background(SomeBackground.editBackground())
+                        }else{
+                            Text("Edit")
+                                .padding()
+                                .background(SomeBackground.editBackground())
+                        }
+
+                    })
+                    if !isEdited {
+                        ZStack {
+                            SomeBackground.plusBackground()
+                            NavigationLink(
+                                destination: AddEmergencyContact(),
+                                isActive : $navPop.halfModal,
+                                label: {
+                                    EmptyView()
+                                })
+                            Button(action: {
+                                navPop.halfModal = true
+                            }, label: {
+                                Image(systemName: "plus")
+                                    .foregroundColor(.black)
+                            })
+                            
+                        }
+                    }
+                }.animation(.easeInOut(duration: 0.6))
+                .frame(width : ScreenSize.windowWidth() * 0.9)
                 Button {
                     sync()
                 } label: {
                     Text("Sync With Apple Watch")
                 }
-                
-                NavigationLink("Add Contact", destination: AddEmergencyContact())
-                    .padding()
-                Button(action: {
-                    isEdited.toggle()
-                    // buat ngilangin tab bar
-//                    navPop.tabIsHidden = true
-                }, label: {
-                    if isEdited{
-                        Text("Done")
-                    }else{
-                        Text("Edit")
-                    }
-                    
-                })
                 
                 ForEach(self.contacts){ contact in
                     NavigationLink(
@@ -62,8 +89,13 @@ struct EmergencyView: View {
                         HStack {
                             if isEdited{
                                 Button(action: {
-                                    //hapus contact tsb
-                                    print("x")
+                                    self.manageObjectContext.delete(contact)
+                                    
+                                    do {
+                                        try self.manageObjectContext.save()
+                                    } catch {
+                                        print("error deleting")
+                                    }
                                 }, label: {
                                     Image(systemName: "x.circle")
                                 })
@@ -82,7 +114,7 @@ struct EmergencyView: View {
                             }
                             
                         }
-                        .animation(.easeIn(duration: 0.6))
+                        .animation(.easeInOut(duration: 0.6))
                         .padding()
                         .frame(width: ScreenSize.windowWidth() * 0.9, height: ScreenSize.windowHeight() * 0.1)
                         .background(Rectangle()
@@ -91,41 +123,18 @@ struct EmergencyView: View {
                                                         .opacity(0.95))
                                         .cornerRadius(8))
                     })
-    //                VStack{
-    //                    HStack{
-    //                        HStack{
-    //                            Text("\(contact.id)")// photo
-    //
-    //                            VStack{
-    //                                Text("\(contact.name!)")
-    //                                Text("\(contact.number!)")
-    //                            }
-    //                        }
-    //
-    //                        Spacer()
-    //
-    //                        Button {
-    //                            self.call(number: contact.number!)
-    //                        } label : {
-    //                            Text("Call")
-    //
-    //                        }
-    //                    }
-    //                }
-    //                .foregroundColor(.gray)
                 }
                 Spacer()
             }
             .background(Image("ocean").backgroundImageModifier())
-            .edgesIgnoringSafeArea(.vertical)
             
-            HalfModalView(isShown: $isEdited) {
-                VStack {
-                    Spacer()
-                    Text("Hello")
-                    Text("world")
-                }
-            }
+//            HalfModalView(isShown: $isEdited) {
+//                VStack {
+//                    Spacer()
+//                    Text("Hello")
+//                    Text("world")
+//                }
+//            }
         }
     }
 }
