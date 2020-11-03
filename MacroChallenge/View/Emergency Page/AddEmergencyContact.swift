@@ -11,23 +11,42 @@ struct AddEmergencyContact: View {
     @Environment(\.managedObjectContext) var manageObjectContext
     @State var name: String = ""
     @State var number: String = ""
-    
+    @Binding var isAddNewContact: Bool
     
     var body: some View {
         VStack {
-            Button {
-                saveToCoreData()
-            } label: {
-                Text("Add Contact")
+            HStack{
+                Button(action: {
+                    self.isAddNewContact = false
+                }, label: {
+                    Text("Cancel")
+                })
+                
+                Spacer()
+                
+                Text("Add New Contact")
+                
+                Spacer()
+                
+                Button {
+                    saveToCoreData()
+                } label: {
+                    Text("Done")
+                }
             }
+            .padding()
 
-            TextField("Name", text: $name)
-                .padding()
-                .multilineTextAlignment(.center)
-            TextField("Number", text: $number)
-                .keyboardType(.numberPad)
-                .padding()
-                .multilineTextAlignment(.center)
+            Group {
+                TextField("Name", text: $name)
+                    .modifier(ClearButton(text: $name))
+                    .padding()
+                
+                TextField("Number", text: $number)
+                    .modifier(ClearButton(text: $number))
+                    .keyboardType(.numberPad)
+                    .padding()
+            }
+            .frame(width: 327, height: 60)
         }
     }
 }
@@ -48,7 +67,8 @@ extension AddEmergencyContact {
 }
 
 struct AddEmergencyContact_Previews: PreviewProvider {
+    @State static var isAddNewContact = true
     static var previews: some View {
-        AddEmergencyContact()
+        AddEmergencyContact(isAddNewContact: $isAddNewContact)
     }
 }

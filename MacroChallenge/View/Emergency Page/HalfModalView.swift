@@ -31,7 +31,7 @@ enum DragState {
 }
 
 struct HalfModalView<Content: View>: View {
-    
+    @EnvironmentObject var navPop : NavigationPopObject
     @GestureState var dragState = DragState.inactive
     @Binding var isShown: Bool
     
@@ -57,6 +57,7 @@ struct HalfModalView<Content: View>: View {
                     TapGesture()
                         .onEnded({ _ in
                             self.isShown = false
+                            navPop.tabIsHidden = false
                         })
                 )
                 .offset(y: -100)

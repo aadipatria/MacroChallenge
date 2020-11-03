@@ -14,7 +14,10 @@ struct EmergencyView: View {
     @FetchRequest(fetchRequest: Emergency.getAllEmergency()) var contacts: FetchedResults<Emergency>
     @Environment(\.managedObjectContext) var manageObjectContext
     
-    @State var isAddNewContact : Bool = false
+    @State var isAddNewContact: Bool = false
+    @State var isEdited: Bool = false
+    
+    @State var id: UUID
     
     let sendWatchHelper = WatchHelper()
     
@@ -28,32 +31,21 @@ struct EmergencyView: View {
                 } label: {
                     Text("Sync With Apple Watch")
                 }
-                
-                NavigationLink("Add Contact", destination: AddEmergencyContact())
-                    .padding()
                 Button(action: {
                     isAddNewContact.toggle()
                     // buat ngilangin tab bar
-//                    navPop.tabIsHidden = true
+                    navPop.tabIsHidden = true
                 }, label: {
-                    if isAddNewContact{
-                        Text("Done")
-                    }else{
-                        Text("Edit")
-                    }
-                    
+                    Text("Add New Contact")
+                        .padding()
                 })
                 
                 ForEach(self.contacts){ contact in
-                    NavigationLink(
-                        destination: AddEmergencyContact(), /// harusnya ke edit, pake id biar tau mana yg di edit
-                        isActive: $navPop.emergency,
-                        label: {
-                            EmptyView()
-                        })
                     Button(action: {
                         if isAddNewContact{
                             navPop.emergency = true
+                            navPop.tabIsHidden = true
+                            self.id = contact.id
                         }else{
                             call(number: contact.number!)
                         }
@@ -102,9 +94,11 @@ struct EmergencyView: View {
             .background(Image("ocean").backgroundImageModifier())
             
             HalfModalView(isShown: $isAddNewContact) {
-                VStack {
-                    Text("A")
-                }
+                AddEmergencyContact(isAddNewContact: $isAddNewContact)
+            }
+            
+            HalfModalView(isShown: $isEdited) {
+                EditEmergencyContact(id: self.id, isEdited: $isEdited)
             }
         }
     }
@@ -148,7 +142,7 @@ extension EmergencyView{
 struct EmergencyView_Previews: PreviewProvider {
     static var previews: some View {
         let viewContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-        EmergencyView().environmentObject(NavigationPopObject()).environment(\.managedObjectContext, viewContext)
+        EmergencyView(id: UUID()).environmentObject(NavigationPopObject()).environment(\.managedObjectContext, viewContext)
         
     }
 }
