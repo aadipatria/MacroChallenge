@@ -36,6 +36,7 @@ struct EditEmergencyContact: View {
                 
                 Button(action: {
                     updateContact()
+                    self.contactEdited = false
                 }, label: {
                     Text("Done")
                 })
@@ -54,12 +55,6 @@ struct EditEmergencyContact: View {
             }
             .frame(width: 327, height: 60)
         }
-//        .onAppear(perform: {
-//            checkIdAndChangeData()
-//        })
-//        .onChange(of: self.id, perform: { _ in
-//            checkIdAndChangeData()
-//        })
     }
 }
 
