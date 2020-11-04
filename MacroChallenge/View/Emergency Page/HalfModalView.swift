@@ -34,6 +34,7 @@ struct HalfModalView<Content: View>: View {
     @EnvironmentObject var navPop : NavigationPopObject
     @GestureState var dragState = DragState.inactive
     @Binding var isShown: Bool
+    @State var value : CGFloat = 0
     
     var modalHeight: CGFloat = 400
     
@@ -58,6 +59,7 @@ struct HalfModalView<Content: View>: View {
                         .onEnded({ _ in
                             self.isShown = false
                             navPop.tabIsHidden = false
+                            hideKeyboard()
                         })
                 )
                 .offset(y: -100)
@@ -81,6 +83,19 @@ struct HalfModalView<Content: View>: View {
             }
         }
         .edgesIgnoringSafeArea(.all)
+        .offset(y: -self.value)
+        .onAppear() {
+            NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillShowNotification, object: nil, queue: .main) { (noti) in
+                let temp = UIResponder.keyboardFrameEndUserInfoKey
+                let value = noti.userInfo![temp] as! CGRect
+                let height = value.height
+                self.value = height - 195
+            }
+            
+            NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillHideNotification, object: nil, queue: .main) { (noti) in
+                self.value = 0
+            }
+        }
     }
 }
 
@@ -92,6 +107,9 @@ extension HalfModalView {
         }
     }
     
+    func hideKeyboard() {
+        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+    }
     
     func fractionProgress(lowerLimit: Double = 0, upperLimit: Double, current: Double, inverted: Bool = false) -> Double {
         var val: Double = 0

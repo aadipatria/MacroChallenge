@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct AddEmergencyContact: View {
+    @EnvironmentObject var navPop: NavigationPopObject
     @Environment(\.managedObjectContext) var manageObjectContext
     @State var name: String = ""
     @State var number: String = ""
@@ -18,6 +19,7 @@ struct AddEmergencyContact: View {
             HStack{
                 Button(action: {
                     self.isAddNewContact = false
+                    navPop.tabIsHidden = false
                 }, label: {
                     Text("Cancel")
                 })
@@ -33,6 +35,7 @@ struct AddEmergencyContact: View {
                     self.name = ""
                     self.number = ""
                     self.isAddNewContact = false
+                    navPop.tabIsHidden = false
                 } label: {
                     Text("Done")
                 }
@@ -46,7 +49,6 @@ struct AddEmergencyContact: View {
                 
                 TextField("Number", text: $number)
                     .modifier(ClearButton(text: $number))
-                    .keyboardType(.numberPad)
                     .padding()
             }
             .frame(width: 327, height: 60)

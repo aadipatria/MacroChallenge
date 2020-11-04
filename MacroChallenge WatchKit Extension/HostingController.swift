@@ -10,7 +10,7 @@ import Foundation
 import SwiftUI
 import WatchConnectivity
 
-class HostingController: WKHostingController<HomeWatchView>, WCSessionDelegate {
+class HostingController: WKHostingController<AnyView>, WCSessionDelegate {
     
     var ArrayOfBreathing =  [[String]]()
     var ArrayOfContact = [[String]]()
@@ -37,27 +37,31 @@ class HostingController: WKHostingController<HomeWatchView>, WCSessionDelegate {
         
         if uuid == nil {
             ArrayOfBreathing = message
+            UserDefaults.standard.setValue(ArrayOfBreathing, forKey: "arrayOfBreathing")
         }
         else {
             ArrayOfContact = message
+            UserDefaults.standard.setValue(ArrayOfContact, forKey: "arrayOfContact")
         }
         
         setNeedsBodyUpdate()
+        updateBodyIfNeeded()
     }
     
     func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
     }
     
-    override var body: HomeWatchView {
-        var hwv = HomeWatchView()
-        if !ArrayOfBreathing.isEmpty {
-            hwv.breath2DArray = ArrayOfBreathing
-        }
+    
+    override var body: AnyView {
+//        let hwv = HomeWatchView()
+//        if !ArrayOfBreathing.isEmpty {
+//            hwv.breath2DArray = ArrayOfBreathing
+//        }
+//
+//        if !ArrayOfContact.isEmpty {
+//            hwv.contact2DArray = ArrayOfContact
+//        }
         
-        if !ArrayOfContact.isEmpty {
-            hwv.contact2DArray = ArrayOfContact
-        }
-        
-        return hwv
+        return AnyView(HomeWatchView().environmentObject(DataObserver()))
     }
 }

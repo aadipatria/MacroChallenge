@@ -20,11 +20,10 @@ struct EmergencyWatchView: View {
     //CEK INDEX, SEMUA DALAM STRING -> HARUS DI CAST KALAU MAU DIPAKE
     //String -> 0 = id, 1 = name
     //UUID -> 2 = number
-    var contact2DArray = [[String]]()
+    @State var contact2DArray = [[String]]()
     
     var nomorAku = "02828282"
     var body: some View {
-    
         Button {
             self.call(number: nomorAku)
         } label: {
@@ -35,15 +34,24 @@ struct EmergencyWatchView: View {
                 Text("no contacts")
             }
         }
+        .onAppear() {
+            updateData()
+        }
     }
 }
 
 extension EmergencyWatchView{
     func call(number : String){
-        
         if let NomorHape = URL(string: "tel:\(number)") {
             let wkExt = WKExtension.shared()
             wkExt.openSystemURL(NomorHape)
+        }
+    }
+    
+    func updateData() {
+        if let tempArr = UserDefaults.standard.array(forKey: "arrayOfContact") as? [[String]] {
+            contact2DArray = tempArr
+            
         }
     }
 }

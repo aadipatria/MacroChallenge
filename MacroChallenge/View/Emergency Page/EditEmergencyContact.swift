@@ -11,11 +11,12 @@ struct EditEmergencyContact: View {
     
     @Binding var name: String
     @Binding var number: String
+    @State var value: CGFloat = 0
     
     var id: UUID
     
     @Binding var contactEdited: Bool
-    
+    @EnvironmentObject var navPop: NavigationPopObject
     @Environment(\.managedObjectContext) var manageObjectContext
     @FetchRequest(fetchRequest: Emergency.getAllEmergency()) var contacts: FetchedResults<Emergency>
     
@@ -24,6 +25,8 @@ struct EditEmergencyContact: View {
             HStack{
                 Button(action: {
                     self.contactEdited = false
+                    navPop.tabIsHidden = false
+                    hideKeyboard()
                 }, label: {
                     Text("Cancel")
                 })
@@ -37,6 +40,8 @@ struct EditEmergencyContact: View {
                 Button(action: {
                     updateContact()
                     self.contactEdited = false
+                    navPop.tabIsHidden = false
+                    hideKeyboard()
                 }, label: {
                     Text("Done")
                 })
@@ -50,7 +55,6 @@ struct EditEmergencyContact: View {
                 
                 TextField("Number", text: $number)
                     .modifier(ClearButton(text: $number))
-                    .keyboardType(.numberPad)
                     .padding()
             }
             .frame(width: 327, height: 60)
@@ -59,6 +63,10 @@ struct EditEmergencyContact: View {
 }
 
 extension EditEmergencyContact {
+    func hideKeyboard() {
+        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+    }
+    
     func checkIdAndChangeData() {
         for contact in contacts {
             if contact.id == self.id {
