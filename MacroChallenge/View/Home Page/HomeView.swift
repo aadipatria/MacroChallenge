@@ -16,7 +16,6 @@ struct HomeView: View {
             ZStack {
                 if navPop.page == 0 {
                     EmergencyView()
-//                    EmptyView()
                 }
                 else if navPop.page == 1{
                     BreathView()
@@ -45,6 +44,7 @@ struct ContentView_Previews: PreviewProvider {
         let viewContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         HomeView().environment(\.managedObjectContext, viewContext).environmentObject(NavigationPopObject())
         LoopingPlayer()
+            .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
     }
 }
 

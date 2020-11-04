@@ -9,7 +9,7 @@ import SwiftUI
 
 struct HomeWatchView: View {
     
-    var breath2DArray = [["Calm","4","7","8","0","True","True","True","123"],["Calm","4","7","8","0","True","True","True","123"],["Calm","4","7","8","0","True","True","True","123"]]
+    var breath2DArray = [["Calm1","4","7","8","0","True","True","True","123"],["Calm2","4","7","8","0","True","True","True","123"],["Calm3","4","7","8","0","True","True","True","123"]]
     var contact2DArray = [["01","haha","085"],["01","haha","085"],["01","haha","085"]]
     @EnvironmentObject var navPop : NavigationWatchPopObject
     
@@ -17,9 +17,6 @@ struct HomeWatchView: View {
         ZStack {
             TabView(selection: $navPop.selected){
                 BreathWatchView(breath2DArray: breath2DArray)
-//                    .onTapGesture(perform: {
-//                        navPop.selected = 1
-//                    })
                     .tag(0)
                 EmergencyWatchView(contact2DArray: contact2DArray)
                     .tag(1)

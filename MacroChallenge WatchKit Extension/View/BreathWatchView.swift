@@ -16,25 +16,28 @@ struct BreathWatchView: View {
     //Boolean -> 5 = sound, 6 = haptic, 7 = favorite,
     //UUID -> 8 = id
     //kalau user ada 3 favorite, 3 pertama di array itu favorite
-//    var breath2DArray = [[String]]()
-    var breath2DArray = [["Calm","4","7","8","0","True","True","True","123"],["Calm","4","7","8","0","True","True","True","123"],["Calm","4","7","8","0","True","True","True","123"]]
+    var breath2DArray = [[String]]()
+    @State var go = false
     
     var body: some View {
         List {
-            ForEach(breath2DArray, id: \.self){ breath in
-                NavigationLink(
-                    destination: AfterBreathingWatchView(),
-                    label: {
-                        if !breath2DArray.isEmpty {
-                            VStack {
-                                Text("\(breath[0])")
-                                Text("\(breath[1])-\(breath[2])-\(breath[3])-\(breath[4])")
-                            }.frame(width: WKInterfaceDevice.current().screenBounds.width * 0.9, height: WKInterfaceDevice.current().screenBounds.height * 0.5, alignment: .center)
-                        }
-                        else {
-                            Text("no contacts")
-                        }
-                    })
+            if breath2DArray.isEmpty{
+                Text("No Data")
+            }else{
+                ForEach(breath2DArray.indices, id: \.self){ idx in
+                    NavigationLink(
+                        destination: AfterBreathingWatchView(breathName: "\(breath2DArray[idx][0])"),
+                        label: {
+                            if !breath2DArray.isEmpty {
+                                VStack {
+                                    Text("\(breath2DArray[idx][0])")
+                                    Text("\(breath2DArray[idx][1])-\(breath2DArray[idx][2])-\(breath2DArray[idx][3])-\(breath2DArray[idx][4])")
+                                }
+                            }
+                        })
+                        .frame(width: WKInterfaceDevice.current().screenBounds.width * 0.9, height: WKInterfaceDevice.current().screenBounds.height * 0.5, alignment: .center)
+                }
+                .padding(.top)
             }
         }
         .listStyle(CarouselListStyle())
