@@ -32,6 +32,7 @@ struct AddEmergencyContact: View {
                     saveToCoreData()
                     self.name = ""
                     self.number = ""
+                    self.isAddNewContact = false
                 } label: {
                     Text("Done")
                 }
