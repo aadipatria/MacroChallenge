@@ -30,7 +30,7 @@ struct EmergencyWatchView: View {
                 } label: {
                     if !contact2DArray.isEmpty {
                         Text("\(contact[1])")
-                            .frame(width: WKInterfaceDevice.current().screenBounds.width * 0.9, height: WKInterfaceDevice.current().screenBounds.height * 0.25, alignment: .center)
+                            .frame(width: WKInterfaceDevice.current().screenBounds.width * 0.9, height: WKInterfaceDevice.current().screenBounds.height * 0.22, alignment: .center)
                     }
                     else {
                         Text("no contacts")

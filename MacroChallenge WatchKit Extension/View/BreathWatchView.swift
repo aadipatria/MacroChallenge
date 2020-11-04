@@ -35,12 +35,14 @@ struct BreathWatchView: View {
                                 }
                             }
                         })
-                        .frame(width: WKInterfaceDevice.current().screenBounds.width * 0.9, height: WKInterfaceDevice.current().screenBounds.height * 0.5, alignment: .center)
+                        .frame(width: WKInterfaceDevice.current().screenBounds.width * 0.9, height: WKInterfaceDevice.current().screenBounds.height * 0.65, alignment: .center)
+                        .background(Color.blue)
                 }
-                .padding(.top)
+//                .padding(.top, 20)
             }
         }
         .listStyle(CarouselListStyle())
+        .navigationBarTitle("Breathing")
     }
 }
 
