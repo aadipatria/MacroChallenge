@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		7585E91D25516654007BF3C5 /* LoopingPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7585E91C25516654007BF3C5 /* LoopingPlayer.swift */; };
-		7585E923255166D6007BF3C5 /* waterblue.mov in Resources */ = {isa = PBXBuildFile; fileRef = 7585E922255166D6007BF3C5 /* waterblue.mov */; };
+		7585E96E2552B88E007BF3C5 /* bersinar.mov in Resources */ = {isa = PBXBuildFile; fileRef = 7585E96D2552B88E007BF3C5 /* bersinar.mov */; };
 		9D267F42253C941200882D7F /* EditBreathing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D267F41253C941200882D7F /* EditBreathing.swift */; };
 		9D2F8000255008050055ABCF /* HalfModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D2F7FFF255008050055ABCF /* HalfModalView.swift */; };
 		9D697C8C25514C580087A64C /* EditEmergencyContact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D697C8B25514C580087A64C /* EditEmergencyContact.swift */; };
@@ -100,7 +100,7 @@
 
 /* Begin PBXFileReference section */
 		7585E91C25516654007BF3C5 /* LoopingPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoopingPlayer.swift; sourceTree = "<group>"; };
-		7585E922255166D6007BF3C5 /* waterblue.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = waterblue.mov; sourceTree = "<group>"; };
+		7585E96D2552B88E007BF3C5 /* bersinar.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = bersinar.mov; sourceTree = "<group>"; };
 		9D267F41253C941200882D7F /* EditBreathing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditBreathing.swift; sourceTree = "<group>"; };
 		9D2F7FFF255008050055ABCF /* HalfModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HalfModalView.swift; sourceTree = "<group>"; };
 		9D697C8B25514C580087A64C /* EditEmergencyContact.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditEmergencyContact.swift; sourceTree = "<group>"; };
@@ -172,7 +172,7 @@
 		7585E921255166C2007BF3C5 /* AssetsVideoBerjalan */ = {
 			isa = PBXGroup;
 			children = (
-				7585E922255166D6007BF3C5 /* waterblue.mov */,
+				7585E96D2552B88E007BF3C5 /* bersinar.mov */,
 			);
 			path = AssetsVideoBerjalan;
 			sourceTree = "<group>";
@@ -463,9 +463,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7585E923255166D6007BF3C5 /* waterblue.mov in Resources */,
 				9DFAB8782534405000E81C87 /* LaunchScreen.storyboard in Resources */,
 				9DFAB8752534405000E81C87 /* Preview Assets.xcassets in Resources */,
+				7585E96E2552B88E007BF3C5 /* bersinar.mov in Resources */,
 				9DFAB8722534405000E81C87 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
