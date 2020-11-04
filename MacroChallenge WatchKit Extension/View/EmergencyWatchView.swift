@@ -20,6 +20,7 @@ struct EmergencyWatchView: View {
     //CEK INDEX, SEMUA DALAM STRING -> HARUS DI CAST KALAU MAU DIPAKE
     //String -> 0 = id, 1 = name
     //Number -> 2 = number
+//    var contact2DArray = [[String]]()
     var contact2DArray = [["01","haha","085"],["01","haha","085"],["01","haha","085"]]
     var body: some View {
         List {
@@ -29,6 +30,7 @@ struct EmergencyWatchView: View {
                 } label: {
                     if !contact2DArray.isEmpty {
                         Text("\(contact[1])")
+                            .frame(width: WKInterfaceDevice.current().screenBounds.width * 0.9, height: WKInterfaceDevice.current().screenBounds.height * 0.25, alignment: .center)
                     }
                     else {
                         Text("no contacts")
@@ -36,6 +38,7 @@ struct EmergencyWatchView: View {
                 }
             }
         }
+        .listStyle(EllipticalListStyle())
         
     }
 }

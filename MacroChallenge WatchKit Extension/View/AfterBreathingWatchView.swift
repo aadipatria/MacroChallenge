@@ -8,14 +8,17 @@
 import SwiftUI
 
 struct AfterBreathingWatchView: View {
+    
+    @State var breathName : String
+    
     var body: some View {
-        Text("Ini After Breathing")
-            .navigationBarTitle("After")
+        Text(breathName)
     }
 }
 
 struct AfterBreathingWatchView_Previews: PreviewProvider {
     static var previews: some View {
-        AfterBreathingWatchView()
+        AfterBreathingWatchView(breathName: "BukanCalm")
+        
     }
 }

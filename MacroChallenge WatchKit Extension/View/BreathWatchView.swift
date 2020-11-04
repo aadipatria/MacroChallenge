@@ -17,22 +17,30 @@ struct BreathWatchView: View {
     //UUID -> 8 = id
     //kalau user ada 3 favorite, 3 pertama di array itu favorite
     var breath2DArray = [[String]]()
+    @State var go = false
     
     var body: some View {
-        ZStack {
-            Circle()
-                .foregroundColor(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/)
-                .ignoresSafeArea(.all)
-                .frame(width: 500, height: 500, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-            if !breath2DArray.isEmpty {
-                Text(breath2DArray[0][0])
-            }
-            else {
-                Text("Breath")
+        List {
+            if breath2DArray.isEmpty{
+                Text("No Data")
+            }else{
+                ForEach(breath2DArray.indices, id: \.self){ idx in
+                    NavigationLink(
+                        destination: AfterBreathingWatchView(breathName: "\(breath2DArray[idx][0])"),
+                        label: {
+                            if !breath2DArray.isEmpty {
+                                VStack {
+                                    Text("\(breath2DArray[idx][0])")
+                                    Text("\(breath2DArray[idx][1])-\(breath2DArray[idx][2])-\(breath2DArray[idx][3])-\(breath2DArray[idx][4])")
+                                }
+                            }
+                        })
+                        .frame(width: WKInterfaceDevice.current().screenBounds.width * 0.9, height: WKInterfaceDevice.current().screenBounds.height * 0.5, alignment: .center)
+                }
+                .padding(.top)
             }
         }
-        .navigationBarHidden(true)
-        .ignoresSafeArea(.all)
+        .listStyle(CarouselListStyle())
     }
 }
 
