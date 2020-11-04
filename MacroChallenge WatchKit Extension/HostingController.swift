@@ -10,7 +10,7 @@ import Foundation
 import SwiftUI
 import WatchConnectivity
 
-class HostingController: WKHostingController<HomeWatchView>, WCSessionDelegate {
+class HostingController: WKHostingController<AnyView>, WCSessionDelegate {
     
     var ArrayOfBreathing =  [[String]]()
     var ArrayOfContact = [[String]]()
@@ -48,7 +48,7 @@ class HostingController: WKHostingController<HomeWatchView>, WCSessionDelegate {
     func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
     }
     
-    override var body: HomeWatchView {
+    override var body: AnyView {
         var hwv = HomeWatchView()
         if !ArrayOfBreathing.isEmpty {
             hwv.breath2DArray = ArrayOfBreathing
@@ -58,6 +58,6 @@ class HostingController: WKHostingController<HomeWatchView>, WCSessionDelegate {
             hwv.contact2DArray = ArrayOfContact
         }
         
-        return hwv
+        return AnyView(HomeWatchView().environmentObject(NavigationWatchPopObject()))
     }
 }
