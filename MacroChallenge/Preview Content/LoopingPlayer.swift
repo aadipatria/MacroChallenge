@@ -10,15 +10,16 @@ import AVFoundation
 
 struct LoopingPlayer: UIViewRepresentable {
     func makeUIView(context: Context) -> some UIView {
-        return PlayerUIView(frame: .zero)
+        return QueuePlayerUIView(frame: .zero)
     }
     func updateUIView(_ uiView: UIViewType, context: Context) {
         // do nothing here
     }
 }
 
-class PlayerUIView : UIView {
+class QueuePlayerUIView : UIView {
     private var playerLayer = AVPlayerLayer()
+    private var playerLooper : AVPlayerLooper?
     
     override init(frame : CGRect){
         super.init(frame: frame)
@@ -28,10 +29,13 @@ class PlayerUIView : UIView {
         let playerItem = AVPlayerItem(url: fileUrl!)
         
         // Setup Player
-        let player = AVPlayer(playerItem: playerItem)
+        let player = AVQueuePlayer(playerItem: playerItem)
         playerLayer.player = player
         playerLayer.videoGravity = .resizeAspectFill
         layer.addSublayer(playerLayer)
+        
+        // Looping video
+        playerLooper = AVPlayerLooper(player: player, templateItem: playerItem)
         
         // Play
         player.play()
@@ -52,3 +56,4 @@ struct LoopingPlayer_Previews: PreviewProvider {
         LoopingPlayer()
     }
 }
+//a
