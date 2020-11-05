@@ -116,7 +116,7 @@ struct BreathListView: View {
 //            .listRowBackground(EmptyView())
             
         }
-        .background(Image("ocean").backgroundImageModifier())
+//        .background(Image("ocean").backgroundImageModifier())
         
     }
 }
