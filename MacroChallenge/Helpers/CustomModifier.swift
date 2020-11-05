@@ -46,6 +46,14 @@ struct ButtonModifier: ViewModifier {
             
     }
 }
+struct DeleteButtonModifier: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .frame(width: ScreenSize.windowWidth()*0.9, height: ScreenSize.windowHeight() * 0.05, alignment: .center)
+            .background(RoundedRectangle(cornerRadius: 20).fill(Color(UIColor(.red))))
+            
+    }
+}
 struct ButtonStrokeModifier: ViewModifier {
     func body(content: Content) -> some View {
         content

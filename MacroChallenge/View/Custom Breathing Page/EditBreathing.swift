@@ -87,7 +87,7 @@ struct EditBreathing: View {
             }, label: {
                 Text("Delete")
                     .foregroundColor(.white)
-                    .modifier(ButtonStrokeModifier())
+                    .modifier(DeleteButtonModifier())
             })
             .alert(isPresented: $isAlert){
                 Alert(title: Text("Delete"), message: Text("Yakin mau dihapus? :)"), primaryButton: .destructive(Text("Delete")) {
