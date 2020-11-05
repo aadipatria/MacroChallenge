@@ -14,6 +14,8 @@ struct HomeView: View {
     var body: some View {
         NavigationView{
             ZStack {
+                LoopingPlayer()
+                    .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
                 if navPop.page == 0 {
                     EmergencyView()
                 }

@@ -140,7 +140,7 @@ struct EmergencyView: View {
                 .padding(.bottom, 8)
                 Spacer()
             }
-            .background(Image("ocean").backgroundImageModifier())
+//            .background(Image("ocean").backgroundImageModifier())
 
             HalfModalView(isShown: $isAddNewContact) {
                 AddEmergencyContact(isAddNewContact: $isAddNewContact)

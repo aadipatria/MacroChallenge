@@ -79,7 +79,7 @@ struct BreathView: View {
             }
         })
         .navigationBarHidden(true)
-        .background(Image("ocean").backgroundImageModifier())
+//        .background(Image("ocean").backgroundImageModifier())
         .gesture(DragGesture(minimumDistance: 0, coordinateSpace: .local)
                     .onEnded({ value in
                         //left
