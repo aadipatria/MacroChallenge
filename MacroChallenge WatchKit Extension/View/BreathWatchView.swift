@@ -42,8 +42,6 @@ struct BreathWatchView: View {
         }
         .listStyle(CarouselListStyle())
         .navigationBarTitle("Breathing")
-        .navigationBarHidden(true)
-        .ignoresSafeArea(.all)
         .onAppear() {
             update()
         }

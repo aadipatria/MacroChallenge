@@ -23,21 +23,26 @@ struct EmergencyWatchView: View {
     @State var contact2DArray = [[String]]()
     var body: some View {
         List {
-            ForEach(contact2DArray, id: \.self){ contact in
-                Button {
-                    self.call(number: "\(contact[2])")
-                } label: {
-                    if !contact2DArray.isEmpty {
-                        Text("\(contact[1])")
-                            .frame(width: WKInterfaceDevice.current().screenBounds.width * 0.9, height: WKInterfaceDevice.current().screenBounds.height * 0.22, alignment: .center)
-                    }
-                    else {
-                        Text("no contacts")
+            if contact2DArray.isEmpty{
+                Text("No Data")
+            }else{
+                ForEach(contact2DArray.indices, id: \.self){ idx in
+                    Button {
+                        self.call(number: "\(contact2DArray[idx][2])")
+                    } label: {
+                        if !contact2DArray.isEmpty {
+                            Text("\(contact2DArray[idx][1])")
+                                .frame(width: WKInterfaceDevice.current().screenBounds.width * 0.9, height: WKInterfaceDevice.current().screenBounds.height * 0.22, alignment: .center)
+                        }
+                        else {
+                            Text("no contacts")
+                        }
                     }
                 }
             }
-        }
-        .listStyle(EllipticalListStyle())
+            
+        }.listStyle(EllipticalListStyle())
+        .navigationBarTitle("Emergency Call")
         .onAppear() {
             updateData()
         }
