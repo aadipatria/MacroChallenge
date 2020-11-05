@@ -11,6 +11,14 @@ struct HomeView: View {
     
     @EnvironmentObject var navPop : NavigationPopObject
     
+    init() {
+        //Use this if NavigationBarTitle is with Large Font
+        UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor.white]
+
+        //Use this if NavigationBarTitle is with displayMode = .inline
+        UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor.white]
+    }
+    
     var body: some View {
         NavigationView{
             ZStack {
@@ -37,7 +45,7 @@ struct HomeView: View {
                 }.edgesIgnoringSafeArea(.bottom)
                 
             }
-        }.accentColor( .black) /// ini buat ganti back button jd item
+        }.accentColor( .white) /// ini buat ganti back button jd item
     }
 }
 
