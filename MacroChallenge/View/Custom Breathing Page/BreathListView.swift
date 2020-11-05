@@ -123,7 +123,7 @@ struct BreathListView: View {
             Spacer()
             
         }
-        .background(Image("ocean").backgroundImageModifier())
+//        .background(Image("ocean").backgroundImageModifier())
         
     }
 }
