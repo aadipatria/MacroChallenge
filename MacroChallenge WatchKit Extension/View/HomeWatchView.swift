@@ -11,13 +11,14 @@ struct HomeWatchView: View {
     
 //    var breath2DArray = [[String]]()
 //    var contact2DArray = [[String]]()
+    @EnvironmentObject var navPop : NavigationWatchPopObject
     
     var body: some View {
         ZStack {
             TabView(selection: $navPop.selected){
-                BreathWatchView(breath2DArray: breath2DArray)
+                BreathWatchView()
                     .tag(0)
-                EmergencyWatchView(contact2DArray: contact2DArray)
+                EmergencyWatchView()
                     .tag(1)
             }
         }

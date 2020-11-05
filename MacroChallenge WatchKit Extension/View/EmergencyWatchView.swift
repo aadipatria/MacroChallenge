@@ -35,11 +35,15 @@ struct EmergencyWatchView: View {
                         Text("no contacts")
                     }
                 }
+            }
+        }
         .listStyle(EllipticalListStyle())
-        
         .onAppear() {
             updateData()
         }
+    }
+    
+}
 
 extension EmergencyWatchView{
     func call(number : String){
@@ -52,7 +56,6 @@ extension EmergencyWatchView{
     func updateData() {
         if let tempArr = UserDefaults.standard.array(forKey: "arrayOfContact") as? [[String]] {
             contact2DArray = tempArr
-            
         }
     }
 }

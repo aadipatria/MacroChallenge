@@ -62,7 +62,7 @@ class HostingController: WKHostingController<AnyView>, WCSessionDelegate {
 //            hwv.contact2DArray = ArrayOfContact
 //        }
         
-        return AnyView(HomeWatchView().environmentObject(DataObserver())
+        return AnyView(HomeWatchView()
             .environmentObject(NavigationWatchPopObject()))
     }
 }
