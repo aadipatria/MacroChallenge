@@ -16,8 +16,7 @@ struct BreathWatchView: View {
     //Boolean -> 5 = sound, 6 = haptic, 7 = favorite,
     //UUID -> 8 = id
     //kalau user ada 3 favorite, 3 pertama di array itu favorite
-    var breath2DArray = [[String]]()
-    @State var go = false
+    @State var breath2DArray = [[String]]()
     
     var body: some View {
         List {
@@ -43,6 +42,19 @@ struct BreathWatchView: View {
         }
         .listStyle(CarouselListStyle())
         .navigationBarTitle("Breathing")
+        .navigationBarHidden(true)
+        .ignoresSafeArea(.all)
+        .onAppear() {
+            update()
+        }
+    }
+}
+
+extension BreathWatchView {
+    func update() {
+        if let tempArr = UserDefaults.standard.array(forKey: "arrayOfBreathing") as? [[String]] {
+            breath2DArray = tempArr
+        }
     }
 }
 

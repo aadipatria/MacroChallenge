@@ -9,9 +9,8 @@ import SwiftUI
 
 struct HomeWatchView: View {
     
-    var breath2DArray = [["Calm1","4","7","8","0","True","True","True","123"],["Calm2","4","7","8","0","True","True","True","123"],["Calm3","4","7","8","0","True","True","True","123"]]
-    var contact2DArray = [["01","haha","085"],["01","haha","085"],["01","haha","085"]]
-    @EnvironmentObject var navPop : NavigationWatchPopObject
+//    var breath2DArray = [[String]]()
+//    var contact2DArray = [[String]]()
     
     var body: some View {
         ZStack {

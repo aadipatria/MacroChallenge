@@ -19,9 +19,8 @@ struct EmergencyWatchView: View {
     //String 2 dimensi untuk attribute contack
     //CEK INDEX, SEMUA DALAM STRING -> HARUS DI CAST KALAU MAU DIPAKE
     //String -> 0 = id, 1 = name
-    //Number -> 2 = number
-//    var contact2DArray = [[String]]()
-    var contact2DArray = [["01","haha","085"],["01","haha","085"],["01","haha","085"]]
+    //UUID -> 2 = number
+    @State var contact2DArray = [[String]]()
     var body: some View {
         List {
             ForEach(contact2DArray, id: \.self){ contact in
@@ -36,19 +35,24 @@ struct EmergencyWatchView: View {
                         Text("no contacts")
                     }
                 }
-            }
-        }
         .listStyle(EllipticalListStyle())
         
-    }
-}
+        .onAppear() {
+            updateData()
+        }
 
 extension EmergencyWatchView{
     func call(number : String){
-        
         if let NomorHape = URL(string: "tel:\(number)") {
             let wkExt = WKExtension.shared()
             wkExt.openSystemURL(NomorHape)
+        }
+    }
+    
+    func updateData() {
+        if let tempArr = UserDefaults.standard.array(forKey: "arrayOfContact") as? [[String]] {
+            contact2DArray = tempArr
+            
         }
     }
 }
