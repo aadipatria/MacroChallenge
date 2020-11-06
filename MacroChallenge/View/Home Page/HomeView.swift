@@ -24,6 +24,7 @@ struct HomeView: View {
             ZStack {
                 LoopingPlayer()
                     .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
+                    .animation(nil)
                 if navPop.page == 0 {
                     EmergencyView()
                 }
@@ -38,14 +39,20 @@ struct HomeView: View {
                     ZStack {
                         if !navPop.tabIsHidden{
                             ExtractedView()
+                                
                         }
 
                     }
+                    .animation(nil)
                     
-                }.edgesIgnoringSafeArea(.bottom)
+                }
+                .edgesIgnoringSafeArea(.bottom)
                 
             }
-        }.accentColor( .white) /// ini buat ganti back button jd item
+        }
+        .accentColor( .white) /// ini buat ganti back button jd item
+        .animation(.easeOut(duration: 0.6))
+        
     }
 }
 

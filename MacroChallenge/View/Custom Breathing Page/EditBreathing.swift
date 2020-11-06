@@ -35,7 +35,7 @@ struct EditBreathing: View {
                 InputName(breathName: $breathName)
                 
                 VStack {
-                    Text("Pattern (Seconds)")
+                    Text("Pattern - in seconds")
                         .font(.headline)
                         .fontWeight(.semibold)
                         .padding()
