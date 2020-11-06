@@ -25,73 +25,70 @@ struct CustomBreathingView: View {
     }
     
     var body: some View {
-        VStack {
-            Precautions()
-            InputName(breathName: $breathName)
-            VStack {
-                Group {
-                    ZStack {
-                        SomeBackground.headerBackground()
-                        Text("Pattern (Seconds)")
-                            .padding()
-                            .font(.system(size: 16, weight: .bold, design: .default))
-                            .frame(width: ScreenSize.windowWidth() * 0.9, height: ScreenSize.windowHeight() * 0.054, alignment: .leading)
-                    }
-                    ZStack {
-                        Rectangle()
-                            .fill(Color.clear)
-                            .background(Blur(style: .systemThinMaterial)
-                                            .opacity(0.95))
-                            .cornerRadius(8, corners: [.bottomLeft, .bottomRight])
-                        VStack {
-                            HStack {
-                                Text("Inhale")
-                                    .frame(width: ScreenSize.windowWidth() * 0.2075)
-                                Text("Hold")
-                                    .frame(width: ScreenSize.windowWidth() * 0.2075)
-                                Text("Exhale")
-                                    .frame(width: ScreenSize.windowWidth() * 0.2075)
-                                Text("Hold")
-                                    .frame(width: ScreenSize.windowWidth() * 0.2075)
-                            }.padding(.top)
-                            CustomBreathingViewPicker(inhaleSelection: $inhale, hold1Selection: $hold1, exhaleSelection: $exhale, hold2Selection: $hold2)
-                                .frame(height: (226-40))
-                        }
-                    }
-                    .frame(height: (215))
-                }
-                
-            }
-            .padding(.vertical)
-            
-            
-            
-            VStack {
-                Text("Guiding Preferences")
-                    .padding()
-                    .font(.system(size: 20, weight: .bold, design: .default))
-                    .frame(width: ScreenSize.windowWidth() * 0.9, height: 28, alignment: .leading)
-                    .background(SomeBackground.headerBackground())
+        ZStack {
+            LoopingPlayer()
+                .edgesIgnoringSafeArea(.all)
+            VStack (spacing : 16) {
+                Precautions()
                     .padding(.top)
+                InputName(breathName: $breathName)
+                VStack {
+                    Group {
+                        Text("Pattern - in seconds")
+                            .font(.headline)
+                            .fontWeight(.semibold)
+                            .padding()
+                            .frame(width: ScreenSize.windowWidth() * 0.9, height: ScreenSize.windowHeight() * 0.054, alignment: .leading)
+                            .background(SomeBackground.headerBackground())
+                        ZStack {
+                            Rectangle()
+                                .fill(Color.clear)
+                                .background(Blur(style: .systemThinMaterial)
+                                                .opacity(0.95))
+                                .cornerRadius(8, corners: [.bottomLeft, .bottomRight])
+                            VStack {
+                                HStack {
+                                    Text("Inhale")
+                                        .frame(width: ScreenSize.windowWidth() * 0.2075)
+                                    Text("Hold")
+                                        .frame(width: ScreenSize.windowWidth() * 0.2075)
+                                    Text("Exhale")
+                                        .frame(width: ScreenSize.windowWidth() * 0.2075)
+                                    Text("Hold")
+                                        .frame(width: ScreenSize.windowWidth() * 0.2075)
+                                }.padding(.top)
+                                CustomBreathingViewPicker(inhaleSelection: $inhale, hold1Selection: $hold1, exhaleSelection: $exhale, hold2Selection: $hold2)
+                                    .frame(height: (226-40))
+                            }
+                        }
+                        .frame(height: (215))
+                    }
+                }
+                VStack (spacing : 0) {
+                    Text("Guiding Preferences")
+                        .fontWeight(.semibold)
+                        .padding()
+                        .frame(width: ScreenSize.windowWidth() * 0.9, height: ScreenSize.windowHeight() * 0.054, alignment: .leading)
+                        .background(SomeBackground.headerBackground())
+                        
+                    GuidingPreferences(isSoundOn: $isSoundOn, isHapticOn: $isHapticOn)
+                        .padding(.vertical)
+                        .background(Rectangle()
+                                        .fill(Color.clear)
+                                        .background(Blur(style: .systemThinMaterial)
+                                                        .opacity(0.95))
+                                        .cornerRadius(8, corners: [.bottomLeft, .bottomRight]))
                     
-                GuidingPreferences(isSoundOn: $isSoundOn, isHapticOn: $isHapticOn, isFavorite: $isFavorite)
-                    .padding()
-                    .background(Rectangle()
-                                    .fill(Color.clear)
-                                    .background(Blur(style: .systemThinMaterial)
-                                                    .opacity(0.95))
-                                    .cornerRadius(8, corners: [.bottomLeft, .bottomRight]))
-                
+                }
+                .frame(width: ScreenSize.windowWidth() * 0.9, alignment: .leading)
+                .padding(.top, 8)
+                Spacer()
             }
-            .frame(width: ScreenSize.windowWidth() * 0.9, alignment: .leading)
-            
-            
-            
+//            .background(Image("ocean").blurBackgroundImageModifier())
+            .navigationBarItems(trailing: CancelAddView(breathName: $breathName, inhale: $inhale, hold1: $hold1, exhale: $exhale, hold2: $hold2, isSoundOn: $isSoundOn, isHapticOn: $isHapticOn, isFavorite: $isFavorite))
+            .frame(width : ScreenSize.windowWidth() * 0.9)
+            .navigationBarTitle("Add Breathing",displayMode: .inline)
         }
-        .background(Image("ocean").blurBackgroundImageModifier())
-        .navigationBarItems(trailing: CancelAddView(breathName: $breathName, inhale: $inhale, hold1: $hold1, exhale: $exhale, hold2: $hold2, isSoundOn: $isSoundOn, isHapticOn: $isHapticOn, isFavorite: $isFavorite))
-        .frame(width : ScreenSize.windowWidth() * 0.9)
-        .navigationBarTitle("Add Breathing",displayMode: .inline)
     }
 }
 
@@ -103,18 +100,20 @@ struct Precautions: View {
                 .background(Blur(style: .systemThinMaterial)
                                 .opacity(0.95))
                 .cornerRadius(8)
-                .frame(width: ScreenSize.windowWidth() * 0.87, height: ScreenSize.windowHeight() * 0.135)
+                .frame(width: ScreenSize.windowWidth() * 0.9, height: ScreenSize.windowHeight() * 0.135)
             VStack(alignment: .leading) {
                 Text("Precautions:")
-                    .font(.system(size: 16, weight: .semibold, design: .default))
+                    .font(.headline)
+                    .fontWeight(.semibold)
                 Group {
-                    Text("- Make sure that the breathing pattern is as")
-                    Text("suggested as the experts")
-                    Text("- It is better when the exhale is longer than the")
-                    Text("inhale period")
+                    Text("- Make sure that the breathing pattern is as suggested by the doctor or psychiatrist")
+                        .font(.footnote)
+                    Text("- Try to make the exhale period longer than the inhale period")
+                        .font(.footnote)
                 }
                 .font(.system(size: 12, weight: .regular, design: .default))
             }
+            .frame(width: ScreenSize.windowWidth() * 0.75, height: ScreenSize.windowHeight() * 0.135)
         }
     }
 }
@@ -129,7 +128,7 @@ struct InputName: View {
                     .background(Blur(style: .systemThinMaterial)
                                     .opacity(0.95))
                     .cornerRadius(8)
-                    .frame(width: ScreenSize.windowWidth() * 0.87, height: ScreenSize.windowHeight() * 0.074)
+                    .frame(width: ScreenSize.windowWidth() * 0.9, height: ScreenSize.windowHeight() * 0.074)
                 HStack {
                     TextField("Name", text: $breathName)
                         .frame(width: ScreenSize.windowWidth() * 0.8, height: ScreenSize.windowHeight() * 0.05)
@@ -146,11 +145,11 @@ struct InputName: View {
                             .padding()
                     })
                 }
+                Rectangle()
+                    .frame(width: ScreenSize.windowWidth() * 0.8, height: 0.5, alignment: .center)
+                    .foregroundColor(.gray)
+                    .padding(.top,ScreenSize.windowHeight() * 0.057 )
             }
-            Rectangle()
-                .frame(width: ScreenSize.windowWidth() * 0.83, height: 0.5, alignment: .center)
-                .foregroundColor(.gray)
-                .padding(.vertical, -ScreenSize.windowWidth() * 0.04)
         }
     }
 }
@@ -211,22 +210,16 @@ struct CustomBreathingViewPicker: View {
 struct GuidingPreferences: View {
     @Binding var isSoundOn: Bool
     @Binding var isHapticOn: Bool
-    @Binding var isFavorite: Bool
     var body: some View {
         VStack{
             Toggle(isOn: $isSoundOn, label: {
-                Text("Sound")
+                Text("Audio Instruction")
             })
             .padding(.horizontal)
             
             Toggle(isOn: $isHapticOn, label: {
                 Text("Haptic")
             })
-            .padding(.horizontal)
-            
-            Toggle(isOn: $isFavorite) {
-                Text("Favorite")
-            }
             .padding(.horizontal)
         }
         
@@ -271,7 +264,7 @@ extension CancelAddView {
         breath.sound = isSoundOn
         breath.haptic = isHapticOn
         breath.id = UUID()
-        breath.favorite = isFavorite
+        breath.favorite = false
         
         do{
             //save ke core data

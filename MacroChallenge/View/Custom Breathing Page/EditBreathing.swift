@@ -26,81 +26,86 @@ struct EditBreathing: View {
     //ini isinya sama hampir sama dengan yang add new, bedanya hanya di tombol add/savenya + disini ada cek id(UUID) karena mau update
     //kalau ada cara yang lebih bagus ajarin gw - Vincent
     var body: some View {
-        VStack {
-            Precautions()
-            InputName(breathName: $breathName)
-            
-            VStack {
-                ZStack {
-                    SomeBackground.headerBackground()
-                    Text("Pattern (Seconds)")
-                        .padding()
-                        .font(.system(size: 16, weight: .bold, design: .default))
-                        .frame(width: ScreenSize.windowWidth() * 0.9, height: ScreenSize.windowHeight() * 0.054, alignment: .leading)
-                }
-                ZStack {
-                    Rectangle()
-                        .fill(Color.clear)
-                        .background(Blur(style: .systemThinMaterial)
-                                        .opacity(0.95))
-                        .cornerRadius(8, corners: [.bottomLeft, .bottomRight])
-                    VStack {
-                        HStack {
-                            Text("Inhale")
-                                .frame(width: ScreenSize.windowWidth() * 0.2075)
-                            Text("Hold")
-                                .frame(width: ScreenSize.windowWidth() * 0.2075)
-                            Text("Exhale")
-                                .frame(width: ScreenSize.windowWidth() * 0.2075)
-                            Text("Hold")
-                                .frame(width: ScreenSize.windowWidth() * 0.2075)
-                        }.padding(.top)
-                        CustomBreathingViewPicker(inhaleSelection: $inhale, hold1Selection: $hold1, exhaleSelection: $exhale, hold2Selection: $hold2)
-                            .frame(height: (226-40))
-                    }
-                }
-                .frame(height: (215))
-            }.padding(.vertical)
-
-            
-            
-            VStack {
-                Text("Guiding Preferences")
-                    .padding()
-                    .font(.system(size: 20, weight: .bold, design: .default))
-                    .frame(width: ScreenSize.windowWidth() * 0.9, height: 28, alignment: .leading)
-                    .background(SomeBackground.headerBackground())
+        ZStack {
+            LoopingPlayer()
+                .edgesIgnoringSafeArea(.all)
+            VStack (spacing: 16) {
+                Precautions()
                     .padding(.top)
-                    
-                GuidingPreferences(isSoundOn: $isSoundOn, isHapticOn: $isHapticOn, isFavorite: $isFavorite)
-                    .padding()
-                    .background(Rectangle()
-                                    .fill(Color.clear)
-                                    .background(Blur(style: .systemThinMaterial)
-                                                    .opacity(0.95))
-                                    .cornerRadius(8, corners: [.bottomLeft, .bottomRight]))
+                InputName(breathName: $breathName)
                 
+                VStack {
+                    Text("Pattern (Seconds)")
+                        .font(.headline)
+                        .fontWeight(.semibold)
+                        .padding()
+                        .frame(width: ScreenSize.windowWidth() * 0.9, height: ScreenSize.windowHeight() * 0.054, alignment: .leading)
+                        .background(SomeBackground.headerBackground())
+                    ZStack {
+                        Rectangle()
+                            .fill(Color.clear)
+                            .background(Blur(style: .systemThinMaterial)
+                                            .opacity(0.95))
+                            .cornerRadius(8, corners: [.bottomLeft, .bottomRight])
+                        VStack {
+                            HStack {
+                                Text("Inhale")
+                                    .frame(width: ScreenSize.windowWidth() * 0.2075)
+                                Text("Hold")
+                                    .frame(width: ScreenSize.windowWidth() * 0.2075)
+                                Text("Exhale")
+                                    .frame(width: ScreenSize.windowWidth() * 0.2075)
+                                Text("Hold")
+                                    .frame(width: ScreenSize.windowWidth() * 0.2075)
+                            }.padding(.top)
+                            CustomBreathingViewPicker(inhaleSelection: $inhale, hold1Selection: $hold1, exhaleSelection: $exhale, hold2Selection: $hold2)
+                                .frame(height: (226-40))
+                        }
+                    }
+                    .frame(height: (215))
+                }
+
+                
+                
+                VStack (spacing : 0) {
+                    Text("Guiding Preferences")
+                        .fontWeight(.semibold)
+                        .padding()
+                        .frame(width: ScreenSize.windowWidth() * 0.9, height: ScreenSize.windowHeight() * 0.054, alignment: .leading)
+                        .background(SomeBackground.headerBackground())
+                        
+                    GuidingPreferences(isSoundOn: $isSoundOn, isHapticOn: $isHapticOn)
+                        .padding()
+                        .background(Rectangle()
+                                        .fill(Color.clear)
+                                        .background(Blur(style: .systemThinMaterial)
+                                                        .opacity(0.95))
+                                        .cornerRadius(8, corners: [.bottomLeft, .bottomRight]))
+                    
+                }
+                .frame(width: ScreenSize.windowWidth() * 0.9, alignment: .leading)
+                .padding(.top, 8)
+                Button(action: {
+                    isAlert = true
+                }, label: {
+                    Text("Delete")
+                        .foregroundColor(.white)
+                        .modifier(DeleteButtonModifier())
+                })
+                .alert(isPresented: $isAlert){
+                    Alert(title: Text("Delete"), message: Text("Yakin mau dihapus? :)"), primaryButton: .destructive(Text("Delete")) {
+                        deleteBreathing()
+                        }, secondaryButton: .cancel())
+                }
+                Spacer()
             }
-            .frame(width: ScreenSize.windowWidth() * 0.9, alignment: .leading)
-            Button(action: {
-                isAlert = true
-            }, label: {
-                Text("Delete")
-                    .foregroundColor(.white)
-                    .modifier(ButtonStrokeModifier())
-            })
-            .alert(isPresented: $isAlert){
-                Alert(title: Text("Delete"), message: Text("Yakin mau dihapus? :)"), primaryButton: .destructive(Text("Delete")) {
-                    deleteBreathing()
-                    }, secondaryButton: .cancel())
-            }
+//            .background(Image("ocean").blurBackgroundImageModifier())
+            .navigationBarItems(trailing: EditBreathingCancelAddView(breathName: $breathName, inhale: $inhale, hold1: $hold1, exhale: $exhale, hold2: $hold2, isSoundOn: $isSoundOn, isHapticOn: $isHapticOn, id: id, isFavorite: $isFavorite))
+            .frame(width : ScreenSize.windowWidth() * 0.9)
+            .navigationBarTitle("Edit Breathing",displayMode: .inline)
+            .onAppear {
+                checkIdAndChangeData()
         }
-        .background(Image("ocean").blurBackgroundImageModifier())
-        .navigationBarItems(trailing: EditBreathingCancelAddView(breathName: $breathName, inhale: $inhale, hold1: $hold1, exhale: $exhale, hold2: $hold2, isSoundOn: $isSoundOn, isHapticOn: $isHapticOn, id: id, isFavorite: $isFavorite))
-        .frame(width : ScreenSize.windowWidth() * 0.9)
-        .navigationBarTitle("Edit Breathing",displayMode: .inline)
-        .onAppear {
-            checkIdAndChangeData()
         }
     }
 }

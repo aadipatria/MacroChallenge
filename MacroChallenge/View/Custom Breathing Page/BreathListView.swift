@@ -33,7 +33,8 @@ struct BreathListView: View {
             HStack {
                 Text("Breathing Library")
                     .font(.title)
-                    .padding()
+                    .fontWeight(.bold)
+                    .foregroundColor(.white)
                 Spacer()
                 ZStack {
                     SomeBackground.plusBackground()
@@ -51,15 +52,18 @@ struct BreathListView: View {
                     })
                     
                 }
-            }.frame(width : ScreenSize.windowWidth() * 0.9)
-            Button {
-                sync()
-            } label: {
-                Text("Sync With Apple Watch")
             }
+            .frame(width : ScreenSize.windowWidth() * 0.9)
+//            .padding()
+            .padding(10)
+            .padding(.bottom, 6)
+//            Button {
+//                sync()
+//            } label: {
+//                Text("Sync With Apple Watch")
+//            }
 
             
-//            List {
             if !breaths.isEmpty{
                 ForEach(self.breaths) { breath in
                     NavigationLink(
@@ -76,9 +80,12 @@ struct BreathListView: View {
                         navPop.editBreath = true
                     }, label: {
                         HStack{
-                            VStack{
+                            VStack(alignment : .leading, spacing : 4){
                                 Text(breath.name ?? "")
+                                    .fontWeight(.semibold)
+                                    .foregroundColor(.black)
                                 Text("\(breath.inhale)-\(breath.hold1)-\(breath.exhale)-\(breath.hold2)")
+                                    .foregroundColor(.black)
                             }.padding()
                             Spacer()
                             Button(action: {
@@ -86,9 +93,13 @@ struct BreathListView: View {
                             }, label: {
                                 if breath.favorite{
                                     Image(systemName: "heart.fill")
+                                        .foregroundColor(.red)
+                                        .font(.system(size: 20))
                                         .padding()
                                 }else{
                                     Image(systemName: "heart")
+                                        .foregroundColor(.black)
+                                        .font(.system(size: 20))
                                         .padding()
                                 }
                                 
@@ -110,10 +121,6 @@ struct BreathListView: View {
             }
             
             Spacer()
-//            }
-//            .environment(\.defaultMinListRowHeight, 100)
-//            .listStyle(InsetListStyle())
-//            .listRowBackground(EmptyView())
             
         }
 //        .background(Image("ocean").backgroundImageModifier())

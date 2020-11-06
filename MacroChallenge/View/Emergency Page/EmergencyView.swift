@@ -30,28 +30,31 @@ struct EmergencyView: View {
     @State var contact2DArray = [[String]]()
     
     var body: some View {
-        ZStack {
-            VStack{
+        ZStack() {
+            VStack(spacing: 0){
                 HStack {
                     Text("Top Contacts")
                         .font(.title)
-                        .padding()
+                        .fontWeight(.bold)
+                        .foregroundColor(.white)
                     Spacer()
                     Button(action: {
                         isEdited.toggle()
                     }, label: {
                         if isEdited{
                             Text("Done")
-                                .padding()
+                                .foregroundColor(.black)
                                 .background(SomeBackground.editBackground())
+                                .padding()
                         }else{
                             Text("Edit")
-                                .padding()
+                                .foregroundColor(.black)
                                 .background(SomeBackground.editBackground())
+                                .padding()
                         }
 
                     })
-                    if !isEdited {
+                    if !isEdited && contacts.count < 3{
                         ZStack {
                             SomeBackground.plusBackground()
                             Button(action: {
@@ -64,14 +67,14 @@ struct EmergencyView: View {
 
                         }
                     }
-                }.animation(.easeInOut(duration: 0.6))
-                .frame(width : ScreenSize.windowWidth() * 0.9)
-                Button {
-                    sync()
-                } label: {
-                    Text("Sync With Apple Watch")
                 }
-
+                .animation(.easeInOut(duration: 0.6))
+                .padding(.bottom)
+//                Button {
+//                    sync()
+//                } label: {
+//                    Text("Sync With Apple Watch")
+//                }
                 ForEach(self.contacts){ contact in
                     Button(action: {
                         if isEdited{
@@ -98,13 +101,13 @@ struct EmergencyView: View {
                                 Button(action: {
                                     isAlert = true
                                 }, label: {
-                                    Image(systemName: "x.circle")
-                                        .padding()
+                                    Image(systemName: "x.circle.fill")
+                                        .foregroundColor(.red)
+                                        .padding(10)
                                 })
                                 .alert(isPresented: $isAlert){
                                     Alert(title: Text("Delete"), message: Text("Yakin mau dihapus? :)"), primaryButton: .destructive(Text("Delete")) {
                                         self.manageObjectContext.delete(contact)
-
                                         do {
                                             try self.manageObjectContext.save()
                                         } catch {
@@ -113,17 +116,24 @@ struct EmergencyView: View {
                                         }, secondaryButton: .cancel())
                                 }
                             }
-                            VStack {
+                            VStack(alignment : .leading, spacing : 4) {
                                 Text("\(contact.name!)")
+                                    .fontWeight(.semibold)
+                                    .foregroundColor(.black)
                                 Text("\(contact.number!)")
-                            }
+                                    .foregroundColor(.black)
+                            }.padding()
                             Spacer()
                             if !isEdited{
-                                Button(action: {
-                                    call(number: contact.number!)
-                                }, label: {
-                                    Image(systemName: "phone.fill")
-                                })
+                                Image(systemName: "phone.fill")
+                                    .foregroundColor(.black)
+                                    .font(.system(size: 20))
+                                    .padding()
+                            }else{
+                                Image(systemName: "pencil")
+                                    .foregroundColor(.black)
+                                    .font(.system(size: 20))
+                                    .padding()
                             }
 
                         }
@@ -137,10 +147,11 @@ struct EmergencyView: View {
                                         .cornerRadius(8))
                     })
                 }
-                .padding(.bottom, 8)
+                .padding(.bottom, 16)
                 Spacer()
             }
 //            .background(Image("ocean").backgroundImageModifier())
+            .frame(width: ScreenSize.windowWidth() * 0.9)
 
             HalfModalView(isShown: $isAddNewContact) {
                 AddEmergencyContact(isAddNewContact: $isAddNewContact)
