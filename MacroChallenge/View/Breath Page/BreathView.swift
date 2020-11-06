@@ -12,12 +12,26 @@ struct BreathView: View {
     @EnvironmentObject var navPop : NavigationPopObject
     @FetchRequest(fetchRequest: Breathing.getAllBreathing()) var breaths: FetchedResults<Breathing>
     @State var index = 0
-    @State var inhale = 0
-    @State var hold1 = 0
-    @State var exhale = 0
-    @State var hold2 = 0
+    @State var inhale: Double = 0
+    @State var hold1: Double = 0
+    @State var exhale: Double = 0
+    @State var hold2: Double = 0
+    
+    @State var animationSets: [AnimationSet] = []
+    @State var isBreathing: Bool = false
+    @State var breathingState: BreathingState = .none
     
     @State var orbitalEffectScaling: CGFloat = 0.0
+    @State var animationSizeScaling: CGFloat = 0.0
+    @State var uiElementsOpacityScaling: Double = 1.0
+    @State var guidanceTextOpacityScaling: Double = 0.0
+    @State var guidanceText: String = ""
+    
+    @State var startInhale: DispatchWorkItem = DispatchWorkItem {}
+    @State var startHold1: DispatchWorkItem = DispatchWorkItem {}
+    @State var startExhale: DispatchWorkItem = DispatchWorkItem {}
+    @State var startHold2: DispatchWorkItem = DispatchWorkItem {}
+    @State var startCompletion: DispatchWorkItem = DispatchWorkItem {}
     
     var body: some View {
         VStack {
@@ -32,7 +46,7 @@ struct BreathView: View {
                     })
                     VStack {
                         Text(String(breaths[index].name ?? ""))
-                        Text("\(inhale)-\(hold1)-\(exhale)-\(hold2)")
+                        Text(String(format: "%.0f - %.0f - %.0f - %.0f", self.inhale, self.hold1, self.exhale, self.hold2))
                     }
                     Button(action: {
                         changeRight()
@@ -41,6 +55,7 @@ struct BreathView: View {
                             .foregroundColor(.black)
                     })
                 }
+                .opacity(self.uiElementsOpacityScaling)
             }
             Group {
                 Button(action: {
@@ -57,16 +72,31 @@ struct BreathView: View {
                         EmptyView()
                     })
             }
+            .opacity(self.uiElementsOpacityScaling)
+            
             Spacer()
             
-            AnimatedRing(binding: self.$orbitalEffectScaling)
-                .padding(30)
+            ZStack {
+                AnimatedRing(binding: self.$orbitalEffectScaling)
+                    .padding(30)
+                    .scaleEffect(self.animationSizeScaling)
+                
+                Text(guidanceText)
+                    .foregroundColor(Color.white)
+                    .opacity(self.guidanceTextOpacityScaling)
+            }
+            
             Spacer()
             
             Button(action: {
-                let orbitalSet = OrbitalAnimationSet(binding: self.$orbitalEffectScaling).getAnimationSets()
-
-                AnimationTimer().performAnimationforBreath(breath: breaths[index], animation: [orbitalSet])
+                self.isBreathing.toggle()
+                
+                if isBreathing {
+                    self.setUpDispatchWorkItems()
+                    self.startBreathing()
+                } else {
+                    self.stopBreathing()
+                }
             }) {
                 RoundedRectangle(cornerRadius: 10)
             }
@@ -74,10 +104,28 @@ struct BreathView: View {
             .padding(.bottom, 60)
         }
         .onAppear(perform: {
+            let orbitalSet = OrbitalAnimationSet(binding: self.$orbitalEffectScaling).getAnimationSets()
+            let textSet = GuidanceTextSet(binding: self.$guidanceText).getAnimationSets()
+            self.animationSets = [orbitalSet, textSet]
+            
             if !breaths.isEmpty {
                 update()
             }
         })
+        .onChange(of: breathingState) {newValue in
+            switch newValue {
+            case .none:
+                self.endAction()
+            case .inhale:
+                self.inhaleAction()
+            case .hold1:
+                self.hold1Action()
+            case .exhale:
+                self.exhaleAction()
+            case .hold2:
+                self.hold2Action()
+            }
+        }
         .navigationBarHidden(true)
 //        .background(Image("ocean").backgroundImageModifier())
         .gesture(DragGesture(minimumDistance: 0, coordinateSpace: .local)
@@ -114,10 +162,10 @@ extension BreathView{
         update()
     }
     func update(){
-        inhale = Int(breaths[index].inhale)
-        hold1 = Int(breaths[index].hold1)
-        exhale = Int(breaths[index].exhale)
-        hold2 = Int(breaths[index].hold2)
+        inhale = Double(breaths[index].inhale)
+        hold1 = Double(breaths[index].hold1)
+        exhale = Double(breaths[index].exhale)
+        hold2 = Double(breaths[index].hold2)
     }
 }
 
