@@ -106,7 +106,7 @@ struct EmergencyView: View {
                                         .padding(10)
                                 })
                                 .alert(isPresented: $isAlert){
-                                    Alert(title: Text("Delete"), message: Text("Yakin mau dihapus? :)"), primaryButton: .destructive(Text("Delete")) {
+                                    Alert(title: Text("Are you sure you want to delete this contact?"), primaryButton: .destructive(Text("Delete")) {
                                         self.manageObjectContext.delete(contact)
                                         do {
                                             try self.manageObjectContext.save()
@@ -130,7 +130,7 @@ struct EmergencyView: View {
                                     .font(.system(size: 20))
                                     .padding()
                             }else{
-                                Image(systemName: "pencil")
+                                Image(systemName: "square.and.pencil")
                                     .foregroundColor(.black)
                                     .font(.system(size: 20))
                                     .padding()
