@@ -130,7 +130,7 @@ struct EmergencyView: View {
                                     .font(.system(size: 20))
                                     .padding()
                             }else{
-                                Image(systemName: "pencil")
+                                Image(systemName: "square.and.pencil")
                                     .foregroundColor(.black)
                                     .font(.system(size: 20))
                                     .padding()

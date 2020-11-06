@@ -84,7 +84,7 @@ struct BreathListView: View {
                                 Text(breath.name ?? "")
                                     .fontWeight(.semibold)
                                     .foregroundColor(.black)
-                                Text("\(breath.inhale)-\(breath.hold1)-\(breath.exhale)-\(breath.hold2)")
+                                Text("\(breath.inhale) - \(breath.hold1) - \(breath.exhale) - \(breath.hold2)")
                                     .foregroundColor(.black)
                             }.padding()
                             Spacer()
