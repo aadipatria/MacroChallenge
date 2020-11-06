@@ -9,8 +9,9 @@ import SwiftUI
 import AVFoundation
 
 struct LoopingPlayer: UIViewRepresentable {
+    var player = QueuePlayerUIView(frame: .zero)
     func makeUIView(context: Context) -> some UIView {
-        return QueuePlayerUIView(frame: .zero)
+        return player
     }
     func updateUIView(_ uiView: UIViewType, context: Context) {
         // do nothing here
@@ -20,6 +21,7 @@ struct LoopingPlayer: UIViewRepresentable {
 class QueuePlayerUIView : UIView {
     private var playerLayer = AVPlayerLayer()
     private var playerLooper : AVPlayerLooper?
+    var tampungPlayer = AVQueuePlayer()
     
     override init(frame : CGRect){
         super.init(frame: frame)
@@ -38,7 +40,11 @@ class QueuePlayerUIView : UIView {
         playerLooper = AVPlayerLooper(player: player, templateItem: playerItem)
         
         // Play
-        player.play()
+        tampungPlayer = player
+        playing()
+    }
+    func playing(){
+        tampungPlayer.play()
     }
     
     override func layoutSubviews() {

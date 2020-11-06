@@ -10,6 +10,7 @@ import SwiftUI
 struct HomeView: View {
     
     @EnvironmentObject var navPop : NavigationPopObject
+    var playLooping = LoopingPlayer()
     
     init() {
         //Use this if NavigationBarTitle is with Large Font
@@ -22,9 +23,10 @@ struct HomeView: View {
     var body: some View {
         NavigationView{
             ZStack {
-                LoopingPlayer()
+                playLooping
                     .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
                     .animation(nil)
+                    
                 if navPop.page == 0 {
                     EmergencyView()
                 }
@@ -47,6 +49,10 @@ struct HomeView: View {
                     
                 }
                 .edgesIgnoringSafeArea(.bottom)
+                
+            }
+            .onReceive(NotificationCenter.default.publisher(for: UIApplication.willEnterForegroundNotification)) { _ in
+                playLooping.player.playing()
                 
             }
         }
