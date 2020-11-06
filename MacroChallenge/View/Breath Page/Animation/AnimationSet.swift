@@ -16,4 +16,5 @@ struct AnimationSet {
     var exhale: (() -> Void)?
     var preHold2: (() -> Void)?
     var hold2: (() -> Void)?
+    var completion: (() -> Void)?
 }
