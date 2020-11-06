@@ -54,6 +54,7 @@
 		CA95C13025357CA8008C0398 /* EmergencyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA95C12F25357CA8008C0398 /* EmergencyView.swift */; };
 		CACCB3A12552701E0037AE62 /* NavigationWatchPop.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACCB3A02552701E0037AE62 /* NavigationWatchPop.swift */; };
 		CAE33D402555393B007EBB35 /* forest_bg_1.mov in Resources */ = {isa = PBXBuildFile; fileRef = CAE33D3F2555393B007EBB35 /* forest_bg_1.mov */; };
+		CAE33D4B25554524007EBB35 /* CoreDataHaptic.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE33D4A25554524007EBB35 /* CoreDataHaptic.swift */; };
 		CAF3CC312546A29700D987D0 /* CustomModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF3CC302546A29700D987D0 /* CustomModifier.swift */; };
 /* End PBXBuildFile section */
 
@@ -150,6 +151,7 @@
 		CA95C12F25357CA8008C0398 /* EmergencyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmergencyView.swift; sourceTree = "<group>"; };
 		CACCB3A02552701E0037AE62 /* NavigationWatchPop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationWatchPop.swift; sourceTree = "<group>"; };
 		CAE33D3F2555393B007EBB35 /* forest_bg_1.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = forest_bg_1.mov; sourceTree = "<group>"; };
+		CAE33D4A25554524007EBB35 /* CoreDataHaptic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataHaptic.swift; sourceTree = "<group>"; };
 		CAF3CC302546A29700D987D0 /* CustomModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomModifier.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -310,6 +312,7 @@
 				CA8C4F39253D3DEC005B99A8 /* NavigationPop.swift */,
 				9DE77B3C2542DE8D00BCCDB3 /* WatchHelper.swift */,
 				CAF3CC302546A29700D987D0 /* CustomModifier.swift */,
+				CAE33D4A25554524007EBB35 /* CoreDataHaptic.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -517,6 +520,7 @@
 				CA95C11E25357BEE008C0398 /* BreathView.swift in Sources */,
 				9DE77B212542D5A800BCCDB3 /* EmergencyModel.swift in Sources */,
 				9D7D2713253818B8006D35D2 /* BreathingModel.swift in Sources */,
+				CAE33D4B25554524007EBB35 /* CoreDataHaptic.swift in Sources */,
 				BC8B2B40254AA67D0091F892 /* OrbitalEffect.swift in Sources */,
 				BC8B2B4D254AA7E00091F892 /* Blur.swift in Sources */,
 				9DFAB8702534404F00E81C87 /* HomeView.swift in Sources */,
