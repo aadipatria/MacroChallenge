@@ -146,6 +146,7 @@ extension BreathView {
     }
     
     func setUpDispatchWorkItems() {
+        // remember to check strong references
         self.startInhale = DispatchWorkItem {self.breathingState = .inhale}
         self.startHold1 = DispatchWorkItem {self.breathingState = .hold1}
         self.startExhale = DispatchWorkItem {self.breathingState = .exhale}
