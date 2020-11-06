@@ -93,7 +93,7 @@ struct EditBreathing: View {
                         .modifier(DeleteButtonModifier())
                 })
                 .alert(isPresented: $isAlert){
-                    Alert(title: Text("Delete"), message: Text("Yakin mau dihapus? :)"), primaryButton: .destructive(Text("Delete")) {
+                    Alert(title: Text("Are you sure you want to delete  \(breathName)?"), primaryButton: .destructive(Text("Delete")) {
                         deleteBreathing()
                         }, secondaryButton: .cancel())
                 }
