@@ -51,7 +51,7 @@ struct HomeView: View {
             }
         }
         .accentColor( .white) /// ini buat ganti back button jd item
-        .animation(.easeOut(duration: 0.6))
+        .animation(.easeOut)
         
     }
 }
