@@ -149,7 +149,7 @@
 		CA95C10F25357B3F008C0398 /* BreathListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreathListView.swift; sourceTree = "<group>"; };
 		CA95C11725357B59008C0398 /* CustomBreathingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBreathingView.swift; sourceTree = "<group>"; };
 		CA95C11D25357BEE008C0398 /* BreathView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreathView.swift; sourceTree = "<group>"; };
-		CA95C12625357C52008C0398 /* AfterBreathingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AfterBreathingView.swift; sourceTree = "<group>"; };
+		CA95C12625357C52008C0398 /* AfterBreathingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AfterBreathingView.swift; sourceTree = "<group>"; wrapsLines = 1; };
 		CA95C12F25357CA8008C0398 /* EmergencyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmergencyView.swift; sourceTree = "<group>"; };
 		CACCB3A02552701E0037AE62 /* NavigationWatchPop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationWatchPop.swift; sourceTree = "<group>"; };
 		CAE33D3F2555393B007EBB35 /* forest_bg_1.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = forest_bg_1.mov; sourceTree = "<group>"; };

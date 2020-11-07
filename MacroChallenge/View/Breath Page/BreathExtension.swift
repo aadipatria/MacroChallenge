@@ -100,6 +100,7 @@ extension BreathView {
         
         self.isBreathing = false
         self.adjustBreathingUIElements()
+        navPop.toBreathing = true
     }
     
     // MARK: START/STOP BREATHING
@@ -120,6 +121,7 @@ extension BreathView {
         self.startCompletion.cancel()
         
         self.adjustBreathingUIElements()
+        
     }
     
     // MARK: HELPER FUNCTIONS

@@ -16,6 +16,9 @@ struct BreathView: View {
     @State var hold1: Double = 0
     @State var exhale: Double = 0
     @State var hold2: Double = 0
+    @State var success : Bool = true
+    @State var name : String = ""
+    @State var pattern : String = ""
     
     @State var animationSets: [AnimationSet] = []
     @State var isBreathing: Bool = false
@@ -45,8 +48,8 @@ struct BreathView: View {
                             .foregroundColor(.black)
                     })
                     VStack {
-                        Text(String(breaths[index].name ?? ""))
-                        Text(String(format: "%.0f - %.0f - %.0f - %.0f", self.inhale, self.hold1, self.exhale, self.hold2))
+                        Text(name)
+                        Text(pattern)
                     }
                     Button(action: {
                         changeRight()
@@ -58,15 +61,8 @@ struct BreathView: View {
                 .opacity(self.uiElementsOpacityScaling)
             }
             Group {
-                Button(action: {
-                    navPop.toBreathing = true
-                }, label: {
-                    Text("After Breathing")
-                        .padding()
-                        .foregroundColor(.white)
-                })
                 NavigationLink(
-                    destination: AfterBreathingView(),
+                    destination: AfterBreathingView(success: self.success, index: self.index, name: self.name, pattern: self.pattern),
                     isActive : $navPop.toBreathing,
                     label: {
                         EmptyView()
@@ -90,12 +86,10 @@ struct BreathView: View {
             
             Button(action: {
                 self.isBreathing.toggle()
-                
-                if isBreathing {
-                    self.setUpDispatchWorkItems()
-                    self.startBreathing()
-                } else {
-                    self.stopBreathing()
+                if isBreathing{
+                    self.success = true
+                }else{
+                    self.success = false
                 }
             }) {
                 RoundedRectangle(cornerRadius: 10)
@@ -110,6 +104,10 @@ struct BreathView: View {
             
             if !breaths.isEmpty {
                 update()
+                if navPop.repeatBreath{
+                    isBreathing = true
+                    navPop.repeatBreath = false
+                }
             }
         })
         .onChange(of: breathingState) {newValue in
@@ -126,6 +124,15 @@ struct BreathView: View {
                 self.hold2Action()
             }
         }
+        .onChange(of: isBreathing, perform: { value in
+            if value {
+                self.setUpDispatchWorkItems()
+                self.startBreathing()
+                navPop.tabIsHidden = true
+            } else {
+                self.stopBreathing()
+            }
+        })
         .navigationBarHidden(true)
 //        .background(Image("ocean").backgroundImageModifier())
         .gesture(DragGesture(minimumDistance: 0, coordinateSpace: .local)
@@ -166,6 +173,8 @@ extension BreathView{
         hold1 = Double(breaths[index].hold1)
         exhale = Double(breaths[index].exhale)
         hold2 = Double(breaths[index].hold2)
+        name = String(breaths[index].name!)
+        pattern = String(format: "%.0f - %.0f - %.0f - %.0f", self.inhale, self.hold1, self.exhale, self.hold2)
     }
 }
 
