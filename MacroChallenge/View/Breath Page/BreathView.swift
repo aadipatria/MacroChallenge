@@ -128,6 +128,7 @@ struct BreathView: View {
             if value {
                 self.setUpDispatchWorkItems()
                 self.startBreathing()
+                navPop.tabIsHidden = true
             } else {
                 self.stopBreathing()
             }

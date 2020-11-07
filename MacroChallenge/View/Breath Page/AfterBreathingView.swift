@@ -82,6 +82,9 @@ struct AfterBreathingView: View {
                 
             }
             .navigationBarHidden(true)
+            .onAppear(perform: {
+                navPop.tabIsHidden = false
+            })
 //            .background(Image("ocean").blurBackgroundImageModifier())
         }
     }
