@@ -86,7 +86,6 @@ struct BreathView: View {
             
             Button(action: {
                 self.isBreathing.toggle()
-                
                 if isBreathing {
                     self.success = true
                     self.setUpDispatchWorkItems()
@@ -124,6 +123,16 @@ struct BreathView: View {
                 self.hold2Action()
             }
         }
+//        .onChange(of: isBreathing, perform: { value in
+//            if isBreathing {
+//                self.success = true
+//                self.setUpDispatchWorkItems()
+//                self.startBreathing()
+//            } else {
+//                self.stopBreathing()
+//                self.success = false
+//            }
+//        })
         .navigationBarHidden(true)
 //        .background(Image("ocean").backgroundImageModifier())
         .gesture(DragGesture(minimumDistance: 0, coordinateSpace: .local)

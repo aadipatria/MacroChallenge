@@ -23,6 +23,21 @@ struct AfterBreathingView: View {
                 if success{
                     SuccessView(name: self.name, pattern: self.pattern)
                 }else{
+                    VStack (alignment: .leading, spacing : 16){
+                        Text("Hi there!")
+                            .font(.title)
+                            .fontWeight(.bold)
+                            .foregroundColor(.white)
+                            .padding(.top, 48)
+                        Text("Seems like you stopped in the middle of the breathing. How can we help you?")
+                            .font(.title)
+                            .fontWeight(.light)
+                            .foregroundColor(.white)
+                            .lineSpacing(/*@START_MENU_TOKEN@*/10.0/*@END_MENU_TOKEN@*/)
+                            
+                    }
+                    .frame(width : ScreenSize.windowWidth() * 0.7)
+                    .padding(.trailing, 80)
                     
                 }
                 Spacer()
@@ -73,7 +88,7 @@ struct AfterBreathingView: View {
 
 struct AfterBreathingView_Previews: PreviewProvider {
     static var previews: some View {
-        AfterBreathingView(success: true, index: 0, name: "Relax", pattern: "4 - 7 - 8 - 0").environmentObject(NavigationPopObject())
+        AfterBreathingView(success: false, index: 0, name: "Relax", pattern: "4 - 7 - 8 - 0").environmentObject(NavigationPopObject())
     }
 }
 
