@@ -43,6 +43,7 @@ struct AfterBreathingView: View {
                 Spacer()
                 Button(action: {
                     navPop.toBreathing = false
+                    navPop.repeatBreath = true
                     // gmn cara start lansung yg baru
                 }, label: {
                     Text("Repeat")

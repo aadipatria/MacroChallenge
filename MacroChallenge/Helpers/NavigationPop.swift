@@ -16,4 +16,5 @@ final class NavigationPopObject: ObservableObject {
     @Published var addBreath : Bool = false
     @Published var editBreath : Bool = false
     @Published var halfModal : Bool = false
+    @Published var repeatBreath : Bool = false
 }

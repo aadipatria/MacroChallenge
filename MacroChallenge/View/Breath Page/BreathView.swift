@@ -86,12 +86,9 @@ struct BreathView: View {
             
             Button(action: {
                 self.isBreathing.toggle()
-                if isBreathing {
+                if isBreathing{
                     self.success = true
-                    self.setUpDispatchWorkItems()
-                    self.startBreathing()
-                } else {
-                    self.stopBreathing()
+                }else{
                     self.success = false
                 }
             }) {
@@ -107,6 +104,10 @@ struct BreathView: View {
             
             if !breaths.isEmpty {
                 update()
+                if navPop.repeatBreath{
+                    isBreathing = true
+                    navPop.repeatBreath = false
+                }
             }
         })
         .onChange(of: breathingState) {newValue in
@@ -123,16 +124,14 @@ struct BreathView: View {
                 self.hold2Action()
             }
         }
-//        .onChange(of: isBreathing, perform: { value in
-//            if isBreathing {
-//                self.success = true
-//                self.setUpDispatchWorkItems()
-//                self.startBreathing()
-//            } else {
-//                self.stopBreathing()
-//                self.success = false
-//            }
-//        })
+        .onChange(of: isBreathing, perform: { value in
+            if value {
+                self.setUpDispatchWorkItems()
+                self.startBreathing()
+            } else {
+                self.stopBreathing()
+            }
+        })
         .navigationBarHidden(true)
 //        .background(Image("ocean").backgroundImageModifier())
         .gesture(DragGesture(minimumDistance: 0, coordinateSpace: .local)
