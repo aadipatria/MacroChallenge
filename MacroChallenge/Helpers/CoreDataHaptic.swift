@@ -129,7 +129,7 @@ extension hapticCoreData{
         
         do {
             self.engine = try CHHapticEngine()
-            try engine?.stop()
+            engine?.stop()
             
             
         }catch{
