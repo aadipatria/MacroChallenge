@@ -241,7 +241,6 @@
 			isa = PBXGroup;
 			children = (
 				9DFAB8742534405000E81C87 /* Preview Assets.xcassets */,
-				7585E91C25516654007BF3C5 /* LoopingPlayer.swift */,
 			);
 			path = "Preview Content";
 			sourceTree = "<group>";
@@ -323,6 +322,7 @@
 			isa = PBXGroup;
 			children = (
 				9DFAB86F2534404F00E81C87 /* HomeView.swift */,
+				7585E91C25516654007BF3C5 /* LoopingPlayer.swift */,
 			);
 			path = "Home Page";
 			sourceTree = "<group>";
@@ -714,7 +714,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.ici.MacroChallenge.watchkitapp.watchkitextension;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ada.hale.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -738,7 +738,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.ici.MacroChallenge.watchkitapp.watchkitextension;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ada.hale.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -765,7 +765,7 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.ici.MacroChallenge.watchkitapp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ada.hale.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -793,7 +793,7 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.ici.MacroChallenge.watchkitapp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ada.hale.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -820,7 +820,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.ici.MacroChallenge;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ada.hale;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SWIFT_VERSION = 5.0;
@@ -843,7 +843,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.ici.MacroChallenge;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ada.hale;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SWIFT_VERSION = 5.0;

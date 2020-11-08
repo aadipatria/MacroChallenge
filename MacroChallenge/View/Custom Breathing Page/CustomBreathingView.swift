@@ -163,9 +163,9 @@ struct CustomBreathingViewPicker: View {
     @Binding var exhaleSelection : Int
     @Binding var hold2Selection : Int
     
-    var inhale = [Int](0..<11)
+    var inhale = [Int](2..<11)
     var hold1 = [Int](0..<11)
-    var exhale = [Int](0..<11)
+    var exhale = [Int](2..<11)
     var hold2 = [Int](0..<11)
     
     var body: some View {

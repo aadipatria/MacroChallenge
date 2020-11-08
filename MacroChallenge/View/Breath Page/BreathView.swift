@@ -50,16 +50,19 @@ struct BreathView: View {
                     }, label: {
                         Image (systemName: "chevron.left")
                             .foregroundColor(.black)
+                            .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
                     })
                     VStack {
                         Text(name)
                         Text(pattern)
-                    }
+                    }.frame(width: ScreenSize.windowWidth() * 0.4)
+                    
                     Button(action: {
                         changeRight()
                     }, label: {
                         Image (systemName: "chevron.right")
                             .foregroundColor(.black)
+                            .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
                     })
                 }
                 .opacity(self.uiElementsOpacityScaling)
@@ -177,20 +180,25 @@ struct BreathView: View {
 
 extension BreathView{
     func changeRight(){
-        if index == breaths.count - 1 {
-            index = 0
-        }else{
-            index += 1
+        if !breaths.isEmpty{
+            if index == breaths.count - 1 {
+                index = 0
+            }else{
+                index += 1
+            }
+            update()
         }
-        update()
     }
     func changeLeft(){
-        if index == 0 {
-            index = breaths.count - 1
-        }else{
-            index -= 1
+        if !breaths.isEmpty{
+            if index == 0 {
+                index = breaths.count - 1
+            }else{
+                index -= 1
+            }
+            update()
         }
-        update()
+        
     }
     func update(){
         inhale = Double(breaths[index].inhale)

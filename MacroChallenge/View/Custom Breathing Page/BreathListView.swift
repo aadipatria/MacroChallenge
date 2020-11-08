@@ -93,7 +93,7 @@ struct BreathListView: View {
                             }, label: {
                                 if breath.favorite{
                                     Image(systemName: "heart.fill")
-                                        .foregroundColor(.red)
+                                        .foregroundColor(.black)
                                         .font(.system(size: 20))
                                         .padding()
                                 }else{
@@ -118,6 +118,15 @@ struct BreathListView: View {
                 .padding(.bottom, 8)
                 .animation(.easeInOut(duration: 0.6))
                 
+            }
+            else{
+                Text("You have no breath pattern. Tap on the “+” button to add a new one.")
+                    .font(.title3)
+                    .fontWeight(.medium)
+                    .foregroundColor(.white)
+                    .multilineTextAlignment(.center)
+                    .frame(width : ScreenSize.windowWidth() * 0.5)
+                    .padding()
             }
             
             Spacer()
