@@ -50,16 +50,19 @@ struct BreathView: View {
                     }, label: {
                         Image (systemName: "chevron.left")
                             .foregroundColor(.black)
+                            .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
                     })
                     VStack {
                         Text(name)
                         Text(pattern)
-                    }
+                    }.frame(width: ScreenSize.windowWidth() * 0.4)
+                    
                     Button(action: {
                         changeRight()
                     }, label: {
                         Image (systemName: "chevron.right")
                             .foregroundColor(.black)
+                            .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
                     })
                 }
                 .opacity(self.uiElementsOpacityScaling)
