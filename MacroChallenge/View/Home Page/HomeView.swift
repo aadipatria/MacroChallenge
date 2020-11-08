@@ -36,7 +36,7 @@ struct HomeView: View {
                 else if navPop.page == 2{
                     BreathListView()
                 }
-                VStack {
+                VStack (spacing : 0) {
                     Spacer()
                     ZStack {
                         if !navPop.tabIsHidden{
@@ -78,13 +78,19 @@ struct ExtractedView: View {
             Button(action: {
                 navPop.page = 0
             }, label: {
-                VStack {
+                VStack (spacing: 0) {
                     if navPop.page == 0{
                         Image("water").imageIconModifier()
-                        Text("Contact").foregroundColor(.white)
+                        Text("Contact")
+                            .font(.footnote)
+                            .fontWeight(.semibold)
+                            .foregroundColor(.white)
                     }else{
                         Image("water_gray").imageIconModifier()
-                        Text("Contact").foregroundColor(.gray)
+                        Text("Contact")
+                            .font(.footnote)
+                            .fontWeight(.semibold)
+                            .foregroundColor(.gray)
                     }
                 }
                 .frame(width : 80)
@@ -93,13 +99,19 @@ struct ExtractedView: View {
             Button(action: {
                 navPop.page = 1
             }, label: {
-                VStack {
+                VStack (spacing: 0) {
                     if navPop.page == 1{
                         Image("wind").imageIconModifier()
-                        Text("Breath").foregroundColor(.white)
+                        Text("Breath")
+                            .font(.footnote)
+                            .fontWeight(.semibold)
+                            .foregroundColor(.white)
                     }else{
                         Image("wind_gray").imageIconModifier()
-                        Text("Breath").foregroundColor(.gray)
+                        Text("Breath")
+                            .font(.footnote)
+                            .fontWeight(.semibold)
+                            .foregroundColor(.gray)
                     }
                 }
                 .frame(width : 80)
@@ -108,14 +120,20 @@ struct ExtractedView: View {
             Button(action: {
                 navPop.page = 2
             }, label: {
-                VStack {
+                VStack (spacing: 0) {
                     if navPop.page == 2{
                         Image("earth").imageIconModifier()
-                        Text("Collection").foregroundColor(.white)
+                        Text("Collection")
+                            .font(.footnote)
+                            .fontWeight(.semibold)
+                            .foregroundColor(.white)
                         
                     }else{
                         Image("earth_gray").imageIconModifier()
-                        Text("Collection").foregroundColor(.gray)
+                        Text("Collection")
+                            .font(.footnote)
+                            .fontWeight(.semibold)
+                            .foregroundColor(.gray)
                     }
                 }
                 .frame(width : 80)
@@ -123,7 +141,7 @@ struct ExtractedView: View {
         }
         .frame(width : ScreenSize.windowWidth() * 0.95)
         .background(Color(UIColor.white)
-                        .frame(width : ScreenSize.windowWidth(), height : ScreenSize.windowHeight() * 0.12)
+                        .frame(width : ScreenSize.windowWidth(), height : ScreenSize.windowHeight() * 0.1)
                         .opacity(0.12)
                         .background(Blur(style: .systemThinMaterialDark).opacity(0.95))
                         .cornerRadius(24))

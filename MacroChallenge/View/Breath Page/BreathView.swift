@@ -6,6 +6,8 @@
 //
 
 import SwiftUI
+import CoreHaptics
+
 
 struct BreathView: View {
     
@@ -19,6 +21,7 @@ struct BreathView: View {
     @State var success : Bool = true
     @State var name : String = ""
     @State var pattern : String = ""
+    @State var haptic : Bool = false
     
     @State var animationSets: [AnimationSet] = []
     @State var isBreathing: Bool = false
@@ -35,6 +38,7 @@ struct BreathView: View {
     @State var startExhale: DispatchWorkItem = DispatchWorkItem {}
     @State var startHold2: DispatchWorkItem = DispatchWorkItem {}
     @State var startCompletion: DispatchWorkItem = DispatchWorkItem {}
+    @State var engine: CHHapticEngine?
     
     var body: some View {
         VStack {
@@ -88,8 +92,10 @@ struct BreathView: View {
                 self.isBreathing.toggle()
                 if isBreathing{
                     self.success = true
+                    prepareHaptics()
                 }else{
                     self.success = false
+                    cancelHaptic()
                 }
             }) {
                 RoundedRectangle(cornerRadius: 10)
@@ -116,10 +122,16 @@ struct BreathView: View {
                 self.endAction()
             case .inhale:
                 self.inhaleAction()
+                if haptic{
+                    inhale(duration: inhale)
+                }
             case .hold1:
                 self.hold1Action()
             case .exhale:
                 self.exhaleAction()
+                if haptic{
+                    exhale(duration: exhale)
+                }
             case .hold2:
                 self.hold2Action()
             }
@@ -149,6 +161,18 @@ struct BreathView: View {
                         
                     }))
     }
+    func prepareHaptics(){
+        guard CHHapticEngine.capabilitiesForHardware().supportsHaptics else {return }
+        
+        do {
+            self.engine = try CHHapticEngine()
+            try engine?.start()
+            
+            
+        }catch{
+            print("There was an error creating the engine:\(error.localizedDescription)")
+        }
+    }
 }
 
 extension BreathView{
@@ -175,6 +199,7 @@ extension BreathView{
         hold2 = Double(breaths[index].hold2)
         name = String(breaths[index].name!)
         pattern = String(format: "%.0f - %.0f - %.0f - %.0f", self.inhale, self.hold1, self.exhale, self.hold2)
+        haptic = Bool(breaths[index].haptic)
     }
 }
 

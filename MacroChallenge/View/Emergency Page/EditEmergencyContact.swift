@@ -29,11 +29,14 @@ struct EditEmergencyContact: View {
                     hideKeyboard()
                 }, label: {
                     Text("Cancel")
+                        .foregroundColor(.black)
                 })
                 
                 Spacer()
                 
                 Text("Edit Contact")
+                    .foregroundColor(.black)
+
                 
                 Spacer()
                 
@@ -44,6 +47,8 @@ struct EditEmergencyContact: View {
                     hideKeyboard()
                 }, label: {
                     Text("Done")
+                        .foregroundColor(.black)
+
                 })
             }
             .padding()

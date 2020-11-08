@@ -10,61 +10,61 @@ import SwiftUI
 import CoreHaptics
 
 struct hapticCoreData: View {
-    @State private var engine: CHHapticEngine?
-    
-    var inhaleValue : Float = 4
-    var holdValue : Float = 5
-    var exhaleValue : Float = 7
-    var checkHaptic : Bool = true
+//    @State private var engine: CHHapticEngine?
+//
+//    var inhaleValue : Float = 4
+//    var holdValue : Float = 5
+//    var exhaleValue : Float = 7
+//    var checkHaptic : Bool = true
     
     var body: some View {
-        VStack{
-            Button(action: {
-            prepareHaptics()
-                
-
-            inhale(duration: inhaleValue)
-
-            exhale(duration: inhaleValue + holdValue + exhaleValue)
-            
-
-            }, label: {
-            Text("Run Haptic")
-            }).padding()
-        
-            Button(action: {
-        
-            
-                cancelHaptic()
-
-
-            }, label: {
-                Text("Cancel Haptics").foregroundColor(.black)
-            }).padding()
-        }
+        Text("ha")
+//        VStack{
+//            Button(action: {
+//            prepareHaptics()
+//
+//
+//            inhale(duration: inhaleValue)
+//
+//            exhale(duration: inhaleValue + holdValue + exhaleValue)
+//
+//            }, label: {
+//            Text("Run Haptic")
+//            }).padding()
+//
+//            Button(action: {
+//
+//
+//                cancelHaptic()
+//
+//
+//            }, label: {
+//                Text("Cancel Haptics").foregroundColor(.black)
+//            }).padding()
+//        }
      
 
     }
         
     
-    func prepareHaptics(){
-        guard CHHapticEngine.capabilitiesForHardware().supportsHaptics else {return }
-        
-        do {
-            self.engine = try CHHapticEngine()
-            try engine?.start()
-            
-            
-        }catch{
-            print("There was an error creating the engine:\(error.localizedDescription)")
-        }
-    }
+//    func prepareHaptics(){
+//        guard CHHapticEngine.capabilitiesForHardware().supportsHaptics else {return }
+//        
+//        do {
+//            self.engine = try CHHapticEngine()
+//            try engine?.start()
+//            
+//            
+//        }catch{
+//            print("There was an error creating the engine:\(error.localizedDescription)")
+//        }
+//    }
     
 }
 
-extension hapticCoreData{
+extension BreathView{
     
-    func inhale(duration : Float){
+    func inhale(duration : Double){
         guard CHHapticEngine.capabilitiesForHardware().supportsHaptics else {return}
         
         var events = [CHHapticEvent]()
@@ -94,7 +94,7 @@ extension hapticCoreData{
         
     }
     
-    func exhale(duration : Float){
+    func exhale(duration : Double){
         guard CHHapticEngine.capabilitiesForHardware().supportsHaptics else {return}
         
         var events = [CHHapticEvent]()
@@ -102,8 +102,8 @@ extension hapticCoreData{
         //from : durasi awal (pasti 0)
         //to : durasi akhir (ngambil data core total durasi breathingnya)
         //by : seberapa kenceng hepticsny
-        for i in stride (from: inhaleValue + holdValue , to: duration , by:0.5){
-            let intensity = CHHapticEventParameter(parameterID: .hapticIntensity, value: Float(1.5 - (i - inhaleValue - holdValue)/(duration - inhaleValue - holdValue)))
+        for i in stride (from: 0, to: duration , by:0.5){
+            let intensity = CHHapticEventParameter(parameterID: .hapticIntensity, value: Float(1.5 - (i)/(duration)))
 
             let sharpness = CHHapticEventParameter(parameterID: .hapticSharpness, value: Float(1))
 

@@ -22,11 +22,15 @@ struct AddEmergencyContact: View {
                     navPop.tabIsHidden = false
                 }, label: {
                     Text("Cancel")
+                        .foregroundColor(.black)
+
                 })
                 
                 Spacer()
                 
                 Text("Add New Contact")
+                    .foregroundColor(.black)
+
                 
                 Spacer()
                 
@@ -38,6 +42,8 @@ struct AddEmergencyContact: View {
                     navPop.tabIsHidden = false
                 } label: {
                     Text("Done")
+                        .foregroundColor(.black)
+
                 }
             }
             .padding()
