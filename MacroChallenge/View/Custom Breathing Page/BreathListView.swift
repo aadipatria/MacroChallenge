@@ -129,6 +129,7 @@ struct BreathListView: View {
 
 extension BreathListView {
     func sync() {
+        breathing2DArray.removeAll()
         for breath in self.breaths {
             var breathingArray = [String]()
             breathingArray.append(breath.name!)
