@@ -70,11 +70,11 @@ struct EmergencyView: View {
                 }
                 .animation(.easeInOut(duration: 0.6))
                 .padding(.bottom)
-//                Button {
-//                    sync()
-//                } label: {
-//                    Text("Sync With Apple Watch")
-//                }
+                Button {
+                    sync()
+                } label: {
+                    Text("Sync With Apple Watch")
+                }
                 if contacts.isEmpty{
                     Text("You have no contact. Tap on the “+” button to add a contact.")
                         .font(.title3)
