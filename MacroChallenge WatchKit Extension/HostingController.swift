@@ -15,6 +15,10 @@ class HostingController: WKHostingController<AnyView>, WCSessionDelegate {
     var ArrayOfBreathing =  [[String]]()
     var ArrayOfContact = [[String]]()
     
+    @AppStorage("arrayOfBreathing") var arrayOfBreathing = Data()
+    @AppStorage("arrayOfContact") var arrayOfContact = Data()
+    
+    
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
     }
@@ -37,15 +41,16 @@ class HostingController: WKHostingController<AnyView>, WCSessionDelegate {
         
         if uuid == nil {
             ArrayOfBreathing = message
-            UserDefaults.standard.setValue(ArrayOfBreathing, forKey: "arrayOfBreathing")
+//            UserDefaults.standard.setValue(ArrayOfBreathing, forKey: "arrayOfBreathing")
+            arrayOfBreathing = Storage.archive(object: ArrayOfBreathing)
         }
         else {
             ArrayOfContact = message
-            UserDefaults.standard.setValue(ArrayOfContact, forKey: "arrayOfContact")
+//            UserDefaults.standard.setValue(ArrayOfContact, forKey: "arrayOfContact")
+            arrayOfContact = Storage.archive(object: ArrayOfContact)
         }
         
         setNeedsBodyUpdate()
-        updateBodyIfNeeded()
     }
     
     func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {

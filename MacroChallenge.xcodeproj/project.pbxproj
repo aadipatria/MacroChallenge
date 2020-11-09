@@ -10,6 +10,7 @@
 		7585E91D25516654007BF3C5 /* LoopingPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7585E91C25516654007BF3C5 /* LoopingPlayer.swift */; };
 		9D267F42253C941200882D7F /* EditBreathing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D267F41253C941200882D7F /* EditBreathing.swift */; };
 		9D2F8000255008050055ABCF /* HalfModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D2F7FFF255008050055ABCF /* HalfModalView.swift */; };
+		9D50BCC82558E76700E1A9C6 /* WatchHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D50BCC72558E76700E1A9C6 /* WatchHelper.swift */; };
 		9D697C8C25514C580087A64C /* EditEmergencyContact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D697C8B25514C580087A64C /* EditEmergencyContact.swift */; };
 		9D7D26EA25381317006D35D2 /* MacroChallenge.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9D7D26E825381317006D35D2 /* MacroChallenge.xcdatamodeld */; };
 		9D7D26EB25381317006D35D2 /* MacroChallenge.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9D7D26E825381317006D35D2 /* MacroChallenge.xcdatamodeld */; };
@@ -105,6 +106,7 @@
 		7585E91C25516654007BF3C5 /* LoopingPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoopingPlayer.swift; sourceTree = "<group>"; };
 		9D267F41253C941200882D7F /* EditBreathing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditBreathing.swift; sourceTree = "<group>"; };
 		9D2F7FFF255008050055ABCF /* HalfModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HalfModalView.swift; sourceTree = "<group>"; };
+		9D50BCC72558E76700E1A9C6 /* WatchHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchHelper.swift; sourceTree = "<group>"; };
 		9D697C8B25514C580087A64C /* EditEmergencyContact.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditEmergencyContact.swift; sourceTree = "<group>"; };
 		9D7D26E925381317006D35D2 /* MacroChallenge.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MacroChallenge.xcdatamodel; sourceTree = "<group>"; };
 		9D7D2712253818B8006D35D2 /* BreathingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreathingModel.swift; sourceTree = "<group>"; };
@@ -261,6 +263,7 @@
 				9DE77AA22541696F00BCCDB3 /* WatchModel */,
 				CA8C4F34253D3A18005B99A8 /* View */,
 				9DFAB8902534405100E81C87 /* HostingController.swift */,
+				9D50BCC72558E76700E1A9C6 /* WatchHelper.swift */,
 				9DFAB8942534405100E81C87 /* ExtensionDelegate.swift */,
 				9DFAB8962534405100E81C87 /* NotificationController.swift */,
 				9DFAB8982534405100E81C87 /* NotificationView.swift */,
@@ -547,6 +550,7 @@
 				CA8C4F2A253D39D1005B99A8 /* EmergencyWatchView.swift in Sources */,
 				9DFAB8952534405100E81C87 /* ExtensionDelegate.swift in Sources */,
 				9D7D2714253818B8006D35D2 /* BreathingModel.swift in Sources */,
+				9D50BCC82558E76700E1A9C6 /* WatchHelper.swift in Sources */,
 				9DFAB8992534405100E81C87 /* NotificationView.swift in Sources */,
 				CACCB3A12552701E0037AE62 /* NavigationWatchPop.swift in Sources */,
 				9D7D26EB25381317006D35D2 /* MacroChallenge.xcdatamodeld in Sources */,

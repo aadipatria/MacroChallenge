@@ -20,18 +20,44 @@ struct EmergencyWatchView: View {
     //CEK INDEX, SEMUA DALAM STRING -> HARUS DI CAST KALAU MAU DIPAKE
     //String -> 0 = id, 1 = name
     //UUID -> 2 = number
-    @State var contact2DArray = [[String]]()
+//    @State var contact2DArray = [[String]]()
+    @AppStorage("arrayOfContact") var arrayOfContact = Data()
+    
     var body: some View {
+//        List {
+//            if contact2DArray.isEmpty{
+//                Text("No Data")
+//            }else{
+//                ForEach(contact2DArray.indices, id: \.self){ idx in
+//                    Button {
+//                        self.call(number: "\(contact2DArray[idx][2])")
+//                    } label: {
+//                        if !contact2DArray.isEmpty {
+//                            Text("\(contact2DArray[idx][1])")
+//                                .frame(width: WKInterfaceDevice.current().screenBounds.width * 0.9, height: WKInterfaceDevice.current().screenBounds.height * 0.22, alignment: .center)
+//                        }
+//                        else {
+//                            Text("no contacts")
+//                        }
+//                    }
+//                }
+//            }
+//
+//        }.listStyle(EllipticalListStyle())
+//        .navigationBarTitle("Emergency Call")
+//        .onAppear() {
+//            updateData()
+//        }
         List {
-            if contact2DArray.isEmpty{
+            if contactContainer(data: arrayOfContact).isEmpty{
                 Text("No Data")
             }else{
-                ForEach(contact2DArray.indices, id: \.self){ idx in
+                ForEach(contactContainer(data: arrayOfContact).indices, id: \.self){ idx in
                     Button {
-                        self.call(number: "\(contact2DArray[idx][2])")
+                        self.call(number: "\(contactContainer(data: arrayOfContact)[idx][2])")
                     } label: {
-                        if !contact2DArray.isEmpty {
-                            Text("\(contact2DArray[idx][1])")
+                        if !contactContainer(data: arrayOfContact).isEmpty {
+                            Text("\(contactContainer(data: arrayOfContact)[idx][1])")
                                 .frame(width: WKInterfaceDevice.current().screenBounds.width * 0.9, height: WKInterfaceDevice.current().screenBounds.height * 0.22, alignment: .center)
                         }
                         else {
@@ -43,11 +69,10 @@ struct EmergencyWatchView: View {
             
         }.listStyle(EllipticalListStyle())
         .navigationBarTitle("Emergency Call")
-        .onAppear() {
-            updateData()
-        }
+//        .onAppear() {
+//            updateData()
+//        }
     }
-    
 }
 
 extension EmergencyWatchView{
@@ -58,10 +83,14 @@ extension EmergencyWatchView{
         }
     }
     
-    func updateData() {
-        if let tempArr = UserDefaults.standard.array(forKey: "arrayOfContact") as? [[String]] {
-            contact2DArray = tempArr
-        }
+//    func updateData() {
+//        if let tempArr = UserDefaults.standard.array(forKey: "arrayOfContact") as? [[String]] {
+//            contact2DArray = tempArr
+//        }
+//    }
+    
+    func contactContainer(data: Data) -> [[String]] {
+        return Storage.unarchive(data: data)
     }
 }
 
