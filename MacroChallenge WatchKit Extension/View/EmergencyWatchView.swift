@@ -49,15 +49,15 @@ struct EmergencyWatchView: View {
 //            updateData()
 //        }
         List {
-            if contactContainer(data: arrayOfContact).isEmpty{
+            if Storage.userDefault(data: arrayOfContact).isEmpty{
                 Text("No Data")
             }else{
-                ForEach(contactContainer(data: arrayOfContact).indices, id: \.self){ idx in
+                ForEach(Storage.userDefault(data: arrayOfContact).indices, id: \.self){ idx in
                     Button {
-                        self.call(number: "\(contactContainer(data: arrayOfContact)[idx][2])")
+                        self.call(number: "\(Storage.userDefault(data: arrayOfContact)[idx][2])")
                     } label: {
-                        if !contactContainer(data: arrayOfContact).isEmpty {
-                            Text("\(contactContainer(data: arrayOfContact)[idx][1])")
+                        if !Storage.userDefault(data: arrayOfContact).isEmpty {
+                            Text("\(Storage.userDefault(data: arrayOfContact)[idx][1])")
                                 .frame(width: WKInterfaceDevice.current().screenBounds.width * 0.9, height: WKInterfaceDevice.current().screenBounds.height * 0.22, alignment: .center)
                         }
                         else {
@@ -88,10 +88,6 @@ extension EmergencyWatchView{
 //            contact2DArray = tempArr
 //        }
 //    }
-    
-    func contactContainer(data: Data) -> [[String]] {
-        return Storage.unarchive(data: data)
-    }
 }
 
 struct EmergencyWatchView_Previews: PreviewProvider {

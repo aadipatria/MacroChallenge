@@ -16,21 +16,22 @@ struct BreathWatchView: View {
     //Boolean -> 5 = sound, 6 = haptic, 7 = favorite,
     //UUID -> 8 = id
     //kalau user ada 3 favorite, 3 pertama di array itu favorite
-    @State var breath2DArray = [[String]]()
+//    @State var breath2DArray = [[String]]()
+    @AppStorage("arrayOfBreathing") var arrayOfBreathing = Data()
     
     var body: some View {
         List {
-            if breath2DArray.isEmpty{
+            if Storage.userDefault(data: arrayOfBreathing).isEmpty{
                 Text("No Data")
             }else{
-                ForEach(breath2DArray.indices, id: \.self){ idx in
+                ForEach(Storage.userDefault(data: arrayOfBreathing).indices, id: \.self){ idx in
                     NavigationLink(
-                        destination: AfterBreathingWatchView(breathName: "\(breath2DArray[idx][0])"),
+                        destination: AfterBreathingWatchView(breathName: "\(Storage.userDefault(data: arrayOfBreathing)[idx][0])"),
                         label: {
-                            if !breath2DArray.isEmpty {
+                            if !Storage.userDefault(data: arrayOfBreathing).isEmpty {
                                 VStack {
-                                    Text("\(breath2DArray[idx][0])")
-                                    Text("\(breath2DArray[idx][1])-\(breath2DArray[idx][2])-\(breath2DArray[idx][3])-\(breath2DArray[idx][4])")
+                                    Text("\(Storage.userDefault(data: arrayOfBreathing)[idx][0])")
+                                    Text("\(Storage.userDefault(data: arrayOfBreathing)[idx][1])-\(Storage.userDefault(data: arrayOfBreathing)[idx][2])-\(Storage.userDefault(data: arrayOfBreathing)[idx][3])-\(Storage.userDefault(data: arrayOfBreathing)[idx][4])")
                                 }
                             }
                         })
@@ -43,17 +44,17 @@ struct BreathWatchView: View {
         .listStyle(CarouselListStyle())
         .navigationBarTitle("Breathing")
         .onAppear() {
-            update()
+//            update()
         }
     }
 }
 
 extension BreathWatchView {
-    func update() {
-        if let tempArr = UserDefaults.standard.array(forKey: "arrayOfBreathing") as? [[String]] {
-            breath2DArray = tempArr
-        }
-    }
+//    func update() {
+//        if let tempArr = UserDefaults.standard.array(forKey: "arrayOfBreathing") as? [[String]] {
+//            breath2DArray = tempArr
+//        }
+//    }
 }
 
 struct BreathWatchView_Previews: PreviewProvider {

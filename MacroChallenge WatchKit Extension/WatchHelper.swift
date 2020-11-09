@@ -27,4 +27,8 @@ class Storage: NSObject {
             fatalError("unarchived failed: \(error)")
         }
     }
+    
+    static func userDefault(data: Data) -> [[String]] {
+        return Storage.unarchive(data: data)
+    }
 }
