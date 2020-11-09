@@ -45,6 +45,7 @@
 		BC8B2B48254AA7790091F892 /* AnimatedRing.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8B2B47254AA7790091F892 /* AnimatedRing.swift */; };
 		BC8B2B4D254AA7E00091F892 /* Blur.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8B2B4C254AA7E00091F892 /* Blur.swift */; };
 		CA4AD0232555787D00290225 /* BreathExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7D813C2553260B000255EF /* BreathExtension.swift */; };
+		CA7DC47325593917003CE217 /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7DC47225593917003CE217 /* AudioPlayer.swift */; };
 		CA86588625417C8300FD5CB4 /* BreathWatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA86588525417C8300FD5CB4 /* BreathWatchView.swift */; };
 		CA8C4F25253D39BD005B99A8 /* AfterBreathingWatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8C4F24253D39BD005B99A8 /* AfterBreathingWatchView.swift */; };
 		CA8C4F2A253D39D1005B99A8 /* EmergencyWatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8C4F29253D39D1005B99A8 /* EmergencyWatchView.swift */; };
@@ -144,6 +145,7 @@
 		BC8B2B3F254AA67D0091F892 /* OrbitalEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrbitalEffect.swift; sourceTree = "<group>"; };
 		BC8B2B47254AA7790091F892 /* AnimatedRing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedRing.swift; sourceTree = "<group>"; };
 		BC8B2B4C254AA7E00091F892 /* Blur.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Blur.swift; sourceTree = "<group>"; };
+		CA7DC47225593917003CE217 /* AudioPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayer.swift; sourceTree = "<group>"; };
 		CA86588525417C8300FD5CB4 /* BreathWatchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreathWatchView.swift; sourceTree = "<group>"; };
 		CA8C4F24253D39BD005B99A8 /* AfterBreathingWatchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AfterBreathingWatchView.swift; sourceTree = "<group>"; };
 		CA8C4F29253D39D1005B99A8 /* EmergencyWatchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmergencyWatchView.swift; sourceTree = "<group>"; };
@@ -317,6 +319,7 @@
 				9DE77B3C2542DE8D00BCCDB3 /* WatchHelper.swift */,
 				CAF3CC302546A29700D987D0 /* CustomModifier.swift */,
 				CAE33D4A25554524007EBB35 /* CoreDataHaptic.swift */,
+				CA7DC47225593917003CE217 /* AudioPlayer.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -530,6 +533,7 @@
 				9D7D2713253818B8006D35D2 /* BreathingModel.swift in Sources */,
 				CAE33D4B25554524007EBB35 /* CoreDataHaptic.swift in Sources */,
 				BC8B2B40254AA67D0091F892 /* OrbitalEffect.swift in Sources */,
+				CA7DC47325593917003CE217 /* AudioPlayer.swift in Sources */,
 				BC8B2B4D254AA7E00091F892 /* Blur.swift in Sources */,
 				9DFAB8702534404F00E81C87 /* HomeView.swift in Sources */,
 				BC8B2B36254AA5D30091F892 /* AnimationData.swift in Sources */,

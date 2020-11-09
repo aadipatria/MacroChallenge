@@ -18,6 +18,7 @@ struct BreathListView: View {
     let sendWatchHelper = WatchHelper()
     
     @State var breathing2DArray = [[String]]()
+    @State var edit : Bool = false
     
 //    init() {
 //        UITableView.appearance().tableFooterView = UIView()
@@ -67,7 +68,7 @@ struct BreathListView: View {
                         
                         //passing id (UUID) nya
                         destination: EditBreathing(id: breath.id),
-                        isActive : $navPop.editBreath,
+//                        isActive : $navPop.editBreath,
                         label: {
                             HStack{
                                 VStack(alignment : .leading, spacing : 4){
