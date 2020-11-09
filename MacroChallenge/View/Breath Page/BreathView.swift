@@ -49,19 +49,25 @@ struct BreathView: View {
                         changeLeft()
                     }, label: {
                         Image (systemName: "chevron.left")
-                            .foregroundColor(.black)
+                            .foregroundColor(.white)
                             .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
                     })
                     VStack {
                         Text(name)
+                            .fontWeight(.bold)
+                            .foregroundColor(.white)
+                            .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
                         Text(pattern)
+                            .fontWeight(.medium)
+                            .foregroundColor(.white)
+                            .font(/*@START_MENU_TOKEN@*/.title3/*@END_MENU_TOKEN@*/)
                     }.frame(width: ScreenSize.windowWidth() * 0.4)
                     
                     Button(action: {
                         changeRight()
                     }, label: {
                         Image (systemName: "chevron.right")
-                            .foregroundColor(.black)
+                            .foregroundColor(.white)
                             .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
                     })
                 }
@@ -85,11 +91,13 @@ struct BreathView: View {
                     .scaleEffect(self.animationSizeScaling)
                 
                 Text(guidanceText)
+                    .font(.title)
+                    .fontWeight(.semibold)
                     .foregroundColor(Color.white)
                     .opacity(self.guidanceTextOpacityScaling)
             }
             
-            Spacer()
+//            Spacer()
             
             Button(action: {
                 self.isBreathing.toggle()
@@ -101,10 +109,11 @@ struct BreathView: View {
                     cancelHaptic()
                 }
             }) {
-                RoundedRectangle(cornerRadius: 10)
-            }
-            .frame(maxWidth: 200, maxHeight: 80)
-            .padding(.bottom, 60)
+                Text("Start")
+                    .foregroundColor(.black)
+                    .frame(width: ScreenSize.windowWidth()*0.5, height: ScreenSize.windowHeight() * 0.05, alignment: .center)
+                    .background(RoundedRectangle(cornerRadius: 36).fill(Color(UIColor(.white))))
+            }.padding(.bottom, 100)
         }
         .onAppear(perform: {
             let orbitalSet = OrbitalAnimationSet(binding: self.$orbitalEffectScaling).getAnimationSets()

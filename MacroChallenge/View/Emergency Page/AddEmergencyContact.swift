@@ -29,6 +29,7 @@ struct AddEmergencyContact: View {
                 Spacer()
                 
                 Text("Add New Contact")
+                    .fontWeight(.semibold)
                     .foregroundColor(.black)
 
                 

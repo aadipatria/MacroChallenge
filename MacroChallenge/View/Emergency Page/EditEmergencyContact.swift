@@ -35,6 +35,7 @@ struct EditEmergencyContact: View {
                 Spacer()
                 
                 Text("Edit Contact")
+                    .fontWeight(.semibold)
                     .foregroundColor(.black)
 
                 
