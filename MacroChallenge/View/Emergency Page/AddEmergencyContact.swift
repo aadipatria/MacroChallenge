@@ -29,6 +29,7 @@ struct AddEmergencyContact: View {
                 Spacer()
                 
                 Text("Add New Contact")
+                    .fontWeight(.semibold)
                     .foregroundColor(.black)
 
                 
@@ -47,17 +48,21 @@ struct AddEmergencyContact: View {
                 }
             }
             .padding()
+            .frame(width: ScreenSize.windowWidth() * 0.9, height: 60)
+            Divider()
 
             Group {
                 TextField("Name", text: $name)
                     .modifier(ClearButton(text: $name))
                     .padding()
+                    .background(RoundedRectangle(cornerRadius: 8).fill(Color(UIColor(.white))))
                 
                 TextField("Number", text: $number)
                     .modifier(ClearButton(text: $number))
                     .padding()
+                    .background(RoundedRectangle(cornerRadius: 8).fill(Color(UIColor(.white))))
             }
-            .frame(width: 327, height: 60)
+            .frame(width: ScreenSize.windowWidth() * 0.9, height: 60)
         }
     }
 }
