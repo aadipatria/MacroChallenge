@@ -23,6 +23,10 @@ struct BreathView: View {
     @State var pattern : String = ""
     @State var haptic : Bool = false
     
+    let cycleMinutes: [Int] = [1,2,3]
+    @State var cycleTime: Int = 0
+    @State var cycleRemaining: Int = 0
+    
     @State var animationSets: [AnimationSet] = []
     @State var isBreathing: Bool = false
     @State var breathingState: BreathingState = .none
@@ -30,6 +34,7 @@ struct BreathView: View {
     @State var orbitalEffectScaling: CGFloat = 0.0
     @State var animationSizeScaling: CGFloat = 0.0
     @State var uiElementsOpacityScaling: Double = 1.0
+    @State var guidanceTextSizeScaling: Double = 0.0
     @State var guidanceTextOpacityScaling: Double = 0.0
     @State var guidanceText: String = ""
     
@@ -41,38 +46,7 @@ struct BreathView: View {
     @State var engine: CHHapticEngine?
     
     var body: some View {
-        VStack {
-            // show data by index
-            if !breaths.isEmpty{
-                HStack {
-                    Button(action: {
-                        changeLeft()
-                    }, label: {
-                        Image (systemName: "chevron.left")
-                            .foregroundColor(.white)
-                            .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
-                    })
-                    VStack {
-                        Text(name)
-                            .fontWeight(.bold)
-                            .foregroundColor(.white)
-                            .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
-                        Text(pattern)
-                            .fontWeight(.medium)
-                            .foregroundColor(.white)
-                            .font(/*@START_MENU_TOKEN@*/.title3/*@END_MENU_TOKEN@*/)
-                    }.frame(width: ScreenSize.windowWidth() * 0.4)
-                    
-                    Button(action: {
-                        changeRight()
-                    }, label: {
-                        Image (systemName: "chevron.right")
-                            .foregroundColor(.white)
-                            .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
-                    })
-                }
-                .opacity(self.uiElementsOpacityScaling)
-            }
+        ZStack {
             Group {
                 NavigationLink(
                     destination: AfterBreathingView(success: self.success, index: self.index, name: self.name, pattern: self.pattern),
@@ -81,50 +55,141 @@ struct BreathView: View {
                         EmptyView()
                     })
             }
+            //.opacity(self.uiElementsOpacityScaling)
+        
+            if self.isBreathing {
+                Group {
+                    AnimatedRing(binding: self.$orbitalEffectScaling)
+                        .padding(30)
+                        .scaleEffect(self.animationSizeScaling)
+
+                    Text(guidanceText)
+                        .font(.title)
+                        .fontWeight(.semibold)
+                        .foregroundColor(Color.white)
+                        .opacity(self.guidanceTextOpacityScaling)
+                }
+            }
+            
+            HStack(spacing: 16) {
+                Button(action: {
+                    changeLeft()
+                }, label: {
+                    Image (systemName: "chevron.left")
+                        .foregroundColor(.white)
+                        .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
+                })
+                
+                RoundedRectangle(cornerRadius: 15)
+                    .fill(Color.clear)
+                    .frame(maxWidth: ScreenSize.windowWidth() * 0.76)
+                    .background(
+                        Blur(style: .regular)
+                            .mask(RoundedRectangle(cornerRadius: 15))
+                    )
+                
+                Button(action: {
+                    changeRight()
+                }, label: {
+                    Image (systemName: "chevron.right")
+                        .foregroundColor(.white)
+                        .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
+                })
+            }
+            .opacity(self.uiElementsOpacityScaling * 0.9)
+            
+            VStack(spacing: 8) {
+                // show data by index
+                if !breaths.isEmpty{
+                    Group {
+                        Text(name)
+                            .fontWeight(.bold)
+                            .foregroundColor(.white)
+                            .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
+                        Text(pattern)
+                            .fontWeight(.medium)
+                            .foregroundColor(.white)
+                            .font(/*@START_MENU_TOKEN@*/.title3/*@END_MENU_TOKEN@*/)
+                        if breaths[index].favorite {
+                            Image(systemName: "heart.fill")
+                                .foregroundColor(Color.white)
+                        } else {
+                            Image(systemName: "heart")
+                                .foregroundColor(Color.white)
+                        }
+                    }.frame(maxWidth: ScreenSize.windowWidth() * 0.6)
+                }
+                
+                ZStack(alignment: .leading) {
+                    Text("Minute(s)")
+                        .font(.title2)
+                        .padding(.leading, 96)
+                    
+                    Picker(selection: $cycleTime, label: Text("Picker")) {
+                        ForEach(cycleMinutes, id: \.self) { minutes in
+                            Text("\(minutes)")
+                                .font(.title2)
+                        }
+                    }
+                    .frame(width: 160)
+                    .clipped()
+                }
+                
+//                Spacer()
+                
+                Button(action: {
+                    self.isBreathing.toggle()
+                    if isBreathing{
+                        self.success = true
+                        prepareHaptics()
+                        getNumberOfCycles()
+                    }else{
+                        self.success = false
+                        cancelHaptic()
+                    }
+                }) {
+                    Text("Start")
+                        .foregroundColor(.black)
+                        .frame(width: ScreenSize.windowWidth()*0.5, height: ScreenSize.windowHeight() * 0.05, alignment: .center)
+                        .background(RoundedRectangle(cornerRadius: 36).fill(Color(UIColor(.white))))
+                }
+            }
+            .frame(maxWidth: ScreenSize.windowWidth() * 0.72)
+            .padding(.vertical, 32)
             .opacity(self.uiElementsOpacityScaling)
             
-            Spacer()
-            
-            ZStack {
-                AnimatedRing(binding: self.$orbitalEffectScaling)
-                    .padding(30)
-                    .scaleEffect(self.animationSizeScaling)
-                
-                Text(guidanceText)
-                    .font(.title)
-                    .fontWeight(.semibold)
-                    .foregroundColor(Color.white)
-                    .opacity(self.guidanceTextOpacityScaling)
-            }
+           
             
 //            Spacer()
             
-            Button(action: {
-                self.isBreathing.toggle()
-                if isBreathing{
-                    self.success = true
-                    prepareHaptics()
-                }else{
-                    self.success = false
-                    cancelHaptic()
-                }
-            }) {
-                Text("Start")
-                    .foregroundColor(.black)
-                    .frame(width: ScreenSize.windowWidth()*0.5, height: ScreenSize.windowHeight() * 0.05, alignment: .center)
-                    .background(RoundedRectangle(cornerRadius: 36).fill(Color(UIColor(.white))))
-            }.padding(.bottom, 100)
+//            Button(action: {
+//                self.isBreathing.toggle()
+//                if isBreathing{
+//                    self.success = true
+//                    prepareHaptics()
+//                }else{
+//                    self.success = false
+//                    cancelHaptic()
+//                }
+//            }) {
+//                Text("Start")
+//                    .foregroundColor(.black)
+//                    .frame(width: ScreenSize.windowWidth()*0.5, height: ScreenSize.windowHeight() * 0.05, alignment: .center)
+//                    .background(RoundedRectangle(cornerRadius: 36).fill(Color(UIColor(.white))))
+//            }.padding(.bottom, 100)
         }
+        .frame(maxHeight: ScreenSize.windowHeight() * 0.52)
         .onAppear(perform: {
+            self.cycleTime = 1
+            
             let orbitalSet = OrbitalAnimationSet(binding: self.$orbitalEffectScaling).getAnimationSets()
             let textSet = GuidanceTextSet(binding: self.$guidanceText).getAnimationSets()
             self.animationSets = [orbitalSet, textSet]
             
             if !breaths.isEmpty {
                 update()
-                if navPop.repeatBreath{
+                if navPop.breathCycles > 0 {
                     isBreathing = true
-                    navPop.repeatBreath = false
                 }
             }
         })
@@ -159,19 +224,19 @@ struct BreathView: View {
         })
         .navigationBarHidden(true)
 //        .background(Image("ocean").backgroundImageModifier())
-        .gesture(DragGesture(minimumDistance: 0, coordinateSpace: .local)
-                    .onEnded({ value in
-                        //left
-                        if value.translation.width < 0 {
-                            changeLeft()
-                        }
-                        //right
-                        if value.translation.width > 0 {
-                            changeRight()
-                        }
-                        
-                        
-                    }))
+//        .gesture(DragGesture(minimumDistance: 0, coordinateSpace: .local)
+//                    .onEnded({ value in
+//                        //left
+//                        if value.translation.width < 0 {
+//                            changeLeft()
+//                        }
+//                        //right
+//                        if value.translation.width > 0 {
+//                            changeRight()
+//                        }
+//
+//
+//                    }))
     }
     func prepareHaptics(){
         guard CHHapticEngine.capabilitiesForHardware().supportsHaptics else {return }
