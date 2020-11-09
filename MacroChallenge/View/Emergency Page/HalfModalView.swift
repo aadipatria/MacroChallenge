@@ -67,13 +67,14 @@ struct HalfModalView<Content: View>: View {
             VStack {
                 Spacer()
                 ZStack {
-                    Color.white.opacity(1)
+                    Color.green.opacity(1)
                         .frame(width: UIScreen.main.bounds.width, height: modalHeight)
                         .cornerRadius(10)
                         .shadow(radius: 5)
                     self.content()
                         .padding()
                         .padding(.bottom, 65)
+//                        .padding(.bottom, 185)
                         .frame(width: UIScreen.main.bounds.size.width, height: modalHeight)
                         .clipped()
                 }
