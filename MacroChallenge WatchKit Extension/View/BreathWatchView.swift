@@ -21,12 +21,13 @@ struct BreathWatchView: View {
     
     var body: some View {
         List {
-            if Storage.userDefault(data: arrayOfBreathing).isEmpty{
+            if Storage.userDefault(data: arrayOfBreathing)[0].isEmpty{
                 Text("No Data")
             }else{
                 ForEach(Storage.userDefault(data: arrayOfBreathing).indices, id: \.self){ idx in
                     NavigationLink(
-                        destination: AfterBreathingWatchView(breathName: "\(Storage.userDefault(data: arrayOfBreathing)[idx][0])"),
+                        destination: EmptyView(),
+//                        destination: AfterBreathingWatchView(breathName: "\(Storage.userDefault(data: arrayOfBreathing)[idx][0])"),
                         label: {
                             if !Storage.userDefault(data: arrayOfBreathing).isEmpty {
                                 VStack {

@@ -53,11 +53,11 @@ struct BreathListView: View {
 //            .padding()
             .padding(10)
             .padding(.bottom, 6)
-//            Button {
-//                sync()
-//            } label: {
-//                Text("Sync With Apple Watch")
-//            }
+            Button {
+                sync()
+            } label: {
+                Text("Sync With Apple Watch")
+            }
 
             
             if !breaths.isEmpty{
