@@ -49,7 +49,7 @@ struct EmergencyWatchView: View {
 //            updateData()
 //        }
         List {
-            if Storage.userDefault(data: arrayOfContact).isEmpty{
+            if Storage.userDefault(data: arrayOfContact)[0].isEmpty{
                 Text("No Data")
             }else{
                 ForEach(Storage.userDefault(data: arrayOfContact).indices, id: \.self){ idx in

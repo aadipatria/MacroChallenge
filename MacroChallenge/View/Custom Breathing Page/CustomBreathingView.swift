@@ -245,7 +245,6 @@ struct CancelAddView: View {
         Button(action: {
             saveToCoreData()
             navPop.addBreath = false
-            
         }, label: {
             Text("Add")
         })

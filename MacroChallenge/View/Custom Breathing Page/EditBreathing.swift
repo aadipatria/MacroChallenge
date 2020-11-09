@@ -166,7 +166,6 @@ struct EditBreathingCancelAddView: View {
             Spacer()
             Button(action: {
                 updateBreath()
-//                navPop.editBreath = false
                 self.presentationMode.wrappedValue.dismiss()
             }, label: {
                 Text("Save")
