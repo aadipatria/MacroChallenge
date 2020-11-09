@@ -163,16 +163,17 @@ struct CustomBreathingViewPicker: View {
     @Binding var exhaleSelection : Int
     @Binding var hold2Selection : Int
     
-    var inhale = [Int](0..<11)
+    //batasnya ganti disni
+    var inhale = [Int](2..<11)
     var hold1 = [Int](0..<11)
-    var exhale = [Int](0..<11)
+    var exhale = [Int](2..<11)
     var hold2 = [Int](0..<11)
     
     var body: some View {
         ZStack {
                 HStack {
                 Picker("", selection: self.$inhaleSelection) {
-                    ForEach(2..<self.inhale.count) { index in
+                    ForEach(self.inhale, id: \.self) { index in
                         Text("\(index)").tag(index)
                     }
                 }
@@ -180,15 +181,15 @@ struct CustomBreathingViewPicker: View {
                 .clipped()
                 
                 Picker("", selection: self.$hold1Selection) {
-                    ForEach(0..<self.hold1.count) { index in
-                        Text("\(self.hold1[index])").tag(index)
+                    ForEach(self.hold1, id: \.self) { index in
+                        Text("\(index)").tag(index)
                     }
                 }
                 .frame(width: ScreenSize.windowWidth() * 0.2075, height: ScreenSize.windowHeight() * 0.185, alignment: .center)
                 .clipped()
                 
                 Picker("", selection: self.$exhaleSelection) {
-                    ForEach(2..<self.exhale.count) { index in
+                    ForEach(self.exhale, id: \.self) { index in
                         Text("\(index)").tag(index)
                     }
                 }
@@ -196,8 +197,8 @@ struct CustomBreathingViewPicker: View {
                 .clipped()
                 
                 Picker("", selection: self.$hold2Selection) {
-                    ForEach(0..<self.hold2.count) { index in
-                        Text("\(self.hold2[index])").tag(index)
+                    ForEach(self.hold2, id: \.self) { index in
+                        Text("\(index)").tag(index)
                     }
                 }
                 .frame(width: ScreenSize.windowWidth() * 0.2075, height: ScreenSize.windowHeight() * 0.185, alignment: .center)
@@ -225,7 +226,6 @@ struct GuidingPreferences: View {
         
     }
 }
-
 
 
 struct CancelAddView: View {
