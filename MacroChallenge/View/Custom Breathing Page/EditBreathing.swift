@@ -19,6 +19,7 @@ struct EditBreathing: View {
     @State var isFavorite = false
     @State var isAlert = false
     @Environment(\.managedObjectContext) var manageObjectContext
+    @Environment(\.presentationMode) var presentationMode
     
     //fetch semua breathing dari core data -> next step di onAppear
     @FetchRequest(fetchRequest: Breathing.getAllBreathing()) var breaths: FetchedResults<Breathing>
@@ -149,6 +150,7 @@ struct EditBreathingCancelAddView: View {
     @Environment(\.managedObjectContext) var manageObjectContext
     @FetchRequest(fetchRequest: Breathing.getAllBreathing()) var breaths: FetchedResults<Breathing>
     @EnvironmentObject var navPop : NavigationPopObject
+    @Environment(\.presentationMode) var presentationMode
     
     @Binding var breathName : String
     @Binding var inhale : Int
@@ -164,7 +166,8 @@ struct EditBreathingCancelAddView: View {
             Spacer()
             Button(action: {
                 updateBreath()
-                navPop.editBreath = false
+//                navPop.editBreath = false
+                self.presentationMode.wrappedValue.dismiss()
             }, label: {
                 Text("Save")
             })
@@ -189,6 +192,7 @@ extension EditBreathingCancelAddView {
                 
                 do{
                     try self.manageObjectContext.save()
+                    self.presentationMode.wrappedValue.dismiss()
                 } catch {
                     print(error)
                 }
