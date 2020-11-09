@@ -98,21 +98,29 @@ extension BreathView {
         
         self.animationPerState(duration: 0, instantChanges: [], animatedChanges: completion)
         
-        self.isBreathing = false
-        self.adjustBreathingUIElements()
-        navPop.toBreathing = true
+        self.cycleRemaining -= 1
+        
+        if self.cycleRemaining > 0 {
+            DispatchQueue.main.async(execute: self.startInhale)
+        } else {
+            self.isBreathing = false
+            self.adjustBreathingUIElements()
+            navPop.toBreathing = true
+        }
     }
     
     // MARK: START/STOP BREATHING
     func startBreathing() {
+        self.cycleRemaining = navPop.breathCycles
+        
         let duration = 2.0
-//        self.breathingState = .inhale
         self.adjustBreathingUIElements(duration: duration)
         DispatchQueue.main.asyncAfter(deadline: .now() + duration, execute: self.startInhale)
     }
     
     func stopBreathing() {
         self.breathingState = .none
+        self.cycleRemaining = 0
         
         self.startInhale.cancel()
         self.startHold1.cancel()
@@ -125,6 +133,14 @@ extension BreathView {
     }
     
     // MARK: HELPER FUNCTIONS
+    func getNumberOfCycles() {
+        let breathingDuration = Int(self.inhale + self.hold1 + self.exhale + self.hold2)
+        let numberOfCycles = Int(self.cycleTime * 60 / breathingDuration)
+//        navPop.breathCycles = self.cycleTime
+        navPop.breathCycles = numberOfCycles
+    }
+    
+    
     func animationPerState(duration: Double, instantChanges: [() -> ()], animatedChanges: [() -> ()], completion: (() -> ())? = {}) {
         DispatchQueue.main.async {
             for actions in instantChanges {
@@ -160,6 +176,7 @@ extension BreathView {
         if self.isBreathing {
             withAnimation(.linear(duration: (duration ?? 0)/2)) {
                 self.uiElementsOpacityScaling = 0.0
+                self.guidanceTextSizeScaling = 1.0
             }
             
             DispatchQueue.main.asyncAfter(deadline: .now() + (duration ?? 0)/2) {
