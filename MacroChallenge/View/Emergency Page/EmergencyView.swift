@@ -185,6 +185,7 @@ extension EmergencyView{
     }
     
     func sync() {
+        contact2DArray.removeAll()
         for contact in self.contacts {
             var contactArray = [String]()
             contactArray.append(contact.id.uuidString)
