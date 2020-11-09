@@ -100,7 +100,7 @@ struct EditBreathing: View {
                 Spacer()
             }
 //            .background(Image("ocean").blurBackgroundImageModifier())
-            .navigationBarItems(trailing: EditBreathingCancelAddView(breathName: $breathName, inhale: $inhale, hold1: $hold1, exhale: $exhale, hold2: $hold2, isSoundOn: $isSoundOn, isHapticOn: $isHapticOn, id: id, isFavorite: $isFavorite))
+            .navigationBarItems(trailing: EditBreathingCancelAddView(breathName: $breathName, inhale: $inhale, hold1: $hold1, exhale: $exhale, hold2: $hold2, isSoundOn: $isSoundOn, isHapticOn: $isHapticOn, id: id))
             .frame(width : ScreenSize.windowWidth() * 0.9)
             .navigationBarTitle("Edit Breathing",displayMode: .inline)
             .onAppear {
@@ -158,7 +158,6 @@ struct EditBreathingCancelAddView: View {
     @Binding var isSoundOn : Bool
     @Binding var isHapticOn : Bool
     var id: UUID
-    @Binding var isFavorite: Bool
     
     var body: some View {
         HStack {
@@ -187,7 +186,6 @@ extension EditBreathingCancelAddView {
                 breath.sound = isSoundOn
                 breath.haptic = isHapticOn
                 breath.id = self.id
-                breath.favorite = isFavorite
                 
                 do{
                     try self.manageObjectContext.save()

@@ -85,7 +85,7 @@ struct CustomBreathingView: View {
                 Spacer()
             }
 //            .background(Image("ocean").blurBackgroundImageModifier())
-            .navigationBarItems(trailing: CancelAddView(breathName: $breathName, inhale: $inhale, hold1: $hold1, exhale: $exhale, hold2: $hold2, isSoundOn: $isSoundOn, isHapticOn: $isHapticOn, isFavorite: $isFavorite))
+            .navigationBarItems(trailing: CancelAddView(breathName: $breathName, inhale: $inhale, hold1: $hold1, exhale: $exhale, hold2: $hold2, isSoundOn: $isSoundOn, isHapticOn: $isHapticOn))
             .frame(width : ScreenSize.windowWidth() * 0.9)
             .navigationBarTitle("Add Breathing",displayMode: .inline)
         }
@@ -163,9 +163,9 @@ struct CustomBreathingViewPicker: View {
     @Binding var exhaleSelection : Int
     @Binding var hold2Selection : Int
     
-    var inhale = [Int](2..<11)
+    var inhale = [Int](0..<11)
     var hold1 = [Int](0..<11)
-    var exhale = [Int](2..<11)
+    var exhale = [Int](0..<11)
     var hold2 = [Int](0..<11)
     
     var body: some View {
@@ -240,7 +240,6 @@ struct CancelAddView: View {
     @Binding var hold2 : Int
     @Binding var isSoundOn : Bool
     @Binding var isHapticOn : Bool
-    @Binding var isFavorite : Bool
     
     var body: some View {
         Button(action: {
@@ -264,7 +263,6 @@ extension CancelAddView {
         breath.sound = isSoundOn
         breath.haptic = isHapticOn
         breath.id = UUID()
-        breath.favorite = false
         
         do{
             //save ke core data
