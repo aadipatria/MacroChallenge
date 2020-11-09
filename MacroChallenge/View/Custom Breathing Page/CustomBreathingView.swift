@@ -172,8 +172,8 @@ struct CustomBreathingViewPicker: View {
         ZStack {
                 HStack {
                 Picker("", selection: self.$inhaleSelection) {
-                    ForEach(0..<self.inhale.count) { index in
-                        Text("\(self.inhale[index])").tag(index)
+                    ForEach(2..<self.inhale.count) { index in
+                        Text("\(index)").tag(index)
                     }
                 }
                 .frame(width: ScreenSize.windowWidth() * 0.2075, height: ScreenSize.windowHeight() * 0.185, alignment: .center)
@@ -188,8 +188,8 @@ struct CustomBreathingViewPicker: View {
                 .clipped()
                 
                 Picker("", selection: self.$exhaleSelection) {
-                    ForEach(0..<self.exhale.count) { index in
-                        Text("\(self.exhale[index])").tag(index)
+                    ForEach(2..<self.exhale.count) { index in
+                        Text("\(index)").tag(index)
                     }
                 }
                 .frame(width: ScreenSize.windowWidth() * 0.2075, height: ScreenSize.windowHeight() * 0.185, alignment: .center)
