@@ -46,6 +46,10 @@
 		BC8B2B4D254AA7E00091F892 /* Blur.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8B2B4C254AA7E00091F892 /* Blur.swift */; };
 		CA4AD0232555787D00290225 /* BreathExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7D813C2553260B000255EF /* BreathExtension.swift */; };
 		CA7DC47325593917003CE217 /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7DC47225593917003CE217 /* AudioPlayer.swift */; };
+		CA7DC491255975B6003CE217 /* nature bgm.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CA7DC490255975B6003CE217 /* nature bgm.mp3 */; };
+		CA7DC498255977B8003CE217 /* hold.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CA7DC495255977B8003CE217 /* hold.mp3 */; };
+		CA7DC499255977B8003CE217 /* exhale.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CA7DC496255977B8003CE217 /* exhale.mp3 */; };
+		CA7DC49A255977B8003CE217 /* inhale.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CA7DC497255977B8003CE217 /* inhale.mp3 */; };
 		CA86588625417C8300FD5CB4 /* BreathWatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA86588525417C8300FD5CB4 /* BreathWatchView.swift */; };
 		CA8C4F25253D39BD005B99A8 /* AfterBreathingWatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8C4F24253D39BD005B99A8 /* AfterBreathingWatchView.swift */; };
 		CA8C4F2A253D39D1005B99A8 /* EmergencyWatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8C4F29253D39D1005B99A8 /* EmergencyWatchView.swift */; };
@@ -146,6 +150,10 @@
 		BC8B2B47254AA7790091F892 /* AnimatedRing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedRing.swift; sourceTree = "<group>"; };
 		BC8B2B4C254AA7E00091F892 /* Blur.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Blur.swift; sourceTree = "<group>"; };
 		CA7DC47225593917003CE217 /* AudioPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayer.swift; sourceTree = "<group>"; };
+		CA7DC490255975B6003CE217 /* nature bgm.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "nature bgm.mp3"; sourceTree = "<group>"; };
+		CA7DC495255977B8003CE217 /* hold.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = hold.mp3; sourceTree = "<group>"; };
+		CA7DC496255977B8003CE217 /* exhale.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = exhale.mp3; sourceTree = "<group>"; };
+		CA7DC497255977B8003CE217 /* inhale.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = inhale.mp3; sourceTree = "<group>"; };
 		CA86588525417C8300FD5CB4 /* BreathWatchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreathWatchView.swift; sourceTree = "<group>"; };
 		CA8C4F24253D39BD005B99A8 /* AfterBreathingWatchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AfterBreathingWatchView.swift; sourceTree = "<group>"; };
 		CA8C4F29253D39D1005B99A8 /* EmergencyWatchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmergencyWatchView.swift; sourceTree = "<group>"; };
@@ -183,6 +191,10 @@
 			isa = PBXGroup;
 			children = (
 				CAE33D3F2555393B007EBB35 /* forest_bg_1.mov */,
+				CA7DC490255975B6003CE217 /* nature bgm.mp3 */,
+				CA7DC496255977B8003CE217 /* exhale.mp3 */,
+				CA7DC495255977B8003CE217 /* hold.mp3 */,
+				CA7DC497255977B8003CE217 /* inhale.mp3 */,
 			);
 			path = AssetsVideoBerjalan;
 			sourceTree = "<group>";
@@ -478,10 +490,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CA7DC499255977B8003CE217 /* exhale.mp3 in Resources */,
+				CA7DC49A255977B8003CE217 /* inhale.mp3 in Resources */,
 				9DFAB8782534405000E81C87 /* LaunchScreen.storyboard in Resources */,
 				9DFAB8752534405000E81C87 /* Preview Assets.xcassets in Resources */,
 				CAE33D402555393B007EBB35 /* forest_bg_1.mov in Resources */,
+				CA7DC491255975B6003CE217 /* nature bgm.mp3 in Resources */,
 				9DFAB8722534405000E81C87 /* Assets.xcassets in Resources */,
+				CA7DC498255977B8003CE217 /* hold.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

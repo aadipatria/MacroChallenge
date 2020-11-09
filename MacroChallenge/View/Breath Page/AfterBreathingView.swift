@@ -17,8 +17,8 @@ struct AfterBreathingView: View {
     
     var body: some View {
         ZStack {
-            LoopingPlayer()
-                .edgesIgnoringSafeArea(.all)
+//            LoopingPlayer()
+//                .edgesIgnoringSafeArea(.all)
             VStack (spacing : 16){
                 if success{
                     SuccessView(name: self.name, pattern: self.pattern)
@@ -86,6 +86,9 @@ struct AfterBreathingView: View {
                 navPop.tabIsHidden = false
             })
 //            .background(Image("ocean").blurBackgroundImageModifier())
+            .background(LoopingPlayer()
+                            .frame(width: ScreenSize.windowWidth(), height: ScreenSize.windowHeight(), alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                            .ignoresSafeArea(.all))
         }
     }
 }

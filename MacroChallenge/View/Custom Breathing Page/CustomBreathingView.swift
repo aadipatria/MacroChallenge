@@ -26,8 +26,8 @@ struct CustomBreathingView: View {
     
     var body: some View {
         ZStack {
-            LoopingPlayer()
-                .edgesIgnoringSafeArea(.all)
+//            LoopingPlayer()
+//                .edgesIgnoringSafeArea(.all)
             VStack (spacing : 16) {
                 Precautions()
                     .padding(.top)
@@ -85,6 +85,9 @@ struct CustomBreathingView: View {
                 Spacer()
             }
 //            .background(Image("ocean").blurBackgroundImageModifier())
+            .background(LoopingPlayer()
+                            .frame(width: ScreenSize.windowWidth(), height: ScreenSize.windowHeight(), alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                            .ignoresSafeArea(.all))
             .navigationBarItems(trailing: CancelAddView(breathName: $breathName, inhale: $inhale, hold1: $hold1, exhale: $exhale, hold2: $hold2, isSoundOn: $isSoundOn, isHapticOn: $isHapticOn))
             .frame(width : ScreenSize.windowWidth() * 0.9)
             .navigationBarTitle("Add Breathing",displayMode: .inline)

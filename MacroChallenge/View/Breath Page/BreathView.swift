@@ -22,6 +22,7 @@ struct BreathView: View {
     @State var name : String = ""
     @State var pattern : String = ""
     @State var haptic : Bool = false
+    @State var audio : Bool = false
     
     let cycleMinutes: [Int] = [1,2,3]
     @State var cycleTime: Int = 0
@@ -77,7 +78,10 @@ struct BreathView: View {
                             self.success = false
                             cancelHaptic()
                         }, label: {
-                            Text("Stop")
+                            Image(systemName: "x.circle")
+                                .foregroundColor(.white)
+                                .font(/*@START_MENU_TOKEN@*/.largeTitle/*@END_MENU_TOKEN@*/)
+                            
                         })
                     }
                     
@@ -166,8 +170,10 @@ struct BreathView: View {
                 Button(action: {
                     self.isBreathing.toggle()
                     if isBreathing{
+                        showStop = false
                         self.success = true
                         prepareHaptics()
+                        AudioPlayer1.playSounds(soundfile: "nature bgm.mp3")
                         getNumberOfCycles()
                     }else{
                         self.success = false
@@ -206,6 +212,7 @@ struct BreathView: View {
         }
         .frame(maxHeight: ScreenSize.windowHeight() * 0.52)
         .onAppear(perform: {
+            showStop = false
             self.cycleTime = 1
             
             let orbitalSet = OrbitalAnimationSet(binding: self.$orbitalEffectScaling).getAnimationSets()
@@ -223,21 +230,32 @@ struct BreathView: View {
             switch newValue {
             case .none:
                 self.endAction()
-                cancelHaptic()
             case .inhale:
                 self.inhaleAction()
                 if haptic{
                     inhale(duration: inhale)
                 }
+                if audio{
+                    AudioPlayer2.playSounds(soundfile: "inhale.mp3")
+                }
             case .hold1:
                 self.hold1Action()
+                if audio{
+                    AudioPlayer2.playSounds(soundfile: "hold.mp3")
+                }
             case .exhale:
                 self.exhaleAction()
                 if haptic{
                     exhale(duration: exhale)
                 }
+                if audio{
+                    AudioPlayer2.playSounds(soundfile: "exhale.mp3")
+                }
             case .hold2:
                 self.hold2Action()
+                if audio{
+                    AudioPlayer2.playSounds(soundfile: "hold.mp3")
+                }
             }
         }
         .onChange(of: isBreathing, perform: { value in
@@ -247,6 +265,9 @@ struct BreathView: View {
                 navPop.tabIsHidden = true
             } else {
                 self.stopBreathing()
+                cancelHaptic()
+                AudioPlayer1.stopSounds()
+                AudioPlayer2.stopSounds()
             }
         })
         .onTapGesture(count: /*@START_MENU_TOKEN@*/1/*@END_MENU_TOKEN@*/, perform: {
@@ -314,6 +335,7 @@ extension BreathView{
         name = String(breaths[index].name!)
         pattern = String(format: "%.0f - %.0f - %.0f - %.0f", self.inhale, self.hold1, self.exhale, self.hold2)
         haptic = Bool(breaths[index].haptic)
+        audio = Bool(breaths[index].sound)
     }
 }
 
