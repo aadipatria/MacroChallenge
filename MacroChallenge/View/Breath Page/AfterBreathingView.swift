@@ -17,8 +17,8 @@ struct AfterBreathingView: View {
     
     var body: some View {
         ZStack {
-            LoopingPlayer()
-                .edgesIgnoringSafeArea(.all)
+//            LoopingPlayer()
+//                .edgesIgnoringSafeArea(.all)
             VStack (spacing : 16){
                 if success{
                     SuccessView(name: self.name, pattern: self.pattern)
@@ -43,7 +43,6 @@ struct AfterBreathingView: View {
                 Spacer()
                 Button(action: {
                     navPop.toBreathing = false
-                    navPop.repeatBreath = true
                     // gmn cara start lansung yg baru
                 }, label: {
                     Text("Repeat")
@@ -54,6 +53,7 @@ struct AfterBreathingView: View {
                 
                 Button(action: {
                     navPop.toBreathing = false
+                    navPop.breathCycles = 0
                 }, label: {
                     Text("Finish")
                         .fontWeight(.semibold)
@@ -86,6 +86,9 @@ struct AfterBreathingView: View {
                 navPop.tabIsHidden = false
             })
 //            .background(Image("ocean").blurBackgroundImageModifier())
+            .background(LoopingPlayer()
+                            .frame(width: ScreenSize.windowWidth(), height: ScreenSize.windowHeight(), alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                            .ignoresSafeArea(.all))
         }
     }
 }

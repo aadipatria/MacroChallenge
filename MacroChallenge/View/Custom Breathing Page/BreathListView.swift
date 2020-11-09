@@ -53,11 +53,11 @@ struct BreathListView: View {
 //            .padding()
             .padding(10)
             .padding(.bottom, 6)
-            Button {
-                sync()
-            } label: {
-                Text("Sync With Apple Watch")
-            }
+//            Button {
+//                sync()
+//            } label: {
+//                Text("Sync With Apple Watch")
+//            }
 
             
             if !breaths.isEmpty{
@@ -81,6 +81,11 @@ struct BreathListView: View {
                                 Spacer()
                                 Button(action: {
                                     breath.favorite.toggle()
+                                    do{
+                                        try self.manageObjectContext.save()
+                                    } catch {
+                                        print(error)
+                                    }
                                 }, label: {
                                     if breath.favorite{
                                         Image(systemName: "heart.fill")
@@ -129,6 +134,7 @@ struct BreathListView: View {
 
 extension BreathListView {
     func sync() {
+        breathing2DArray.removeAll()
         for breath in self.breaths {
             var breathingArray = [String]()
             breathingArray.append(breath.name!)

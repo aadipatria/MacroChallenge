@@ -70,11 +70,11 @@ struct EmergencyView: View {
                 }
                 .animation(.easeInOut(duration: 0.6))
                 .padding(.bottom)
-                Button {
-                    sync()
-                } label: {
-                    Text("Sync With Apple Watch")
-                }
+//                Button {
+//                    sync()
+//                } label: {
+//                    Text("Sync With Apple Watch")
+//                }
                 if contacts.isEmpty{
                     Text("You have no contact. Tap on the “+” button to add a contact.")
                         .font(.title3)
@@ -185,6 +185,7 @@ extension EmergencyView{
     }
     
     func sync() {
+        contact2DArray.removeAll()
         for contact in self.contacts {
             var contactArray = [String]()
             contactArray.append(contact.id.uuidString)

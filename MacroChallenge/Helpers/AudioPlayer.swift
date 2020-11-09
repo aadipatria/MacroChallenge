@@ -27,6 +27,9 @@ class AudioPlayer1 {
           }
       }
    }
+    static func stopSounds(){
+        audioPlayer?.stop()
+    }
 }
 
 class AudioPlayer2 {
@@ -47,5 +50,8 @@ class AudioPlayer2 {
               print("Error")
           }
       }
-   }
+    }
+    static func stopSounds(){
+        audioPlayer?.stop()
+    }
 }
