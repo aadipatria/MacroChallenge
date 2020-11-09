@@ -44,6 +44,7 @@ struct BreathView: View {
     @State var startHold2: DispatchWorkItem = DispatchWorkItem {}
     @State var startCompletion: DispatchWorkItem = DispatchWorkItem {}
     @State var engine: CHHapticEngine?
+    @State var showStop = false
     
     var body: some View {
         ZStack {
@@ -58,16 +59,28 @@ struct BreathView: View {
             //.opacity(self.uiElementsOpacityScaling)
         
             if self.isBreathing {
-                Group {
-                    AnimatedRing(binding: self.$orbitalEffectScaling)
-                        .padding(30)
-                        .scaleEffect(self.animationSizeScaling)
+                VStack {
+                    ZStack {
+                        AnimatedRing(binding: self.$orbitalEffectScaling)
+                            .padding(30)
+                            .scaleEffect(self.animationSizeScaling)
 
-                    Text(guidanceText)
-                        .font(.title)
-                        .fontWeight(.semibold)
-                        .foregroundColor(Color.white)
-                        .opacity(self.guidanceTextOpacityScaling)
+                        Text(guidanceText)
+                            .font(.title)
+                            .fontWeight(.semibold)
+                            .foregroundColor(Color.white)
+                            .opacity(self.guidanceTextOpacityScaling)
+                    }
+                    if showStop{
+                        Button(action: {
+                            isBreathing = false
+                            self.success = false
+                            cancelHaptic()
+                        }, label: {
+                            Text("Stop")
+                        })
+                    }
+                    
                 }
             }
             
@@ -77,7 +90,7 @@ struct BreathView: View {
                 }, label: {
                     Image (systemName: "chevron.left")
                         .foregroundColor(.white)
-                        .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
+                        .font(/*@START_MENU_TOKEN@*/.largeTitle/*@END_MENU_TOKEN@*/)
                 })
                 
                 RoundedRectangle(cornerRadius: 15)
@@ -93,10 +106,23 @@ struct BreathView: View {
                 }, label: {
                     Image (systemName: "chevron.right")
                         .foregroundColor(.white)
-                        .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
+                        .font(/*@START_MENU_TOKEN@*/.largeTitle/*@END_MENU_TOKEN@*/)
                 })
             }
             .opacity(self.uiElementsOpacityScaling * 0.9)
+            .gesture(DragGesture(minimumDistance: 0, coordinateSpace: .local)
+                        .onEnded({ value in
+                            //left
+                            if value.translation.width < -40 {
+                                changeLeft()
+                            }
+                            //right
+                            if value.translation.width > 40 {
+                                changeRight()
+                            }
+
+
+                        }))
             
             VStack(spacing: 8) {
                 // show data by index
@@ -104,18 +130,18 @@ struct BreathView: View {
                     Group {
                         Text(name)
                             .fontWeight(.bold)
-                            .foregroundColor(.white)
+                            .foregroundColor(.black)
                             .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
                         Text(pattern)
                             .fontWeight(.medium)
-                            .foregroundColor(.white)
+                            .foregroundColor(.black)
                             .font(/*@START_MENU_TOKEN@*/.title3/*@END_MENU_TOKEN@*/)
                         if breaths[index].favorite {
                             Image(systemName: "heart.fill")
-                                .foregroundColor(Color.white)
+                                .foregroundColor(Color.black)
                         } else {
                             Image(systemName: "heart")
-                                .foregroundColor(Color.white)
+                                .foregroundColor(Color.black)
                         }
                     }.frame(maxWidth: ScreenSize.windowWidth() * 0.6)
                 }
@@ -197,6 +223,7 @@ struct BreathView: View {
             switch newValue {
             case .none:
                 self.endAction()
+                cancelHaptic()
             case .inhale:
                 self.inhaleAction()
                 if haptic{
@@ -222,16 +249,21 @@ struct BreathView: View {
                 self.stopBreathing()
             }
         })
+        .onTapGesture(count: /*@START_MENU_TOKEN@*/1/*@END_MENU_TOKEN@*/, perform: {
+            if isBreathing{
+                showStop.toggle()
+            }
+        })
         .navigationBarHidden(true)
 //        .background(Image("ocean").backgroundImageModifier())
 //        .gesture(DragGesture(minimumDistance: 0, coordinateSpace: .local)
 //                    .onEnded({ value in
 //                        //left
-//                        if value.translation.width < 0 {
+//                        if value.translation.width < -20 {
 //                            changeLeft()
 //                        }
 //                        //right
-//                        if value.translation.width > 0 {
+//                        if value.translation.width > 20 {
 //                            changeRight()
 //                        }
 //
