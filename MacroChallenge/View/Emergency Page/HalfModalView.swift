@@ -73,8 +73,8 @@ struct HalfModalView<Content: View>: View {
                         .shadow(radius: 5)
                     self.content()
                         .padding()
-                        .padding(.bottom, 65)
-//                        .padding(.bottom, 185)
+//                        .padding(.bottom, 65)
+                        .padding(.bottom, 185)
                         .frame(width: UIScreen.main.bounds.size.width, height: modalHeight)
                         .clipped()
                 }
