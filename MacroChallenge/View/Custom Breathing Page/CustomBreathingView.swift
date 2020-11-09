@@ -85,7 +85,7 @@ struct CustomBreathingView: View {
                 Spacer()
             }
 //            .background(Image("ocean").blurBackgroundImageModifier())
-            .navigationBarItems(trailing: CancelAddView(breathName: $breathName, inhale: $inhale, hold1: $hold1, exhale: $exhale, hold2: $hold2, isSoundOn: $isSoundOn, isHapticOn: $isHapticOn, isFavorite: $isFavorite))
+            .navigationBarItems(trailing: CancelAddView(breathName: $breathName, inhale: $inhale, hold1: $hold1, exhale: $exhale, hold2: $hold2, isSoundOn: $isSoundOn, isHapticOn: $isHapticOn))
             .frame(width : ScreenSize.windowWidth() * 0.9)
             .navigationBarTitle("Add Breathing",displayMode: .inline)
         }
@@ -163,6 +163,7 @@ struct CustomBreathingViewPicker: View {
     @Binding var exhaleSelection : Int
     @Binding var hold2Selection : Int
     
+    //batasnya ganti disni
     var inhale = [Int](2..<11)
     var hold1 = [Int](0..<11)
     var exhale = [Int](2..<11)
@@ -172,32 +173,32 @@ struct CustomBreathingViewPicker: View {
         ZStack {
                 HStack {
                 Picker("", selection: self.$inhaleSelection) {
-                    ForEach(0..<self.inhale.count) { index in
-                        Text("\(self.inhale[index])").tag(index)
+                    ForEach(self.inhale, id: \.self) { index in
+                        Text("\(index)").tag(index)
                     }
                 }
                 .frame(width: ScreenSize.windowWidth() * 0.2075, height: ScreenSize.windowHeight() * 0.185, alignment: .center)
                 .clipped()
                 
                 Picker("", selection: self.$hold1Selection) {
-                    ForEach(0..<self.hold1.count) { index in
-                        Text("\(self.hold1[index])").tag(index)
+                    ForEach(self.hold1, id: \.self) { index in
+                        Text("\(index)").tag(index)
                     }
                 }
                 .frame(width: ScreenSize.windowWidth() * 0.2075, height: ScreenSize.windowHeight() * 0.185, alignment: .center)
                 .clipped()
                 
                 Picker("", selection: self.$exhaleSelection) {
-                    ForEach(0..<self.exhale.count) { index in
-                        Text("\(self.exhale[index])").tag(index)
+                    ForEach(self.exhale, id: \.self) { index in
+                        Text("\(index)").tag(index)
                     }
                 }
                 .frame(width: ScreenSize.windowWidth() * 0.2075, height: ScreenSize.windowHeight() * 0.185, alignment: .center)
                 .clipped()
                 
                 Picker("", selection: self.$hold2Selection) {
-                    ForEach(0..<self.hold2.count) { index in
-                        Text("\(self.hold2[index])").tag(index)
+                    ForEach(self.hold2, id: \.self) { index in
+                        Text("\(index)").tag(index)
                     }
                 }
                 .frame(width: ScreenSize.windowWidth() * 0.2075, height: ScreenSize.windowHeight() * 0.185, alignment: .center)
@@ -227,7 +228,6 @@ struct GuidingPreferences: View {
 }
 
 
-
 struct CancelAddView: View {
     //pake ini untuk save ke core data
     @Environment(\.managedObjectContext) var manageObjectContext
@@ -240,7 +240,6 @@ struct CancelAddView: View {
     @Binding var hold2 : Int
     @Binding var isSoundOn : Bool
     @Binding var isHapticOn : Bool
-    @Binding var isFavorite : Bool
     
     var body: some View {
         Button(action: {
@@ -264,7 +263,6 @@ extension CancelAddView {
         breath.sound = isSoundOn
         breath.haptic = isHapticOn
         breath.id = UUID()
-        breath.favorite = false
         
         do{
             //save ke core data

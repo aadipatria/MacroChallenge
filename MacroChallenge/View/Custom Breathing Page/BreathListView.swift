@@ -18,6 +18,7 @@ struct BreathListView: View {
     let sendWatchHelper = WatchHelper()
     
     @State var breathing2DArray = [[String]]()
+    @State var edit : Bool = false
     
 //    init() {
 //        UITableView.appearance().tableFooterView = UIView()
@@ -42,14 +43,9 @@ struct BreathListView: View {
                         destination: CustomBreathingView(),
                         isActive : $navPop.addBreath,
                         label: {
-                            EmptyView()
+                            Image(systemName: "plus")
+                                .foregroundColor(.black)
                         })
-                    Button(action: {
-                        navPop.addBreath = true
-                    }, label: {
-                        Image(systemName: "plus")
-                            .foregroundColor(.black)
-                    })
                     
                 }
             }
@@ -72,48 +68,42 @@ struct BreathListView: View {
                         
                         //passing id (UUID) nya
                         destination: EditBreathing(id: breath.id),
-                        isActive : $navPop.editBreath,
+//                        isActive : $navPop.editBreath,
                         label: {
-                            EmptyView()
-                        })
-                    Button(action: {
-                        navPop.editBreath = true
-                    }, label: {
-                        HStack{
-                            VStack(alignment : .leading, spacing : 4){
-                                Text(breath.name ?? "")
-                                    .fontWeight(.semibold)
-                                    .foregroundColor(.black)
-                                Text("\(breath.inhale) - \(breath.hold1) - \(breath.exhale) - \(breath.hold2)")
-                                    .foregroundColor(.black)
-                            }.padding()
-                            Spacer()
-                            Button(action: {
-                                breath.favorite.toggle()
-                            }, label: {
-                                if breath.favorite{
-                                    Image(systemName: "heart.fill")
+                            HStack{
+                                VStack(alignment : .leading, spacing : 4){
+                                    Text(breath.name ?? "")
+                                        .fontWeight(.semibold)
                                         .foregroundColor(.black)
-                                        .font(.system(size: 20))
-                                        .padding()
-                                }else{
-                                    Image(systemName: "heart")
+                                    Text("\(breath.inhale) - \(breath.hold1) - \(breath.exhale) - \(breath.hold2)")
                                         .foregroundColor(.black)
-                                        .font(.system(size: 20))
-                                        .padding()
-                                }
+                                }.padding()
+                                Spacer()
+                                Button(action: {
+                                    breath.favorite.toggle()
+                                }, label: {
+                                    if breath.favorite{
+                                        Image(systemName: "heart.fill")
+                                            .foregroundColor(.black)
+                                            .font(.system(size: 20))
+                                            .padding()
+                                    }else{
+                                        Image(systemName: "heart")
+                                            .foregroundColor(.black)
+                                            .font(.system(size: 20))
+                                            .padding()
+                                    }
+                                })
                                 
-                            })
-                            
-                        }
-                        .padding()
-                        .frame(width: ScreenSize.windowWidth() * 0.9, height: ScreenSize.windowHeight() * 0.1)
-                        .background(Rectangle()
-                                        .fill(Color.clear)
-                                        .background(Blur(style: .systemThinMaterial)
-                                                        .opacity(0.95))
-                                        .cornerRadius(8))
-                    })
+                            }
+                            .padding()
+                            .frame(width: ScreenSize.windowWidth() * 0.9, height: ScreenSize.windowHeight() * 0.1)
+                            .background(Rectangle()
+                                            .fill(Color.clear)
+                                            .background(Blur(style: .systemThinMaterial)
+                                                            .opacity(0.95))
+                                            .cornerRadius(8))
+                        })
                 }
                 .padding(.bottom, 8)
                 .animation(.easeInOut(duration: 0.6))
