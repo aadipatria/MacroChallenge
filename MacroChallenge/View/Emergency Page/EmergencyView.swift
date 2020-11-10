@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import Combine
 
 struct EmergencyView: View {
     @EnvironmentObject var navPop : NavigationPopObject
@@ -15,6 +16,7 @@ struct EmergencyView: View {
     @Environment(\.managedObjectContext) var manageObjectContext
     @State var isAlert : Bool = false
     
+    @State private var keyboardHeight: CGFloat = 0
 
     @State var isAddNewContact: Bool = false
     @State var contactEdited: Bool = false
@@ -171,6 +173,10 @@ struct EmergencyView: View {
             HalfModalView(isShown: $contactEdited) {
                 EditEmergencyContact(name: self.$name, number: self.$number, id: self.id, contactEdited: self.$contactEdited)
             }
+        }
+        .padding(.bottom, keyboardHeight)
+        .onReceive(Publishers.keyboardHeight) {
+            self.keyboardHeight = $0
         }
     }
 }

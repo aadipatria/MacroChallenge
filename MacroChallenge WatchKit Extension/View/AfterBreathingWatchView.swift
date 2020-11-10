@@ -13,9 +13,6 @@ struct AfterBreathingWatchView: View {
     
     var body: some View {
         Text(breathName)
-            .onAppear {
-                print("aa")
-            }
     }
 }
 

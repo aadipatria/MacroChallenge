@@ -16,7 +16,6 @@ struct BreathWatchView: View {
     //Boolean -> 5 = sound, 6 = haptic, 7 = favorite,
     //UUID -> 8 = id
     //kalau user ada 3 favorite, 3 pertama di array itu favorite
-//    @State var breath2DArray = [[String]]()
     @AppStorage("arrayOfBreathing") var arrayOfBreathing = Data()
     
     var body: some View {
@@ -26,8 +25,7 @@ struct BreathWatchView: View {
             }else{
                 ForEach(Storage.userDefault(data: arrayOfBreathing).indices, id: \.self){ idx in
                     NavigationLink(
-                        destination: EmptyView(),
-//                        destination: AfterBreathingWatchView(breathName: "\(Storage.userDefault(data: arrayOfBreathing)[idx][0])"),
+                        destination: AfterBreathingWatchView(breathName: "\(Storage.userDefault(data: arrayOfBreathing)[idx][0])"),
                         label: {
                             if !Storage.userDefault(data: arrayOfBreathing).isEmpty {
                                 VStack {
@@ -39,23 +37,11 @@ struct BreathWatchView: View {
                         .frame(width: WKInterfaceDevice.current().screenBounds.width * 0.9, height: WKInterfaceDevice.current().screenBounds.height * 0.65, alignment: .center)
                         .background(Color.blue)
                 }
-//                .padding(.top, 20)
             }
         }
         .listStyle(CarouselListStyle())
         .navigationBarTitle("Breathing")
-        .onAppear() {
-//            update()
-        }
     }
-}
-
-extension BreathWatchView {
-//    func update() {
-//        if let tempArr = UserDefaults.standard.array(forKey: "arrayOfBreathing") as? [[String]] {
-//            breath2DArray = tempArr
-//        }
-//    }
 }
 
 struct BreathWatchView_Previews: PreviewProvider {

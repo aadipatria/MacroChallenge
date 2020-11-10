@@ -108,6 +108,9 @@ struct EditBreathing: View {
                 checkIdAndChangeData()
         }
         }
+        .onTapGesture {
+            hideKeyboard()
+        }
     }
 }
 
@@ -128,6 +131,11 @@ extension EditBreathing {
 
         }
     }
+    
+    func hideKeyboard() {
+        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+    }
+    
     func deleteBreathing(){
         for breath in breaths {
             if breath.id == self.id{
