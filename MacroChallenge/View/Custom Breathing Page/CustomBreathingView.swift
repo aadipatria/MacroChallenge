@@ -125,7 +125,8 @@ struct Precautions: View {
                 }
                 .font(.system(size: 12, weight: .regular, design: .default))
             }
-            .frame(width: ScreenSize.windowWidth() * 0.75, height: ScreenSize.windowHeight() * 0.135)
+            .padding()
+            .frame(width: ScreenSize.windowWidth() * 0.9, height: ScreenSize.windowHeight() * 0.135)
         }
     }
 }
