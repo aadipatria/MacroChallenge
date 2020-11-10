@@ -200,6 +200,7 @@ struct CustomBreathingViewPicker: View {
                 Picker("", selection: self.$exhaleSelection) {
                     ForEach(self.exhale, id: \.self) { index in
                         Text("\(index)").tag(index)
+                            
                     }
                 }
                 .frame(width: ScreenSize.windowWidth() * 0.2075, height: ScreenSize.windowHeight() * 0.185, alignment: .center)

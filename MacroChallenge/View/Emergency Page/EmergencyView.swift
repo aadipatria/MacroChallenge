@@ -54,8 +54,8 @@ struct EmergencyView: View {
                                 .background(SomeBackground.editBackground())
                                 .padding()
                         }
-
                     })
+                    
                     if !isEdited && contacts.count < 3{
                         ZStack {
                             SomeBackground.plusBackground()
@@ -174,7 +174,7 @@ struct EmergencyView: View {
                 EditEmergencyContact(name: self.$name, number: self.$number, id: self.id, contactEdited: self.$contactEdited)
             }
         }
-        .padding(.bottom, keyboardHeight)
+        .padding(.bottom, keyboardHeight - 45)
         .onReceive(Publishers.keyboardHeight) {
             self.keyboardHeight = $0
         }

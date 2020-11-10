@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import Combine
 
 enum DragState {
     case inactive
