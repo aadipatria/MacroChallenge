@@ -75,9 +75,9 @@ struct BreathView: View {
                     }
                     if showStop{
                         Button(action: {
+                            cancelHaptic()
                             isBreathing = false
                             self.success = false
-                            cancelHaptic()
                         }, label: {
                             Image(systemName: "x.circle")
                                 .foregroundColor(.white)
@@ -173,7 +173,7 @@ struct BreathView: View {
                     if isBreathing{
                         showStop = false
                         self.success = true
-                        prepareHaptics()
+//                        prepareHaptics()
                         AudioPlayer1.playSounds(soundfile: "nature bgm.mp3")
                         getNumberOfCycles()
                     }else{
@@ -213,6 +213,7 @@ struct BreathView: View {
         }
         .frame(maxHeight: ScreenSize.windowHeight() * 0.52)
         .onAppear(perform: {
+            prepareHaptics()
             showStop = false
             self.cycleTime = 1
             
