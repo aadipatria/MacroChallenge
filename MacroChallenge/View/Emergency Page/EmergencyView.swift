@@ -40,23 +40,26 @@ struct EmergencyView: View {
                         .fontWeight(.bold)
                         .foregroundColor(.white)
                     Spacer()
-                    Button(action: {
-                        isEdited.toggle()
-                    }, label: {
-                        if isEdited{
-                            Text("Done")
-                                .foregroundColor(.black)
-                                .background(SomeBackground.editBackground())
-                                .padding()
-                        }else{
-                            Text("Edit")
-                                .foregroundColor(.black)
-                                .background(SomeBackground.editBackground())
-                                .padding()
-                        }
+                    if !contacts.isEmpty{
+                        Button(action: {
+                            isEdited.toggle()
+                        }, label: {
+                            if isEdited{
+                                Text("Done")
+                                    .foregroundColor(.black)
+                                    .background(SomeBackground.editBackground())
+                                    .padding()
+                            }else{
+                                Text("Edit")
+                                    .foregroundColor(.black)
+                                    .background(SomeBackground.editBackground())
+                                    .padding()
+                            }
 
-                    })
-                    if !isEdited && contacts.count < 3{
+                        })
+                    }
+                    
+                    if !isEdited && contacts.count < 3 || contacts.isEmpty{
                         ZStack {
                             SomeBackground.plusBackground()
                             Button(action: {
