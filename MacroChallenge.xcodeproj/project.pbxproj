@@ -19,6 +19,7 @@
 		9DE77B212542D5A800BCCDB3 /* EmergencyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE77B202542D5A800BCCDB3 /* EmergencyModel.swift */; };
 		9DE77B292542D7CA00BCCDB3 /* AddEmergencyContact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE77B282542D7CA00BCCDB3 /* AddEmergencyContact.swift */; };
 		9DE77B3D2542DE8D00BCCDB3 /* WatchHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE77B3C2542DE8D00BCCDB3 /* WatchHelper.swift */; };
+		9DF237EB255A992600D9F9E1 /* Onboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF237EA255A992500D9F9E1 /* Onboarding.swift */; };
 		9DFAB86C2534404F00E81C87 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFAB86B2534404F00E81C87 /* AppDelegate.swift */; };
 		9DFAB86E2534404F00E81C87 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFAB86D2534404F00E81C87 /* SceneDelegate.swift */; };
 		9DFAB8702534404F00E81C87 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFAB86F2534404F00E81C87 /* HomeView.swift */; };
@@ -118,6 +119,7 @@
 		9DE77B202542D5A800BCCDB3 /* EmergencyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmergencyModel.swift; sourceTree = "<group>"; };
 		9DE77B282542D7CA00BCCDB3 /* AddEmergencyContact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEmergencyContact.swift; sourceTree = "<group>"; };
 		9DE77B3C2542DE8D00BCCDB3 /* WatchHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchHelper.swift; sourceTree = "<group>"; };
+		9DF237EA255A992500D9F9E1 /* Onboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboarding.swift; sourceTree = "<group>"; };
 		9DFAB8682534404F00E81C87 /* MacroChallenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MacroChallenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9DFAB86B2534404F00E81C87 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9DFAB86D2534404F00E81C87 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -213,6 +215,14 @@
 			children = (
 			);
 			path = WatchModel;
+			sourceTree = "<group>";
+		};
+		9DF237E9255A971200D9F9E1 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				9DF237EA255A992500D9F9E1 /* Onboarding.swift */,
+			);
+			path = Onboarding;
 			sourceTree = "<group>";
 		};
 		9DFAB85F2534404F00E81C87 = {
@@ -369,6 +379,7 @@
 		CA95C12525357BF9008C0398 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				9DF237E9255A971200D9F9E1 /* Onboarding */,
 				CA95C10A25357B1C008C0398 /* Home Page */,
 				CA95C11C25357BD3008C0398 /* Breath Page */,
 				CA95C10E25357B2F008C0398 /* Custom Breathing Page */,
@@ -538,6 +549,7 @@
 				9D7D26EA25381317006D35D2 /* MacroChallenge.xcdatamodeld in Sources */,
 				CA95C12725357C52008C0398 /* AfterBreathingView.swift in Sources */,
 				BC8B2B3B254AA6530091F892 /* DonutShape.swift in Sources */,
+				9DF237EB255A992600D9F9E1 /* Onboarding.swift in Sources */,
 				CA95C11025357B3F008C0398 /* BreathListView.swift in Sources */,
 				CA8C4F3A253D3DEC005B99A8 /* NavigationPop.swift in Sources */,
 				CA95C11825357B59008C0398 /* CustomBreathingView.swift in Sources */,
