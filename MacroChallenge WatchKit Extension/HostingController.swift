@@ -37,16 +37,16 @@ class HostingController: WKHostingController<AnyView>, WCSessionDelegate {
         
         let message = message["Message"] as! [[String]]
         
+        print(message)
+        
         let uuid = UUID(uuidString: message[0][0])
         
         if uuid == nil {
             ArrayOfBreathing = message
-//            UserDefaults.standard.setValue(ArrayOfBreathing, forKey: "arrayOfBreathing")
             arrayOfBreathing = Storage.archive(object: ArrayOfBreathing)
         }
         else {
             ArrayOfContact = message
-//            UserDefaults.standard.setValue(ArrayOfContact, forKey: "arrayOfContact")
             arrayOfContact = Storage.archive(object: ArrayOfContact)
         }
         
@@ -58,15 +58,6 @@ class HostingController: WKHostingController<AnyView>, WCSessionDelegate {
     
     
     override var body: AnyView {
-//        let hwv = HomeWatchView()
-//        if !ArrayOfBreathing.isEmpty {
-//            hwv.breath2DArray = ArrayOfBreathing
-//        }
-//
-//        if !ArrayOfContact.isEmpty {
-//            hwv.contact2DArray = ArrayOfContact
-//        }
-        
         return AnyView(HomeWatchView()
             .environmentObject(NavigationWatchPopObject()))
     }

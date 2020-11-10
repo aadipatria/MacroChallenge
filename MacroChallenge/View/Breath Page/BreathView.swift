@@ -12,6 +12,7 @@ import CoreHaptics
 struct BreathView: View {
     
     @EnvironmentObject var navPop : NavigationPopObject
+    @Environment(\.managedObjectContext) var manageObjectContext
     @FetchRequest(fetchRequest: Breathing.getAllBreathing()) var breaths: FetchedResults<Breathing>
     @State var index = 0
     @State var inhale: Double = 0
@@ -224,6 +225,24 @@ struct BreathView: View {
                 if navPop.breathCycles > 0 {
                     isBreathing = true
                 }
+            }else{
+                let breath = Breathing(context: self.manageObjectContext)
+                breath.name = "Calm"
+                breath.inhale = 4
+                breath.hold1 = 7
+                breath.exhale = 8
+                breath.hold2 = 0
+                breath.favorite = false
+                breath.haptic = true
+                breath.sound = true
+                breath.id = UUID()
+                do{
+                    //save ke core data
+                    try self.manageObjectContext.save()
+                } catch {
+                    print(error)
+                }
+                update()
             }
         })
         .onChange(of: breathingState) {newValue in

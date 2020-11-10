@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import Combine
 
 struct EmergencyView: View {
     @EnvironmentObject var navPop : NavigationPopObject
@@ -15,6 +16,7 @@ struct EmergencyView: View {
     @Environment(\.managedObjectContext) var manageObjectContext
     @State var isAlert : Bool = false
     
+    @State private var keyboardHeight: CGFloat = 0
 
     @State var isAddNewContact: Bool = false
     @State var contactEdited: Bool = false
@@ -38,23 +40,26 @@ struct EmergencyView: View {
                         .fontWeight(.bold)
                         .foregroundColor(.white)
                     Spacer()
-                    Button(action: {
-                        isEdited.toggle()
-                    }, label: {
-                        if isEdited{
-                            Text("Done")
-                                .foregroundColor(.black)
-                                .background(SomeBackground.editBackground())
-                                .padding()
-                        }else{
-                            Text("Edit")
-                                .foregroundColor(.black)
-                                .background(SomeBackground.editBackground())
-                                .padding()
-                        }
+                    if !contacts.isEmpty{
+                        Button(action: {
+                            isEdited.toggle()
+                        }, label: {
+                            if isEdited{
+                                Text("Done")
+                                    .foregroundColor(.black)
+                                    .background(SomeBackground.editBackground())
+                                    .padding()
+                            }else{
+                                Text("Edit")
+                                    .foregroundColor(.black)
+                                    .background(SomeBackground.editBackground())
+                                    .padding()
+                            }
 
-                    })
-                    if !isEdited && contacts.count < 3{
+                        })
+                    }
+                    
+                    if !isEdited && contacts.count < 3 || contacts.isEmpty{
                         ZStack {
                             SomeBackground.plusBackground()
                             Button(action: {
@@ -171,6 +176,10 @@ struct EmergencyView: View {
             HalfModalView(isShown: $contactEdited) {
                 EditEmergencyContact(name: self.$name, number: self.$number, id: self.id, contactEdited: self.$contactEdited)
             }
+        }
+        .padding(.bottom, keyboardHeight - 45)
+        .onReceive(Publishers.keyboardHeight) {
+            self.keyboardHeight = $0
         }
     }
 }

@@ -37,7 +37,6 @@ struct EditEmergencyContact: View {
                 Text("Edit Contact")
                     .fontWeight(.semibold)
                     .foregroundColor(.black)
-
                 
                 Spacer()
                 
@@ -64,6 +63,7 @@ struct EditEmergencyContact: View {
                 
                 TextField("Number", text: $number)
                     .modifier(ClearButton(text: $number))
+                    .keyboardType(.numberPad)
                     .padding()
                     .background(RoundedRectangle(cornerRadius: 8).fill(Color(UIColor(.white))))
             }

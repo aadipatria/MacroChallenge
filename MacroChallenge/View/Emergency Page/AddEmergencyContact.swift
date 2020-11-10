@@ -20,6 +20,7 @@ struct AddEmergencyContact: View {
                 Button(action: {
                     self.isAddNewContact = false
                     navPop.tabIsHidden = false
+                    hideKeyboard()
                 }, label: {
                     Text("Cancel")
                         .foregroundColor(.black)
@@ -41,6 +42,7 @@ struct AddEmergencyContact: View {
                     self.number = ""
                     self.isAddNewContact = false
                     navPop.tabIsHidden = false
+                    hideKeyboard()
                 } label: {
                     Text("Done")
                         .foregroundColor(.black)
@@ -79,6 +81,10 @@ extension AddEmergencyContact {
         } catch {
             print(error)
         }
+    }
+    
+    func hideKeyboard() {
+        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
     }
 }
 
