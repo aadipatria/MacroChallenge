@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Combine
 
 enum DragState {
     case inactive
@@ -34,7 +35,6 @@ struct HalfModalView<Content: View>: View {
     @EnvironmentObject var navPop : NavigationPopObject
     @GestureState var dragState = DragState.inactive
     @Binding var isShown: Bool
-    @State var value : CGFloat = 0
     
     var modalHeight: CGFloat = 400
     
@@ -73,7 +73,6 @@ struct HalfModalView<Content: View>: View {
                         .shadow(radius: 5)
                     self.content()
                         .padding()
-//                        .padding(.bottom, 65)
                         .padding(.bottom, 185)
                         .frame(width: UIScreen.main.bounds.size.width, height: modalHeight)
                         .clipped()
@@ -84,19 +83,6 @@ struct HalfModalView<Content: View>: View {
             }
         }
         .edgesIgnoringSafeArea(.all)
-        .offset(y: -self.value)
-        .onAppear() {
-            NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillShowNotification, object: nil, queue: .main) { (noti) in
-                let temp = UIResponder.keyboardFrameEndUserInfoKey
-                let value = noti.userInfo![temp] as! CGRect
-                let height = value.height
-                self.value = height - 195
-            }
-            
-            NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillHideNotification, object: nil, queue: .main) { (noti) in
-                self.value = 0
-            }
-        }
     }
 }
 

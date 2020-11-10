@@ -89,6 +89,15 @@ struct CustomBreathingView: View {
             .frame(width : ScreenSize.windowWidth() * 0.9)
             .navigationBarTitle("Add Breathing",displayMode: .inline)
         }
+        .onTapGesture {
+            hideKeyboard()
+        }
+    }
+}
+
+extension CustomBreathingView {
+    func hideKeyboard() {
+        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
     }
 }
 
