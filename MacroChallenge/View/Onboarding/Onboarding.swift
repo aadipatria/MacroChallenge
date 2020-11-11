@@ -57,7 +57,9 @@ struct Page: View {
             HStack {
                 VStack (alignment: .leading){
                     Text("\(title)")
+                        .font(Font.custom("Poppins-Bold", size: 24, relativeTo: .body))
                     Text("\(content)")
+                        .font(Font.custom("Poppins-Regular", size: 18, relativeTo: .body))
                 }
                 .foregroundColor(.white)
                 Spacer()
@@ -76,12 +78,15 @@ struct Page: View {
                         self.needsAppOnboarding = false
                     }, label: {
                         Text("Get Started")
-                            .foregroundColor(.white)
+                            .font(Font.custom("Poppins-Regular", size: 18, relativeTo: .body))
+                            .foregroundColor(.black)
+                            .frame(width: ScreenSize.windowWidth()*0.7, height: ScreenSize.windowHeight() * 0.07, alignment: .center)
+                            .background(RoundedRectangle(cornerRadius: 50).fill(Color(UIColor(.white))))
                     })
                 }
                 else {
-                    EmptyView()
-                    
+                    Text("")
+                        .frame(width: ScreenSize.windowWidth() * 1/3)
                     Spacer()
                     
                     Button(action: {
@@ -90,7 +95,7 @@ struct Page: View {
                         Image(uiImage: UIImage(named: "down_sym")!)
                             .resizable()
                             .frame(width: 30, height: 30)
-                    })
+                    }).frame(width: ScreenSize.windowWidth() * 1/3)
                     
                     Spacer()
                     
@@ -99,13 +104,12 @@ struct Page: View {
                     }, label: {
                         Text("Skip")
                             .foregroundColor(.white)
-                    })
+                            .font(Font.custom("Poppins-Regular", size: 16, relativeTo: .body))
+                    }).frame(width: ScreenSize.windowWidth() * 1/3)
                 }
             }
-            .frame(width: 253, height: 60)
-            .padding(.trailing, 23)
-            .padding(.leading, 50)
             .padding(.bottom, 50)
+            
         }
         .background(
             Image(uiImage: UIImage(named: "\(background)")!)
