@@ -128,6 +128,9 @@ struct BreathListView: View {
             
         }
 //        .background(Image("ocean").backgroundImageModifier())
+        .onAppear(perform: {
+            sync()
+        })
         
     }
 }

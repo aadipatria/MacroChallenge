@@ -147,6 +147,7 @@ struct InputName: View {
                     .frame(width: ScreenSize.windowWidth() * 0.9, height: ScreenSize.windowHeight() * 0.074)
                 HStack {
                     TextField("Name", text: $breathName)
+                        .accentColor(.black)
                         .font(Font.custom("Poppins-Light", size: 16, relativeTo: .body))
                         .frame(width: ScreenSize.windowWidth() * 0.8, height: ScreenSize.windowHeight() * 0.05)
                         .multilineTextAlignment(.leading)
