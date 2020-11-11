@@ -81,6 +81,9 @@ struct HalfModalView<Content: View>: View {
                         .padding(.bottom, 185)
                         .frame(width: UIScreen.main.bounds.size.width, height: modalHeight)
                         .clipped()
+                        .onTapGesture(perform: {
+                            hideKeyboard()
+                        })
                 }
                 .offset(y: isShown ? ((self.dragState.isDragging && dragState.translation.height >= 1) ? dragState.translation.height : 0) : modalHeight)
                 .animation(.interpolatingSpring(stiffness: 300, damping: 30, initialVelocity: 10))
@@ -96,6 +99,7 @@ extension HalfModalView {
         let dragThreshold = modalHeight * (2/3)
         if drag.predictedEndTranslation.height > dragThreshold || drag.translation.height > dragThreshold {
             isShown = false
+            navPop.tabIsHidden = false
         }
     }
     

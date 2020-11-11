@@ -48,10 +48,10 @@ struct BreathListView: View {
                     
                 }
             }
-            .frame(width : ScreenSize.windowWidth() * 0.9)
+            .frame(width : ScreenSize.windowWidth() * 0.9, height : ScreenSize.windowHeight() * 0.05)
 //            .padding()
-            .padding(10)
-            .padding(.bottom, 6)
+//            .padding(10)
+            .padding(.bottom)
 //            Button {
 //                sync()
 //            } label: {
