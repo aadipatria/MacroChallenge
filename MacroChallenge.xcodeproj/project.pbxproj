@@ -20,6 +20,7 @@
 		9DE77B292542D7CA00BCCDB3 /* AddEmergencyContact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE77B282542D7CA00BCCDB3 /* AddEmergencyContact.swift */; };
 		9DE77B3D2542DE8D00BCCDB3 /* WatchHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE77B3C2542DE8D00BCCDB3 /* WatchHelper.swift */; };
 		9DF237EB255A992600D9F9E1 /* Onboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF237EA255A992500D9F9E1 /* Onboarding.swift */; };
+		9DF7876D255BF1D8007A6362 /* QuotesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF7876C255BF1D8007A6362 /* QuotesModel.swift */; };
 		9DFAB86C2534404F00E81C87 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFAB86B2534404F00E81C87 /* AppDelegate.swift */; };
 		9DFAB86E2534404F00E81C87 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFAB86D2534404F00E81C87 /* SceneDelegate.swift */; };
 		9DFAB8702534404F00E81C87 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFAB86F2534404F00E81C87 /* HomeView.swift */; };
@@ -120,6 +121,7 @@
 		9DE77B282542D7CA00BCCDB3 /* AddEmergencyContact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEmergencyContact.swift; sourceTree = "<group>"; };
 		9DE77B3C2542DE8D00BCCDB3 /* WatchHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchHelper.swift; sourceTree = "<group>"; };
 		9DF237EA255A992500D9F9E1 /* Onboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboarding.swift; sourceTree = "<group>"; };
+		9DF7876C255BF1D8007A6362 /* QuotesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuotesModel.swift; sourceTree = "<group>"; };
 		9DFAB8682534404F00E81C87 /* MacroChallenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MacroChallenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9DFAB86B2534404F00E81C87 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9DFAB86D2534404F00E81C87 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -206,6 +208,7 @@
 			children = (
 				9D7D2712253818B8006D35D2 /* BreathingModel.swift */,
 				9DE77B202542D5A800BCCDB3 /* EmergencyModel.swift */,
+				9DF7876C255BF1D8007A6362 /* QuotesModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -549,6 +552,7 @@
 				9D7D26EA25381317006D35D2 /* MacroChallenge.xcdatamodeld in Sources */,
 				CA95C12725357C52008C0398 /* AfterBreathingView.swift in Sources */,
 				BC8B2B3B254AA6530091F892 /* DonutShape.swift in Sources */,
+				9DF7876D255BF1D8007A6362 /* QuotesModel.swift in Sources */,
 				9DF237EB255A992600D9F9E1 /* Onboarding.swift in Sources */,
 				CA95C11025357B3F008C0398 /* BreathListView.swift in Sources */,
 				CA8C4F3A253D3DEC005B99A8 /* NavigationPop.swift in Sources */,
