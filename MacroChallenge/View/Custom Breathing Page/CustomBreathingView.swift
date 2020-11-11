@@ -35,8 +35,7 @@ struct CustomBreathingView: View {
                 VStack {
                     Group {
                         Text("Pattern - in seconds")
-                            .font(.headline)
-                            .fontWeight(.semibold)
+                            .font(Font.custom("Poppins-SemiBold", size: 16, relativeTo: .body))
                             .padding()
                             .frame(width: ScreenSize.windowWidth() * 0.9, height: ScreenSize.windowHeight() * 0.054, alignment: .leading)
                             .background(SomeBackground.headerBackground())
@@ -49,13 +48,18 @@ struct CustomBreathingView: View {
                             VStack {
                                 HStack {
                                     Text("Inhale")
+                                        .font(Font.custom("Poppins-Light", size: 15, relativeTo: .body))
                                         .frame(width: ScreenSize.windowWidth() * 0.2075)
                                     Text("Hold")
+                                        .font(Font.custom("Poppins-Light", size: 15, relativeTo: .body))
                                         .frame(width: ScreenSize.windowWidth() * 0.2075)
                                     Text("Exhale")
+                                        .font(Font.custom("Poppins-Light", size: 15, relativeTo: .body))
                                         .frame(width: ScreenSize.windowWidth() * 0.2075)
                                     Text("Hold")
+                                        .font(Font.custom("Poppins-Light", size: 15, relativeTo: .body))
                                         .frame(width: ScreenSize.windowWidth() * 0.2075)
+                                    
                                 }.padding(.top)
                                 CustomBreathingViewPicker(inhaleSelection: $inhale, hold1Selection: $hold1, exhaleSelection: $exhale, hold2Selection: $hold2)
                                     .frame(height: (226-40))
@@ -66,7 +70,7 @@ struct CustomBreathingView: View {
                 }
                 VStack (spacing : 0) {
                     Text("Guiding Preferences")
-                        .fontWeight(.semibold)
+                        .font(Font.custom("Poppins-SemiBold", size: 16, relativeTo: .body))
                         .padding()
                         .frame(width: ScreenSize.windowWidth() * 0.9, height: ScreenSize.windowHeight() * 0.054, alignment: .leading)
                         .background(SomeBackground.headerBackground())
@@ -188,6 +192,7 @@ struct CustomBreathingViewPicker: View {
                 Picker("", selection: self.$inhaleSelection) {
                     ForEach(self.inhale, id: \.self) { index in
                         Text("\(index)").tag(index)
+                            .font(Font.custom("Poppins-Medium", size: 18, relativeTo: .body))
                     }
                 }
                 .frame(width: ScreenSize.windowWidth() * 0.2075, height: ScreenSize.windowHeight() * 0.185, alignment: .center)
@@ -196,6 +201,7 @@ struct CustomBreathingViewPicker: View {
                 Picker("", selection: self.$hold1Selection) {
                     ForEach(self.hold1, id: \.self) { index in
                         Text("\(index)").tag(index)
+                            .font(Font.custom("Poppins-Medium", size: 18, relativeTo: .body))
                     }
                 }
                 .frame(width: ScreenSize.windowWidth() * 0.2075, height: ScreenSize.windowHeight() * 0.185, alignment: .center)
@@ -204,6 +210,7 @@ struct CustomBreathingViewPicker: View {
                 Picker("", selection: self.$exhaleSelection) {
                     ForEach(self.exhale, id: \.self) { index in
                         Text("\(index)").tag(index)
+                            .font(Font.custom("Poppins-Medium", size: 18, relativeTo: .body))
                             
                     }
                 }
@@ -213,6 +220,7 @@ struct CustomBreathingViewPicker: View {
                 Picker("", selection: self.$hold2Selection) {
                     ForEach(self.hold2, id: \.self) { index in
                         Text("\(index)").tag(index)
+                            .font(Font.custom("Poppins-Medium", size: 18, relativeTo: .body))
                     }
                 }
                 .frame(width: ScreenSize.windowWidth() * 0.2075, height: ScreenSize.windowHeight() * 0.185, alignment: .center)
@@ -229,11 +237,13 @@ struct GuidingPreferences: View {
         VStack{
             Toggle(isOn: $isSoundOn, label: {
                 Text("Audio Instruction")
+                    .font(Font.custom("Poppins-Light", size: 16, relativeTo: .body))
             })
             .padding(.horizontal)
             
             Toggle(isOn: $isHapticOn, label: {
                 Text("Haptic")
+                    .font(Font.custom("Poppins-Light", size: 16, relativeTo: .body))
             })
             .padding(.horizontal)
         }

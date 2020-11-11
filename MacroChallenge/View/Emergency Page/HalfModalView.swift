@@ -68,7 +68,7 @@ struct HalfModalView<Content: View>: View {
                 ZStack {
                     Color.white.opacity(1)
                         .frame(width: UIScreen.main.bounds.width, height: modalHeight)
-                        .cornerRadius(10)
+                        .cornerRadius(10, corners: [.topLeft, .topRight])
                     Rectangle()
                         .fill(Color.clear)
                         .background(Blur(style: .systemThinMaterial)
