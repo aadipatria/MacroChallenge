@@ -80,14 +80,12 @@ struct ExtractedView: View {
                     if navPop.page == 0{
                         Image("water").imageIconModifier()
                         Text("Contact")
-                            .font(.caption)
-                            .fontWeight(.semibold)
+                            .font(Font.custom("Poppins-SemiBold", size: 10, relativeTo: .body))
                             .foregroundColor(.white)
                     }else{
                         Image("water_gray").imageIconModifier()
                         Text("Contact")
-                            .font(.caption)
-                            .fontWeight(.semibold)
+                            .font(Font.custom("Poppins-SemiBold", size: 10, relativeTo: .body))
                             .foregroundColor(.gray)
                     }
                 }
@@ -101,14 +99,12 @@ struct ExtractedView: View {
                     if navPop.page == 1{
                         Image("wind").imageIconModifier()
                         Text("Breath")
-                            .font(.caption)
-                            .fontWeight(.semibold)
+                            .font(Font.custom("Poppins-SemiBold", size: 10, relativeTo: .body))
                             .foregroundColor(.white)
                     }else{
                         Image("wind_gray").imageIconModifier()
                         Text("Breath")
-                            .font(.caption)
-                            .fontWeight(.semibold)
+                            .font(Font.custom("Poppins-SemiBold", size: 10, relativeTo: .body))
                             .foregroundColor(.gray)
                     }
                 }
@@ -123,16 +119,14 @@ struct ExtractedView: View {
                         Image("earth").imageIconModifier()
                             .padding(.bottom, 1)
                         Text("Collection")
-                            .font(.caption)
-                            .fontWeight(.semibold)
+                            .font(Font.custom("Poppins-SemiBold", size: 10, relativeTo: .body))
                             .foregroundColor(.white)
                         
                     }else{
                         Image("earth_gray").imageIconModifier()
                             .padding(.bottom, 1)
                         Text("Collection")
-                            .font(.caption)
-                            .fontWeight(.semibold)
+                            .font(Font.custom("Poppins-SemiBold", size: 10, relativeTo: .body))
                             .foregroundColor(.gray)
                     }
                 }

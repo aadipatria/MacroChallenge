@@ -84,6 +84,7 @@ struct BreathView: View {
                                 cancelHaptic()
                             }, label: {
                                 Text("Stop")
+                                    .font(Font.custom("Poppins-SemiBold", size: 18, relativeTo: .body))
                                     .foregroundColor(.black)
                                     .frame(width: ScreenSize.windowWidth()*0.5, height: ScreenSize.windowHeight() * 0.05, alignment: .center)
                                     .background(RoundedRectangle(cornerRadius: 36).fill(Color(UIColor(.white))))
@@ -141,20 +142,19 @@ struct BreathView: View {
                     if !breaths.isEmpty{
                         Group {
                             Text(name)
-                                .fontWeight(.bold)
-                                .foregroundColor(.black)
-                                .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
+                                .font(Font.custom("Poppins-Bold", size: 28, relativeTo: .body))
+                                .foregroundColor(.white)
                             Text(pattern)
                                 .fontWeight(.medium)
-                                .foregroundColor(.black)
+                                .foregroundColor(.white)
                                 .font(/*@START_MENU_TOKEN@*/.title3/*@END_MENU_TOKEN@*/)
                             if breaths[index].favorite {
                                 Image(systemName: "heart.fill")
-                                    .foregroundColor(Color.black)
+                                    .foregroundColor(Color.white)
                                     .font(/*@START_MENU_TOKEN@*/.title2/*@END_MENU_TOKEN@*/)
                             } else {
                                 Image(systemName: "heart")
-                                    .foregroundColor(Color.black)
+                                    .foregroundColor(Color.white)
                                     .font(/*@START_MENU_TOKEN@*/.title2/*@END_MENU_TOKEN@*/)
                                     
                             }
@@ -163,13 +163,16 @@ struct BreathView: View {
                     
                     ZStack(alignment: .leading) {
                         Text("Minute(s)")
-                            .font(.title2)
+                            .font(Font.custom("Poppins-Bold", size: 18, relativeTo: .body))
                             .padding(.leading, 96)
+                            .foregroundColor(.white)
                         
                         Picker(selection: $cycleTime, label: Text("Picker")) {
                             ForEach(cycleMinutes, id: \.self) { minutes in
                                 Text("\(minutes)")
-                                    .font(.title2)
+                                    .foregroundColor(.white)
+                                    .font(Font.custom("Poppins-SemiBold", size: 18, relativeTo: .body))
+                                
                             }
                         }
                         .frame(width: 160)
@@ -192,6 +195,7 @@ struct BreathView: View {
                         }
                     }) {
                         Text("Start")
+                            .font(Font.custom("Poppins-SemiBold", size: 18, relativeTo: .body))
                             .foregroundColor(.black)
                             .frame(width: ScreenSize.windowWidth()*0.5, height: ScreenSize.windowHeight() * 0.05, alignment: .center)
                             .background(RoundedRectangle(cornerRadius: 36).fill(Color(UIColor(.white))))
