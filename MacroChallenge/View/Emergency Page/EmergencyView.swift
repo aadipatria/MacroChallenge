@@ -48,13 +48,13 @@ struct EmergencyView: View {
                                     .font(Font.custom("Poppins-SemiBold", size: 13, relativeTo: .body))
                                     .foregroundColor(.black)
                                     .background(SomeBackground.editBackground())
-                                    .padding()
+                                    .padding(.horizontal)
                             }else{
                                 Text("Edit")
                                     .font(Font.custom("Poppins-SemiBold", size: 13, relativeTo: .body))
                                     .foregroundColor(.black)
                                     .background(SomeBackground.editBackground())
-                                    .padding()
+                                    .padding(.horizontal)
                             }
 
                         })
@@ -74,6 +74,7 @@ struct EmergencyView: View {
                         }
                     }
                 }
+                .frame(width : ScreenSize.windowWidth() * 0.9, height : ScreenSize.windowHeight() * 0.05)
                 .animation(.easeInOut(duration: 0.6))
                 .padding(.bottom)
 //                Button {
@@ -167,7 +168,7 @@ struct EmergencyView: View {
                 
                 Spacer()
             }
-//            .background(Image("ocean").backgroundImageModifier())
+            .background(Image("ocean").backgroundImageModifier())
             .frame(width: ScreenSize.windowWidth() * 0.9)
 
             HalfModalView(isShown: $isAddNewContact) {
