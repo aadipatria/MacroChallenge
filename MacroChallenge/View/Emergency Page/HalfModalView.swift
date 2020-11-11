@@ -96,6 +96,7 @@ extension HalfModalView {
         let dragThreshold = modalHeight * (2/3)
         if drag.predictedEndTranslation.height > dragThreshold || drag.translation.height > dragThreshold {
             isShown = false
+            navPop.tabIsHidden = false
         }
     }
     
