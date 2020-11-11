@@ -151,9 +151,12 @@ struct BreathView: View {
                             if breaths[index].favorite {
                                 Image(systemName: "heart.fill")
                                     .foregroundColor(Color.black)
+                                    .font(/*@START_MENU_TOKEN@*/.title2/*@END_MENU_TOKEN@*/)
                             } else {
                                 Image(systemName: "heart")
                                     .foregroundColor(Color.black)
+                                    .font(/*@START_MENU_TOKEN@*/.title2/*@END_MENU_TOKEN@*/)
+                                    
                             }
                         }.frame(maxWidth: ScreenSize.windowWidth() * 0.6)
                     }

@@ -66,8 +66,6 @@ struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         let viewContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         HomeView().environment(\.managedObjectContext, viewContext).environmentObject(NavigationPopObject())
-//        LoopingPlayer()
-//            .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
     }
 }
 
@@ -82,19 +80,19 @@ struct ExtractedView: View {
                     if navPop.page == 0{
                         Image("water").imageIconModifier()
                         Text("Contact")
-                            .font(.footnote)
+                            .font(.caption)
                             .fontWeight(.semibold)
                             .foregroundColor(.white)
                     }else{
                         Image("water_gray").imageIconModifier()
                         Text("Contact")
-                            .font(.footnote)
+                            .font(.caption)
                             .fontWeight(.semibold)
                             .foregroundColor(.gray)
                     }
                 }
                 .frame(width : 80)
-            }).padding()
+            }).padding(.horizontal)
             Spacer()
             Button(action: {
                 navPop.page = 1
@@ -103,19 +101,19 @@ struct ExtractedView: View {
                     if navPop.page == 1{
                         Image("wind").imageIconModifier()
                         Text("Breath")
-                            .font(.footnote)
+                            .font(.caption)
                             .fontWeight(.semibold)
                             .foregroundColor(.white)
                     }else{
                         Image("wind_gray").imageIconModifier()
                         Text("Breath")
-                            .font(.footnote)
+                            .font(.caption)
                             .fontWeight(.semibold)
                             .foregroundColor(.gray)
                     }
                 }
                 .frame(width : 80)
-            }).padding()
+            }).padding(.horizontal)
             Spacer()
             Button(action: {
                 navPop.page = 2
@@ -123,27 +121,30 @@ struct ExtractedView: View {
                 VStack (spacing: 0) {
                     if navPop.page == 2{
                         Image("earth").imageIconModifier()
+                            .padding(.bottom, 1)
                         Text("Collection")
-                            .font(.footnote)
+                            .font(.caption)
                             .fontWeight(.semibold)
                             .foregroundColor(.white)
                         
                     }else{
                         Image("earth_gray").imageIconModifier()
+                            .padding(.bottom, 1)
                         Text("Collection")
-                            .font(.footnote)
+                            .font(.caption)
                             .fontWeight(.semibold)
                             .foregroundColor(.gray)
                     }
                 }
                 .frame(width : 80)
-            }).padding()
+            }).padding(.horizontal)
         }
         .frame(width : ScreenSize.windowWidth() * 0.95)
         .background(Color(UIColor.white)
-                        .frame(width : ScreenSize.windowWidth(), height : ScreenSize.windowHeight() * 0.1)
+                        .frame(width : ScreenSize.windowWidth(), height : ScreenSize.windowHeight() * 0.08)
                         .opacity(0.12)
                         .background(Blur(style: .systemThinMaterialDark).opacity(0.95))
                         .cornerRadius(24))
+        .padding(.bottom , 10)
     }
 }

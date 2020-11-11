@@ -102,7 +102,7 @@ extension Image {
             .resizable()
             .aspectRatio(contentMode: .fit)
             // inget ganti ke dynamic
-            .frame(width: ScreenSize.windowWidth() * (36/375), height: ScreenSize.windowHeight() * (36/812), alignment: .center)
+            .frame(width: ScreenSize.windowWidth() * (27/375), height: ScreenSize.windowHeight() * (27/812), alignment: .center)
     }
     func callIconModifier() -> some View {
         self
