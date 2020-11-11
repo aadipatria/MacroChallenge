@@ -9,9 +9,9 @@ import SwiftUI
 struct CustomBreathingView: View {
     
     @State var breathName = ""
-    @State var inhale = 0
+    @State var inhale = 2
     @State var hold1 = 0
-    @State var exhale = 0
+    @State var exhale = 2
     @State var hold2 = 0
     @State var isSoundOn = false
     @State var isHapticOn = false
