@@ -115,13 +115,12 @@ struct Precautions: View {
                 .frame(width: ScreenSize.windowWidth() * 0.9, height: ScreenSize.windowHeight() * 0.135)
             VStack(alignment: .leading) {
                 Text("Precautions:")
-                    .font(.headline)
-                    .fontWeight(.semibold)
+                    .font(Font.custom("Poppins-SemiBold", size: 16, relativeTo: .body))
                 Group {
                     Text("- Make sure that the breathing pattern is as suggested by the doctor or psychiatrist")
-                        .font(.footnote)
+                        .font(Font.custom("Poppins-Light", size: 12, relativeTo: .body))
                     Text("- Try to make the exhale period longer than the inhale period")
-                        .font(.footnote)
+                        .font(Font.custom("Poppins-Light", size: 12, relativeTo: .body))
                 }
                 .font(.system(size: 12, weight: .regular, design: .default))
             }
@@ -144,6 +143,7 @@ struct InputName: View {
                     .frame(width: ScreenSize.windowWidth() * 0.9, height: ScreenSize.windowHeight() * 0.074)
                 HStack {
                     TextField("Name", text: $breathName)
+                        .font(Font.custom("Poppins-Light", size: 16, relativeTo: .body))
                         .frame(width: ScreenSize.windowWidth() * 0.8, height: ScreenSize.windowHeight() * 0.05)
                         .multilineTextAlignment(.leading)
                         .padding(.horizontal)
