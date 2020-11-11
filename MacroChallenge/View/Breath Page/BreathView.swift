@@ -186,7 +186,6 @@ struct BreathView: View {
                             showStop = false
                             self.success = true
                             prepareHaptics()
-//                            AudioPlayer1.playSounds(soundfile: "nature bgm.mp3")
                             getNumberOfCycles()
                         }else{
                             self.success = false
