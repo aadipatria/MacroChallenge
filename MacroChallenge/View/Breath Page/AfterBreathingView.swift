@@ -25,13 +25,11 @@ struct AfterBreathingView: View {
                 }else{
                     VStack (alignment: .leading, spacing : 16){
                         Text("Hi there!")
-                            .font(.title)
-                            .fontWeight(.bold)
+                            .font(Font.custom("Poppins-Bold", size: 24, relativeTo: .body))
                             .foregroundColor(.white)
                             .padding(.top, 48)
                         Text("Seems like you stopped in the middle of the breathing. How can we help you?")
-                            .font(.title)
-                            .fontWeight(.light)
+                            .font(Font.custom("Poppins-Light", size: 24, relativeTo: .body))
                             .foregroundColor(.white)
                             .lineSpacing(/*@START_MENU_TOKEN@*/10.0/*@END_MENU_TOKEN@*/)
                             
@@ -46,7 +44,7 @@ struct AfterBreathingView: View {
                     // gmn cara start lansung yg baru
                 }, label: {
                     Text("Repeat")
-                        .fontWeight(.semibold)
+                        .font(Font.custom("Poppins-SemiBold", size: 14, relativeTo: .body))
                         .foregroundColor(.black)
                         .modifier(ButtonModifier())
                 })
@@ -56,7 +54,7 @@ struct AfterBreathingView: View {
                     navPop.breathCycles = 0
                 }, label: {
                     Text("Finish")
-                        .fontWeight(.semibold)
+                        .font(Font.custom("Poppins-SemiBold", size: 14, relativeTo: .body))
                         .foregroundColor(.white)
                         .modifier(ButtonStrokeModifier())
                         .background(Rectangle()
@@ -72,6 +70,7 @@ struct AfterBreathingView: View {
                 }, label: {
                     HStack {
                         Text("Emergency Contact")
+                            .font(Font.custom("Poppins-Medium", size: 12, relativeTo: .body))
                             .foregroundColor(.white)
                         Image("call")
                             .callIconModifier()
@@ -95,7 +94,7 @@ struct AfterBreathingView: View {
 
 struct AfterBreathingView_Previews: PreviewProvider {
     static var previews: some View {
-        AfterBreathingView(success: false, index: 0, name: "Relax", pattern: "4 - 7 - 8 - 0").environmentObject(NavigationPopObject())
+        AfterBreathingView(success: true, index: 0, name: "Relax", pattern: "4 - 7 - 8 - 0").environmentObject(NavigationPopObject())
     }
 }
 
@@ -113,27 +112,19 @@ struct SuccessView: View {
     var body: some View {
         VStack (alignment: .leading, spacing : 16){
             Text("Well Done !")
-                .font(.title)
-                .fontWeight(.semibold)
+                .font(Font.custom("Poppins-SemiBold", size: 24, relativeTo: .body))
                 .foregroundColor(.white)
                 .padding(.top, 48)
             Text("You have completed your session.")
-                .font(.title2)
+                .font(Font.custom("Poppins-Regular", size: 18, relativeTo: .body))
                 .foregroundColor(.white)
             VStack(alignment: .leading, spacing : 16){
                 Text(name)
-                    .font(.title)
-                    .fontWeight(.semibold)
+                    .font(Font.custom("Poppins-SemiBold", size: 24, relativeTo: .body))
                 Text(pattern)
-                    .font(.body)
-                    .fontWeight(.medium)
-//                Text("Relax. Don’t rush. Don’t force. Don’t stress.\nLet things happen, trust the process, and enjoy the ride.")
+                    .font(Font.custom("Poppins-Medium", size: 14, relativeTo: .body))
                 Text("\(randQuotes)")
-                    .font(.callout)
-                    .fontWeight(.light)
-//                Text("- Lori Deschene")
-//                    .font(.callout)
-//                    .fontWeight(.light)
+                    .font(Font.custom("Poppins-Light", size: 12, relativeTo: .body))
             }
             .padding(20)
             .frame(width: ScreenSize.windowWidth() * 0.9, height: ScreenSize.windowHeight() * 0.28, alignment: .center)
