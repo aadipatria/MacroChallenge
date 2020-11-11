@@ -33,8 +33,7 @@ struct BreathListView: View {
         VStack(spacing : 0){
             HStack {
                 Text("Breathing Library")
-                    .font(.title)
-                    .fontWeight(.bold)
+                    .font(Font.custom("Poppins-Bold", size: 24, relativeTo: .body))
                     .foregroundColor(.white)
                 Spacer()
                 ZStack {
@@ -73,9 +72,10 @@ struct BreathListView: View {
                             HStack{
                                 VStack(alignment : .leading, spacing : 4){
                                     Text(breath.name ?? "")
-                                        .fontWeight(.semibold)
+                                        .font(Font.custom("Poppins-SemiBold", size: 16, relativeTo: .body))
                                         .foregroundColor(.black)
                                     Text("\(breath.inhale) - \(breath.hold1) - \(breath.exhale) - \(breath.hold2)")
+                                        .font(Font.custom("Poppins-Regular", size: 14, relativeTo: .body))
                                         .foregroundColor(.black)
                                 }.padding()
                                 Spacer()
