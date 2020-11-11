@@ -102,13 +102,7 @@ struct AfterBreathingView_Previews: PreviewProvider {
 struct SuccessView: View {
     @State var name : String
     @State var pattern : String
-    
-    @State var query : String = ""
-    @State var results: [String] = []
-    @State var regex: NSRegularExpression = NSRegularExpression()
-    @State var newArr: [String] = []
-    @State var randInt: Int = 0
-    @State var randQuotes = ""
+    @State var randQuotes: String = ""
     
     var body: some View {
         VStack (alignment: .leading, spacing : 16){
@@ -137,47 +131,7 @@ struct SuccessView: View {
         }
         .frame(width : ScreenSize.windowWidth() * 0.9, alignment: .leading)
         .onAppear {
-            insertArr()
-            self.randQuotes = newArr[randInt]
+            self.randQuotes = Quotes.getRandQuotes()
         }
-    }
-}
-
-extension SuccessView {
-    func insertArr() {
-        if let url = URL(string: "https://www.powerofpositivity.com/time-to-relax-quotes/") {
-            do {
-                query = try String(contentsOf: url)
-            } catch {
-                print("error")
-            }
-        } else {
-            print("url failed")
-        }
-        
-        regex = try! NSRegularExpression(pattern: "<h3>(.*?)</h3>", options: [])
-        
-        regex.enumerateMatches(in: query, options: [], range: NSMakeRange(0, query.utf16.count)) { result, flags, stop in
-            if let r = result?.range(at: 1), let range = Range(r, in: query) {
-                results.append(String(query[range]))
-            }
-        }
-        
-        for i in 0..<results.count {
-            var newString = results[i].replacingOccurrences(of: "&#8211;", with: "-")
-            newString.removeFirst()
-            newString.removeFirst()
-            newString.removeFirst()
-            
-            let lastIndex: String.Index
-            lastIndex = newString.lastIndex(of: "”")!
-            let indexAft = newString.index(after: lastIndex)
-            newString.insert("\n", at: indexAft)
-            
-            self.newArr.append(newString)
-        }
-        
-        
-        randInt = Int.random(in: 0..<20)
     }
 }
