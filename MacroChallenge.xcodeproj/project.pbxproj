@@ -7,13 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7585E91D25516654007BF3C5 /* LoopingPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7585E91C25516654007BF3C5 /* LoopingPlayer.swift */; };
 		9D267F42253C941200882D7F /* EditBreathing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D267F41253C941200882D7F /* EditBreathing.swift */; };
+		9D2F8000255008050055ABCF /* HalfModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D2F7FFF255008050055ABCF /* HalfModalView.swift */; };
+		9D50BCC82558E76700E1A9C6 /* WatchHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D50BCC72558E76700E1A9C6 /* WatchHelper.swift */; };
+		9D697C8C25514C580087A64C /* EditEmergencyContact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D697C8B25514C580087A64C /* EditEmergencyContact.swift */; };
 		9D7D26EA25381317006D35D2 /* MacroChallenge.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9D7D26E825381317006D35D2 /* MacroChallenge.xcdatamodeld */; };
 		9D7D26EB25381317006D35D2 /* MacroChallenge.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9D7D26E825381317006D35D2 /* MacroChallenge.xcdatamodeld */; };
 		9D7D2713253818B8006D35D2 /* BreathingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7D2712253818B8006D35D2 /* BreathingModel.swift */; };
 		9D7D2714253818B8006D35D2 /* BreathingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7D2712253818B8006D35D2 /* BreathingModel.swift */; };
-		9DE77ABB25416FF000BCCDB3 /* SendBreath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE77ABA25416FF000BCCDB3 /* SendBreath.swift */; };
-		9DE77ABC25416FF000BCCDB3 /* SendBreath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE77ABA25416FF000BCCDB3 /* SendBreath.swift */; };
+		9DE77B212542D5A800BCCDB3 /* EmergencyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE77B202542D5A800BCCDB3 /* EmergencyModel.swift */; };
+		9DE77B292542D7CA00BCCDB3 /* AddEmergencyContact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE77B282542D7CA00BCCDB3 /* AddEmergencyContact.swift */; };
+		9DE77B3D2542DE8D00BCCDB3 /* WatchHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE77B3C2542DE8D00BCCDB3 /* WatchHelper.swift */; };
+		9DF237EB255A992600D9F9E1 /* Onboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF237EA255A992500D9F9E1 /* Onboarding.swift */; };
+		9DF7876D255BF1D8007A6362 /* QuotesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF7876C255BF1D8007A6362 /* QuotesModel.swift */; };
 		9DFAB86C2534404F00E81C87 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFAB86B2534404F00E81C87 /* AppDelegate.swift */; };
 		9DFAB86E2534404F00E81C87 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFAB86D2534404F00E81C87 /* SceneDelegate.swift */; };
 		9DFAB8702534404F00E81C87 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFAB86F2534404F00E81C87 /* HomeView.swift */; };
@@ -32,6 +39,25 @@
 		9DFAB89B2534405100E81C87 /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFAB89A2534405100E81C87 /* ComplicationController.swift */; };
 		9DFAB89D2534405100E81C87 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9DFAB89C2534405100E81C87 /* Assets.xcassets */; };
 		9DFAB8A02534405100E81C87 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9DFAB89F2534405100E81C87 /* Preview Assets.xcassets */; };
+		BC7D812A2552B2EB000255EF /* BreathingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7D81292552B2EB000255EF /* BreathingState.swift */; };
+		BC8B2B31254AA5900091F892 /* AnimationSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8B2B30254AA5900091F892 /* AnimationSet.swift */; };
+		BC8B2B36254AA5D30091F892 /* AnimationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8B2B35254AA5D30091F892 /* AnimationData.swift */; };
+		BC8B2B3B254AA6530091F892 /* DonutShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8B2B3A254AA6530091F892 /* DonutShape.swift */; };
+		BC8B2B40254AA67D0091F892 /* OrbitalEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8B2B3F254AA67D0091F892 /* OrbitalEffect.swift */; };
+		BC8B2B48254AA7790091F892 /* AnimatedRing.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8B2B47254AA7790091F892 /* AnimatedRing.swift */; };
+		BC8B2B4D254AA7E00091F892 /* Blur.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8B2B4C254AA7E00091F892 /* Blur.swift */; };
+		CA22994D255BBD1300A547C4 /* Poppins-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CA22994C255BBD1300A547C4 /* Poppins-Bold.ttf */; };
+		CA4261D0255BBF0400C32954 /* Poppins-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CA4261CF255BBF0400C32954 /* Poppins-SemiBold.ttf */; };
+		CA4261D5255BC08600C32954 /* Poppins-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CA4261D4255BC08600C32954 /* Poppins-Light.ttf */; };
+		CA4261DA255BC0FE00C32954 /* Poppins-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CA4261D9255BC0FE00C32954 /* Poppins-Medium.ttf */; };
+		CA4261DF255BC16300C32954 /* Poppins-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CA4261DE255BC16300C32954 /* Poppins-Regular.ttf */; };
+		CA4AD0232555787D00290225 /* BreathExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7D813C2553260B000255EF /* BreathExtension.swift */; };
+		CA7DC47325593917003CE217 /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7DC47225593917003CE217 /* AudioPlayer.swift */; };
+		CA7DC491255975B6003CE217 /* nature bgm.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CA7DC490255975B6003CE217 /* nature bgm.mp3 */; };
+		CA7DC498255977B8003CE217 /* hold.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CA7DC495255977B8003CE217 /* hold.mp3 */; };
+		CA7DC499255977B8003CE217 /* exhale.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CA7DC496255977B8003CE217 /* exhale.mp3 */; };
+		CA7DC49A255977B8003CE217 /* inhale.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CA7DC497255977B8003CE217 /* inhale.mp3 */; };
+		CA86588625417C8300FD5CB4 /* BreathWatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA86588525417C8300FD5CB4 /* BreathWatchView.swift */; };
 		CA8C4F25253D39BD005B99A8 /* AfterBreathingWatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8C4F24253D39BD005B99A8 /* AfterBreathingWatchView.swift */; };
 		CA8C4F2A253D39D1005B99A8 /* EmergencyWatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8C4F29253D39D1005B99A8 /* EmergencyWatchView.swift */; };
 		CA8C4F3A253D3DEC005B99A8 /* NavigationPop.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8C4F39253D3DEC005B99A8 /* NavigationPop.swift */; };
@@ -40,6 +66,10 @@
 		CA95C11E25357BEE008C0398 /* BreathView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA95C11D25357BEE008C0398 /* BreathView.swift */; };
 		CA95C12725357C52008C0398 /* AfterBreathingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA95C12625357C52008C0398 /* AfterBreathingView.swift */; };
 		CA95C13025357CA8008C0398 /* EmergencyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA95C12F25357CA8008C0398 /* EmergencyView.swift */; };
+		CACCB3A12552701E0037AE62 /* NavigationWatchPop.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACCB3A02552701E0037AE62 /* NavigationWatchPop.swift */; };
+		CAE33D402555393B007EBB35 /* forest_bg_1.mov in Resources */ = {isa = PBXBuildFile; fileRef = CAE33D3F2555393B007EBB35 /* forest_bg_1.mov */; };
+		CAE33D4B25554524007EBB35 /* CoreDataHaptic.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE33D4A25554524007EBB35 /* CoreDataHaptic.swift */; };
+		CAF3CC312546A29700D987D0 /* CustomModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF3CC302546A29700D987D0 /* CustomModifier.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,10 +115,18 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		7585E91C25516654007BF3C5 /* LoopingPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoopingPlayer.swift; sourceTree = "<group>"; };
 		9D267F41253C941200882D7F /* EditBreathing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditBreathing.swift; sourceTree = "<group>"; };
+		9D2F7FFF255008050055ABCF /* HalfModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HalfModalView.swift; sourceTree = "<group>"; };
+		9D50BCC72558E76700E1A9C6 /* WatchHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchHelper.swift; sourceTree = "<group>"; };
+		9D697C8B25514C580087A64C /* EditEmergencyContact.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditEmergencyContact.swift; sourceTree = "<group>"; };
 		9D7D26E925381317006D35D2 /* MacroChallenge.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MacroChallenge.xcdatamodel; sourceTree = "<group>"; };
 		9D7D2712253818B8006D35D2 /* BreathingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreathingModel.swift; sourceTree = "<group>"; };
-		9DE77ABA25416FF000BCCDB3 /* SendBreath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendBreath.swift; sourceTree = "<group>"; };
+		9DE77B202542D5A800BCCDB3 /* EmergencyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmergencyModel.swift; sourceTree = "<group>"; };
+		9DE77B282542D7CA00BCCDB3 /* AddEmergencyContact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEmergencyContact.swift; sourceTree = "<group>"; };
+		9DE77B3C2542DE8D00BCCDB3 /* WatchHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchHelper.swift; sourceTree = "<group>"; };
+		9DF237EA255A992500D9F9E1 /* Onboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboarding.swift; sourceTree = "<group>"; };
+		9DF7876C255BF1D8007A6362 /* QuotesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuotesModel.swift; sourceTree = "<group>"; };
 		9DFAB8682534404F00E81C87 /* MacroChallenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MacroChallenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9DFAB86B2534404F00E81C87 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9DFAB86D2534404F00E81C87 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -112,14 +150,37 @@
 		9DFAB89F2534405100E81C87 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		9DFAB8A12534405100E81C87 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9DFAB8A22534405100E81C87 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
+		BC7D81292552B2EB000255EF /* BreathingState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreathingState.swift; sourceTree = "<group>"; };
+		BC7D813C2553260B000255EF /* BreathExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreathExtension.swift; sourceTree = "<group>"; };
+		BC8B2B30254AA5900091F892 /* AnimationSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationSet.swift; sourceTree = "<group>"; };
+		BC8B2B35254AA5D30091F892 /* AnimationData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationData.swift; sourceTree = "<group>"; };
+		BC8B2B3A254AA6530091F892 /* DonutShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DonutShape.swift; sourceTree = "<group>"; };
+		BC8B2B3F254AA67D0091F892 /* OrbitalEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrbitalEffect.swift; sourceTree = "<group>"; };
+		BC8B2B47254AA7790091F892 /* AnimatedRing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedRing.swift; sourceTree = "<group>"; };
+		BC8B2B4C254AA7E00091F892 /* Blur.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Blur.swift; sourceTree = "<group>"; };
+		CA22994C255BBD1300A547C4 /* Poppins-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Bold.ttf"; sourceTree = "<group>"; };
+		CA4261CF255BBF0400C32954 /* Poppins-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-SemiBold.ttf"; sourceTree = "<group>"; };
+		CA4261D4255BC08600C32954 /* Poppins-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Light.ttf"; sourceTree = "<group>"; };
+		CA4261D9255BC0FE00C32954 /* Poppins-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Medium.ttf"; sourceTree = "<group>"; };
+		CA4261DE255BC16300C32954 /* Poppins-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Regular.ttf"; sourceTree = "<group>"; };
+		CA7DC47225593917003CE217 /* AudioPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayer.swift; sourceTree = "<group>"; };
+		CA7DC490255975B6003CE217 /* nature bgm.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "nature bgm.mp3"; sourceTree = "<group>"; };
+		CA7DC495255977B8003CE217 /* hold.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = hold.mp3; sourceTree = "<group>"; };
+		CA7DC496255977B8003CE217 /* exhale.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = exhale.mp3; sourceTree = "<group>"; };
+		CA7DC497255977B8003CE217 /* inhale.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = inhale.mp3; sourceTree = "<group>"; };
+		CA86588525417C8300FD5CB4 /* BreathWatchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreathWatchView.swift; sourceTree = "<group>"; };
 		CA8C4F24253D39BD005B99A8 /* AfterBreathingWatchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AfterBreathingWatchView.swift; sourceTree = "<group>"; };
 		CA8C4F29253D39D1005B99A8 /* EmergencyWatchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmergencyWatchView.swift; sourceTree = "<group>"; };
 		CA8C4F39253D3DEC005B99A8 /* NavigationPop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationPop.swift; sourceTree = "<group>"; };
 		CA95C10F25357B3F008C0398 /* BreathListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreathListView.swift; sourceTree = "<group>"; };
 		CA95C11725357B59008C0398 /* CustomBreathingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBreathingView.swift; sourceTree = "<group>"; };
 		CA95C11D25357BEE008C0398 /* BreathView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreathView.swift; sourceTree = "<group>"; };
-		CA95C12625357C52008C0398 /* AfterBreathingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AfterBreathingView.swift; sourceTree = "<group>"; };
+		CA95C12625357C52008C0398 /* AfterBreathingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AfterBreathingView.swift; sourceTree = "<group>"; wrapsLines = 1; };
 		CA95C12F25357CA8008C0398 /* EmergencyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmergencyView.swift; sourceTree = "<group>"; };
+		CACCB3A02552701E0037AE62 /* NavigationWatchPop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationWatchPop.swift; sourceTree = "<group>"; };
+		CAE33D3F2555393B007EBB35 /* forest_bg_1.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = forest_bg_1.mov; sourceTree = "<group>"; };
+		CAE33D4A25554524007EBB35 /* CoreDataHaptic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataHaptic.swift; sourceTree = "<group>"; };
+		CAF3CC302546A29700D987D0 /* CustomModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomModifier.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,11 +201,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7585E921255166C2007BF3C5 /* AssetsVideoBerjalan */ = {
+			isa = PBXGroup;
+			children = (
+				CAE33D3F2555393B007EBB35 /* forest_bg_1.mov */,
+				CA7DC490255975B6003CE217 /* nature bgm.mp3 */,
+				CA7DC496255977B8003CE217 /* exhale.mp3 */,
+				CA7DC495255977B8003CE217 /* hold.mp3 */,
+				CA7DC497255977B8003CE217 /* inhale.mp3 */,
+			);
+			path = AssetsVideoBerjalan;
+			sourceTree = "<group>";
+		};
 		9D7D26F62538151E006D35D2 /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				9D7D2712253818B8006D35D2 /* BreathingModel.swift */,
-				9DE77ABA25416FF000BCCDB3 /* SendBreath.swift */,
+				9DE77B202542D5A800BCCDB3 /* EmergencyModel.swift */,
+				9DF7876C255BF1D8007A6362 /* QuotesModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -154,6 +228,14 @@
 			children = (
 			);
 			path = WatchModel;
+			sourceTree = "<group>";
+		};
+		9DF237E9255A971200D9F9E1 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				9DF237EA255A992500D9F9E1 /* Onboarding.swift */,
+			);
+			path = Onboarding;
 			sourceTree = "<group>";
 		};
 		9DFAB85F2534404F00E81C87 = {
@@ -179,6 +261,7 @@
 		9DFAB86A2534404F00E81C87 /* MacroChallenge */ = {
 			isa = PBXGroup;
 			children = (
+				7585E921255166C2007BF3C5 /* AssetsVideoBerjalan */,
 				9D7D26F62538151E006D35D2 /* Model */,
 				CA95C12525357BF9008C0398 /* View */,
 				CA8C4F35253D3A28005B99A8 /* Helpers */,
@@ -186,6 +269,7 @@
 				9DFAB86D2534404F00E81C87 /* SceneDelegate.swift */,
 				9DFAB8712534405000E81C87 /* Assets.xcassets */,
 				9DFAB8762534405000E81C87 /* LaunchScreen.storyboard */,
+				CA4261CB255BBE4400C32954 /* Poppins */,
 				9DFAB8792534405000E81C87 /* Info.plist */,
 				9D7D26E825381317006D35D2 /* MacroChallenge.xcdatamodeld */,
 				9DFAB8732534405000E81C87 /* Preview Content */,
@@ -217,10 +301,12 @@
 				9DE77AA22541696F00BCCDB3 /* WatchModel */,
 				CA8C4F34253D3A18005B99A8 /* View */,
 				9DFAB8902534405100E81C87 /* HostingController.swift */,
+				9D50BCC72558E76700E1A9C6 /* WatchHelper.swift */,
 				9DFAB8942534405100E81C87 /* ExtensionDelegate.swift */,
 				9DFAB8962534405100E81C87 /* NotificationController.swift */,
 				9DFAB8982534405100E81C87 /* NotificationView.swift */,
 				9DFAB89A2534405100E81C87 /* ComplicationController.swift */,
+				CACCB3A02552701E0037AE62 /* NavigationWatchPop.swift */,
 				9DFAB89C2534405100E81C87 /* Assets.xcassets */,
 				9DFAB8A12534405100E81C87 /* Info.plist */,
 				9DFAB8A22534405100E81C87 /* PushNotificationPayload.apns */,
@@ -237,10 +323,37 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		CA4261CB255BBE4400C32954 /* Poppins */ = {
+			isa = PBXGroup;
+			children = (
+				CA22994C255BBD1300A547C4 /* Poppins-Bold.ttf */,
+				CA4261D4255BC08600C32954 /* Poppins-Light.ttf */,
+				CA4261D9255BC0FE00C32954 /* Poppins-Medium.ttf */,
+				CA4261DE255BC16300C32954 /* Poppins-Regular.ttf */,
+				CA4261CF255BBF0400C32954 /* Poppins-SemiBold.ttf */,
+			);
+			path = Poppins;
+			sourceTree = "<group>";
+		};
+		CA88C2DE254ADA6F0046D393 /* Animation */ = {
+			isa = PBXGroup;
+			children = (
+				BC7D81292552B2EB000255EF /* BreathingState.swift */,
+				BC8B2B30254AA5900091F892 /* AnimationSet.swift */,
+				BC8B2B35254AA5D30091F892 /* AnimationData.swift */,
+				BC8B2B3F254AA67D0091F892 /* OrbitalEffect.swift */,
+				BC8B2B3A254AA6530091F892 /* DonutShape.swift */,
+				BC8B2B47254AA7790091F892 /* AnimatedRing.swift */,
+				BC8B2B4C254AA7E00091F892 /* Blur.swift */,
+			);
+			path = Animation;
+			sourceTree = "<group>";
+		};
 		CA8C4F34253D3A18005B99A8 /* View */ = {
 			isa = PBXGroup;
 			children = (
 				9DFAB8922534405100E81C87 /* HomeWatchView.swift */,
+				CA86588525417C8300FD5CB4 /* BreathWatchView.swift */,
 				CA8C4F29253D39D1005B99A8 /* EmergencyWatchView.swift */,
 				CA8C4F24253D39BD005B99A8 /* AfterBreathingWatchView.swift */,
 			);
@@ -251,6 +364,10 @@
 			isa = PBXGroup;
 			children = (
 				CA8C4F39253D3DEC005B99A8 /* NavigationPop.swift */,
+				9DE77B3C2542DE8D00BCCDB3 /* WatchHelper.swift */,
+				CAF3CC302546A29700D987D0 /* CustomModifier.swift */,
+				CAE33D4A25554524007EBB35 /* CoreDataHaptic.swift */,
+				CA7DC47225593917003CE217 /* AudioPlayer.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -259,6 +376,7 @@
 			isa = PBXGroup;
 			children = (
 				9DFAB86F2534404F00E81C87 /* HomeView.swift */,
+				7585E91C25516654007BF3C5 /* LoopingPlayer.swift */,
 			);
 			path = "Home Page";
 			sourceTree = "<group>";
@@ -278,6 +396,8 @@
 			children = (
 				CA95C11D25357BEE008C0398 /* BreathView.swift */,
 				CA95C12625357C52008C0398 /* AfterBreathingView.swift */,
+				BC7D813C2553260B000255EF /* BreathExtension.swift */,
+				CA88C2DE254ADA6F0046D393 /* Animation */,
 			);
 			path = "Breath Page";
 			sourceTree = "<group>";
@@ -285,6 +405,7 @@
 		CA95C12525357BF9008C0398 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				9DF237E9255A971200D9F9E1 /* Onboarding */,
 				CA95C10A25357B1C008C0398 /* Home Page */,
 				CA95C11C25357BD3008C0398 /* Breath Page */,
 				CA95C10E25357B2F008C0398 /* Custom Breathing Page */,
@@ -297,6 +418,9 @@
 			isa = PBXGroup;
 			children = (
 				CA95C12F25357CA8008C0398 /* EmergencyView.swift */,
+				9D697C8B25514C580087A64C /* EditEmergencyContact.swift */,
+				9DE77B282542D7CA00BCCDB3 /* AddEmergencyContact.swift */,
+				9D2F7FFF255008050055ABCF /* HalfModalView.swift */,
 			);
 			path = "Emergency Page";
 			sourceTree = "<group>";
@@ -403,9 +527,19 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CA7DC499255977B8003CE217 /* exhale.mp3 in Resources */,
+				CA22994D255BBD1300A547C4 /* Poppins-Bold.ttf in Resources */,
+				CA4261DF255BC16300C32954 /* Poppins-Regular.ttf in Resources */,
+				CA7DC49A255977B8003CE217 /* inhale.mp3 in Resources */,
 				9DFAB8782534405000E81C87 /* LaunchScreen.storyboard in Resources */,
 				9DFAB8752534405000E81C87 /* Preview Assets.xcassets in Resources */,
+				CA4261D0255BBF0400C32954 /* Poppins-SemiBold.ttf in Resources */,
+				CAE33D402555393B007EBB35 /* forest_bg_1.mov in Resources */,
+				CA7DC491255975B6003CE217 /* nature bgm.mp3 in Resources */,
 				9DFAB8722534405000E81C87 /* Assets.xcassets in Resources */,
+				CA4261DA255BC0FE00C32954 /* Poppins-Medium.ttf in Resources */,
+				CA4261D5255BC08600C32954 /* Poppins-Light.ttf in Resources */,
+				CA7DC498255977B8003CE217 /* hold.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -434,19 +568,37 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BC8B2B48254AA7790091F892 /* AnimatedRing.swift in Sources */,
+				9D2F8000255008050055ABCF /* HalfModalView.swift in Sources */,
+				9DE77B292542D7CA00BCCDB3 /* AddEmergencyContact.swift in Sources */,
+				BC8B2B31254AA5900091F892 /* AnimationSet.swift in Sources */,
+				7585E91D25516654007BF3C5 /* LoopingPlayer.swift in Sources */,
 				9D267F42253C941200882D7F /* EditBreathing.swift in Sources */,
+				BC7D812A2552B2EB000255EF /* BreathingState.swift in Sources */,
 				CA95C13025357CA8008C0398 /* EmergencyView.swift in Sources */,
-				9DE77ABB25416FF000BCCDB3 /* SendBreath.swift in Sources */,
+				CA4AD0232555787D00290225 /* BreathExtension.swift in Sources */,
 				9D7D26EA25381317006D35D2 /* MacroChallenge.xcdatamodeld in Sources */,
 				CA95C12725357C52008C0398 /* AfterBreathingView.swift in Sources */,
+				BC8B2B3B254AA6530091F892 /* DonutShape.swift in Sources */,
+				9DF7876D255BF1D8007A6362 /* QuotesModel.swift in Sources */,
+				9DF237EB255A992600D9F9E1 /* Onboarding.swift in Sources */,
 				CA95C11025357B3F008C0398 /* BreathListView.swift in Sources */,
 				CA8C4F3A253D3DEC005B99A8 /* NavigationPop.swift in Sources */,
 				CA95C11825357B59008C0398 /* CustomBreathingView.swift in Sources */,
 				9DFAB86C2534404F00E81C87 /* AppDelegate.swift in Sources */,
+				CAF3CC312546A29700D987D0 /* CustomModifier.swift in Sources */,
 				9DFAB86E2534404F00E81C87 /* SceneDelegate.swift in Sources */,
 				CA95C11E25357BEE008C0398 /* BreathView.swift in Sources */,
+				9DE77B212542D5A800BCCDB3 /* EmergencyModel.swift in Sources */,
 				9D7D2713253818B8006D35D2 /* BreathingModel.swift in Sources */,
+				CAE33D4B25554524007EBB35 /* CoreDataHaptic.swift in Sources */,
+				BC8B2B40254AA67D0091F892 /* OrbitalEffect.swift in Sources */,
+				CA7DC47325593917003CE217 /* AudioPlayer.swift in Sources */,
+				BC8B2B4D254AA7E00091F892 /* Blur.swift in Sources */,
 				9DFAB8702534404F00E81C87 /* HomeView.swift in Sources */,
+				BC8B2B36254AA5D30091F892 /* AnimationData.swift in Sources */,
+				9D697C8C25514C580087A64C /* EditEmergencyContact.swift in Sources */,
+				9DE77B3D2542DE8D00BCCDB3 /* WatchHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -456,15 +608,17 @@
 			files = (
 				9DFAB8932534405100E81C87 /* HomeWatchView.swift in Sources */,
 				9DFAB8912534405100E81C87 /* HostingController.swift in Sources */,
+				CA86588625417C8300FD5CB4 /* BreathWatchView.swift in Sources */,
 				9DFAB8972534405100E81C87 /* NotificationController.swift in Sources */,
 				CA8C4F25253D39BD005B99A8 /* AfterBreathingWatchView.swift in Sources */,
 				CA8C4F2A253D39D1005B99A8 /* EmergencyWatchView.swift in Sources */,
 				9DFAB8952534405100E81C87 /* ExtensionDelegate.swift in Sources */,
 				9D7D2714253818B8006D35D2 /* BreathingModel.swift in Sources */,
+				9D50BCC82558E76700E1A9C6 /* WatchHelper.swift in Sources */,
 				9DFAB8992534405100E81C87 /* NotificationView.swift in Sources */,
+				CACCB3A12552701E0037AE62 /* NavigationWatchPop.swift in Sources */,
 				9D7D26EB25381317006D35D2 /* MacroChallenge.xcdatamodeld in Sources */,
 				9DFAB89B2534405100E81C87 /* ComplicationController.swift in Sources */,
-				9DE77ABC25416FF000BCCDB3 /* SendBreath.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -620,7 +774,7 @@
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"MacroChallenge WatchKit Extension/Preview Content\"";
-				DEVELOPMENT_TEAM = P9W54VNRMY;
+				DEVELOPMENT_TEAM = D89FSBU974;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "MacroChallenge WatchKit Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -628,7 +782,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.ici.MacroChallenge.watchkitapp.watchkitextension;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ada.hale.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -644,7 +798,7 @@
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"MacroChallenge WatchKit Extension/Preview Content\"";
-				DEVELOPMENT_TEAM = P9W54VNRMY;
+				DEVELOPMENT_TEAM = D89FSBU974;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "MacroChallenge WatchKit Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -652,7 +806,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.ici.MacroChallenge.watchkitapp.watchkitextension;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ada.hale.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -671,7 +825,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = P9W54VNRMY;
+				DEVELOPMENT_TEAM = D89FSBU974;
 				IBSC_MODULE = MacroChallenge_WatchKit_Extension;
 				INFOPLIST_FILE = "MacroChallenge WatchKit App/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -679,7 +833,7 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.ici.MacroChallenge.watchkitapp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ada.hale.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -699,7 +853,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = P9W54VNRMY;
+				DEVELOPMENT_TEAM = D89FSBU974;
 				IBSC_MODULE = MacroChallenge_WatchKit_Extension;
 				INFOPLIST_FILE = "MacroChallenge WatchKit App/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -707,7 +861,7 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.ici.MacroChallenge.watchkitapp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ada.hale.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -726,7 +880,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"MacroChallenge/Preview Content\"";
-				DEVELOPMENT_TEAM = P9W54VNRMY;
+				DEVELOPMENT_TEAM = D89FSBU974;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = MacroChallenge/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -734,11 +888,11 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.ici.MacroChallenge;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ada.hale;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -749,7 +903,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"MacroChallenge/Preview Content\"";
-				DEVELOPMENT_TEAM = P9W54VNRMY;
+				DEVELOPMENT_TEAM = D89FSBU974;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = MacroChallenge/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -757,11 +911,11 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.ici.MacroChallenge;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ada.hale;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;

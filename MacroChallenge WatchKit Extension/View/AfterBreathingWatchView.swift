@@ -8,13 +8,21 @@
 import SwiftUI
 
 struct AfterBreathingWatchView: View {
+    
+    @State var breathName : String
+    
     var body: some View {
-        Text("Ini After Breathing")
+        VStack {
+            Text(breathName)
+            Text("Still under development")
+        }
+        
     }
 }
 
 struct AfterBreathingWatchView_Previews: PreviewProvider {
     static var previews: some View {
-        AfterBreathingWatchView()
+        AfterBreathingWatchView(breathName: "BukanCalm")
+        
     }
 }

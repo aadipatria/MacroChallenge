@@ -9,41 +9,24 @@ import SwiftUI
 
 struct HomeWatchView: View {
     
-    var breathName = "lol"
-    var inhale: Int16 = 0
-    var hold1: Int16 = 0
-    var exhale: Int16 = 0
-    var hold2: Int16 = 0
-    var sound = false
-    var haptic = false
+//    var breath2DArray = [[String]]()
+//    var contact2DArray = [[String]]()
+    @EnvironmentObject var navPop : NavigationWatchPopObject
     
     var body: some View {
-        VStack {
-            Text(breathName)
-            Text("\(inhale)")
-            Text("\(hold1)")
-            Text("\(exhale)")
-            Text("\(hold2)")
-            Text("\(String(sound))")
-            Text("\(String(haptic))")
-//            Text(tes)
-//                .padding()
-//            NavigationLink(
-//                destination: AfterBreathingWatchView(),
-//                label: {
-//                    Text("After Breathing")
-//                })
-//            NavigationLink(
-//                destination: EmergencyWatchView(),
-//                label: {
-//                    Text("Emergency")
-//                })
+        ZStack {
+            TabView(selection: $navPop.selected){
+                BreathWatchView()
+                    .tag(0)
+                EmergencyWatchView()
+                    .tag(1)
+            }
         }
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeWatchView()
+        HomeWatchView().environmentObject(NavigationWatchPopObject())
     }
 }

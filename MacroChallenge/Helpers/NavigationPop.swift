@@ -10,4 +10,11 @@ import Foundation
 final class NavigationPopObject: ObservableObject {
     @Published var toHome: Bool = false
     @Published var toBreathing : Bool = false
+    @Published var page : Int = 1
+    @Published var emergency : Bool = false
+    @Published var tabIsHidden : Bool = false
+    @Published var addBreath : Bool = false
+    @Published var editBreath : Bool = false
+    @Published var halfModal : Bool = false
+    @Published var breathCycles : Int = 0
 }

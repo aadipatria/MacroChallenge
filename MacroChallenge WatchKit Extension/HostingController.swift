@@ -10,10 +10,14 @@ import Foundation
 import SwiftUI
 import WatchConnectivity
 
-class HostingController: WKHostingController<HomeWatchView>, WCSessionDelegate {
+class HostingController: WKHostingController<AnyView>, WCSessionDelegate {
     
-    var dummy: [SendBreath] = []
-    var dummyText = ""
+    var ArrayOfBreathing =  [[String]]()
+    var ArrayOfContact = [[String]]()
+    
+    @AppStorage("arrayOfBreathing") var arrayOfBreathing = Data()
+    @AppStorage("arrayOfContact") var arrayOfContact = Data()
+    
     
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
@@ -30,30 +34,31 @@ class HostingController: WKHostingController<HomeWatchView>, WCSessionDelegate {
     }
     
     func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
-//        let message = message["Message"] as! [SendBreath]
-//        dummy = message
-//        print("received")
-//        setNeedsBodyUpdate()
-        let message = message["Message"] as! String
-        dummyText = message
-        print("received")
+        
+        let message = message["Message"] as! [[String]]
+        
+        print(message)
+        
+        let uuid = UUID(uuidString: message[0][0])
+        
+        if uuid == nil {
+            ArrayOfBreathing = message
+            arrayOfBreathing = Storage.archive(object: ArrayOfBreathing)
+        }
+        else {
+            ArrayOfContact = message
+            arrayOfContact = Storage.archive(object: ArrayOfContact)
+        }
+        
         setNeedsBodyUpdate()
     }
     
     func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
     }
     
-    override var body: HomeWatchView {
-        var hwv = HomeWatchView()
-        if !dummy.isEmpty {
-            hwv.breathName = dummyText
-            hwv.inhale = dummy[0].inhale
-            hwv.hold1 = dummy[0].inhale
-            hwv.exhale = dummy[0].inhale
-            hwv.hold2 = dummy[0].inhale
-            hwv.sound = dummy[0].sound
-            hwv.haptic = dummy[0].haptic
-        }
-        return hwv
+    
+    override var body: AnyView {
+        return AnyView(HomeWatchView()
+            .environmentObject(NavigationWatchPopObject()))
     }
 }
