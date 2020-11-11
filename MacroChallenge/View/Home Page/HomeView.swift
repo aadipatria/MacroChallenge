@@ -67,7 +67,7 @@ struct HomeView: View {
 //            }
 //        })
         .fullScreenCover(isPresented: self.$needsAppOnboarding) {
-            Onboarding()
+            MainOnboardingPage()
         }
 //        .animation(.easeOut)
         
