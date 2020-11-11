@@ -67,6 +67,7 @@ struct AfterBreathingView: View {
                 Button(action: {
                     navPop.toBreathing = false
                     navPop.page = 0
+                    navPop.breathCycles = 0
                 }, label: {
                     HStack {
                         Text("Emergency Contact")

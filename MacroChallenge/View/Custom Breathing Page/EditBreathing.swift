@@ -37,8 +37,7 @@ struct EditBreathing: View {
                 
                 VStack {
                     Text("Pattern - in seconds")
-                        .font(.headline)
-                        .fontWeight(.semibold)
+                        .font(Font.custom("Poppins-SemiBold", size: 16, relativeTo: .body))
                         .padding()
                         .frame(width: ScreenSize.windowWidth() * 0.9, height: ScreenSize.windowHeight() * 0.054, alignment: .leading)
                         .background(SomeBackground.headerBackground())
@@ -51,12 +50,16 @@ struct EditBreathing: View {
                         VStack {
                             HStack {
                                 Text("Inhale")
+                                    .font(Font.custom("Poppins-Light", size: 15, relativeTo: .body))
                                     .frame(width: ScreenSize.windowWidth() * 0.2075)
                                 Text("Hold")
+                                    .font(Font.custom("Poppins-Light", size: 15, relativeTo: .body))
                                     .frame(width: ScreenSize.windowWidth() * 0.2075)
                                 Text("Exhale")
+                                    .font(Font.custom("Poppins-Light", size: 15, relativeTo: .body))
                                     .frame(width: ScreenSize.windowWidth() * 0.2075)
                                 Text("Hold")
+                                    .font(Font.custom("Poppins-Light", size: 15, relativeTo: .body))
                                     .frame(width: ScreenSize.windowWidth() * 0.2075)
                             }.padding(.top)
                             CustomBreathingViewPicker(inhaleSelection: $inhale, hold1Selection: $hold1, exhaleSelection: $exhale, hold2Selection: $hold2)
@@ -70,13 +73,13 @@ struct EditBreathing: View {
                 
                 VStack (spacing : 0) {
                     Text("Guiding Preferences")
-                        .fontWeight(.semibold)
+                        .font(Font.custom("Poppins-SemiBold", size: 16, relativeTo: .body))
                         .padding()
                         .frame(width: ScreenSize.windowWidth() * 0.9, height: ScreenSize.windowHeight() * 0.054, alignment: .leading)
                         .background(SomeBackground.headerBackground())
                         
                     GuidingPreferences(isSoundOn: $isSoundOn, isHapticOn: $isHapticOn)
-                        .padding()
+                        .padding(.vertical)
                         .background(Rectangle()
                                         .fill(Color.clear)
                                         .background(Blur(style: .systemThinMaterial)

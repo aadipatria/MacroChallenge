@@ -36,8 +36,7 @@ struct EmergencyView: View {
             VStack(spacing: 0){
                 HStack {
                     Text("Top Contacts")
-                        .font(.title)
-                        .fontWeight(.bold)
+                        .font(Font.custom("Poppins-Bold", size: 24, relativeTo: .body))
                         .foregroundColor(.white)
                     Spacer()
                     if !contacts.isEmpty{
@@ -46,11 +45,13 @@ struct EmergencyView: View {
                         }, label: {
                             if isEdited{
                                 Text("Done")
+                                    .font(Font.custom("Poppins-SemiBold", size: 13, relativeTo: .body))
                                     .foregroundColor(.black)
                                     .background(SomeBackground.editBackground())
                                     .padding()
                             }else{
                                 Text("Edit")
+                                    .font(Font.custom("Poppins-SemiBold", size: 13, relativeTo: .body))
                                     .foregroundColor(.black)
                                     .background(SomeBackground.editBackground())
                                     .padding()
@@ -82,8 +83,7 @@ struct EmergencyView: View {
 //                }
                 if contacts.isEmpty{
                     Text("You have no contact. Tap on the “+” button to add a contact.")
-                        .font(.title3)
-                        .fontWeight(.medium)
+                        .font(Font.custom("Poppins-Medium", size: 18, relativeTo: .body))
                         .foregroundColor(.white)
                         .multilineTextAlignment(.center)
                         .frame(width : ScreenSize.windowWidth() * 0.5)
@@ -132,9 +132,10 @@ struct EmergencyView: View {
                                 }
                                 VStack(alignment : .leading, spacing : 4) {
                                     Text("\(contact.name!)")
-                                        .fontWeight(.semibold)
+                                        .font(Font.custom("Poppins-SemiBold", size: 16, relativeTo: .body))
                                         .foregroundColor(.black)
                                     Text("\(contact.number!)")
+                                        .font(Font.custom("Poppins-Regular", size: 14, relativeTo: .body))
                                         .foregroundColor(.black)
                                 }.padding()
                                 Spacer()
@@ -166,7 +167,7 @@ struct EmergencyView: View {
                 
                 Spacer()
             }
-//            .background(Image("ocean").backgroundImageModifier())
+            .background(Image("ocean").backgroundImageModifier())
             .frame(width: ScreenSize.windowWidth() * 0.9)
 
             HalfModalView(isShown: $isAddNewContact) {

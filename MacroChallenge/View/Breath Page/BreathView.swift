@@ -186,7 +186,6 @@ struct BreathView: View {
                             showStop = false
                             self.success = true
                             prepareHaptics()
-                            AudioPlayer1.playSounds(soundfile: "nature bgm.mp3")
                             getNumberOfCycles()
                         }else{
                             self.success = false
@@ -295,6 +294,7 @@ struct BreathView: View {
                     self.setUpDispatchWorkItems()
                     self.startBreathing()
                     navPop.tabIsHidden = true
+                    AudioPlayer1.playSounds(soundfile: "nature bgm.mp3")
                 } else {
                     self.stopBreathing()
                     cancelHaptic()
