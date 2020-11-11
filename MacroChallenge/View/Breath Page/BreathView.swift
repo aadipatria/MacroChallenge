@@ -72,8 +72,7 @@ struct BreathView: View {
                                 .scaleEffect(self.animationSizeScaling)
 
                             Text(guidanceText)
-                                .font(.title)
-                                .fontWeight(.semibold)
+                                .font(Font.custom("Poppins-SemiBold", size: 28, relativeTo: .body))
                                 .foregroundColor(Color.white)
                                 .opacity(self.guidanceTextOpacityScaling)
                         }

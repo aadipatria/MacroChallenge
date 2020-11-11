@@ -41,10 +41,10 @@ struct GuidanceTextSet {
     
     func getAnimationSets() -> AnimationSet {
         return AnimationSet(
-            preInhale: {self.binding = "INHALE"},
-            preHold1: {self.binding = "HOLD"},
-            preExhale: {self.binding = "EXHALE"},
-            preHold2: {self.binding = "HOLD"},
+            preInhale: {self.binding = "Inhale"},
+            preHold1: {self.binding = "Hold"},
+            preExhale: {self.binding = "Exhale"},
+            preHold2: {self.binding = "Hold"},
             completion: {self.binding = ""}
         )
     }
