@@ -77,11 +77,14 @@ struct EmergencyView: View {
                 .frame(width : ScreenSize.windowWidth() * 0.9, height : ScreenSize.windowHeight() * 0.05)
                 .animation(.easeInOut(duration: 0.6))
                 .padding(.bottom)
-//                Button {
-//                    sync()
-//                } label: {
-//                    Text("Sync With Apple Watch")
-//                }
+                
+                Button {
+                    sync()
+                } label: {
+                    Text("Sync With Apple Watch")
+                }
+                .disabled(self.contacts.isEmpty ? true : false)
+                
                 if contacts.isEmpty{
                     Text("You have no contact. Tap on the “+” button to add a contact.")
                         .font(Font.custom("Poppins-Medium", size: 18, relativeTo: .body))

@@ -10,6 +10,8 @@ import SwiftUI
 struct HomeView: View {
     
     @EnvironmentObject var navPop : NavigationPopObject
+    @AppStorage("needsAppOnboarding") private var needsAppOnboarding: Bool = true
+    
     var playLooping = LoopingPlayer()
     
     init() {
@@ -57,6 +59,16 @@ struct HomeView: View {
             }
         }
         .accentColor( .white) /// ini buat ganti back button jd item
+//        .sheet(isPresented: self.$needsAppOnboarding, content: {
+//            Button {
+//                self.needsAppOnboarding = false
+//            } label: {
+//                Text("set onboarding false")
+//            }
+//        })
+        .fullScreenCover(isPresented: self.$needsAppOnboarding) {
+            MainOnboardingPage()
+        }
 //        .animation(.easeOut)
         
     }
