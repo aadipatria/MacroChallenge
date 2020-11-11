@@ -56,11 +56,13 @@ struct AddEmergencyContact: View {
             Group {
                 TextField("Name", text: $name)
                     .modifier(ClearButton(text: $name))
+                    .accentColor(.black)
                     .padding()
                     .background(RoundedRectangle(cornerRadius: 8).fill(Color(UIColor(.white))))
                 
                 TextField("Number", text: $number)
                     .modifier(ClearButton(text: $number))
+                    .accentColor(.black)
                     .padding()
                     .background(RoundedRectangle(cornerRadius: 8).fill(Color(UIColor(.white))))
             }

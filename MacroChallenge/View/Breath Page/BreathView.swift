@@ -101,13 +101,14 @@ struct BreathView: View {
                         changeLeft()
                     }, label: {
                         Image (systemName: "chevron.left")
+                            .padding(5)
                             .foregroundColor(.white)
                             .font(/*@START_MENU_TOKEN@*/.largeTitle/*@END_MENU_TOKEN@*/)
                     })
                     
                     RoundedRectangle(cornerRadius: 15)
                         .fill(Color.clear)
-                        .frame(maxWidth: ScreenSize.windowWidth() * 0.76)
+                        .frame(maxWidth: ScreenSize.windowWidth() * 0.76, maxHeight: 400)
                         .background(
                             Blur(style: .regular)
                                 .mask(RoundedRectangle(cornerRadius: 15))
@@ -117,6 +118,7 @@ struct BreathView: View {
                         changeRight()
                     }, label: {
                         Image (systemName: "chevron.right")
+                            .padding(5)
                             .foregroundColor(.white)
                             .font(/*@START_MENU_TOKEN@*/.largeTitle/*@END_MENU_TOKEN@*/)
                     })
@@ -157,7 +159,7 @@ struct BreathView: View {
                                     .font(/*@START_MENU_TOKEN@*/.title2/*@END_MENU_TOKEN@*/)
                                     
                             }
-                        }.frame(maxWidth: ScreenSize.windowWidth() * 0.6)
+                        }
                     }
                     
                     ZStack(alignment: .leading) {
@@ -171,10 +173,10 @@ struct BreathView: View {
                                 Text("\(minutes)")
                                     .foregroundColor(.white)
                                     .font(Font.custom("Poppins-SemiBold", size: 18, relativeTo: .body))
-                                
+
                             }
                         }
-                        .frame(width: 160)
+                        .frame(width: 160, height: 150)
                         .clipped()
                     }
                     
@@ -199,9 +201,7 @@ struct BreathView: View {
                             .background(RoundedRectangle(cornerRadius: 36).fill(Color(UIColor(.white))))
                     }
                 }
-                .frame(maxWidth: ScreenSize.windowWidth() * 0.72)
-                .padding(.vertical, 32)
-                .opacity(self.uiElementsOpacityScaling)
+                .frame(maxWidth: ScreenSize.windowWidth() * 0.72)                .opacity(self.uiElementsOpacityScaling)
                 
                
                 

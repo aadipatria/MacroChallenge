@@ -41,6 +41,9 @@ struct EmergencyView: View {
                     Spacer()
                     if !contacts.isEmpty{
                         Button(action: {
+                            if isEdited{
+                                sync()
+                            }
                             isEdited.toggle()
                         }, label: {
                             if isEdited{
@@ -78,12 +81,12 @@ struct EmergencyView: View {
                 .animation(.easeInOut(duration: 0.6))
                 .padding(.bottom)
                 
-                Button {
-                    sync()
-                } label: {
-                    Text("Sync With Apple Watch")
-                }
-                .disabled(self.contacts.isEmpty ? true : false)
+//                Button {
+//                    sync()
+//                } label: {
+//                    Text("Sync With Apple Watch")
+//                }
+//                .disabled(self.contacts.isEmpty ? true : false)
                 
                 if contacts.isEmpty{
                     Text("You have no contact. Tap on the “+” button to add a contact.")

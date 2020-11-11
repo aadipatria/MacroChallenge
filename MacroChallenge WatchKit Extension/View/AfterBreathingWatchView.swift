@@ -12,7 +12,11 @@ struct AfterBreathingWatchView: View {
     @State var breathName : String
     
     var body: some View {
-        Text(breathName)
+        VStack {
+            Text(breathName)
+            Text("Still under development")
+        }
+        
     }
 }
 
