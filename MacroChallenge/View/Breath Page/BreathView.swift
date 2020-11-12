@@ -29,22 +29,16 @@ struct BreathView: View {
     @State var cycleTime: Int = 0
     @State var cycleRemaining: Int = 0
     
-    @State var animationSets: [AnimationSet] = []
+    @State var breathingStateHelper: BreathingStateHelper = BreathingStateHelper()
     @State var isBreathing: Bool = false
     @State var breathingState: BreathingState = .none
     
     @State var orbitalEffectScaling: CGFloat = 0.0
     @State var animationSizeScaling: CGFloat = 0.0
     @State var uiElementsOpacityScaling: Double = 1.0
-    @State var guidanceTextSizeScaling: Double = 0.0
     @State var guidanceTextOpacityScaling: Double = 0.0
     @State var guidanceText: String = ""
     
-    @State var startInhale: DispatchWorkItem = DispatchWorkItem {}
-    @State var startHold1: DispatchWorkItem = DispatchWorkItem {}
-    @State var startExhale: DispatchWorkItem = DispatchWorkItem {}
-    @State var startHold2: DispatchWorkItem = DispatchWorkItem {}
-    @State var startCompletion: DispatchWorkItem = DispatchWorkItem {}
     @State var engine: CHHapticEngine?
     @State var showStop = false
     
@@ -58,7 +52,6 @@ struct BreathView: View {
                         EmptyView()
                     })
             }
-            //.opacity(self.uiElementsOpacityScaling)
         
             if self.isBreathing {
                 VStack {
@@ -66,6 +59,7 @@ struct BreathView: View {
                         AnimatedRing(binding: self.$orbitalEffectScaling)
                             .padding(30)
                             .scaleEffect(self.animationSizeScaling)
+                            .onAnimationCompleted(for: self.orbitalEffectScaling, completion: {self.changeState()})
 
                         Text(guidanceText)
                             .font(.title)
@@ -166,15 +160,12 @@ struct BreathView: View {
                     .clipped()
                 }
                 
-//                Spacer()
-                
                 Button(action: {
                     self.isBreathing.toggle()
                     if isBreathing{
                         showStop = false
                         self.success = true
                         prepareHaptics()
-                        AudioPlayer1.playSounds(soundfile: "nature bgm.mp3")
                         getNumberOfCycles()
                     }else{
                         self.success = false
@@ -190,35 +181,17 @@ struct BreathView: View {
             .frame(maxWidth: ScreenSize.windowWidth() * 0.72)
             .padding(.vertical, 32)
             .opacity(self.uiElementsOpacityScaling)
-            
-           
-            
-//            Spacer()
-            
-//            Button(action: {
-//                self.isBreathing.toggle()
-//                if isBreathing{
-//                    self.success = true
-//                    prepareHaptics()
-//                }else{
-//                    self.success = false
-//                    cancelHaptic()
-//                }
-//            }) {
-//                Text("Start")
-//                    .foregroundColor(.black)
-//                    .frame(width: ScreenSize.windowWidth()*0.5, height: ScreenSize.windowHeight() * 0.05, alignment: .center)
-//                    .background(RoundedRectangle(cornerRadius: 36).fill(Color(UIColor(.white))))
-//            }.padding(.bottom, 100)
         }
         .frame(maxHeight: ScreenSize.windowHeight() * 0.52)
         .onAppear(perform: {
             showStop = false
             self.cycleTime = 1
             
-            let orbitalSet = OrbitalAnimationSet(binding: self.$orbitalEffectScaling).getAnimationSets()
-            let textSet = GuidanceTextSet(binding: self.$guidanceText).getAnimationSets()
-            self.animationSets = [orbitalSet, textSet]
+            self.breathingStateHelper = BreathingStateHelper(
+                breath: breaths[index],
+                animations: []
+            )
+            self.updateAnimations()
             
             if !breaths.isEmpty {
                 update()
@@ -248,45 +221,29 @@ struct BreathView: View {
         .onChange(of: breathingState) {newValue in
             switch newValue {
             case .none:
-                self.endAction()
+                breathingStateHelper.startPostBreath()
             case .inhale:
-                self.inhaleAction()
+                breathingStateHelper.startInhale()
                 if haptic{
                     inhale(duration: inhale)
                 }
-                if audio{
-                    AudioPlayer2.playSounds(soundfile: "inhale.mp3")
-                }
             case .hold1:
-                self.hold1Action()
-                if audio{
-                    AudioPlayer2.playSounds(soundfile: "hold.mp3")
-                }
+                breathingStateHelper.startHold1()
             case .exhale:
-                self.exhaleAction()
+                breathingStateHelper.startExhale()
                 if haptic{
                     exhale(duration: exhale)
                 }
-                if audio{
-                    AudioPlayer2.playSounds(soundfile: "exhale.mp3")
-                }
             case .hold2:
-                self.hold2Action()
-                if audio{
-                    AudioPlayer2.playSounds(soundfile: "hold.mp3")
-                }
+                breathingStateHelper.startHold2()
             }
         }
         .onChange(of: isBreathing, perform: { value in
             if value {
-                self.setUpDispatchWorkItems()
                 self.startBreathing()
                 navPop.tabIsHidden = true
             } else {
                 self.stopBreathing()
-                cancelHaptic()
-                AudioPlayer1.stopSounds()
-                AudioPlayer2.stopSounds()
             }
         })
         .onTapGesture(count: /*@START_MENU_TOKEN@*/1/*@END_MENU_TOKEN@*/, perform: {
@@ -355,6 +312,8 @@ extension BreathView{
         pattern = String(format: "%.0f - %.0f - %.0f - %.0f", self.inhale, self.hold1, self.exhale, self.hold2)
         haptic = Bool(breaths[index].haptic)
         audio = Bool(breaths[index].sound)
+        
+        self.updateAnimations()
     }
 }
 
