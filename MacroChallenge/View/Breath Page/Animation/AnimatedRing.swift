@@ -25,12 +25,12 @@ struct AnimatedRing: View {
                     )
                     
                 // INNER BLUR PROGRESSION
-//                DonutShape(size: donutRadius, delta: self.binding)
-//                    .fill(Color.clear)
-//                    .background(
-//                        Blur(style: .regular)
-//                            .mask(DonutShape(size: donutRadius, delta: self.binding))
-//                    )
+                DonutShape(size: donutRadius, delta: self.binding)
+                    .fill(Color.clear)
+                    .background(
+                        Blur(style: .regular)
+                            .mask(DonutShape(size: donutRadius, delta: self.binding))
+                    )
                     
                 // OUTER RIM BACKGROUND
                 Circle()
@@ -38,11 +38,11 @@ struct AnimatedRing: View {
                     .foregroundColor(ringColour)
 
                 // OUTER RIM
-//                Circle()
-//                    .trim(from: 0.0, to: self.binding)
-//                    .stroke(style: StrokeStyle(lineWidth: 5, lineCap: .butt, lineJoin: .bevel))
-//                    .fill(Color.white)
-//                    .rotationEffect(Angle(degrees: 270))
+                Circle()
+                    .trim(from: 0.0, to: self.binding)
+                    .stroke(style: StrokeStyle(lineWidth: 5, lineCap: .butt, lineJoin: .bevel))
+                    .fill(Color.white)
+                    .rotationEffect(Angle(degrees: 270))
 
                 // HEADER
                 Circle()
