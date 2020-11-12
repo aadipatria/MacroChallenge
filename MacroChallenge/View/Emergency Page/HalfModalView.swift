@@ -89,6 +89,7 @@ struct HalfModalView<Content: View>: View {
                 .animation(.interpolatingSpring(stiffness: 300, damping: 30, initialVelocity: 10))
                 .gesture(drag)
             }
+            .offset(y: 5)
         }
         .edgesIgnoringSafeArea(.all)
     }
