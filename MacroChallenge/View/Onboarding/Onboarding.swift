@@ -18,20 +18,90 @@ struct ContentData {
 struct MainOnboardingPage: View {
     let off = UIScreen.main.bounds.height
     @State var page = 1
+    @AppStorage("needsAppOnboarding") var needsAppOnboarding = true
     
     var body: some View {
         ZStack {
             VStack {
-                Page(title: ContentData.contentDict[1]![0], content: ContentData.contentDict[1]![1], sym: ContentData.contentDict[1]![3], background: ContentData.contentDict[1]![2], page: $page)
+                Page(background: ContentData.contentDict[1]![2], page: $page)
                     .offset(y: page == 1 ? off : (page == 2 ? 0 : -off * 2))
                 
-                Page(title: ContentData.contentDict[2]![0], content: ContentData.contentDict[2]![1], sym: ContentData.contentDict[2]![3], background: ContentData.contentDict[2]![2], page: $page)
+                Page(background: ContentData.contentDict[2]![2], page: $page)
                     .offset(y: page == 2 ? 0 : (page == 3 ? -off : off))
                 
-                Page(title: ContentData.contentDict[3]![0], content: ContentData.contentDict[3]![1], sym: ContentData.contentDict[3]![3], background: ContentData.contentDict[3]![2], page: $page)
+                Page(background: ContentData.contentDict[3]![2], page: $page)
                     .offset(y: page == 3 ? -off : (page == 2 ? 0 : off * 2))
             }
             .animation(.easeInOut(duration: 1))
+            
+            
+            VStack {
+                Image(uiImage: UIImage(named: "hale_sym")!)
+                    .resizable()
+                    .frame(width: 31.16, height: 39.31)
+                    .padding(.top, 50)
+                
+                Spacer()
+                
+                HStack {
+                    VStack (alignment: .leading){
+                        Text("\(ContentData.contentDict[page]![0])")
+                            .font(Font.custom("Poppins-Bold", size: 24, relativeTo: .body))
+                        Text("\(ContentData.contentDict[page]![1])")
+                            .font(Font.custom("Poppins-Regular", size: 18, relativeTo: .body))
+                    }
+                    .foregroundColor(.white)
+                    
+                    Spacer()
+                    
+                    Image(uiImage: UIImage(named: "\(ContentData.contentDict[page]![3])")!)
+                        .resizable()
+                        .frame(width: 45, height: 201)
+                }
+                .padding(.leading, 32)
+                .padding(.trailing, 24)
+                
+                Spacer()
+                
+                HStack {
+                    if page == 3 {
+                        Button(action: {
+                            self.needsAppOnboarding = false
+                        }, label: {
+                            Text("Get Started")
+                                .font(Font.custom("Poppins-Regular", size: 18, relativeTo: .body))
+                                .foregroundColor(.black)
+                                .frame(width: ScreenSize.windowWidth()*0.7, height: ScreenSize.windowHeight() * 0.07, alignment: .center)
+                                .background(RoundedRectangle(cornerRadius: 50).fill(Color(UIColor(.white))))
+                        })
+                    }
+                    else {
+                        Text("")
+                            .frame(width: ScreenSize.windowWidth() * 1/3)
+                        Spacer()
+                        
+                        Button(action: {
+                            self.page += 1
+                        }, label: {
+                            Image(uiImage: UIImage(named: "down_sym")!)
+                                .resizable()
+                                .frame(width: 30, height: 30)
+                        }).frame(width: ScreenSize.windowWidth() * 1/3)
+                        
+                        Spacer()
+                        
+                        Button(action: {
+                            self.needsAppOnboarding = false
+                        }, label: {
+                            Text("Skip")
+                                .foregroundColor(.white)
+                                .font(Font.custom("Poppins-Regular", size: 16, relativeTo: .body))
+                        }).frame(width: ScreenSize.windowWidth() * 1/3)
+                    }
+                }
+                .padding(.bottom, 50)
+            }
+            .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
         }
     }
 }
@@ -39,77 +109,12 @@ struct MainOnboardingPage: View {
 struct Page: View {
     @AppStorage("needsAppOnboarding") var needsAppOnboarding = true
     
-    var title = ""
-    var content = ""
-    var sym = ""
     var background = ""
     @Binding var page: Int
     
     var body: some View {
         VStack {
-            Image(uiImage: UIImage(named: "hale_sym")!)
-                .resizable()
-                .frame(width: 31.16, height: 39.31)
-                .padding(.top, 50)
-            
-            Spacer()
-            
-            HStack {
-                VStack (alignment: .leading){
-                    Text("\(title)")
-                        .font(Font.custom("Poppins-Bold", size: 24, relativeTo: .body))
-                    Text("\(content)")
-                        .font(Font.custom("Poppins-Regular", size: 18, relativeTo: .body))
-                }
-                .foregroundColor(.white)
-                Spacer()
-                Image(uiImage: UIImage(named: "\(sym)")!)
-                    .resizable()
-                    .frame(width: 45, height: 201)
-            }
-            .padding(.leading, 32)
-            .padding(.trailing, 24)
-            
-            Spacer()
-            
-            HStack {
-                if page == 3 {
-                    Button(action: {
-                        self.needsAppOnboarding = false
-                    }, label: {
-                        Text("Get Started")
-                            .font(Font.custom("Poppins-Regular", size: 18, relativeTo: .body))
-                            .foregroundColor(.black)
-                            .frame(width: ScreenSize.windowWidth()*0.7, height: ScreenSize.windowHeight() * 0.07, alignment: .center)
-                            .background(RoundedRectangle(cornerRadius: 50).fill(Color(UIColor(.white))))
-                    })
-                }
-                else {
-                    Text("")
-                        .frame(width: ScreenSize.windowWidth() * 1/3)
-                    Spacer()
-                    
-                    Button(action: {
-                        self.page += 1
-                    }, label: {
-                        Image(uiImage: UIImage(named: "down_sym")!)
-                            .resizable()
-                            .frame(width: 30, height: 30)
-                    }).frame(width: ScreenSize.windowWidth() * 1/3)
-                    
-                    Spacer()
-                    
-                    Button(action: {
-                        self.needsAppOnboarding = false
-                    }, label: {
-                        Text("Skip")
-                            .foregroundColor(.white)
-                            .font(Font.custom("Poppins-Regular", size: 16, relativeTo: .body))
-                    }).frame(width: ScreenSize.windowWidth() * 1/3)
-                }
-            }
-            .padding(.bottom, 50)
-            
+            EmptyView()
         }
         .background(
             Image(uiImage: UIImage(named: "\(background)")!)
