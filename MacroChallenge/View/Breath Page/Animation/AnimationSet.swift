@@ -8,6 +8,9 @@
 import Foundation
 
 struct AnimationSet {
+    var preparation1: (() -> Void)?
+    var preparation2: (() -> Void)?
+    
     var preInhale: (() -> Void)?
     var inhale: (() -> Void)?
     var preHold1: (() -> Void)?
@@ -16,5 +19,7 @@ struct AnimationSet {
     var exhale: (() -> Void)?
     var preHold2: (() -> Void)?
     var hold2: (() -> Void)?
+    
+    var postBreath: (() -> Void)?
     var completion: (() -> Void)?
 }

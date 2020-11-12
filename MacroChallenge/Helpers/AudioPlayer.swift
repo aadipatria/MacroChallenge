@@ -63,6 +63,7 @@ class AudioPlayer2 {
       }
     }
     static func stopSounds(){
+        audioPlayer?.setVolume(0, fadeDuration: 0.5)
         audioPlayer?.stop()
     }
 }
