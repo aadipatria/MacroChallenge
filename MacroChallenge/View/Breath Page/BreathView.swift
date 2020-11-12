@@ -207,12 +207,7 @@ struct BreathView: View {
                 success = true
                 showStop = false
                 self.cycleTime = 1
-                
-                self.breathingStateHelper = BreathingStateHelper(
-                    breath: breaths[index],
-                    animations: []
-                )
-                self.updateAnimations()
+
                 
                 if !breaths.isEmpty {
                     update()
@@ -238,6 +233,11 @@ struct BreathView: View {
                     }
                     update()
                 }
+                self.breathingStateHelper = BreathingStateHelper(
+                    breath: breaths[index],
+                    animations: []
+                )
+                self.updateAnimations()
             })
             .onTapGesture(count: /*@START_MENU_TOKEN@*/1/*@END_MENU_TOKEN@*/, perform: {
                 if isBreathing{
