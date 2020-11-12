@@ -52,17 +52,17 @@ struct BreathView: View {
         ZStack {
             Rectangle()
                 .fill(Color.black.opacity(0.001))
-                .gesture(DragGesture(minimumDistance: 0, coordinateSpace: .local)
-                            .onEnded({ value in
-                                //left
-                                if value.translation.width < -80 && !isBreathing {
-                                    changeLeft()
-                                }
-                                //right
-                                if value.translation.width > 80 && !isBreathing {
-                                    changeRight()
-                                }
-                            }))
+//                .gesture(DragGesture(minimumDistance: 0, coordinateSpace: .local)
+//                            .onEnded({ value in
+//                                //left
+//                                if value.translation.width < -80 && !isBreathing {
+//                                    changeLeft()
+//                                }
+//                                //right
+//                                if value.translation.width > 80 && !isBreathing {
+//                                    changeRight()
+//                                }
+//                            }))
             ZStack {
                 Group {
                     NavigationLink(
@@ -242,6 +242,7 @@ struct BreathView: View {
             }
             .frame(maxHeight: ScreenSize.windowHeight() * 0.52)
             .onAppear(perform: {
+                prepareHaptics()
                 showStop = false
                 self.cycleTime = 1
                 
