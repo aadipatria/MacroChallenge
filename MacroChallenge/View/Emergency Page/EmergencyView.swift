@@ -22,6 +22,7 @@ struct EmergencyView: View {
     @State var contactEdited: Bool = false
     
     @State var isEdited: Bool = false
+    @State var deleteID: UUID = UUID()
 
     @State var id: UUID = UUID()
     @State var name: String = ""
@@ -121,6 +122,7 @@ struct EmergencyView: View {
                                 if isEdited{
                                     Button(action: {
                                         isAlert = true
+                                        self.deleteID = contact.id
                                     }, label: {
                                         Image(systemName: "x.circle.fill")
                                             .foregroundColor(.red)
@@ -128,12 +130,9 @@ struct EmergencyView: View {
                                     })
                                     .alert(isPresented: $isAlert){
                                         Alert(title: Text("Are you sure you want to delete this contact?"), primaryButton: .destructive(Text("Delete")) {
-                                            self.manageObjectContext.delete(contact)
-                                            do {
-                                                try self.manageObjectContext.save()
-                                            } catch {
-                                                print("error deleting")
-                                            }
+                                            
+                                            deleteItem(id: self.deleteID)
+                                            
                                             }, secondaryButton: .cancel())
                                     }
                                 }
@@ -213,9 +212,13 @@ extension EmergencyView{
         sendWatchHelper.sendArrayOfContact(contact: contact2DArray)
     }
     
-    func deleteItem(indexSet: IndexSet) {
-        let deleteItem = self.contacts[indexSet.first!]
-        self.manageObjectContext.delete(deleteItem)
+    func deleteItem(id: UUID) {
+        for contact in contacts {
+            if contact.id == id {
+                self.manageObjectContext.delete(contact)
+                break
+            }
+        }
         
         do {
             try self.manageObjectContext.save()
