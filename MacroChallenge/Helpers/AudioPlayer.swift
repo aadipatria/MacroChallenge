@@ -15,11 +15,17 @@ class AudioPlayer1 {
   static func playSounds(soundfile: String) {
 
       if let path = Bundle.main.path(forResource: soundfile, ofType: nil){
+        
 
           do{
 
               audioPlayer = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: path))
               audioPlayer?.prepareToPlay()
+            do {
+                  try AVAudioSession.sharedInstance().setCategory(.playback)
+               } catch(let error) {
+                   print(error.localizedDescription)
+               }
               audioPlayer?.play()
 
           }catch {
@@ -43,6 +49,11 @@ class AudioPlayer2 {
           do{
 
               audioPlayer = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: path))
+            do {
+                  try AVAudioSession.sharedInstance().setCategory(.playback)
+               } catch(let error) {
+                   print(error.localizedDescription)
+               }
               audioPlayer?.prepareToPlay()
               audioPlayer?.play()
 
