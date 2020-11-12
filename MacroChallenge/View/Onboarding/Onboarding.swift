@@ -17,8 +17,10 @@ struct ContentData {
 
 struct MainOnboardingPage: View {
     let off = UIScreen.main.bounds.height
+    @State var offArrow : CGFloat = .zero
     @State var page = 1
     @AppStorage("needsAppOnboarding") var needsAppOnboarding = true
+    @State var arrowOpacity: Double = 0
     
     var body: some View {
         ZStack {
@@ -51,6 +53,7 @@ struct MainOnboardingPage: View {
                             .font(Font.custom("Poppins-Regular", size: 18, relativeTo: .body))
                     }
                     .foregroundColor(.white)
+                    .animation(.easeInOut(duration: 1.0))
                     
                     Spacer()
                     
@@ -80,12 +83,36 @@ struct MainOnboardingPage: View {
                             .frame(width: ScreenSize.windowWidth() * 1/3)
                         Spacer()
                         
+//                        Button(action: {
+//                            self.page += 1
+//                        }, label: {
+//                            Image(uiImage: UIImage(named: "down_sym")!)
+//                                .resizable()
+//                                .frame(width: 30, height: 30)
+//                                .offset(y: offArrow)
+//                        }).frame(width: ScreenSize.windowWidth() * 1/3)
+                        
                         Button(action: {
                             self.page += 1
                         }, label: {
-                            Image(uiImage: UIImage(named: "down_sym")!)
-                                .resizable()
-                                .frame(width: 30, height: 30)
+                            VStack {
+                                Group {
+                                    Image(systemName: "chevron.down")
+                                        .resizable()
+                                        .foregroundColor(.white)
+                                        .frame(width: 30, height: 10)
+                                    Image(systemName: "chevron.down")
+                                        .resizable()
+                                        .foregroundColor(.white)
+                                        .frame(width: 30, height: 10)
+                                    Image(systemName: "chevron.down")
+                                        .resizable()
+                                        .foregroundColor(.white)
+                                        .frame(width: 30, height: 10)
+                                }
+                                .opacity(arrowOpacity)
+                                
+                            }
                         }).frame(width: ScreenSize.windowWidth() * 1/3)
                         
                         Spacer()
