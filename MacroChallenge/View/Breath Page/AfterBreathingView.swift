@@ -31,7 +31,7 @@ struct AfterBreathingView: View {
                         Text("Hi there!")
                             .font(Font.custom("Poppins-Bold", size: 24, relativeTo: .body))
                             .foregroundColor(.white)
-                            .padding(.top, 48)
+                            .padding(.top, 64)
                         Text("Seems like you stopped in the middle of the breathing. How can we help you?")
                             .font(Font.custom("Poppins-Light", size: 24, relativeTo: .body))
                             .foregroundColor(.white)
