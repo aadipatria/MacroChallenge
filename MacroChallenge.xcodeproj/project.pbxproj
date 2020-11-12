@@ -21,6 +21,7 @@
 		9DE77B3D2542DE8D00BCCDB3 /* WatchHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE77B3C2542DE8D00BCCDB3 /* WatchHelper.swift */; };
 		9DF237EB255A992600D9F9E1 /* Onboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF237EA255A992500D9F9E1 /* Onboarding.swift */; };
 		9DF7876D255BF1D8007A6362 /* QuotesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF7876C255BF1D8007A6362 /* QuotesModel.swift */; };
+		9DF78781255D2D1F007A6362 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9DF78780255D2D1F007A6362 /* Assets.xcassets */; };
 		9DFAB86C2534404F00E81C87 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFAB86B2534404F00E81C87 /* AppDelegate.swift */; };
 		9DFAB86E2534404F00E81C87 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFAB86D2534404F00E81C87 /* SceneDelegate.swift */; };
 		9DFAB8702534404F00E81C87 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFAB86F2534404F00E81C87 /* HomeView.swift */; };
@@ -126,6 +127,7 @@
 		9DE77B3C2542DE8D00BCCDB3 /* WatchHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchHelper.swift; sourceTree = "<group>"; };
 		9DF237EA255A992500D9F9E1 /* Onboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboarding.swift; sourceTree = "<group>"; };
 		9DF7876C255BF1D8007A6362 /* QuotesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuotesModel.swift; sourceTree = "<group>"; };
+		9DF78780255D2D1F007A6362 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9DFAB8682534404F00E81C87 /* MacroChallenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MacroChallenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9DFAB86B2534404F00E81C87 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9DFAB86D2534404F00E81C87 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -259,6 +261,7 @@
 		9DFAB86A2534404F00E81C87 /* MacroChallenge */ = {
 			isa = PBXGroup;
 			children = (
+				9DF78780255D2D1F007A6362 /* Assets.xcassets */,
 				7585E921255166C2007BF3C5 /* AssetsVideoBerjalan */,
 				9D7D26F62538151E006D35D2 /* Model */,
 				CA95C12525357BF9008C0398 /* View */,
@@ -530,6 +533,7 @@
 				CA7DC49A255977B8003CE217 /* inhale.mp3 in Resources */,
 				9DFAB8782534405000E81C87 /* LaunchScreen.storyboard in Resources */,
 				9DFAB8752534405000E81C87 /* Preview Assets.xcassets in Resources */,
+				9DF78781255D2D1F007A6362 /* Assets.xcassets in Resources */,
 				CA4261D0255BBF0400C32954 /* Poppins-SemiBold.ttf in Resources */,
 				CAE33D402555393B007EBB35 /* forest_bg_1.mov in Resources */,
 				CA7DC491255975B6003CE217 /* nature bgm.mp3 in Resources */,
