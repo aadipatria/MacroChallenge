@@ -108,7 +108,7 @@ struct BreathView: View {
                     
                     RoundedRectangle(cornerRadius: 15)
                         .fill(Color.clear)
-                        .frame(maxWidth: ScreenSize.windowWidth() * 0.76)
+                        .frame(maxWidth: ScreenSize.windowWidth() * 0.76, maxHeight: 400)
                         .background(
                             Blur(style: .regular)
                                 .mask(RoundedRectangle(cornerRadius: 15))
