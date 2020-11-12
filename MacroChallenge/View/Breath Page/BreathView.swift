@@ -77,9 +77,9 @@ struct BreathView: View {
                         }
                         Spacer()
                         Button(action: {
+                            cancelHaptic()
                             isBreathing = false
                             self.success = false
-                            cancelHaptic()
                             navPop.toBreathing = true
                         }, label: {
                             Text("Stop")
@@ -184,7 +184,6 @@ struct BreathView: View {
                         if isBreathing{
                             showStop = false
                             self.success = true
-                            prepareHaptics()
                             getNumberOfCycles()
                         }else{
                             self.success = false
@@ -204,6 +203,7 @@ struct BreathView: View {
             }
             .frame(maxHeight: ScreenSize.windowHeight() * 0.52)
             .onAppear(perform: {
+                prepareHaptics()
                 success = true
                 showStop = false
                 self.cycleTime = 1
