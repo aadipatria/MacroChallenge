@@ -29,22 +29,16 @@ struct BreathView: View {
     @State var cycleTime: Int = 0
     @State var cycleRemaining: Int = 0
     
-    @State var animationSets: [AnimationSet] = []
+    @State var breathingStateHelper: BreathingStateHelper = BreathingStateHelper()
     @State var isBreathing: Bool = false
     @State var breathingState: BreathingState = .none
     
     @State var orbitalEffectScaling: CGFloat = 0.0
     @State var animationSizeScaling: CGFloat = 0.0
     @State var uiElementsOpacityScaling: Double = 1.0
-    @State var guidanceTextSizeScaling: Double = 0.0
     @State var guidanceTextOpacityScaling: Double = 0.0
     @State var guidanceText: String = ""
     
-    @State var startInhale: DispatchWorkItem = DispatchWorkItem {}
-    @State var startHold1: DispatchWorkItem = DispatchWorkItem {}
-    @State var startExhale: DispatchWorkItem = DispatchWorkItem {}
-    @State var startHold2: DispatchWorkItem = DispatchWorkItem {}
-    @State var startCompletion: DispatchWorkItem = DispatchWorkItem {}
     @State var engine: CHHapticEngine?
     @State var showStop = false
     
@@ -52,17 +46,11 @@ struct BreathView: View {
         ZStack {
             Rectangle()
                 .fill(Color.black.opacity(0.001))
-                .gesture(DragGesture(minimumDistance: 0, coordinateSpace: .local)
-                            .onEnded({ value in
-                                //left
-                                if value.translation.width < -80 && !isBreathing {
-                                    changeLeft()
-                                }
-                                //right
-                                if value.translation.width > 80 && !isBreathing {
-                                    changeRight()
-                                }
-                            }))
+                .onTapGesture(count: /*@START_MENU_TOKEN@*/1/*@END_MENU_TOKEN@*/, perform: {
+                    if isBreathing{
+                        showStop.toggle()
+                    }
+                })
             ZStack {
                 Group {
                     NavigationLink(
@@ -72,7 +60,6 @@ struct BreathView: View {
                             EmptyView()
                         })
                 }
-                //.opacity(self.uiElementsOpacityScaling)
             
                 if self.isBreathing {
                     VStack {
@@ -81,6 +68,7 @@ struct BreathView: View {
                             AnimatedRing(binding: self.$orbitalEffectScaling)
                                 .padding(30)
                                 .scaleEffect(self.animationSizeScaling)
+                                .onAnimationCompleted(for: self.orbitalEffectScaling, completion: {self.changeState()})
 
                             Text(guidanceText)
                                 .font(Font.custom("Poppins-SemiBold", size: 28, relativeTo: .body))
@@ -88,20 +76,21 @@ struct BreathView: View {
                                 .opacity(self.guidanceTextOpacityScaling)
                         }
                         Spacer()
-                            Button(action: {
-                                isBreathing = false
-                                self.success = false
-                                cancelHaptic()
-                            }, label: {
-                                Text("Stop")
-                                    .font(Font.custom("Poppins-SemiBold", size: 18, relativeTo: .body))
-                                    .foregroundColor(.black)
-                                    .frame(width: ScreenSize.windowWidth()*0.5, height: ScreenSize.windowHeight() * 0.05, alignment: .center)
-                                    .background(RoundedRectangle(cornerRadius: 36).fill(Color(UIColor(.white))))
-                                    .opacity(showStop ? 1 : 0)
-                                
-                            }).disabled(!showStop)
-                            .animation(/*@START_MENU_TOKEN@*/.easeIn/*@END_MENU_TOKEN@*/)
+                        Button(action: {
+                            isBreathing = false
+                            self.success = false
+                            cancelHaptic()
+                            navPop.toBreathing = true
+                        }, label: {
+                            Text("Stop")
+                                .font(Font.custom("Poppins-SemiBold", size: 18, relativeTo: .body))
+                                .foregroundColor(.black)
+                                .frame(width: ScreenSize.windowWidth()*0.5, height: ScreenSize.windowHeight() * 0.05, alignment: .center)
+                                .background(RoundedRectangle(cornerRadius: 36).fill(Color(UIColor(.white))))
+                                .opacity(showStop ? 1 : 0)
+                            
+                        }).disabled(!showStop)
+                        .animation(/*@START_MENU_TOKEN@*/.easeIn/*@END_MENU_TOKEN@*/)
                         Spacer()
                         
                     }
@@ -119,7 +108,7 @@ struct BreathView: View {
                     
                     RoundedRectangle(cornerRadius: 15)
                         .fill(Color.clear)
-                        .frame(maxWidth: ScreenSize.windowWidth() * 0.76, maxHeight: 400)
+                        .frame(maxWidth: ScreenSize.windowWidth() * 0.76)
                         .background(
                             Blur(style: .regular)
                                 .mask(RoundedRectangle(cornerRadius: 15))
@@ -138,13 +127,15 @@ struct BreathView: View {
                 .gesture(DragGesture(minimumDistance: 0, coordinateSpace: .local)
                             .onEnded({ value in
                                 //left
-                                if value.translation.width < -80 {
+                                if value.translation.width < -40 {
                                     changeLeft()
                                 }
                                 //right
-                                if value.translation.width > 80 {
+                                if value.translation.width > 40 {
                                     changeRight()
                                 }
+
+
                             }))
                 
                 VStack(spacing: 8) {
@@ -166,19 +157,12 @@ struct BreathView: View {
                                 Image(systemName: "heart")
                                     .foregroundColor(Color.white)
                                     .font(/*@START_MENU_TOKEN@*/.title2/*@END_MENU_TOKEN@*/)
-                                    
+
                             }
                         }
                     }
                     
                     ZStack(alignment: .leading) {
-//                        Rectangle()
-//                            .fill(Color.clear)
-//                            .background(Blur(style: .systemThinMaterial)
-//                                            .opacity(0.95))
-//                            .cornerRadius(8)
-//                            .padding(.leading, 50)
-//                            .frame(width: 200, height: 50, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                         Text("Minute(s)")
                             .font(Font.custom("Poppins-Bold", size: 18, relativeTo: .body))
                             .padding(.leading, 96)
@@ -189,15 +173,11 @@ struct BreathView: View {
                                 Text("\(minutes)")
                                     .foregroundColor(.white)
                                     .font(Font.custom("Poppins-SemiBold", size: 18, relativeTo: .body))
-
                             }
                         }
                         .frame(width: 160, height: 150)
                         .clipped()
-                        
                     }
-                    
-    //                Spacer()
                     
                     Button(action: {
                         self.isBreathing.toggle()
@@ -218,36 +198,16 @@ struct BreathView: View {
                             .background(RoundedRectangle(cornerRadius: 36).fill(Color(UIColor(.white))))
                     }
                 }
-                .frame(maxWidth: ScreenSize.windowWidth() * 0.72)                .opacity(self.uiElementsOpacityScaling)
-                
-               
-                
-    //            Spacer()
-                
-    //            Button(action: {
-    //                self.isBreathing.toggle()
-    //                if isBreathing{
-    //                    self.success = true
-    //                    prepareHaptics()
-    //                }else{
-    //                    self.success = false
-    //                    cancelHaptic()
-    //                }
-    //            }) {
-    //                Text("Start")
-    //                    .foregroundColor(.black)
-    //                    .frame(width: ScreenSize.windowWidth()*0.5, height: ScreenSize.windowHeight() * 0.05, alignment: .center)
-    //                    .background(RoundedRectangle(cornerRadius: 36).fill(Color(UIColor(.white))))
-    //            }.padding(.bottom, 100)
+                .frame(maxWidth: ScreenSize.windowWidth() * 0.72)
+//                .padding(.vertical, 32)
+                .opacity(self.uiElementsOpacityScaling)
             }
             .frame(maxHeight: ScreenSize.windowHeight() * 0.52)
             .onAppear(perform: {
+                success = true
                 showStop = false
                 self.cycleTime = 1
-                
-                let orbitalSet = OrbitalAnimationSet(binding: self.$orbitalEffectScaling).getAnimationSets()
-                let textSet = GuidanceTextSet(binding: self.$guidanceText).getAnimationSets()
-                self.animationSets = [orbitalSet, textSet]
+
                 
                 if !breaths.isEmpty {
                     update()
@@ -273,75 +233,48 @@ struct BreathView: View {
                     }
                     update()
                 }
+                self.breathingStateHelper = BreathingStateHelper(
+                    breath: breaths[index],
+                    animations: []
+                )
+                self.updateAnimations()
+            })
+            .onTapGesture(count: /*@START_MENU_TOKEN@*/1/*@END_MENU_TOKEN@*/, perform: {
+                if isBreathing{
+                    showStop.toggle()
+                }
             })
             .onChange(of: breathingState) {newValue in
                 switch newValue {
                 case .none:
-                    self.endAction()
+                    breathingStateHelper.startPostBreath()
                 case .inhale:
-                    self.inhaleAction()
+                    breathingStateHelper.startInhale()
                     if haptic{
                         inhale(duration: inhale)
                     }
-                    if audio{
-                        AudioPlayer2.playSounds(soundfile: "inhale.mp3")
-                    }
                 case .hold1:
-                    self.hold1Action()
-                    if audio{
-                        AudioPlayer2.playSounds(soundfile: "hold.mp3")
-                    }
+                    breathingStateHelper.startHold1()
                 case .exhale:
-                    self.exhaleAction()
+                    breathingStateHelper.startExhale()
                     if haptic{
                         exhale(duration: exhale)
                     }
-                    if audio{
-                        AudioPlayer2.playSounds(soundfile: "exhale.mp3")
-                    }
                 case .hold2:
-                    self.hold2Action()
-                    if audio{
-                        AudioPlayer2.playSounds(soundfile: "hold.mp3")
-                    }
+                    breathingStateHelper.startHold2()
                 }
             }
             .onChange(of: isBreathing, perform: { value in
                 if value {
-                    self.setUpDispatchWorkItems()
                     self.startBreathing()
                     navPop.tabIsHidden = true
-                    AudioPlayer1.playSounds(soundfile: "nature bgm.mp3")
                 } else {
                     self.stopBreathing()
-                    cancelHaptic()
-                    AudioPlayer1.stopSounds()
-                    AudioPlayer2.stopSounds()
                 }
             })
             .navigationBarHidden(true)
-        }
-        .onTapGesture(count: /*@START_MENU_TOKEN@*/1/*@END_MENU_TOKEN@*/, perform: {
-            if isBreathing{
-                showStop.toggle()
-            }
-        })
 
-        
-//        .background(Image("ocean").backgroundImageModifier())
-//        .gesture(DragGesture(minimumDistance: 0, coordinateSpace: .local)
-//                    .onEnded({ value in
-//                        //left
-//                        if value.translation.width < -20 {
-//                            changeLeft()
-//                        }
-//                        //right
-//                        if value.translation.width > 20 {
-//                            changeRight()
-//                        }
-//
-//
-//                    }))
+        }
     }
     func prepareHaptics(){
         guard CHHapticEngine.capabilitiesForHardware().supportsHaptics else {return }
@@ -388,6 +321,8 @@ extension BreathView{
         pattern = String(format: "%.0f - %.0f - %.0f - %.0f", self.inhale, self.hold1, self.exhale, self.hold2)
         haptic = Bool(breaths[index].haptic)
         audio = Bool(breaths[index].sound)
+        
+        self.updateAnimations()
     }
 }
 

@@ -7,6 +7,8 @@
 import SwiftUI
 import CoreData
 
+var playLooping = LoopingPlayer()
+
 struct EditBreathing: View {
     @State var breathName = ""
     @State var inhale = 0
@@ -28,7 +30,7 @@ struct EditBreathing: View {
     //kalau ada cara yang lebih bagus ajarin gw - Vincent
     var body: some View {
         ZStack {
-            LoopingPlayer()
+            playLooping
                 .edgesIgnoringSafeArea(.all)
             VStack (spacing: 16) {
                 Precautions()
@@ -113,6 +115,8 @@ struct EditBreathing: View {
         }
         .onTapGesture {
             hideKeyboard()
+        }   .onReceive(NotificationCenter.default.publisher(for: UIApplication.willEnterForegroundNotification)) { _ in
+            playLooping.player.playing()
         }
     }
 }

@@ -168,7 +168,7 @@ struct EmergencyView: View {
                                             .cornerRadius(8))
                         })
                     }
-                    .padding(.bottom, 16)
+                    .padding(.bottom, 20)
                 }
                 
                 Spacer()

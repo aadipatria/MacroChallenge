@@ -19,33 +19,80 @@ struct ScalingAnimationSet {
 }
 
 struct OrbitalAnimationSet {
-    @Binding var binding: CGFloat
+    @Binding var position: CGFloat
     
     func getAnimationSets() -> AnimationSet {
         return AnimationSet(
-            preInhale: {self.binding = 0.0},
-            inhale: {self.binding = 1.0},
-            preHold1: {self.binding = 0.0},
-            hold1: {self.binding = 1.0},
-            preExhale: {self.binding = 0.0},
-            exhale: {self.binding = 1.0},
-            preHold2: {self.binding = 0.0},
-            hold2: {self.binding = 1.0},
-            completion: {self.binding = 0.0}
+            preInhale: {self.position = 0.0},
+            inhale: {self.position = 0.99},
+            preHold1: {self.position = 0},
+            hold1: {self.position = 0.99},
+            preExhale: {self.position = 0.0},
+            exhale: {self.position = 0.99},
+            preHold2: {self.position = 0.0},
+            hold2: {self.position = 0.99},
+            postBreath: {self.position = 0.0}
         )
     }
 }
 
 struct GuidanceTextSet {
-    @Binding var binding: String
+    @Binding var text: String
+    @Binding var opacity: Double
+    var breath: Breathing
     
     func getAnimationSets() -> AnimationSet {
-        return AnimationSet(
-            preInhale: {self.binding = "Inhale"},
-            preHold1: {self.binding = "Hold"},
-            preExhale: {self.binding = "Exhale"},
-            preHold2: {self.binding = "Hold"},
-            completion: {self.binding = ""}
-        )
+        var animations = AnimationSet()
+        
+        animations.preparation2 = {self.opacity = 1.0}
+        
+        if breath.inhale > 0 {
+            animations.preInhale = {self.text = "INHALE"}
+        }
+
+        if breath.hold1 > 0 {
+            animations.preHold1 = {self.text = "HOLD"}
+        }
+        
+        if breath.exhale > 0 {
+            animations.preExhale = {self.text = "EXHALE"}
+        }
+        
+        if breath.hold2 > 0 {
+            animations.preHold2 = {self.text = "HOLD"}
+        }
+        
+        animations.completion = {
+            self.text = ""
+            self.opacity = 0.0
+        }
+        
+        return animations
+    }
+}
+
+struct UIElementsOpacitySet {
+    @Binding var opacity: Double
+    
+    func getAnimationSets() -> AnimationSet {
+        var animations = AnimationSet()
+        
+        animations.preparation1 = {self.opacity = 0.0}
+        animations.completion = {self.opacity = 1.0}
+        
+        return animations
+    }
+}
+
+struct AnimationSizeSet {
+    @Binding var size: CGFloat
+    
+    func getAnimationSets() -> AnimationSet {
+        var animations = AnimationSet()
+        
+        animations.preparation2 = {self.size = 1.0}
+        animations.completion = {self.size = 0.0}
+        
+        return animations
     }
 }

@@ -3,9 +3,10 @@
 //  MacroChallenge
 //
 //  Created by Kenji Surya Utama on 13/10/20.
-//
+// udah bisa ini
 
 import SwiftUI
+
 
 struct AfterBreathingView: View {
     
@@ -17,6 +18,9 @@ struct AfterBreathingView: View {
     
     var body: some View {
         ZStack {
+            playLooping
+                .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
+                .animation(nil)
 //            LoopingPlayer()
 //                .edgesIgnoringSafeArea(.all)
             VStack (spacing : 16){
@@ -80,15 +84,23 @@ struct AfterBreathingView: View {
                 .padding(.horizontal)
                 .frame(width: ScreenSize.windowWidth(), alignment: .trailing)
                 
+                
+                
+            }.onReceive(NotificationCenter.default.publisher(for: UIApplication.willEnterForegroundNotification)) { _ in
+                playLooping.player.playing()
+                
             }
+        
             .navigationBarHidden(true)
             .onAppear(perform: {
                 navPop.tabIsHidden = false
+            
             })
 //            .background(Image("ocean").blurBackgroundImageModifier())
-            .background(LoopingPlayer()
+            .background(playLooping
                             .frame(width: ScreenSize.windowWidth(), height: ScreenSize.windowHeight(), alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                             .ignoresSafeArea(.all))
+            
         }
     }
 }
@@ -132,6 +144,10 @@ struct SuccessView: View {
         .frame(width : ScreenSize.windowWidth() * 0.9, alignment: .leading)
         .onAppear {
             self.randQuotes = Quotes.getRandQuotes()
+        
+        }.onReceive(NotificationCenter.default.publisher(for: UIApplication.willEnterForegroundNotification)) { _ in
+            playLooping.player.playing()
+            
         }
     }
 }

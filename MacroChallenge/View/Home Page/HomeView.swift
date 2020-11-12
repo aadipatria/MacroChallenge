@@ -57,6 +57,7 @@ struct HomeView: View {
                 playLooping.player.playing()
                 
             }
+//            .navigationBarHidden(true)
         }
         .accentColor( .white) /// ini buat ganti back button jd item
 //        .sheet(isPresented: self.$needsAppOnboarding, content: {
