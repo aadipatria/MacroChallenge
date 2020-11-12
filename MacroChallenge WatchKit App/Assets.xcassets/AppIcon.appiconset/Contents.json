@@ -1,7 +1,7 @@
 {
   "images" : [
     {
-      "filename" : "Icon-48.png",
+      "filename" : "48.jpg",
       "idiom" : "watch",
       "role" : "notificationCenter",
       "scale" : "2x",
@@ -9,7 +9,7 @@
       "subtype" : "38mm"
     },
     {
-      "filename" : "Icon-55.png",
+      "filename" : "55.jpg",
       "idiom" : "watch",
       "role" : "notificationCenter",
       "scale" : "2x",
@@ -71,7 +71,7 @@
       "subtype" : "42mm"
     },
     {
-      "filename" : "216.png",
+      "filename" : "216.jpg",
       "idiom" : "watch",
       "role" : "quickLook",
       "scale" : "2x",

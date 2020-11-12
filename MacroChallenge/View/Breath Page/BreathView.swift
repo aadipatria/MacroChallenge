@@ -52,6 +52,17 @@ struct BreathView: View {
         ZStack {
             Rectangle()
                 .fill(Color.black.opacity(0.001))
+                .gesture(DragGesture(minimumDistance: 0, coordinateSpace: .local)
+                            .onEnded({ value in
+                                //left
+                                if value.translation.width < -80 && !isBreathing {
+                                    changeLeft()
+                                }
+                                //right
+                                if value.translation.width > 80 && !isBreathing {
+                                    changeRight()
+                                }
+                            }))
             ZStack {
                 Group {
                     NavigationLink(
@@ -127,15 +138,13 @@ struct BreathView: View {
                 .gesture(DragGesture(minimumDistance: 0, coordinateSpace: .local)
                             .onEnded({ value in
                                 //left
-                                if value.translation.width < -40 {
+                                if value.translation.width < -80 {
                                     changeLeft()
                                 }
                                 //right
-                                if value.translation.width > 40 {
+                                if value.translation.width > 80 {
                                     changeRight()
                                 }
-
-
                             }))
                 
                 VStack(spacing: 8) {
@@ -163,6 +172,13 @@ struct BreathView: View {
                     }
                     
                     ZStack(alignment: .leading) {
+//                        Rectangle()
+//                            .fill(Color.clear)
+//                            .background(Blur(style: .systemThinMaterial)
+//                                            .opacity(0.95))
+//                            .cornerRadius(8)
+//                            .padding(.leading, 50)
+//                            .frame(width: 200, height: 50, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                         Text("Minute(s)")
                             .font(Font.custom("Poppins-Bold", size: 18, relativeTo: .body))
                             .padding(.leading, 96)
@@ -178,6 +194,7 @@ struct BreathView: View {
                         }
                         .frame(width: 160, height: 150)
                         .clipped()
+                        
                     }
                     
     //                Spacer()
