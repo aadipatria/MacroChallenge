@@ -110,7 +110,7 @@ struct BreathListView: View {
                                             .cornerRadius(8))
                         })
                 }
-                .padding(.bottom, 8)
+                .padding(.bottom, 20)
                 .animation(.easeInOut(duration: 0.6))
                 
             }
