@@ -6,6 +6,9 @@
 
 import SwiftUI
 
+
+
+
 struct CustomBreathingView: View {
     
     @State var breathName = ""
@@ -26,8 +29,8 @@ struct CustomBreathingView: View {
     
     var body: some View {
         ZStack {
-//            LoopingPlayer()
-//                .edgesIgnoringSafeArea(.all)
+            LoopingPlayer()
+                .edgesIgnoringSafeArea(.all)
             VStack (spacing : 16) {
                 Precautions()
                     .padding(.top)
@@ -89,7 +92,7 @@ struct CustomBreathingView: View {
                 Spacer()
             }
 //            .background(Image("ocean").blurBackgroundImageModifier())
-            .background(LoopingPlayer()
+            .background(playLooping
                             .frame(width: ScreenSize.windowWidth(), height: ScreenSize.windowHeight(), alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                             .ignoresSafeArea(.all))
             .navigationBarItems(trailing: CancelAddView(breathName: $breathName, inhale: $inhale, hold1: $hold1, exhale: $exhale, hold2: $hold2, isSoundOn: $isSoundOn, isHapticOn: $isHapticOn))
@@ -98,7 +101,11 @@ struct CustomBreathingView: View {
         }
         .onTapGesture {
             hideKeyboard()
-        }
+             
+        }   .onReceive(NotificationCenter.default.publisher(for: UIApplication.willEnterForegroundNotification)) { _ in
+            playLooping.player.playing()
+    }
+        
     }
 }
 

@@ -3,10 +3,10 @@
 //  MacroChallenge
 //
 //  Created by Kenji Surya Utama on 13/10/20.
-// udah bisa s
+// udah bisa ini
 
 import SwiftUI
-var playLooping = LoopingPlayer()
+
 
 struct AfterBreathingView: View {
     
