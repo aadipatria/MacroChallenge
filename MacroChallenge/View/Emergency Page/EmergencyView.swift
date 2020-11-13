@@ -73,6 +73,7 @@ struct EmergencyView: View {
                             }, label: {
                                 Image(systemName: "plus")
                                     .foregroundColor(.black)
+                                    .padding(5)
                             })
 
                         }
@@ -80,7 +81,7 @@ struct EmergencyView: View {
                 }
                 .frame(width : ScreenSize.windowWidth() * 0.9, height : ScreenSize.windowHeight() * 0.05)
                 .animation(.easeInOut(duration: 0.6))
-                .padding(.bottom)
+                .padding(.vertical)
                 
 //                Button {
 //                    sync()

@@ -147,11 +147,13 @@ struct ExtractedView: View {
             }).padding(.horizontal)
         }
         .frame(width : ScreenSize.windowWidth() * 0.95)
+//        .padding(.bottom , 26)
+        .padding(.bottom, ScreenSize.windowHeight() * 0.03)
         .background(Color(UIColor.white)
-                        .frame(width : ScreenSize.windowWidth(), height : ScreenSize.windowHeight() * 0.08)
+                        .frame(width : ScreenSize.windowWidth(), height : ScreenSize.windowHeight() * 0.1)
                         .opacity(0.12)
                         .background(Blur(style: .systemThinMaterialDark).opacity(0.95))
                         .cornerRadius(24))
-        .padding(.bottom , 10)
+        
     }
 }

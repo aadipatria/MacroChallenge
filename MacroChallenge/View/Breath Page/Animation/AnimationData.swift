@@ -47,19 +47,19 @@ struct GuidanceTextSet {
         animations.preparation2 = {self.opacity = 1.0}
         
         if breath.inhale > 0 {
-            animations.preInhale = {self.text = "INHALE"}
+            animations.preInhale = {self.text = "Inhale"}
         }
 
         if breath.hold1 > 0 {
-            animations.preHold1 = {self.text = "HOLD"}
+            animations.preHold1 = {self.text = "Hold"}
         }
         
         if breath.exhale > 0 {
-            animations.preExhale = {self.text = "EXHALE"}
+            animations.preExhale = {self.text = "Exhale"}
         }
         
         if breath.hold2 > 0 {
-            animations.preHold2 = {self.text = "HOLD"}
+            animations.preHold2 = {self.text = "Hold"}
         }
         
         animations.completion = {

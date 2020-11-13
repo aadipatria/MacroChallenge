@@ -72,7 +72,7 @@ struct MainOnboardingPage: View {
                             self.needsAppOnboarding = false
                         }, label: {
                             Text("Get Started")
-                                .font(Font.custom("Poppins-Regular", size: 18, relativeTo: .body))
+                                .font(Font.custom("Poppins-Medium", size: 18, relativeTo: .body))
                                 .foregroundColor(.black)
                                 .frame(width: ScreenSize.windowWidth()*0.7, height: ScreenSize.windowHeight() * 0.07, alignment: .center)
                                 .background(RoundedRectangle(cornerRadius: 50).fill(Color(UIColor(.white))))
