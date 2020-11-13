@@ -142,6 +142,7 @@ struct Precautions: View {
 
 struct InputName: View {
     @Binding var breathName : String
+    
     var body: some View {
         VStack {
             ZStack{
@@ -279,6 +280,7 @@ struct CancelAddView: View {
         }, label: {
             Text("Add")
         })
+        .disabled(self.breathName == "" ? true : false)
     }
 }
 
