@@ -45,9 +45,9 @@ struct AddEmergencyContact: View {
                     hideKeyboard()
                 } label: {
                     Text("Done")
-                        .foregroundColor(.blue)
-
+                        .foregroundColor(self.name == "" ? Color.gray : (self.number == "" ? Color.gray : Color.blue))
                 }
+                .disabled(self.name == "" ? true : (self.number == "" ? true : false))
             }
             .padding()
             .frame(width: ScreenSize.windowWidth() * 0.9, height: 60)
