@@ -185,6 +185,7 @@ struct EditBreathingCancelAddView: View {
             }, label: {
                 Text("Save")
             })
+            .disabled(self.breathName == "" ? true : false)
         }
     }
 }

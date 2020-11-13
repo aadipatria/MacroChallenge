@@ -101,6 +101,7 @@ extension HalfModalView {
         if drag.predictedEndTranslation.height > dragThreshold || drag.translation.height > dragThreshold {
             isShown = false
             navPop.tabIsHidden = false
+            hideKeyboard()
         }
     }
     
