@@ -7,7 +7,7 @@
 import SwiftUI
 import CoreData
 
-var playLooping = LoopingPlayer()
+//var playLooping = LoopingPlayer()
 
 struct EditBreathing: View {
     @State var breathName = ""
@@ -22,6 +22,7 @@ struct EditBreathing: View {
     @State var isAlert = false
     @Environment(\.managedObjectContext) var manageObjectContext
     @Environment(\.presentationMode) var presentationMode
+    @EnvironmentObject var navPop : NavigationPopObject
     
     //fetch semua breathing dari core data -> next step di onAppear
     @FetchRequest(fetchRequest: Breathing.getAllBreathing()) var breaths: FetchedResults<Breathing>
@@ -30,7 +31,7 @@ struct EditBreathing: View {
     //kalau ada cara yang lebih bagus ajarin gw - Vincent
     var body: some View {
         ZStack {
-            playLooping
+            navPop.playLooping
                 .edgesIgnoringSafeArea(.all)
             VStack (spacing: 16) {
                 Precautions()
@@ -116,7 +117,7 @@ struct EditBreathing: View {
         .onTapGesture {
             hideKeyboard()
         }   .onReceive(NotificationCenter.default.publisher(for: UIApplication.willEnterForegroundNotification)) { _ in
-            playLooping.player.playing()
+            navPop.playLooping.player.playing()
         }
     }
 }

@@ -17,4 +17,5 @@ final class NavigationPopObject: ObservableObject {
     @Published var editBreath : Bool = false
     @Published var halfModal : Bool = false
     @Published var breathCycles : Int = 0
+    @Published var playLooping = LoopingPlayer()
 }

@@ -18,11 +18,9 @@ struct AfterBreathingView: View {
     
     var body: some View {
         ZStack {
-            playLooping
+            navPop.playLooping
                 .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
                 .animation(nil)
-//            LoopingPlayer()
-//                .edgesIgnoringSafeArea(.all)
             VStack (spacing : 16){
                 if success{
                     SuccessView(name: self.name, pattern: self.pattern)
@@ -45,7 +43,6 @@ struct AfterBreathingView: View {
                 Spacer()
                 Button(action: {
                     navPop.toBreathing = false
-                    // gmn cara start lansung yg baru
                 }, label: {
                     Text("Repeat")
                         .font(Font.custom("Poppins-SemiBold", size: 14, relativeTo: .body))
@@ -87,7 +84,7 @@ struct AfterBreathingView: View {
                 
                 
             }.onReceive(NotificationCenter.default.publisher(for: UIApplication.willEnterForegroundNotification)) { _ in
-                playLooping.player.playing()
+                navPop.playLooping.player.playing()
                 
             }
         
@@ -97,7 +94,7 @@ struct AfterBreathingView: View {
             
             })
 //            .background(Image("ocean").blurBackgroundImageModifier())
-            .background(playLooping
+            .background(navPop.playLooping
                             .frame(width: ScreenSize.windowWidth(), height: ScreenSize.windowHeight(), alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                             .ignoresSafeArea(.all))
             
@@ -115,6 +112,7 @@ struct SuccessView: View {
     @State var name : String
     @State var pattern : String
     @State var randQuotes: String = ""
+    @EnvironmentObject var navPop : NavigationPopObject
     
     var body: some View {
         VStack (alignment: .leading, spacing : 16){
@@ -146,7 +144,7 @@ struct SuccessView: View {
             self.randQuotes = Quotes.getRandQuotes()
         
         }.onReceive(NotificationCenter.default.publisher(for: UIApplication.willEnterForegroundNotification)) { _ in
-            playLooping.player.playing()
+            navPop.playLooping.player.playing()
             
         }
     }
