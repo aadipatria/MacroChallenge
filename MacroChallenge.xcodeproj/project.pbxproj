@@ -85,8 +85,9 @@
 		CA95C11E25357BEE008C0398 /* BreathView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA95C11D25357BEE008C0398 /* BreathView.swift */; };
 		CA95C12725357C52008C0398 /* AfterBreathingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA95C12625357C52008C0398 /* AfterBreathingView.swift */; };
 		CA95C13025357CA8008C0398 /* EmergencyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA95C12F25357CA8008C0398 /* EmergencyView.swift */; };
+		CABCA39F2562830100B347D2 /* lake.mov in Resources */ = {isa = PBXBuildFile; fileRef = CABCA39E2562830100B347D2 /* lake.mov */; };
 		CACCB3A12552701E0037AE62 /* NavigationWatchPop.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACCB3A02552701E0037AE62 /* NavigationWatchPop.swift */; };
-		CAE33D402555393B007EBB35 /* forest_bg_1.mov in Resources */ = {isa = PBXBuildFile; fileRef = CAE33D3F2555393B007EBB35 /* forest_bg_1.mov */; };
+		CAE33D402555393B007EBB35 /* forest.mov in Resources */ = {isa = PBXBuildFile; fileRef = CAE33D3F2555393B007EBB35 /* forest.mov */; };
 		CAE33D4B25554524007EBB35 /* CoreDataHaptic.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE33D4A25554524007EBB35 /* CoreDataHaptic.swift */; };
 		CAF3CC312546A29700D987D0 /* CustomModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF3CC302546A29700D987D0 /* CustomModifier.swift */; };
 /* End PBXBuildFile section */
@@ -205,8 +206,9 @@
 		CA95C11D25357BEE008C0398 /* BreathView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreathView.swift; sourceTree = "<group>"; };
 		CA95C12625357C52008C0398 /* AfterBreathingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AfterBreathingView.swift; sourceTree = "<group>"; wrapsLines = 1; };
 		CA95C12F25357CA8008C0398 /* EmergencyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmergencyView.swift; sourceTree = "<group>"; };
+		CABCA39E2562830100B347D2 /* lake.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = lake.mov; sourceTree = "<group>"; };
 		CACCB3A02552701E0037AE62 /* NavigationWatchPop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationWatchPop.swift; sourceTree = "<group>"; };
-		CAE33D3F2555393B007EBB35 /* forest_bg_1.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = forest_bg_1.mov; sourceTree = "<group>"; };
+		CAE33D3F2555393B007EBB35 /* forest.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = forest.mov; sourceTree = "<group>"; };
 		CAE33D4A25554524007EBB35 /* CoreDataHaptic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataHaptic.swift; sourceTree = "<group>"; };
 		CAF3CC302546A29700D987D0 /* CustomModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomModifier.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -232,7 +234,8 @@
 		7585E921255166C2007BF3C5 /* AssetsVideoBerjalan */ = {
 			isa = PBXGroup;
 			children = (
-				CAE33D3F2555393B007EBB35 /* forest_bg_1.mov */,
+				CAE33D3F2555393B007EBB35 /* forest.mov */,
+				CABCA39E2562830100B347D2 /* lake.mov */,
 				CA7DC490255975B6003CE217 /* nature bgm.mp3 */,
 				CA3FC7C4255D43D6003298A0 /* hold.mp3 */,
 				CA3FC7CC255D442D003298A0 /* exhale.mp3 */,
@@ -573,8 +576,9 @@
 				9DFAB8752534405000E81C87 /* Preview Assets.xcassets in Resources */,
 				9DF78781255D2D1F007A6362 /* Assets.xcassets in Resources */,
 				CA4261D0255BBF0400C32954 /* Poppins-SemiBold.ttf in Resources */,
-				CAE33D402555393B007EBB35 /* forest_bg_1.mov in Resources */,
+				CAE33D402555393B007EBB35 /* forest.mov in Resources */,
 				CA7DC491255975B6003CE217 /* nature bgm.mp3 in Resources */,
+				CABCA39F2562830100B347D2 /* lake.mov in Resources */,
 				CA4261DA255BC0FE00C32954 /* Poppins-Medium.ttf in Resources */,
 				CA4261D5255BC08600C32954 /* Poppins-Light.ttf in Resources */,
 			);
