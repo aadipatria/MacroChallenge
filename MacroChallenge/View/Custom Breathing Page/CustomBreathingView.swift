@@ -279,6 +279,7 @@ struct CancelAddView: View {
             navPop.addBreath = false
         }, label: {
             Text("Add")
+                .foregroundColor(self.breathName == "" ? Color.gray : Color.white)
         })
         .disabled(self.breathName == "" ? true : false)
     }
