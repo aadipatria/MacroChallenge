@@ -13,11 +13,11 @@ struct ScreenSize {
 
     static func windowHeight() -> CGFloat {
         return UIScreen.main.bounds.height
-    }
+        }
 
     static func windowWidth() -> CGFloat {
         return UIScreen.main.bounds.width
-    }
+        }
 
     }
 struct SomeBackground{
@@ -94,6 +94,18 @@ struct ClearButton: ViewModifier {
         }
     }
 }
+struct Shake: GeometryEffect {
+    var amount: CGFloat = 10
+    var shakesPerUnit = 3
+    var animatableData: CGFloat
+
+    func effectValue(size: CGSize) -> ProjectionTransform {
+        ProjectionTransform(CGAffineTransform(translationX:
+            amount * sin(animatableData * .pi * CGFloat(shakesPerUnit)),
+            y: 0))
+    }
+}
+
 
 extension Image {
     
