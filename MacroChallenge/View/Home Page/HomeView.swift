@@ -11,6 +11,7 @@ struct HomeView: View {
     
     @EnvironmentObject var navPop : NavigationPopObject
     @AppStorage("needsAppOnboarding") private var needsAppOnboarding: Bool = true
+    @State var playLooping = LoopingPlayer()
     
     init() {
         //Use this if NavigationBarTitle is with Large Font
@@ -23,7 +24,7 @@ struct HomeView: View {
     var body: some View {
         NavigationView{
             ZStack {
-                navPop.playLooping
+                playLooping
                     .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
                     .animation(nil)
                     
