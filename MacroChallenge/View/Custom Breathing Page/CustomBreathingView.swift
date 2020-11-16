@@ -20,6 +20,8 @@ struct CustomBreathingView: View {
     @State var isHapticOn = false
     @State var isFavorite = false
     @EnvironmentObject var navPop : NavigationPopObject
+    @Environment(\.managedObjectContext) var manageObjectContext
+    @State var attempts: Int = 0
     
     init() {
         UINavigationBar.appearance().barTintColor = .clear
@@ -34,6 +36,7 @@ struct CustomBreathingView: View {
                 Precautions()
                     .padding(.top)
                 InputName(breathName: $breathName)
+                    .modifier(Shake(animatableData: CGFloat(attempts)))
                 VStack {
                     Group {
                         Text("Pattern - in seconds")
@@ -94,7 +97,22 @@ struct CustomBreathingView: View {
             .background(navPop.playLooping
                             .frame(width: ScreenSize.windowWidth(), height: ScreenSize.windowHeight(), alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                             .ignoresSafeArea(.all))
-            .navigationBarItems(trailing: CancelAddView(breathName: $breathName, inhale: $inhale, hold1: $hold1, exhale: $exhale, hold2: $hold2, isSoundOn: $isSoundOn, isHapticOn: $isHapticOn))
+            .navigationBarItems(trailing: Button(action: {
+                if breathName == ""{
+                    withAnimation(.default) {
+                        self.attempts += 1
+                    }
+
+                }else{
+                    saveToCoreData()
+                    navPop.addBreath = false
+                }
+            }, label: {
+                Text("Add")
+                    .foregroundColor(self.breathName == "" ? Color.gray : Color.white)
+            })
+//            .disabled(self.breathName == "" ? true : false)
+            )
             .frame(width : ScreenSize.windowWidth() * 0.9)
             .navigationBarTitle("Add Breathing",displayMode: .inline)
         }
@@ -259,32 +277,32 @@ struct GuidingPreferences: View {
 }
 
 
-struct CancelAddView: View {
-    //pake ini untuk save ke core data
-    @Environment(\.managedObjectContext) var manageObjectContext
-    @EnvironmentObject var navPop : NavigationPopObject
-    
-    @Binding var breathName : String
-    @Binding var inhale : Int
-    @Binding var hold1 : Int
-    @Binding var exhale : Int
-    @Binding var hold2 : Int
-    @Binding var isSoundOn : Bool
-    @Binding var isHapticOn : Bool
-    
-    var body: some View {
-        Button(action: {
-            saveToCoreData()
-            navPop.addBreath = false
-        }, label: {
-            Text("Add")
-                .foregroundColor(self.breathName == "" ? Color.gray : Color.white)
-        })
-        .disabled(self.breathName == "" ? true : false)
-    }
-}
+//struct CancelAddView: View {
+//    //pake ini untuk save ke core data
+//    @Environment(\.managedObjectContext) var manageObjectContext
+//    @EnvironmentObject var navPop : NavigationPopObject
+//
+//    @Binding var breathName : String
+//    @Binding var inhale : Int
+//    @Binding var hold1 : Int
+//    @Binding var exhale : Int
+//    @Binding var hold2 : Int
+//    @Binding var isSoundOn : Bool
+//    @Binding var isHapticOn : Bool
+//
+//    var body: some View {
+//        Button(action: {
+//            saveToCoreData()
+//            navPop.addBreath = false
+//        }, label: {
+//            Text("Add")
+//                .foregroundColor(self.breathName == "" ? Color.gray : Color.white)
+//        })
+//        .disabled(self.breathName == "" ? true : false)
+//    }
+//}
 
-extension CancelAddView {
+extension CustomBreathingView {
     func saveToCoreData() {
         let breath = Breathing(context: self.manageObjectContext)
         breath.name = breathName

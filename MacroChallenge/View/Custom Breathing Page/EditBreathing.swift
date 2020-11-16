@@ -23,6 +23,7 @@ struct EditBreathing: View {
     @Environment(\.managedObjectContext) var manageObjectContext
     @Environment(\.presentationMode) var presentationMode
     @EnvironmentObject var navPop : NavigationPopObject
+    @State var attempts: Int = 0
     
     //fetch semua breathing dari core data -> next step di onAppear
     @FetchRequest(fetchRequest: Breathing.getAllBreathing()) var breaths: FetchedResults<Breathing>
@@ -37,6 +38,7 @@ struct EditBreathing: View {
                 Precautions()
                     .padding(.top)
                 InputName(breathName: $breathName)
+                    .modifier(Shake(animatableData: CGFloat(attempts)))
                 
                 VStack {
                     Text("Pattern - in seconds")
@@ -107,7 +109,21 @@ struct EditBreathing: View {
                 Spacer()
             }
 //            .background(Image("ocean").blurBackgroundImageModifier())
-            .navigationBarItems(trailing: EditBreathingCancelAddView(breathName: $breathName, inhale: $inhale, hold1: $hold1, exhale: $exhale, hold2: $hold2, isSoundOn: $isSoundOn, isHapticOn: $isHapticOn, id: id))
+            .navigationBarItems(trailing: Button(action: {
+                if breathName == ""{
+                    withAnimation(.default) {
+                        self.attempts += 1
+                    }
+                }else{
+                    updateBreath()
+                    self.presentationMode.wrappedValue.dismiss()
+                }
+            }, label: {
+                Text("Save")
+                    .foregroundColor(self.breathName == "" ? Color.gray : Color.white)
+            })
+//            .disabled(self.breathName == "" ? true : false)
+            )
             .frame(width : ScreenSize.windowWidth() * 0.9)
             .navigationBarTitle("Edit Breathing",displayMode: .inline)
             .onAppear {
@@ -158,43 +174,6 @@ extension EditBreathing {
         }
         isAlert = false
     }
-}
-
-
-struct EditBreathingCancelAddView: View {
-    //bikin 2 ini karena update = fetch -> modif -> save
-    @Environment(\.managedObjectContext) var manageObjectContext
-    @FetchRequest(fetchRequest: Breathing.getAllBreathing()) var breaths: FetchedResults<Breathing>
-    @EnvironmentObject var navPop : NavigationPopObject
-    @Environment(\.presentationMode) var presentationMode
-    
-    @Binding var breathName : String
-    @Binding var inhale : Int
-    @Binding var hold1 : Int
-    @Binding var exhale : Int
-    @Binding var hold2 : Int
-    @Binding var isSoundOn : Bool
-    @Binding var isHapticOn : Bool
-    var id: UUID
-    
-    var body: some View {
-        HStack {
-            Spacer()
-            Button(action: {
-                updateBreath()
-                self.presentationMode.wrappedValue.dismiss()
-            }, label: {
-                Text("Save")
-                    .foregroundColor(self.breathName == "" ? Color.gray : Color.white)
-            })
-            .disabled(self.breathName == "" ? true : false)
-        }
-    }
-}
-
-extension EditBreathingCancelAddView {
-    //sama kayak onAppear diatas
-    //ambil semua breath -> cari breath yang idnya == id yang di passing kesini -> save
     func updateBreath() {
         for breath in breaths {
             if breath.id == self.id {
@@ -218,10 +197,68 @@ extension EditBreathingCancelAddView {
     }
 }
 
+
+//struct EditBreathingCancelAddView: View {
+//    //bikin 2 ini karena update = fetch -> modif -> save
+//    @Environment(\.managedObjectContext) var manageObjectContext
+//    @FetchRequest(fetchRequest: Breathing.getAllBreathing()) var breaths: FetchedResults<Breathing>
+//    @EnvironmentObject var navPop : NavigationPopObject
+//    @Environment(\.presentationMode) var presentationMode
+//
+//    @Binding var breathName : String
+//    @Binding var inhale : Int
+//    @Binding var hold1 : Int
+//    @Binding var exhale : Int
+//    @Binding var hold2 : Int
+//    @Binding var isSoundOn : Bool
+//    @Binding var isHapticOn : Bool
+//    var id: UUID
+//
+//    var body: some View {
+//        HStack {
+//            Spacer()
+//            Button(action: {
+//                updateBreath()
+//                self.presentationMode.wrappedValue.dismiss()
+//            }, label: {
+//                Text("Save")
+//                    .foregroundColor(self.breathName == "" ? Color.gray : Color.white)
+//            })
+//            .disabled(self.breathName == "" ? true : false)
+//        }
+//    }
+//}
+
+//extension EditBreathingCancelAddView {
+//    //sama kayak onAppear diatas
+//    //ambil semua breath -> cari breath yang idnya == id yang di passing kesini -> save
+//    func updateBreath() {
+//        for breath in breaths {
+//            if breath.id == self.id {
+//                breath.name = breathName
+//                breath.inhale = Int16(inhale)
+//                breath.hold1 = Int16(hold1)
+//                breath.exhale = Int16(exhale)
+//                breath.hold2 = Int16(hold2)
+//                breath.sound = isSoundOn
+//                breath.haptic = isHapticOn
+//                breath.id = self.id
+//
+//                do{
+//                    try self.manageObjectContext.save()
+//                    self.presentationMode.wrappedValue.dismiss()
+//                } catch {
+//                    print(error)
+//                }
+//            }
+//        }
+//    }
+//}
+
 struct EditBreathing_Previews: PreviewProvider {
     static var previews: some View {
         let viewContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-        EditBreathing(id: UUID()).environment(\.managedObjectContext, viewContext)
+        EditBreathing(id: UUID()).environment(\.managedObjectContext, viewContext).environmentObject(NavigationPopObject())
     }
 }
 

@@ -54,7 +54,10 @@ struct EditEmergencyContact: View {
                         }
                     }
                     else if self.number == ""{
-                        self.attempts2 += 1
+                        withAnimation(.default) {
+                            self.attempts2 += 1
+                        }
+
                     
                     }else{
                         updateContact()
