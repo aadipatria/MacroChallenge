@@ -16,6 +16,7 @@
 		9D7D26EB25381317006D35D2 /* MacroChallenge.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9D7D26E825381317006D35D2 /* MacroChallenge.xcdatamodeld */; };
 		9D7D2713253818B8006D35D2 /* BreathingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7D2712253818B8006D35D2 /* BreathingModel.swift */; };
 		9D7D2714253818B8006D35D2 /* BreathingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7D2712253818B8006D35D2 /* BreathingModel.swift */; };
+		9DB07506256205CF0002DDDD /* HalfModalTrial.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB07505256205CF0002DDDD /* HalfModalTrial.swift */; };
 		9DE77B212542D5A800BCCDB3 /* EmergencyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE77B202542D5A800BCCDB3 /* EmergencyModel.swift */; };
 		9DE77B292542D7CA00BCCDB3 /* AddEmergencyContact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE77B282542D7CA00BCCDB3 /* AddEmergencyContact.swift */; };
 		9DE77B3D2542DE8D00BCCDB3 /* WatchHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE77B3C2542DE8D00BCCDB3 /* WatchHelper.swift */; };
@@ -137,6 +138,7 @@
 		9D697C8B25514C580087A64C /* EditEmergencyContact.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditEmergencyContact.swift; sourceTree = "<group>"; };
 		9D7D26E925381317006D35D2 /* MacroChallenge.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MacroChallenge.xcdatamodel; sourceTree = "<group>"; };
 		9D7D2712253818B8006D35D2 /* BreathingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreathingModel.swift; sourceTree = "<group>"; };
+		9DB07505256205CF0002DDDD /* HalfModalTrial.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HalfModalTrial.swift; sourceTree = "<group>"; };
 		9DE77B202542D5A800BCCDB3 /* EmergencyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmergencyModel.swift; sourceTree = "<group>"; };
 		9DE77B282542D7CA00BCCDB3 /* AddEmergencyContact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEmergencyContact.swift; sourceTree = "<group>"; };
 		9DE77B3C2542DE8D00BCCDB3 /* WatchHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchHelper.swift; sourceTree = "<group>"; };
@@ -446,6 +448,7 @@
 				9D697C8B25514C580087A64C /* EditEmergencyContact.swift */,
 				9DE77B282542D7CA00BCCDB3 /* AddEmergencyContact.swift */,
 				9D2F7FFF255008050055ABCF /* HalfModalView.swift */,
+				9DB07505256205CF0002DDDD /* HalfModalTrial.swift */,
 			);
 			path = "Emergency Page";
 			sourceTree = "<group>";
@@ -625,6 +628,7 @@
 				BC8B2B4D254AA7E00091F892 /* Blur.swift in Sources */,
 				9DFAB8702534404F00E81C87 /* HomeView.swift in Sources */,
 				BC8B2B36254AA5D30091F892 /* AnimationData.swift in Sources */,
+				9DB07506256205CF0002DDDD /* HalfModalTrial.swift in Sources */,
 				9D697C8C25514C580087A64C /* EditEmergencyContact.swift in Sources */,
 				9DE77B3D2542DE8D00BCCDB3 /* WatchHelper.swift in Sources */,
 				BC0CBDDC255BD81C00C7B453 /* BreathingStateActions.swift in Sources */,
