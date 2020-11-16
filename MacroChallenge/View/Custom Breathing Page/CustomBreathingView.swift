@@ -29,8 +29,8 @@ struct CustomBreathingView: View {
     
     var body: some View {
         ZStack {
-            LoopingPlayer()
-                .edgesIgnoringSafeArea(.all)
+//            LoopingPlayer()
+//                .edgesIgnoringSafeArea(.all)
             VStack (spacing : 16) {
                 Precautions()
                     .padding(.top)
@@ -142,6 +142,7 @@ struct Precautions: View {
 
 struct InputName: View {
     @Binding var breathName : String
+    
     var body: some View {
         VStack {
             ZStack{
@@ -278,7 +279,9 @@ struct CancelAddView: View {
             navPop.addBreath = false
         }, label: {
             Text("Add")
+                .foregroundColor(self.breathName == "" ? Color.gray : Color.white)
         })
+        .disabled(self.breathName == "" ? true : false)
     }
 }
 

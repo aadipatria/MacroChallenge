@@ -184,7 +184,9 @@ struct EditBreathingCancelAddView: View {
                 self.presentationMode.wrappedValue.dismiss()
             }, label: {
                 Text("Save")
+                    .foregroundColor(self.breathName == "" ? Color.gray : Color.white)
             })
+            .disabled(self.breathName == "" ? true : false)
         }
     }
 }

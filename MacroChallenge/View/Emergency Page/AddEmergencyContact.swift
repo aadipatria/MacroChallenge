@@ -23,6 +23,7 @@ struct AddEmergencyContact: View {
                     hideKeyboard()
                 }, label: {
                     Text("Cancel")
+                        .padding(5)
                         .foregroundColor(.blue)
 
                 })
@@ -45,9 +46,10 @@ struct AddEmergencyContact: View {
                     hideKeyboard()
                 } label: {
                     Text("Done")
-                        .foregroundColor(.blue)
-
+                        .padding(5)
+                        .foregroundColor(self.name == "" ? Color.gray : (self.number == "" ? Color.gray : Color.blue))
                 }
+                .disabled(self.name == "" ? true : (self.number == "" ? true : false))
             }
             .padding()
             .frame(width: ScreenSize.windowWidth() * 0.9, height: 60)
@@ -63,6 +65,7 @@ struct AddEmergencyContact: View {
                 TextField("Number", text: $number)
                     .modifier(ClearButton(text: $number))
                     .accentColor(.black)
+                    .keyboardType(.numberPad)
                     .padding()
                     .background(RoundedRectangle(cornerRadius: 8).fill(Color(UIColor(.white))))
             }

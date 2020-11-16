@@ -29,6 +29,7 @@ struct EditEmergencyContact: View {
                     hideKeyboard()
                 }, label: {
                     Text("Cancel")
+                        .padding(5)
                         .foregroundColor(.blue)
                 })
                 
@@ -47,9 +48,10 @@ struct EditEmergencyContact: View {
                     hideKeyboard()
                 }, label: {
                     Text("Done")
-                        .foregroundColor(.blue)
-
+                        .padding(5)
+                        .foregroundColor(self.name == "" ? Color.gray : (self.number == "" ? Color.gray : Color.blue))
                 })
+                .disabled(self.name == "" ? true : (self.number == "" ? true : false))
             }
             .padding()
             .frame(width: ScreenSize.windowWidth() * 0.9, height: 60)

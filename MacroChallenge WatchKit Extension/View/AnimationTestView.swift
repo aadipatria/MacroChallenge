@@ -9,9 +9,18 @@ import SwiftUI
 
 struct AnimationTestView: View {
     @State var orbitalEffectScaling: CGFloat = 0.0
+    @State var name : String
+    @State var inhale : Double
+    @State var hold1 : Double
+    @State var exhale : Double
+    @State var hold2 : Double
+    @State var haptic : Bool
+    @State var sound : Bool
+    
     
     var body: some View {
         VStack {
+            Text(name)
             Spacer()
             
             AnimatedRingWatch(binding: self.$orbitalEffectScaling)
