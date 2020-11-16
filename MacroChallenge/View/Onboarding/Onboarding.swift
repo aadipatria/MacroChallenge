@@ -89,11 +89,11 @@ struct MainOnboardingPage: View {
                         }, label: {
                             ScrollArrows()
                                 .foregroundColor(Color.white)
-                                .frame(height: 48)
-                            //Image(uiImage: UIImage(named: "down_sym")!)
-                                //.resizable()
-                                //.frame(width: 30, height: 30)
-                                //.offset(y: offArrow)
+                                .frame(width : 20, height: 48)
+//                            Image(uiImage: UIImage(named: "down_sym")!)
+//                                .resizable()
+//                                .frame(width: 30, height: 30)
+//                                .offset(y: offArrow)
                         }).frame(width: ScreenSize.windowWidth() * 1/3)
                         
 //                        Button(action: {
