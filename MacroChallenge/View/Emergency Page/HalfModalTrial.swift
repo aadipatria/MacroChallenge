@@ -38,7 +38,9 @@ struct AddContactModal: View {
             BackgroundView()
                 .onTapGesture {
                     self.off = 200
-                    self.isAddNewContact = false
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.15) {
+                        self.isAddNewContact = false
+                    }
                     navPop.tabIsHidden = false
                     hideKeyboard()
                 }
@@ -48,7 +50,7 @@ struct AddContactModal: View {
                 ZStack {
                     Color.white.opacity(1)
                     Blur(style: .systemThinMaterial).opacity(0.95)
-                    AddEmergencyContact(isAddNewContact: $isAddNewContact)
+                    AddEmergencyContact(isAddNewContact: $isAddNewContact, off: self.$off)
                         .padding(.bottom, 180)
                 }
                 .frame(width: UIScreen.main.bounds.width, height: modalHeight)
@@ -101,7 +103,9 @@ struct EditContactModal: View {
             BackgroundView()
                 .onTapGesture {
                     self.off = 200
-                    self.isContactEdited = false
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.15) {
+                        self.isContactEdited = false
+                    }
                     navPop.tabIsHidden = false
                     hideKeyboard()
                 }
@@ -111,7 +115,7 @@ struct EditContactModal: View {
                 ZStack {
                     Color.white.opacity(1)
                     Blur(style: .systemThinMaterial).opacity(0.95)
-                    EditEmergencyContact(name: self.$name, number: self.$number, id: self.id, contactEdited: self.$isContactEdited)
+                    EditEmergencyContact(name: self.$name, number: self.$number, off: self.$off, id: self.id, contactEdited: self.$isContactEdited)
                         .padding(.bottom, 180)
                 }
                 .cornerRadius(15, corners: [.topLeft, .topRight])
@@ -144,8 +148,8 @@ struct EditContactModal: View {
                     hideKeyboard()
                 }
             }
-            .animation(.interpolatingSpring(stiffness: 300, damping: 30))
         }
+        .animation(.interpolatingSpring(stiffness: 300, damping: 30))
     }
 }
 
