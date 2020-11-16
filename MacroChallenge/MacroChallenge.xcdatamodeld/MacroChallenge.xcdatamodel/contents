@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17192" systemVersion="19H2" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17511" systemVersion="20B29" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Breathing" representedClassName=".Breathing" syncable="YES">
+        <attribute name="background" optional="YES" attributeType="String"/>
+        <attribute name="bgm" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="black" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="exhale" optional="YES" attributeType="Integer 16" usesScalarValueType="YES"/>
         <attribute name="favorite" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="haptic" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
@@ -17,7 +20,7 @@
         <attribute name="number" optional="YES" attributeType="String"/>
     </entity>
     <elements>
-        <element name="Breathing" positionX="-54" positionY="-9" width="128" height="178"/>
+        <element name="Breathing" positionX="-54" positionY="-9" width="128" height="209"/>
         <element name="Emergency" positionX="-54" positionY="63" width="128" height="88"/>
     </elements>
 </model>

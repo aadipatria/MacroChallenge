@@ -18,6 +18,9 @@ public class Breathing: NSManagedObject, Identifiable {
     @NSManaged public var haptic: Bool
     @NSManaged public var id: UUID
     @NSManaged public var favorite: Bool
+    @NSManaged public var background: String?
+    @NSManaged public var black: Bool
+    @NSManaged public var bgm: Bool
 }
 
 extension Breathing {

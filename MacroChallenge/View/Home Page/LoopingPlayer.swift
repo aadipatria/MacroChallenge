@@ -24,26 +24,31 @@ class QueuePlayerUIView : UIView {
     var tampungPlayer = AVQueuePlayer()
     var tampungVideo = "forest"
     
+    var fileUrl: URL?
+    var playerItem: AVPlayerItem?
+    var player = AVQueuePlayer()
+    
     override init(frame : CGRect){
         super.init(frame: frame)
         
         // Load Video
-        let fileUrl = Bundle.main.url(forResource: tampungVideo, withExtension: "mov")
-        let playerItem = AVPlayerItem(url: fileUrl!)
+        fileUrl = Bundle.main.url(forResource: tampungVideo, withExtension: "mov")
+        playerItem = AVPlayerItem(url: fileUrl!)
         
         // Setup Player
-        let player = AVQueuePlayer(playerItem: playerItem)
+        player = AVQueuePlayer(playerItem: playerItem)
         playerLayer.player = player
         playerLayer.videoGravity = .resizeAspectFill
         layer.addSublayer(playerLayer)
         
         // Looping video
-        playerLooper = AVPlayerLooper(player: player, templateItem: playerItem)
+        playerLooper = AVPlayerLooper(player: player, templateItem: playerItem!)
         
         // Play
         tampungPlayer = player
         playing()
     }
+    
     func playing(){
         tampungPlayer.play()
     }
@@ -51,9 +56,11 @@ class QueuePlayerUIView : UIView {
     //a
     func moveBackground(name : String){
         
-        let fileUrl = Bundle.main.url(forResource: name, withExtension: "mov")
+        fileUrl = Bundle.main.url(forResource: name, withExtension: "mov")
         
-        let playerItem = AVPlayerItem(url: fileUrl!)
+        playerItem = AVPlayerItem(url: fileUrl!)
+        
+        playerLooper = AVPlayerLooper(player: player, templateItem: playerItem!)
         
         tampungPlayer.replaceCurrentItem(with: playerItem)
         
