@@ -13,14 +13,18 @@ struct AddEmergencyContact: View {
     @State var name: String = ""
     @State var number: String = ""
     @Binding var isAddNewContact: Bool
+    @Binding var off: CGFloat
     
     var body: some View {
         VStack {
             HStack{
                 Button(action: {
-                    self.isAddNewContact = false
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.15) {
+                        self.isAddNewContact = false
+                    }
                     navPop.tabIsHidden = false
                     hideKeyboard()
+                    self.off = 200
                 }, label: {
                     Text("Cancel")
                         .foregroundColor(.blue)
@@ -40,7 +44,10 @@ struct AddEmergencyContact: View {
                     saveToCoreData()
                     self.name = ""
                     self.number = ""
-                    self.isAddNewContact = false
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.15) {
+                        self.isAddNewContact = false
+                    }
+                    self.off = 200
                     navPop.tabIsHidden = false
                     hideKeyboard()
                 } label: {
@@ -85,15 +92,11 @@ extension AddEmergencyContact {
             print(error)
         }
     }
-    
-    func hideKeyboard() {
-        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
-    }
 }
 
-struct AddEmergencyContact_Previews: PreviewProvider {
-    @State static var isAddNewContact = true
-    static var previews: some View {
-        AddEmergencyContact(isAddNewContact: $isAddNewContact)
-    }
-}
+//struct AddEmergencyContact_Previews: PreviewProvider {
+//    @State static var isAddNewContact = true
+//    static var previews: some View {
+//        AddEmergencyContact(isAddNewContact: $isAddNewContact)
+//    }
+//}

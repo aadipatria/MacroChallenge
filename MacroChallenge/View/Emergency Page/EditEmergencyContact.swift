@@ -12,6 +12,7 @@ struct EditEmergencyContact: View {
     @Binding var name: String
     @Binding var number: String
     @State var value: CGFloat = 0
+    @Binding var off: CGFloat
     
     var id: UUID
     
@@ -24,9 +25,12 @@ struct EditEmergencyContact: View {
         VStack{
             HStack{
                 Button(action: {
-                    self.contactEdited = false
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.15) {
+                        self.contactEdited = false
+                    }
                     navPop.tabIsHidden = false
                     hideKeyboard()
+                    self.off = 200
                 }, label: {
                     Text("Cancel")
                         .foregroundColor(.blue)
@@ -42,9 +46,12 @@ struct EditEmergencyContact: View {
                 
                 Button(action: {
                     updateContact()
-                    self.contactEdited = false
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.15) {
+                        self.contactEdited = false
+                    }
                     navPop.tabIsHidden = false
                     hideKeyboard()
+                    self.off = 200
                 }, label: {
                     Text("Done")
                         .foregroundColor(self.name == "" ? Color.gray : (self.number == "" ? Color.gray : Color.blue))
@@ -75,10 +82,6 @@ struct EditEmergencyContact: View {
 }
 
 extension EditEmergencyContact {
-    func hideKeyboard() {
-        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
-    }
-    
     func checkIdAndChangeData() {
         for contact in contacts {
             if contact.id == self.id {
