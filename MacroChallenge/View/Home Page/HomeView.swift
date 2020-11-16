@@ -77,7 +77,7 @@ struct ExtractedView: View {
         HStack {
             Button(action: {
                 navPop.page = 0
-                navPop.playLooping.player.moveBackground(name: "forest")
+                navPop.playLooping.player.moveBackground(name: "lake")
             }, label: {
                 VStack (spacing: 0) {
                     if navPop.page == 0{

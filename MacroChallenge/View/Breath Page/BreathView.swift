@@ -225,6 +225,9 @@ struct BreathView: View {
                     breath.haptic = true
                     breath.sound = true
                     breath.id = UUID()
+                    breath.background = "forest"
+                    breath.black = true
+                    breath.bgm = true
                     do{
                         //save ke core data
                         try self.manageObjectContext.save()
