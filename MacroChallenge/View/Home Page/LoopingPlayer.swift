@@ -22,12 +22,13 @@ class QueuePlayerUIView : UIView {
     private var playerLayer = AVPlayerLayer()
     private var playerLooper : AVPlayerLooper?
     var tampungPlayer = AVQueuePlayer()
+    var tampungVideo = "forest"
     
     override init(frame : CGRect){
         super.init(frame: frame)
         
         // Load Video
-        let fileUrl = Bundle.main.url(forResource: "forest_bg_1", withExtension: "mov")
+        let fileUrl = Bundle.main.url(forResource: tampungVideo, withExtension: "mov")
         let playerItem = AVPlayerItem(url: fileUrl!)
         
         // Setup Player

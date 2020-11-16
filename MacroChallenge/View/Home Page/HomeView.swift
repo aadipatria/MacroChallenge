@@ -12,8 +12,6 @@ struct HomeView: View {
     @EnvironmentObject var navPop : NavigationPopObject
     @AppStorage("needsAppOnboarding") private var needsAppOnboarding: Bool = true
     
-    var playLooping = LoopingPlayer()
-    
     init() {
         //Use this if NavigationBarTitle is with Large Font
         UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor.white]
@@ -25,7 +23,7 @@ struct HomeView: View {
     var body: some View {
         NavigationView{
             ZStack {
-                playLooping
+                navPop.playLooping
                     .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
                     .animation(nil)
                     
@@ -54,23 +52,14 @@ struct HomeView: View {
                 
             }
             .onReceive(NotificationCenter.default.publisher(for: UIApplication.willEnterForegroundNotification)) { _ in
-                playLooping.player.playing()
+                navPop.playLooping.player.playing()
                 
             }
-//            .navigationBarHidden(true)
         }
         .accentColor( .white) /// ini buat ganti back button jd item
-//        .sheet(isPresented: self.$needsAppOnboarding, content: {
-//            Button {
-//                self.needsAppOnboarding = false
-//            } label: {
-//                Text("set onboarding false")
-//            }
-//        })
         .fullScreenCover(isPresented: self.$needsAppOnboarding) {
             MainOnboardingPage()
         }
-//        .animation(.easeOut)
         
     }
 }
@@ -88,6 +77,7 @@ struct ExtractedView: View {
         HStack {
             Button(action: {
                 navPop.page = 0
+                navPop.playLooping.player.moveBackground(name: "forest")
             }, label: {
                 VStack (spacing: 0) {
                     if navPop.page == 0{

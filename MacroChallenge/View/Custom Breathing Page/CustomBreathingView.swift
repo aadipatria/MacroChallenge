@@ -19,6 +19,7 @@ struct CustomBreathingView: View {
     @State var isSoundOn = false
     @State var isHapticOn = false
     @State var isFavorite = false
+    @EnvironmentObject var navPop : NavigationPopObject
     
     init() {
         UINavigationBar.appearance().barTintColor = .clear
@@ -29,8 +30,6 @@ struct CustomBreathingView: View {
     
     var body: some View {
         ZStack {
-//            LoopingPlayer()
-//                .edgesIgnoringSafeArea(.all)
             VStack (spacing : 16) {
                 Precautions()
                     .padding(.top)
@@ -92,7 +91,7 @@ struct CustomBreathingView: View {
                 Spacer()
             }
 //            .background(Image("ocean").blurBackgroundImageModifier())
-            .background(playLooping
+            .background(navPop.playLooping
                             .frame(width: ScreenSize.windowWidth(), height: ScreenSize.windowHeight(), alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                             .ignoresSafeArea(.all))
             .navigationBarItems(trailing: CancelAddView(breathName: $breathName, inhale: $inhale, hold1: $hold1, exhale: $exhale, hold2: $hold2, isSoundOn: $isSoundOn, isHapticOn: $isHapticOn))
@@ -103,7 +102,7 @@ struct CustomBreathingView: View {
             hideKeyboard()
              
         }   .onReceive(NotificationCenter.default.publisher(for: UIApplication.willEnterForegroundNotification)) { _ in
-            playLooping.player.playing()
+            navPop.playLooping.player.playing()
     }
         
     }
