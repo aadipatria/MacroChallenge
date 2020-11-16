@@ -23,6 +23,7 @@ struct AnimatedRing: View {
                         Blur(style: .regular)
                             .mask(DonutShape(size: donutRadius, delta: 1.0))
                     )
+                    .scaleEffect(1.01)
                     
                 // INNER BLUR PROGRESSION
                 DonutShape(size: donutRadius, delta: self.binding)
