@@ -58,6 +58,7 @@ struct AddContactModal: View {
                         self.off = 0
                     }
                 }
+                .cornerRadius(15, corners: [.topLeft, .topRight])
                 .gesture(
                     DragGesture()
                         .onChanged({ (value) in
@@ -83,10 +84,6 @@ struct AddContactModal: View {
             .animation(.interpolatingSpring(stiffness: 300, damping: 30))
         }
     }
-}
-
-extension AddContactModal {
-    
 }
 
 struct EditContactModal: View {
@@ -117,6 +114,7 @@ struct EditContactModal: View {
                     EditEmergencyContact(name: self.$name, number: self.$number, id: self.id, contactEdited: self.$isContactEdited)
                         .padding(.bottom, 180)
                 }
+                .cornerRadius(15, corners: [.topLeft, .topRight])
                 .frame(width: UIScreen.main.bounds.width, height: modalHeight)
                 .offset(y: off)
                 .onAppear() {
