@@ -57,9 +57,10 @@ struct MainOnboardingPage: View {
                     
                     Spacer()
                     
-                    Image(uiImage: UIImage(named: "\(ContentData.contentDict[page]![3])")!)
-                        .resizable()
-                        .frame(width: 45, height: 201)
+//                    Image(uiImage: UIImage(named: "\(ContentData.contentDict[page]![3])")!)
+//                        .resizable()
+//                        .frame(width: 45, height: 201)
+                    OnboardingPageControl(currentPage: $page)
                 }
                 .padding(.leading, 32)
                 .padding(.trailing, 24)
@@ -83,37 +84,40 @@ struct MainOnboardingPage: View {
                             .frame(width: ScreenSize.windowWidth() * 1/3)
                         Spacer()
                         
-//                        Button(action: {
-//                            self.page += 1
-//                        }, label: {
+                        Button(action: {
+                            self.page += 1
+                        }, label: {
+                            ScrollArrows()
+                                .foregroundColor(Color.white)
+                                .frame(width : 20, height: 48)
 //                            Image(uiImage: UIImage(named: "down_sym")!)
 //                                .resizable()
 //                                .frame(width: 30, height: 30)
 //                                .offset(y: offArrow)
-//                        }).frame(width: ScreenSize.windowWidth() * 1/3)
-                        
-                        Button(action: {
-                            self.page += 1
-                        }, label: {
-                            VStack {
-                                Group {
-                                    Image(systemName: "chevron.down")
-                                        .resizable()
-                                        .foregroundColor(.white)
-                                        .frame(width: 30, height: 10)
-                                    Image(systemName: "chevron.down")
-                                        .resizable()
-                                        .foregroundColor(.white)
-                                        .frame(width: 30, height: 10)
-                                    Image(systemName: "chevron.down")
-                                        .resizable()
-                                        .foregroundColor(.white)
-                                        .frame(width: 30, height: 10)
-                                }
-                                .opacity(arrowOpacity)
-                                
-                            }
                         }).frame(width: ScreenSize.windowWidth() * 1/3)
+                        
+//                        Button(action: {
+//                            self.page += 1
+//                        }, label: {
+//                            VStack {
+//                                Group {
+//                                    Image(systemName: "chevron.down")
+//                                        .resizable()
+//                                        .foregroundColor(.white)
+//                                        .frame(width: 30, height: 10)
+//                                    Image(systemName: "chevron.down")
+//                                        .resizable()
+//                                        .foregroundColor(.white)
+//                                        .frame(width: 30, height: 10)
+//                                    Image(systemName: "chevron.down")
+//                                        .resizable()
+//                                        .foregroundColor(.white)
+//                                        .frame(width: 30, height: 10)
+//                                }
+//                                .opacity(arrowOpacity)
+//
+//                            }
+//                        }).frame(width: ScreenSize.windowWidth() * 1/3)
                         
                         Spacer()
                         

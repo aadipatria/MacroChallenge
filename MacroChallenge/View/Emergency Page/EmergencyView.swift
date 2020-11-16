@@ -69,7 +69,11 @@ struct EmergencyView: View {
                             SomeBackground.plusBackground()
                             Button(action: {
                                 self.isAddNewContact = true
-                                navPop.tabIsHidden = true
+                                
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 0.03) {
+                                    navPop.tabIsHidden = true
+                                }
+                                
                             }, label: {
                                 Image(systemName: "plus")
                                     .foregroundColor(.black)
@@ -82,13 +86,6 @@ struct EmergencyView: View {
                 .frame(width : ScreenSize.windowWidth() * 0.9, height : ScreenSize.windowHeight() * 0.05)
                 .animation(.easeInOut(duration: 0.6))
                 .padding(.vertical)
-                
-//                Button {
-//                    sync()
-//                } label: {
-//                    Text("Sync With Apple Watch")
-//                }
-//                .disabled(self.contacts.isEmpty ? true : false)
                 
                 if contacts.isEmpty{
                     Text("You have no contact. Tap on the “+” button to add a contact.")
@@ -176,13 +173,13 @@ struct EmergencyView: View {
             }
 //            .background(Image("ocean").backgroundImageModifier())
             .frame(width: ScreenSize.windowWidth() * 0.9)
-
-            HalfModalView(isShown: $isAddNewContact) {
-                AddEmergencyContact(isAddNewContact: $isAddNewContact)
+            
+            if self.isAddNewContact {
+                AddContactModal(isAddNewContact: $isAddNewContact)
             }
 
-            HalfModalView(isShown: $contactEdited) {
-                EditEmergencyContact(name: self.$name, number: self.$number, id: self.id, contactEdited: self.$contactEdited)
+            if self.contactEdited {
+                EditContactModal(isContactEdited: self.$contactEdited, name: self.$name, number: self.$number, id: self.$id)
             }
         }
         .padding(.bottom, keyboardHeight - 45)
