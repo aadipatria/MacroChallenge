@@ -14,6 +14,8 @@ struct AddEmergencyContact: View {
     @State var number: String = ""
     @Binding var isAddNewContact: Bool
     @Binding var off: CGFloat
+    @State var attempts: Int = 0
+    @State var attempts2: Int = 0
     
     var body: some View {
         VStack {
@@ -42,21 +44,31 @@ struct AddEmergencyContact: View {
                 Spacer()
                 
                 Button {
-                    saveToCoreData()
-                    self.name = ""
-                    self.number = ""
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.15) {
-                        self.isAddNewContact = false
+                    if self.name == "" {
+                        withAnimation(.default) {
+                            self.attempts += 1
+                        }
                     }
-                    self.off = 200
-                    navPop.tabIsHidden = false
-                    hideKeyboard()
+                    else if self.number == ""{
+                        self.attempts2 += 1
+                    
+                    }else{
+                        saveToCoreData()
+                        self.name = ""
+                        self.number = ""
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.15) {
+                            self.isAddNewContact = false
+                        }
+                        self.off = 200
+                        navPop.tabIsHidden = false
+                        hideKeyboard()
+                    }
                 } label: {
                     Text("Done")
                         .padding(5)
                         .foregroundColor(self.name == "" ? Color.gray : (self.number == "" ? Color.gray : Color.blue))
                 }
-                .disabled(self.name == "" ? true : (self.number == "" ? true : false))
+//                .disabled(self.name == "" ? true : (self.number == "" ? true : false))
             }
             .padding()
             .frame(width: ScreenSize.windowWidth() * 0.9, height: 60)
@@ -67,14 +79,14 @@ struct AddEmergencyContact: View {
                     .modifier(ClearButton(text: $name))
                     .accentColor(.black)
                     .padding()
-                    .background(RoundedRectangle(cornerRadius: 8).fill(Color(UIColor(.white))))
+                    .background(RoundedRectangle(cornerRadius: 8).fill(Color(UIColor(.white))).modifier(Shake(animatableData: CGFloat(attempts))))
                 
                 TextField("Number", text: $number)
                     .modifier(ClearButton(text: $number))
                     .accentColor(.black)
                     .keyboardType(.numberPad)
                     .padding()
-                    .background(RoundedRectangle(cornerRadius: 8).fill(Color(UIColor(.white))))
+                    .background(RoundedRectangle(cornerRadius: 8).fill(Color(UIColor(.white))).modifier(Shake(animatableData: CGFloat(attempts2))))
             }
             .frame(width: ScreenSize.windowWidth() * 0.9, height: 60)
         }

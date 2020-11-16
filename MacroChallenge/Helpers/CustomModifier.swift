@@ -96,7 +96,7 @@ struct ClearButton: ViewModifier {
 }
 struct Shake: GeometryEffect {
     var amount: CGFloat = 10
-    var shakesPerUnit = 3
+    var shakesPerUnit = 5
     var animatableData: CGFloat
 
     func effectValue(size: CGSize) -> ProjectionTransform {
