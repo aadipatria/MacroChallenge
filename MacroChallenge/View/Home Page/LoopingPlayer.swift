@@ -47,7 +47,7 @@ class QueuePlayerUIView : UIView {
         tampungPlayer.play()
     }
     
-    
+    //a
     func moveBackground(name : String){
         
         let fileUrl = Bundle.main.url(forResource: name, withExtension: "mov")
