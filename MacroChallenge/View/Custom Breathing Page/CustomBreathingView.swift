@@ -29,8 +29,8 @@ struct CustomBreathingView: View {
     
     var body: some View {
         ZStack {
-            LoopingPlayer()
-                .edgesIgnoringSafeArea(.all)
+//            LoopingPlayer()
+//                .edgesIgnoringSafeArea(.all)
             VStack (spacing : 16) {
                 Precautions()
                     .padding(.top)

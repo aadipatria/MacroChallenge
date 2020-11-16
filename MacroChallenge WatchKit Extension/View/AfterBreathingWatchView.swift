@@ -9,11 +9,11 @@ import SwiftUI
 
 struct AfterBreathingWatchView: View {
     
-    @State var breathName : String
+//    @State var breathName : String
     
     var body: some View {
         VStack {
-            Text(breathName)
+            Text("breath name")
             Text("Still under development")
         }
         
@@ -22,7 +22,7 @@ struct AfterBreathingWatchView: View {
 
 struct AfterBreathingWatchView_Previews: PreviewProvider {
     static var previews: some View {
-        AfterBreathingWatchView(breathName: "BukanCalm")
+        AfterBreathingWatchView()
         
     }
 }

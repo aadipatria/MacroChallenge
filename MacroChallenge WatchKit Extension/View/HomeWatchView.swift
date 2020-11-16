@@ -16,8 +16,6 @@ struct HomeWatchView: View {
     var body: some View {
         ZStack {
             TabView(selection: $navPop.selected){
-                AnimationTestView()
-                    .tag(2)
                 BreathWatchView()
                     .tag(0)
                 EmergencyWatchView()

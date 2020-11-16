@@ -25,7 +25,7 @@ struct BreathWatchView: View {
             }else{
                 ForEach(Storage.userDefault(data: arrayOfBreathing).indices, id: \.self){ idx in
                     NavigationLink(
-                        destination: AfterBreathingWatchView(breathName: "\(Storage.userDefault(data: arrayOfBreathing)[idx][0])"),
+                        destination: AnimationTestView(name: Storage.userDefault(data: arrayOfBreathing)[idx][0], inhale: Double(Storage.userDefault(data: arrayOfBreathing)[idx][1])!, hold1: Double(Storage.userDefault(data: arrayOfBreathing)[idx][2])!, exhale: Double(Storage.userDefault(data: arrayOfBreathing)[idx][3])!, hold2: Double(Storage.userDefault(data: arrayOfBreathing)[idx][4])!, haptic: Bool(Storage.userDefault(data: arrayOfBreathing)[idx][6])!, sound: Bool(Storage.userDefault(data: arrayOfBreathing)[idx][5])!),
                         label: {
                             if !Storage.userDefault(data: arrayOfBreathing).isEmpty {
                                 VStack {
