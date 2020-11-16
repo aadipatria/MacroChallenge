@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		75404FFC255E814100277FBC /* HapticWatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75404FFB255E814100277FBC /* HapticWatch.swift */; };
 		7585E91D25516654007BF3C5 /* LoopingPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7585E91C25516654007BF3C5 /* LoopingPlayer.swift */; };
 		9D267F42253C941200882D7F /* EditBreathing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D267F41253C941200882D7F /* EditBreathing.swift */; };
 		9D2F8000255008050055ABCF /* HalfModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D2F7FFF255008050055ABCF /* HalfModalView.swift */; };
@@ -133,6 +134,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		75404FFB255E814100277FBC /* HapticWatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticWatch.swift; sourceTree = "<group>"; };
 		7585E91C25516654007BF3C5 /* LoopingPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoopingPlayer.swift; sourceTree = "<group>"; };
 		9D267F41253C941200882D7F /* EditBreathing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditBreathing.swift; sourceTree = "<group>"; };
 		9D2F7FFF255008050055ABCF /* HalfModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HalfModalView.swift; sourceTree = "<group>"; };
@@ -389,6 +391,7 @@
 				CA8C4F24253D39BD005B99A8 /* AfterBreathingWatchView.swift */,
 				BC0CBDAC255A9A4800C7B453 /* AnimationTestView.swift */,
 				BC0CBDB1255A9AD500C7B453 /* AnimatedRingWatch.swift */,
+				75404FFB255E814100277FBC /* HapticWatch.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -661,6 +664,7 @@
 				BC0CBDF3255D193100C7B453 /* AudioPlayer.swift in Sources */,
 				9DFAB8952534405100E81C87 /* ExtensionDelegate.swift in Sources */,
 				BC0CBDB7255A9AF800C7B453 /* AnimationSet.swift in Sources */,
+				75404FFC255E814100277FBC /* HapticWatch.swift in Sources */,
 				9D7D2714253818B8006D35D2 /* BreathingModel.swift in Sources */,
 				9D50BCC82558E76700E1A9C6 /* WatchHelper.swift in Sources */,
 				9DFAB8992534405100E81C87 /* NotificationView.swift in Sources */,
@@ -826,7 +830,7 @@
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"MacroChallenge WatchKit Extension/Preview Content\"";
-				DEVELOPMENT_TEAM = D89FSBU974;
+				DEVELOPMENT_TEAM = Z9N2TD73TY;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "MacroChallenge WatchKit Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -851,7 +855,7 @@
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"MacroChallenge WatchKit Extension/Preview Content\"";
-				DEVELOPMENT_TEAM = D89FSBU974;
+				DEVELOPMENT_TEAM = Z9N2TD73TY;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "MacroChallenge WatchKit Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -879,7 +883,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = D89FSBU974;
+				DEVELOPMENT_TEAM = Z9N2TD73TY;
 				IBSC_MODULE = MacroChallenge_WatchKit_Extension;
 				INFOPLIST_FILE = "MacroChallenge WatchKit App/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -908,7 +912,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = D89FSBU974;
+				DEVELOPMENT_TEAM = Z9N2TD73TY;
 				IBSC_MODULE = MacroChallenge_WatchKit_Extension;
 				INFOPLIST_FILE = "MacroChallenge WatchKit App/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -936,7 +940,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"MacroChallenge/Preview Content\"";
-				DEVELOPMENT_TEAM = D89FSBU974;
+				DEVELOPMENT_TEAM = Z9N2TD73TY;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = MacroChallenge/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -960,7 +964,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"MacroChallenge/Preview Content\"";
-				DEVELOPMENT_TEAM = D89FSBU974;
+				DEVELOPMENT_TEAM = Z9N2TD73TY;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = MacroChallenge/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
