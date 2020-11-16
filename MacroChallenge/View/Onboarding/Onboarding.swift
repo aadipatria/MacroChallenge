@@ -25,14 +25,19 @@ struct MainOnboardingPage: View {
     var body: some View {
         ZStack {
             VStack {
-                Page(background: ContentData.contentDict[1]![2], page: $page)
-                    .offset(y: page == 1 ? off : (page == 2 ? 0 : -off * 2))
-                
-                Page(background: ContentData.contentDict[2]![2], page: $page)
-                    .offset(y: page == 2 ? 0 : (page == 3 ? -off : off))
-                
-                Page(background: ContentData.contentDict[3]![2], page: $page)
-                    .offset(y: page == 3 ? -off : (page == 2 ? 0 : off * 2))
+//                Page(background: ContentData.contentDict[1]![2], page: $page)
+//                    .offset(y: page == 1 ? off : (page == 2 ? 0 : -off * 2))
+//
+//                Page(background: ContentData.contentDict[2]![2], page: $page)
+//                    .offset(y: page == 2 ? 0 : (page == 3 ? -off : off))
+//
+//                Page(background: ContentData.contentDict[3]![2], page: $page)
+//                    .offset(y: page == 3 ? -off : (page == 2 ? 0 : off * 2))
+                Image("background")
+                    .resizable()
+                    .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
+                    .aspectRatio(contentMode: /*@START_MENU_TOKEN@*/.fill/*@END_MENU_TOKEN@*/)
+                    .offset(y : page == 1 ? ScreenSize.windowHeight() : page == 3 ? -ScreenSize.windowHeight() : 0)
             }
             .animation(.easeInOut(duration: 1))
             
@@ -53,7 +58,7 @@ struct MainOnboardingPage: View {
                             .font(Font.custom("Poppins-Regular", size: 18, relativeTo: .body))
                     }
                     .foregroundColor(.white)
-                    .animation(.easeInOut(duration: 1.0))
+//                    .animation(.easeInOut(duration: 1.0))
                     
                     Spacer()
                     
