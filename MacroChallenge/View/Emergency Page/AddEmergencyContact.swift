@@ -23,6 +23,7 @@ struct AddEmergencyContact: View {
                     hideKeyboard()
                 }, label: {
                     Text("Cancel")
+                        .padding(5)
                         .foregroundColor(.blue)
 
                 })
@@ -45,6 +46,7 @@ struct AddEmergencyContact: View {
                     hideKeyboard()
                 } label: {
                     Text("Done")
+                        .padding(5)
                         .foregroundColor(self.name == "" ? Color.gray : (self.number == "" ? Color.gray : Color.blue))
                 }
                 .disabled(self.name == "" ? true : (self.number == "" ? true : false))
