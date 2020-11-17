@@ -24,7 +24,7 @@ struct HomeView: View {
     var body: some View {
         NavigationView{
             ZStack {
-                playLooping
+                navPop.playLooping2
                     .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
                     .animation(nil)
                     
@@ -57,7 +57,7 @@ struct HomeView: View {
                 
             }
         }
-        .accentColor( .white) /// ini buat ganti back button jd item
+        .accentColor(Warna.changeTheme(color: navPop.black)) /// ini buat ganti back button jd item
         .fullScreenCover(isPresented: self.$needsAppOnboarding) {
             MainOnboardingPage()
         }
@@ -77,6 +77,8 @@ struct ExtractedView: View {
     var body: some View {
         HStack {
             Button(action: {
+                navPop.playLooping.player.moveBackground(name: "lake")
+                navPop.playLooping2.player.moveBackground(name: "lake")
                 navPop.page = 0
             }, label: {
                 VStack (spacing: 0) {

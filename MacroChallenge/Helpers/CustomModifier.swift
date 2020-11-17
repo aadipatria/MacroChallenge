@@ -20,6 +20,15 @@ struct ScreenSize {
         }
 
     }
+struct Warna {
+    static func changeTheme(color : Bool) -> Color{
+        if color{
+            return Color.black
+        }else{
+            return Color.white
+        }
+    }
+}
 struct SomeBackground{
     static func plusBackground() -> some View{
         RoundedRectangle(cornerRadius: 8).fill(Color(UIColor(.white)))
