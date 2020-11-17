@@ -38,7 +38,7 @@ struct EmergencyView: View {
                 HStack {
                     Text("Top Contacts")
                         .font(Font.custom("Poppins-Bold", size: 24, relativeTo: .body))
-                        .foregroundColor(.white)
+                        .foregroundColor(Color.changeTheme(black: navPop.black))
                     Spacer()
                     if !contacts.isEmpty{
                         Button(action: {
