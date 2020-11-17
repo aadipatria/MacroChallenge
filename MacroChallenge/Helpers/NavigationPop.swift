@@ -19,5 +19,5 @@ final class NavigationPopObject: ObservableObject {
     @Published var breathCycles : Int = 0
     @Published var playLooping = LoopingPlayer()
     @Published var playLooping2 = LoopingPlayer()
-    @Published var black = true
+    @Published var black = false
 }

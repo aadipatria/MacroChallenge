@@ -20,14 +20,23 @@ struct ScreenSize {
         }
 
     }
-struct Warna {
-    static func changeTheme(color : Bool) -> Color{
-        if color{
+
+extension Color{
+    static func changeTheme(black : Bool) -> Color{
+        if black{
             return Color.black
         }else{
             return Color.white
         }
     }
+    static func changeInverseTheme(black : Bool) -> Color{
+        if black{
+            return Color.white
+        }else{
+            return Color.black
+        }
+    }
+
 }
 struct SomeBackground{
     static func plusBackground() -> some View{

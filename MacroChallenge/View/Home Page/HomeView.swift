@@ -57,7 +57,7 @@ struct HomeView: View {
                 
             }
         }
-        .accentColor(Warna.changeTheme(color: navPop.black)) /// ini buat ganti back button jd item
+        .accentColor(Color.changeTheme(black: navPop.black)) /// ini buat ganti back button jd item
         .fullScreenCover(isPresented: self.$needsAppOnboarding) {
             MainOnboardingPage()
         }
@@ -79,6 +79,7 @@ struct ExtractedView: View {
             Button(action: {
                 navPop.playLooping.player.moveBackground(name: "lake")
                 navPop.playLooping2.player.moveBackground(name: "lake")
+                navPop.black = true
                 navPop.page = 0
             }, label: {
                 VStack (spacing: 0) {

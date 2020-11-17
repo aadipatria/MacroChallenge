@@ -28,11 +28,11 @@ struct AfterBreathingView: View {
                     VStack (alignment: .leading, spacing : 16){
                         Text("Hi there!")
                             .font(Font.custom("Poppins-Bold", size: 24, relativeTo: .body))
-                            .foregroundColor(.white)
+                            .foregroundColor(Color.changeTheme(black: navPop.black))
                             .padding(.top, 64)
                         Text("Seems like you stopped in the middle of the breathing. How can we help you?")
                             .font(Font.custom("Poppins-Light", size: 24, relativeTo: .body))
-                            .foregroundColor(.white)
+                            .foregroundColor(Color.changeTheme(black: navPop.black))
                             .lineSpacing(/*@START_MENU_TOKEN@*/10.0/*@END_MENU_TOKEN@*/)
                             
                     }
