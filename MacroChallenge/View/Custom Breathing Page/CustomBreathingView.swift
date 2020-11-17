@@ -22,6 +22,9 @@ struct CustomBreathingView: View {
     @EnvironmentObject var navPop : NavigationPopObject
     @Environment(\.managedObjectContext) var manageObjectContext
     @State var attempts: Int = 0
+    @State var id: UUID?
+    @State var currBackground = ""
+    @State var isChooseBackground = false
     
     init() {
         UINavigationBar.appearance().barTintColor = .clear
@@ -32,7 +35,7 @@ struct CustomBreathingView: View {
     
     var body: some View {
         ZStack {
-            VStack (spacing : 16) {
+            ScrollView {
                 Precautions()
                     .padding(.top)
                 InputName(breathName: $breathName)
@@ -73,6 +76,7 @@ struct CustomBreathingView: View {
                         .frame(height: (215))
                     }
                 }
+                
                 VStack (spacing : 0) {
                     Text("Guiding Preferences")
                         .font(Font.custom("Poppins-SemiBold", size: 16, relativeTo: .body))
@@ -92,6 +96,12 @@ struct CustomBreathingView: View {
                 .frame(width: ScreenSize.windowWidth() * 0.9, alignment: .leading)
                 .padding(.top, 8)
                 Spacer()
+                
+                Button(action: {
+                    self.isChooseBackground = true
+                }, label: {
+                    Text("Choose Background")
+                })
             }
 //            .background(Image("ocean").blurBackgroundImageModifier())
             .background(navPop.playLooping
@@ -111,24 +121,27 @@ struct CustomBreathingView: View {
                 Text("Add")
                     .foregroundColor(self.breathName == "" ? Color.gray : Color.white)
             })
-//            .disabled(self.breathName == "" ? true : false)
+
             )
             .frame(width : ScreenSize.windowWidth() * 0.9)
             .navigationBarTitle("Add Breathing",displayMode: .inline)
         }
         .onTapGesture {
             hideKeyboard()
-             
-        }   .onReceive(NotificationCenter.default.publisher(for: UIApplication.willEnterForegroundNotification)) { _ in
+        }
+        .onReceive(NotificationCenter.default.publisher(for: UIApplication.willEnterForegroundNotification)) { _ in
             navPop.playLooping.player.playing()
-    }
-        
-    }
-}
-
-extension CustomBreathingView {
-    func hideKeyboard() {
-        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+        }
+        .onAppear(perform: {
+            self.id = UUID()
+        })
+        .fullScreenCover(isPresented: $isChooseBackground, content: {
+            ChooseBackground(isChooseBackground: $isChooseBackground, currBackground: $currBackground, id: self.id)
+                .environment(\.managedObjectContext, self.manageObjectContext)
+                .onDisappear() {
+                    navPop.playLooping.player.moveBackground(name: "\(self.currBackground)")
+                }
+        })
     }
 }
 
@@ -195,8 +208,6 @@ struct InputName: View {
         }
     }
 }
-
-
 
 //Multi-Component picker, namanya doang keren isinya hanya Hstack + picker biasa
 struct CustomBreathingViewPicker: View {
@@ -276,32 +287,6 @@ struct GuidingPreferences: View {
     }
 }
 
-
-//struct CancelAddView: View {
-//    //pake ini untuk save ke core data
-//    @Environment(\.managedObjectContext) var manageObjectContext
-//    @EnvironmentObject var navPop : NavigationPopObject
-//
-//    @Binding var breathName : String
-//    @Binding var inhale : Int
-//    @Binding var hold1 : Int
-//    @Binding var exhale : Int
-//    @Binding var hold2 : Int
-//    @Binding var isSoundOn : Bool
-//    @Binding var isHapticOn : Bool
-//
-//    var body: some View {
-//        Button(action: {
-//            saveToCoreData()
-//            navPop.addBreath = false
-//        }, label: {
-//            Text("Add")
-//                .foregroundColor(self.breathName == "" ? Color.gray : Color.white)
-//        })
-//        .disabled(self.breathName == "" ? true : false)
-//    }
-//}
-
 extension CustomBreathingView {
     func saveToCoreData() {
         let breath = Breathing(context: self.manageObjectContext)
@@ -312,7 +297,7 @@ extension CustomBreathingView {
         breath.hold2 = Int16(hold2)
         breath.sound = isSoundOn
         breath.haptic = isHapticOn
-        breath.id = UUID()
+        breath.id = self.id!
         
         do{
             //save ke core data

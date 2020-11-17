@@ -24,7 +24,7 @@ struct HomeView: View {
     var body: some View {
         NavigationView{
             ZStack {
-                playLooping
+                navPop.playLooping
                     .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
                     .animation(nil)
                     
