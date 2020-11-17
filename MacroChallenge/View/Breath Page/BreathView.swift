@@ -72,7 +72,7 @@ struct BreathView: View {
 
                             Text(guidanceText)
                                 .font(Font.custom("Poppins-SemiBold", size: 28, relativeTo: .body))
-                                .foregroundColor(Color.white)
+                                .foregroundColor(Color.changeTheme(black: navPop.black))
                                 .opacity(self.guidanceTextOpacityScaling)
                         }
                         Spacer()
@@ -102,7 +102,7 @@ struct BreathView: View {
                     }, label: {
                         Image (systemName: "chevron.left")
                             .padding(5)
-                            .foregroundColor(.white)
+                            .foregroundColor(Color.changeTheme(black: navPop.black))
                             .font(/*@START_MENU_TOKEN@*/.largeTitle/*@END_MENU_TOKEN@*/)
                     })
                     
@@ -119,7 +119,7 @@ struct BreathView: View {
                     }, label: {
                         Image (systemName: "chevron.right")
                             .padding(5)
-                            .foregroundColor(.white)
+                            .foregroundColor(Color.changeTheme(black: navPop.black))
                             .font(/*@START_MENU_TOKEN@*/.largeTitle/*@END_MENU_TOKEN@*/)
                     })
                 }
@@ -144,18 +144,18 @@ struct BreathView: View {
                         Group {
                             Text(name)
                                 .font(Font.custom("Poppins-Bold", size: 28, relativeTo: .body))
-                                .foregroundColor(.white)
+                                .foregroundColor(Color.changeTheme(black: navPop.black))
                             Text(pattern)
                                 .fontWeight(.medium)
-                                .foregroundColor(.white)
+                                .foregroundColor(Color.changeTheme(black: navPop.black))
                                 .font(/*@START_MENU_TOKEN@*/.title3/*@END_MENU_TOKEN@*/)
                             if breaths[index].favorite {
                                 Image(systemName: "heart.fill")
-                                    .foregroundColor(Color.white)
+                                    .foregroundColor(Color.changeTheme(black: navPop.black))
                                     .font(/*@START_MENU_TOKEN@*/.title2/*@END_MENU_TOKEN@*/)
                             } else {
                                 Image(systemName: "heart")
-                                    .foregroundColor(Color.white)
+                                    .foregroundColor(Color.changeTheme(black: navPop.black))
                                     .font(/*@START_MENU_TOKEN@*/.title2/*@END_MENU_TOKEN@*/)
 
                             }
@@ -166,12 +166,12 @@ struct BreathView: View {
                         Text("Minute(s)")
                             .font(Font.custom("Poppins-Bold", size: 18, relativeTo: .body))
                             .padding(.leading, 96)
-                            .foregroundColor(.white)
+                            .foregroundColor(Color.changeTheme(black: navPop.black))
                         
                         Picker(selection: $cycleTime, label: Text("Picker")) {
                             ForEach(cycleMinutes, id: \.self) { minutes in
                                 Text("\(minutes)")
-                                    .foregroundColor(.white)
+                                    .foregroundColor(Color.changeTheme(black: navPop.black))
                                     .font(Font.custom("Poppins-SemiBold", size: 18, relativeTo: .body))
                             }
                         }
