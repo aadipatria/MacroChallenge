@@ -38,7 +38,6 @@ struct BreathView: View {
     @State var uiElementsOpacityScaling: Double = 1.0
     @State var guidanceTextOpacityScaling: Double = 0.0
     @State var guidanceText: String = ""
-    
     @State var engine: CHHapticEngine?
     @State var showStop = false
     
@@ -72,7 +71,7 @@ struct BreathView: View {
 
                             Text(guidanceText)
                                 .font(Font.custom("Poppins-SemiBold", size: 28, relativeTo: .body))
-                                .foregroundColor(Color.changeTheme(black: navPop.black))
+                                .foregroundColor(Color.white)
                                 .opacity(self.guidanceTextOpacityScaling)
                         }
                         Spacer()
@@ -102,7 +101,7 @@ struct BreathView: View {
                     }, label: {
                         Image (systemName: "chevron.left")
                             .padding(5)
-                            .foregroundColor(Color.changeTheme(black: navPop.black))
+                            .foregroundColor(Color.white)
                             .font(/*@START_MENU_TOKEN@*/.largeTitle/*@END_MENU_TOKEN@*/)
                     })
                     
@@ -119,7 +118,7 @@ struct BreathView: View {
                     }, label: {
                         Image (systemName: "chevron.right")
                             .padding(5)
-                            .foregroundColor(Color.changeTheme(black: navPop.black))
+                            .foregroundColor(Color.white)
                             .font(/*@START_MENU_TOKEN@*/.largeTitle/*@END_MENU_TOKEN@*/)
                     })
                 }
@@ -215,7 +214,7 @@ struct BreathView: View {
                         isBreathing = true
                     }
                 }else{
-                    let breath = Breathing(context: self.manageObjectContext)
+                    var breath = Breathing(context: self.manageObjectContext)
                     breath.name = "Calm"
                     breath.inhale = 4
                     breath.hold1 = 7
@@ -226,6 +225,25 @@ struct BreathView: View {
                     breath.sound = true
                     breath.id = UUID()
                     breath.background = "forest"
+                    breath.black = false
+                    breath.bgm = true
+                    do{
+                        //save ke core data
+                        try self.manageObjectContext.save()
+                    } catch {
+                        print(error)
+                    }
+                    breath = Breathing(context: self.manageObjectContext)
+                    breath.name = "Lake Test"
+                    breath.inhale = 3
+                    breath.hold1 = 3
+                    breath.exhale = 5
+                    breath.hold2 = 2
+                    breath.favorite = true
+                    breath.haptic = true
+                    breath.sound = true
+                    breath.id = UUID()
+                    breath.background = "lake"
                     breath.black = true
                     breath.bgm = true
                     do{
@@ -325,6 +343,12 @@ extension BreathView{
         haptic = Bool(breaths[index].haptic)
         audio = Bool(breaths[index].sound)
         
+        if navPop.previous != breaths[index].background{
+            navPop.black = Bool(breaths[index].black)
+            navPop.playLooping.player.moveBackground(name: breaths[index].background ?? "forest")
+            navPop.playLooping2.player.moveBackground(name: breaths[index].background ?? "forest")
+            navPop.previous = breaths[index].background ?? "forest"
+        }
         self.updateAnimations()
     }
 }

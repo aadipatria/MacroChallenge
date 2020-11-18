@@ -118,11 +118,11 @@ struct SuccessView: View {
         VStack (alignment: .leading, spacing : 16){
             Text("Well Done !")
                 .font(Font.custom("Poppins-SemiBold", size: 24, relativeTo: .body))
-                .foregroundColor(.white)
+                .foregroundColor(Color.changeTheme(black: navPop.black))
                 .padding(.top, 48)
             Text("You have completed your session.")
                 .font(Font.custom("Poppins-Regular", size: 18, relativeTo: .body))
-                .foregroundColor(.white)
+                .foregroundColor(Color.changeTheme(black: navPop.black))
             VStack(alignment: .leading, spacing : 16){
                 Text(name)
                     .font(Font.custom("Poppins-SemiBold", size: 24, relativeTo: .body))

@@ -20,4 +20,5 @@ final class NavigationPopObject: ObservableObject {
     @Published var playLooping = LoopingPlayer()
     @Published var playLooping2 = LoopingPlayer()
     @Published var black = false
+    @Published var previous = ""
 }

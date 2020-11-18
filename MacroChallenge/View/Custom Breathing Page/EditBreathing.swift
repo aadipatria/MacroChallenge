@@ -35,6 +35,32 @@ struct EditBreathing: View {
             navPop.playLooping
                 .edgesIgnoringSafeArea(.all)
             VStack (spacing: 16) {
+                HStack{
+                    Button(action: {
+                        self.presentationMode.wrappedValue.dismiss()
+                    }, label: {
+                        Image(systemName: "chevron.left")
+                            .padding(8)
+                    })
+                    Spacer()
+                    Text("Edit Breathing")
+                        .font(Font.custom("Poppins-SemiBold", size: 18, relativeTo: .body))
+                        .foregroundColor(Color.changeTheme(black: navPop.black))
+                    Spacer()
+                    Button(action: {
+                        if breathName == ""{
+                            withAnimation(.default) {
+                                self.attempts += 1
+                            }
+                        }else{
+                            updateBreath()
+                            self.presentationMode.wrappedValue.dismiss()
+                        }
+                    }, label: {
+                        Text("Save")
+                            .foregroundColor(self.breathName == "" ? Color.gray : Color.changeTheme(black: navPop.black))
+                    })
+                }.padding(.top)
                 Precautions()
                     .padding(.top)
                 InputName(breathName: $breathName)
@@ -109,23 +135,8 @@ struct EditBreathing: View {
                 Spacer()
             }
 //            .background(Image("ocean").blurBackgroundImageModifier())
-            .navigationBarItems(trailing: Button(action: {
-                if breathName == ""{
-                    withAnimation(.default) {
-                        self.attempts += 1
-                    }
-                }else{
-                    updateBreath()
-                    self.presentationMode.wrappedValue.dismiss()
-                }
-            }, label: {
-                Text("Save")
-                    .foregroundColor(self.breathName == "" ? Color.gray : Color.white)
-            })
-//            .disabled(self.breathName == "" ? true : false)
-            )
             .frame(width : ScreenSize.windowWidth() * 0.9)
-            .navigationBarTitle("Edit Breathing",displayMode: .inline)
+            .navigationBarHidden(true)
             .onAppear {
                 checkIdAndChangeData()
         }
