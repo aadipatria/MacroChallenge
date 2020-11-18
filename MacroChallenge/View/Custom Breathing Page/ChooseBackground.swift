@@ -38,14 +38,14 @@ struct ChooseBackground: View {
                         isForest = true
                     }, label: {
                         ZStack {
-                            Circle()
-                                .fill(Color.clear)
-                                .frame(width: 100, height: 100)
-                                .background(Blur(style: .systemThinMaterial)
-                                .opacity(isForest == true ? 0.8 : 0.4))
-                                .cornerRadius(100)
-                            Text("Forest")
-                                .foregroundColor(Color.white)
+                            Image("forest_img")
+                                .resizable()
+                                .aspectRatio(contentMode: .fill)
+                                .frame(width: 65, height: 65)
+                                .clipShape(Circle())
+                                .shadow(radius: 10)
+                                .overlay(Circle().stroke(Color.white, lineWidth: 1))
+                                
                         }
                     })
                     
@@ -60,14 +60,14 @@ struct ChooseBackground: View {
                         isForest = false
                     }, label: {
                         ZStack {
-                            Circle()
-                                .fill(Color.clear)
-                                .frame(width: 100, height: 100)
-                                .background(Blur(style: .systemThinMaterial)
-                                .opacity(isForest == true ? 0.4 : 0.8))
-                                .cornerRadius(100)
-                            Text("Lake")
-                                .foregroundColor(Color.white)
+                            Image("lake_img")
+                                .resizable()
+                                .aspectRatio(contentMode: .fill)
+                                .frame(width: 65, height: 65)
+                                .clipShape(Circle())
+                                .shadow(radius: 10)
+                                .overlay(Circle().stroke(Color.white, lineWidth: 1))
+                                
                         }
                     })
                 }
