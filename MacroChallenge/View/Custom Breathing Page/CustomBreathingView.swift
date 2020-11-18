@@ -21,21 +21,40 @@ struct CustomBreathingView: View {
     @State var isFavorite = false
     @EnvironmentObject var navPop : NavigationPopObject
     @Environment(\.managedObjectContext) var manageObjectContext
+    @Environment(\.presentationMode) var presentationMode
     @State var attempts: Int = 0
-    @State var id: UUID?
-    @State var currBackground = ""
-    @State var isChooseBackground = false
-    
-    init() {
-        UINavigationBar.appearance().barTintColor = .clear
-        UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .default)
-//        UINavigationBar.appearance().standardAppearance.shadowColor = .clear
-//        UINavigationBar.appearance().scrollEdgeAppearance?.shadowColor = .clear
-    }
+    @State var background = "forest"
     
     var body: some View {
         ZStack {
-            ScrollView {
+            VStack (spacing : 16) {
+                HStack{
+                    Button(action: {
+                        self.presentationMode.wrappedValue.dismiss()
+                    }, label: {
+                        Image(systemName: "chevron.left")
+                            .padding(8)
+                    })
+                    Spacer()
+                    Text("Add Breathing")
+                        .font(Font.custom("Poppins-SemiBold", size: 18, relativeTo: .body))
+                        .foregroundColor(Color.changeTheme(black: navPop.black))
+                    Spacer()
+                    Button(action: {
+                        if breathName == ""{
+                            withAnimation(.default) {
+                                self.attempts += 1
+                            }
+
+                        }else{
+                            saveToCoreData()
+                            navPop.addBreath = false
+                        }
+                    }, label: {
+                        Text("Add")
+                            .foregroundColor(self.breathName == "" ? Color.gray : Color.changeTheme(black: navPop.black))
+                    })
+                }.padding(.top)
                 Precautions()
                     .padding(.top)
                 InputName(breathName: $breathName)
@@ -124,7 +143,7 @@ struct CustomBreathingView: View {
 
             )
             .frame(width : ScreenSize.windowWidth() * 0.9)
-            .navigationBarTitle("Add Breathing",displayMode: .inline)
+            .navigationBarHidden(true)
         }
         .onTapGesture {
             hideKeyboard()
@@ -297,7 +316,8 @@ extension CustomBreathingView {
         breath.hold2 = Int16(hold2)
         breath.sound = isSoundOn
         breath.haptic = isHapticOn
-        breath.id = self.id!
+        breath.id = UUID()
+        breath.background = background
         
         do{
             //save ke core data

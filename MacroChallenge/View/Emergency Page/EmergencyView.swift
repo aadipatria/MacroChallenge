@@ -90,7 +90,7 @@ struct EmergencyView: View {
                 if contacts.isEmpty{
                     Text("You have no contact. Tap on the “+” button to add a contact.")
                         .font(Font.custom("Poppins-Medium", size: 18, relativeTo: .body))
-                        .foregroundColor(.white)
+                        .foregroundColor(Color.changeTheme(black: navPop.black))
                         .multilineTextAlignment(.center)
                         .frame(width : ScreenSize.windowWidth() * 0.5)
                         .padding()
