@@ -75,7 +75,7 @@
 		CA4261DF255BC16300C32954 /* Poppins-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CA4261DE255BC16300C32954 /* Poppins-Regular.ttf */; };
 		CA4AD0232555787D00290225 /* BreathExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7D813C2553260B000255EF /* BreathExtension.swift */; };
 		CA7DC47325593917003CE217 /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7DC47225593917003CE217 /* AudioPlayer.swift */; };
-		CA7DC491255975B6003CE217 /* nature bgm.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CA7DC490255975B6003CE217 /* nature bgm.mp3 */; };
+		CA7DC491255975B6003CE217 /* forest.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CA7DC490255975B6003CE217 /* forest.mp3 */; };
 		CA86588625417C8300FD5CB4 /* BreathWatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA86588525417C8300FD5CB4 /* BreathWatchView.swift */; };
 		CA8C4F25253D39BD005B99A8 /* AfterBreathingWatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8C4F24253D39BD005B99A8 /* AfterBreathingWatchView.swift */; };
 		CA8C4F2A253D39D1005B99A8 /* EmergencyWatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8C4F29253D39D1005B99A8 /* EmergencyWatchView.swift */; };
@@ -197,7 +197,7 @@
 		CA4261D9255BC0FE00C32954 /* Poppins-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Medium.ttf"; sourceTree = "<group>"; };
 		CA4261DE255BC16300C32954 /* Poppins-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Regular.ttf"; sourceTree = "<group>"; };
 		CA7DC47225593917003CE217 /* AudioPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayer.swift; sourceTree = "<group>"; };
-		CA7DC490255975B6003CE217 /* nature bgm.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "nature bgm.mp3"; sourceTree = "<group>"; };
+		CA7DC490255975B6003CE217 /* forest.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = forest.mp3; sourceTree = "<group>"; };
 		CA86588525417C8300FD5CB4 /* BreathWatchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreathWatchView.swift; sourceTree = "<group>"; };
 		CA8C4F24253D39BD005B99A8 /* AfterBreathingWatchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AfterBreathingWatchView.swift; sourceTree = "<group>"; };
 		CA8C4F29253D39D1005B99A8 /* EmergencyWatchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmergencyWatchView.swift; sourceTree = "<group>"; };
@@ -239,7 +239,7 @@
 				CAA56C27256530F00028AAEF /* lake.mp3 */,
 				CAE33D3F2555393B007EBB35 /* forest.mov */,
 				CABCA39E2562830100B347D2 /* lake.mov */,
-				CA7DC490255975B6003CE217 /* nature bgm.mp3 */,
+				CA7DC490255975B6003CE217 /* forest.mp3 */,
 				CA3FC7C4255D43D6003298A0 /* hold.mp3 */,
 				CA3FC7CC255D442D003298A0 /* exhale.mp3 */,
 				CA3FC7BC255D438C003298A0 /* inhale.mp3 */,
@@ -580,7 +580,7 @@
 				9DF78781255D2D1F007A6362 /* Assets.xcassets in Resources */,
 				CA4261D0255BBF0400C32954 /* Poppins-SemiBold.ttf in Resources */,
 				CAE33D402555393B007EBB35 /* forest.mov in Resources */,
-				CA7DC491255975B6003CE217 /* nature bgm.mp3 in Resources */,
+				CA7DC491255975B6003CE217 /* forest.mp3 in Resources */,
 				CAA56C28256530F10028AAEF /* lake.mp3 in Resources */,
 				CABCA39F2562830100B347D2 /* lake.mov in Resources */,
 				CA4261DA255BC0FE00C32954 /* Poppins-Medium.ttf in Resources */,

@@ -348,6 +348,7 @@ extension BreathView{
             navPop.playLooping.player.moveBackground(name: breaths[index].background ?? "forest")
             navPop.playLooping2.player.moveBackground(name: breaths[index].background ?? "forest")
             navPop.previous = breaths[index].background ?? "forest"
+            breathingStateHelper.updateBackgroundMusic(music: breaths[index].background ?? "forest")
         }
         self.updateAnimations()
     }

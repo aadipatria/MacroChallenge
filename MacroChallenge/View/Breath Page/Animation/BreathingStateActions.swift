@@ -73,7 +73,7 @@ extension BreathingStateHelper {
             animatedChanges: self.preparation2Actions
         )
         
-        AudioPlayer1.playSounds(soundfile: "lake.mp3")
+        AudioPlayer1.playSounds(soundfile: "\(backgroundMusic).mp3")
     }
     
     func startPostBreath() {

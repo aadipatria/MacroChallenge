@@ -29,7 +29,8 @@ struct BreathingStateHelper {
     var hold2Actions: [() -> ()] = []
     var postBreathActions: [() -> ()] = []
     var completionActions: [() -> ()] = []
-    
+    var backgroundMusic : String = "lake"
+        
     // MARK: INIT
     init() {}
     
@@ -37,6 +38,10 @@ struct BreathingStateHelper {
         self.updateBreathData(breath: breath)
         self.updateStateChanges(animations: animations)
     }
+    mutating func updateBackgroundMusic(music: String) {
+        self.backgroundMusic = music
+    }
+
     
     // MARK: HELPER FUNCTIONS
     func animationPerState(duration: Double, delay: Double? = 0, instantChanges: [() -> ()], animatedChanges: [() -> ()], completion: (() -> ())? = {}) {
