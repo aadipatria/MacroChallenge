@@ -58,6 +58,8 @@ class QueuePlayerUIView : UIView {
         
         fileUrl = Bundle.main.url(forResource: name, withExtension: "mov")
         
+        self.tampungVideo = name
+        
         playerItem = AVPlayerItem(url: fileUrl!)
         
         playerLooper = AVPlayerLooper(player: player, templateItem: playerItem!)
