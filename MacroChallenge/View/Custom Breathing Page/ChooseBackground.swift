@@ -19,6 +19,7 @@ struct ChooseBackground: View {
     @Binding var currBackground: String
     @State var idx = 0
     var playLooping = LoopingPlayer()
+    @State var isForest = true
     
     var body: some View {
         ZStack {
@@ -27,7 +28,6 @@ struct ChooseBackground: View {
             VStack {
                 Spacer()
                     .frame(width: 100, height: 0.6 * UIScreen.main.bounds.height)
-                    .background(Color.green)
                 
                 HStack {
                     Button(action: {
@@ -35,9 +35,18 @@ struct ChooseBackground: View {
                             idx -= 1
                         }
                         playLooping.player.moveBackground(name: "\(BackgroundAssetList.assetList[idx])")
+                        isForest = true
                     }, label: {
-                        Text("Previous")
-                            .foregroundColor(Color.white)
+                        ZStack {
+                            Circle()
+                                .fill(Color.clear)
+                                .frame(width: 100, height: 100)
+                                .background(Blur(style: .systemThinMaterial)
+                                .opacity(isForest == true ? 0.8 : 0.4))
+                                .cornerRadius(100)
+                            Text("Forest")
+                                .foregroundColor(Color.white)
+                        }
                     })
                     
                     Spacer()
@@ -48,9 +57,18 @@ struct ChooseBackground: View {
                             idx += 1
                         }
                         playLooping.player.moveBackground(name: "\(BackgroundAssetList.assetList[idx])")
+                        isForest = false
                     }, label: {
-                        Text("Next")
-                            .foregroundColor(Color.white)
+                        ZStack {
+                            Circle()
+                                .fill(Color.clear)
+                                .frame(width: 100, height: 100)
+                                .background(Blur(style: .systemThinMaterial)
+                                .opacity(isForest == true ? 0.4 : 0.8))
+                                .cornerRadius(100)
+                            Text("Lake")
+                                .foregroundColor(Color.white)
+                        }
                     })
                 }
                 .padding(.top, 50)
@@ -65,12 +83,22 @@ struct ChooseBackground: View {
                 .padding(.top, 50)
             }
         }
+        .onAppear() {
+            checkBackground()
+        }
     }
 }
 
 extension ChooseBackground {
     func checkBackground() {
-        self.currBackground = BackgroundAssetList.assetList[idx]
+        if self.currBackground == "forest" {
+            self.isForest = true
+            self.playLooping.player.moveBackground(name: "forest")
+        }
+        else {
+            self.isForest = false
+            self.playLooping.player.moveBackground(name: "lake")
+        }
     }
     
     func saveBackground() {

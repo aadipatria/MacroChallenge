@@ -123,15 +123,25 @@ struct EditBreathing: View {
                         .frame(width: ScreenSize.windowWidth() * 0.9, alignment: .leading)
                         .padding(.top, 8)
                         
-//                        Button(action: {
-//                            self.isChooseBackground = true
-//                        }, label: {
-//                            VStack {
-//                                Text("Current Background: \(self.background)")
-//                                Text("change Background")
-//                            }
-//                            .foregroundColor(.white)
-//                        })
+                        Button(action: {
+                            self.isChooseBackground = true
+                        }, label: {
+                            HStack {
+                                Text("Ambience")
+                                Spacer()
+                                Text("\(self.background)")
+                                Image(systemName: "chevron.right")
+                            }
+                            .padding()
+                            .frame(width: ScreenSize.windowWidth() * 0.9, height: ScreenSize.windowHeight() * 0.054, alignment: .leading)
+                            .background(Rectangle()
+                                            .fill(Color.clear)
+                                            .background(Blur(style: .systemThinMaterial)
+                                                            .opacity(0.95))
+                                            .cornerRadius(8))
+                            .foregroundColor(.black)
+                        })
+                        .frame(width: ScreenSize.windowWidth() * 0.9, alignment: .leading)
                         
                         Button(action: {
                             isAlert = true
@@ -160,13 +170,13 @@ struct EditBreathing: View {
         }   .onReceive(NotificationCenter.default.publisher(for: UIApplication.willEnterForegroundNotification)) { _ in
             navPop.playLooping.player.playing()
         }
-//        .fullScreenCover(isPresented: self.$isChooseBackground, content: {
-//            ChooseBackground(isChooseBackground: $isChooseBackground, currBackground: self.$background)
-//                .onDisappear {
-//                    navPop.playLooping.player.moveBackground(name: String(self.background))
-//                    navPop.playLooping2.player.moveBackground(name: String(self.background))
-//                }
-//        })
+        .fullScreenCover(isPresented: self.$isChooseBackground, content: {
+            ChooseBackground(isChooseBackground: $isChooseBackground, currBackground: self.$background)
+                .onDisappear {
+                    navPop.playLooping.player.moveBackground(name: String(self.background))
+                    navPop.playLooping2.player.moveBackground(name: String(self.background))
+                }
+        })
     }
 }
 

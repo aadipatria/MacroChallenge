@@ -120,15 +120,25 @@ struct CustomBreathingView: View {
                         .frame(width: ScreenSize.windowWidth() * 0.9, alignment: .leading)
                         .padding(.top, 8)
                         
-//                        Button(action: {
-//                            self.isChooseBackground = true
-//                        }, label: {
-//                            VStack {
-//                                Text("Current Background : \(self.background)")
-//                                Text("Change Background")
-//                            }
-//                            .foregroundColor(.white)
-//                        })
+                        Button(action: {
+                            self.isChooseBackground = true
+                        }, label: {
+                            HStack {
+                                Text("Ambience")
+                                Spacer()
+                                Text("\(self.background)")
+                                Image(systemName: "chevron.right")
+                            }
+                            .padding()
+                            .frame(width: ScreenSize.windowWidth() * 0.9, height: ScreenSize.windowHeight() * 0.054, alignment: .leading)
+                            .background(Rectangle()
+                                            .fill(Color.clear)
+                                            .background(Blur(style: .systemThinMaterial)
+                                                            .opacity(0.95))
+                                            .cornerRadius(8))
+                            .foregroundColor(.black)
+                        })
+                        .frame(width: ScreenSize.windowWidth() * 0.9, alignment: .leading)
                     }
                     .frame(width : ScreenSize.windowWidth() * 0.9)
                     .navigationBarHidden(true)
@@ -141,10 +151,10 @@ struct CustomBreathingView: View {
         .onReceive(NotificationCenter.default.publisher(for: UIApplication.willEnterForegroundNotification)) { _ in
             navPop.playLooping.player.playing()
         }
-//        .fullScreenCover(isPresented: $isChooseBackground, content: {
-//            ChooseBackground(isChooseBackground: $isChooseBackground, currBackground: $background)
-//                .environment(\.managedObjectContext, self.manageObjectContext)
-//        })
+        .fullScreenCover(isPresented: $isChooseBackground, content: {
+            ChooseBackground(isChooseBackground: $isChooseBackground, currBackground: $background)
+                .environment(\.managedObjectContext, self.manageObjectContext)
+        })
         .background(navPop.playLooping
                         .frame(width: ScreenSize.windowWidth(), height: ScreenSize.windowHeight(), alignment: .center)
                         .ignoresSafeArea(.all))
