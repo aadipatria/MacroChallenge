@@ -20,6 +20,7 @@ struct ChooseBackground: View {
     @State var idx = 0
     var playLooping = LoopingPlayer()
     @State var isForest = true
+    @State var hitam = true
     
     var body: some View {
         ZStack {
@@ -31,26 +32,35 @@ struct ChooseBackground: View {
                         self.isChooseBackground = false
                     }, label: {
                         Image(systemName: "chevron.left")
-                            .foregroundColor(.white)
+                            .foregroundColor(hitam ? Color.black : Color.white)
+                            .padding(5)
                     })
-                    .padding()
-                    .background(Color.blue) //buat tandain arrownya ntar tinggal di hapus
-
+                    
                     Spacer()
-                        .frame(width: 0.6 * ScreenSize.windowWidth())
-
+                    Text("Select Ambience")
+                        .font(Font.custom("Poppins-SemiBold", size: 18, relativeTo: .body))
+                        .foregroundColor(hitam ? Color.black : Color.white)
+                        .padding(5)
+                        .padding(.leading, 30)
+                    Spacer()
                     Button(action: {
+                        if idx == 0{
+                            navPop.black = false
+                        }else{
+                            navPop.black = true
+                        }
                         saveBackground()
                         self.isChooseBackground = false
                     }, label: {
                         Text("Save")
-                            .font(Font.custom("Poppins-SemiBold", size: 18, relativeTo: .body))
-                            .foregroundColor(.black)
+                            .font(Font.custom("Poppins-Medium", size: 17, relativeTo: .body))
+                            .foregroundColor(hitam ? Color.black : Color.white)
+                            .padding(5)
                     })
-                    .padding()
                     
                 }
                 .padding(.bottom, 80)
+                .frame(width: ScreenSize.windowWidth() * 0.9)
                 
                 
                 Spacer()
@@ -58,6 +68,7 @@ struct ChooseBackground: View {
                 
                 HStack {
                     Button(action: {
+                        hitam = false
                         if idx != 0 {
                             idx -= 1
                         }
@@ -80,6 +91,7 @@ struct ChooseBackground: View {
                         .frame(width: 100)
                     
                     Button(action: {
+                        hitam = true
                         if idx != BackgroundAssetList.assetList.count - 1 {
                             idx += 1
                         }
@@ -110,10 +122,12 @@ struct ChooseBackground: View {
 extension ChooseBackground {
     func checkBackground() {
         if self.currBackground == "forest" {
+            hitam = false
             self.isForest = true
             self.playLooping.player.moveBackground(name: "forest")
         }
         else {
+            hitam = true
             self.isForest = false
             self.playLooping.player.moveBackground(name: "lake")
         }
