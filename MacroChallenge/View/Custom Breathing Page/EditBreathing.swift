@@ -128,6 +128,7 @@ struct EditBreathing: View {
                         }, label: {
                             HStack {
                                 Text("Ambience")
+                                    .font(Font.custom("Poppins-SemiBold", size: 17, relativeTo: .body))
                                 Spacer()
                                 Text("\(self.background)")
                                 Image(systemName: "chevron.right")
@@ -135,8 +136,8 @@ struct EditBreathing: View {
                             .padding()
                             .frame(width: ScreenSize.windowWidth() * 0.9, height: ScreenSize.windowHeight() * 0.054, alignment: .leading)
                             .background(Rectangle()
-                                            .fill(Color.clear)
-                                            .background(Blur(style: .systemThinMaterial)
+                                            .fill(Color.white.opacity(0.8))
+                                            .background(Blur(style: .systemMaterial)
                                                             .opacity(0.95))
                                             .cornerRadius(8))
                             .foregroundColor(.black)
