@@ -120,15 +120,15 @@ struct CustomBreathingView: View {
                         .frame(width: ScreenSize.windowWidth() * 0.9, alignment: .leading)
                         .padding(.top, 8)
                         
-                        Button(action: {
-                            self.isChooseBackground = true
-                        }, label: {
-                            VStack {
-                                Text("Current Background : \(self.background)")
-                                Text("Change Background")
-                            }
-                            .foregroundColor(.white)
-                        })
+//                        Button(action: {
+//                            self.isChooseBackground = true
+//                        }, label: {
+//                            VStack {
+//                                Text("Current Background : \(self.background)")
+//                                Text("Change Background")
+//                            }
+//                            .foregroundColor(.white)
+//                        })
                     }
                     .frame(width : ScreenSize.windowWidth() * 0.9)
                     .navigationBarHidden(true)
@@ -141,10 +141,10 @@ struct CustomBreathingView: View {
         .onReceive(NotificationCenter.default.publisher(for: UIApplication.willEnterForegroundNotification)) { _ in
             navPop.playLooping.player.playing()
         }
-        .fullScreenCover(isPresented: $isChooseBackground, content: {
-            ChooseBackground(isChooseBackground: $isChooseBackground, currBackground: $background)
-                .environment(\.managedObjectContext, self.manageObjectContext)
-        })
+//        .fullScreenCover(isPresented: $isChooseBackground, content: {
+//            ChooseBackground(isChooseBackground: $isChooseBackground, currBackground: $background)
+//                .environment(\.managedObjectContext, self.manageObjectContext)
+//        })
         .background(navPop.playLooping
                         .frame(width: ScreenSize.windowWidth(), height: ScreenSize.windowHeight(), alignment: .center)
                         .ignoresSafeArea(.all))

@@ -123,15 +123,15 @@ struct EditBreathing: View {
                         .frame(width: ScreenSize.windowWidth() * 0.9, alignment: .leading)
                         .padding(.top, 8)
                         
-                        Button(action: {
-                            self.isChooseBackground = true
-                        }, label: {
-                            VStack {
-                                Text("Current Background: \(self.background)")
-                                Text("change Background")
-                            }
-                            .foregroundColor(.white)
-                        })
+//                        Button(action: {
+//                            self.isChooseBackground = true
+//                        }, label: {
+//                            VStack {
+//                                Text("Current Background: \(self.background)")
+//                                Text("change Background")
+//                            }
+//                            .foregroundColor(.white)
+//                        })
                         
                         Button(action: {
                             isAlert = true
@@ -160,13 +160,13 @@ struct EditBreathing: View {
         }   .onReceive(NotificationCenter.default.publisher(for: UIApplication.willEnterForegroundNotification)) { _ in
             navPop.playLooping.player.playing()
         }
-        .fullScreenCover(isPresented: self.$isChooseBackground, content: {
-            ChooseBackground(isChooseBackground: $isChooseBackground, currBackground: self.$background)
-                .onDisappear {
-                    navPop.playLooping.player.moveBackground(name: String(self.background))
-                    navPop.playLooping2.player.moveBackground(name: String(self.background))
-                }
-        })
+//        .fullScreenCover(isPresented: self.$isChooseBackground, content: {
+//            ChooseBackground(isChooseBackground: $isChooseBackground, currBackground: self.$background)
+//                .onDisappear {
+//                    navPop.playLooping.player.moveBackground(name: String(self.background))
+//                    navPop.playLooping2.player.moveBackground(name: String(self.background))
+//                }
+//        })
     }
 }
 
