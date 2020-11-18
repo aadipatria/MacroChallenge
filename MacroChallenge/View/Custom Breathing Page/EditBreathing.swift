@@ -36,121 +36,123 @@ struct EditBreathing: View {
         ZStack {
             navPop.playLooping
                 .edgesIgnoringSafeArea(.all)
-            ScrollView(showsIndicators: false) {
-                VStack (spacing: 16) {
-                    HStack{
-                        Button(action: {
-                            self.presentationMode.wrappedValue.dismiss()
-                        }, label: {
-                            Image(systemName: "chevron.left")
-                                .padding(8)
-                        })
-                        Spacer()
-                        Text("Edit Breathing")
-                            .font(Font.custom("Poppins-SemiBold", size: 18, relativeTo: .body))
-                            .foregroundColor(Color.changeTheme(black: navPop.black))
-                        Spacer()
-                        Button(action: {
-                            if breathName == ""{
-                                withAnimation(.default) {
-                                    self.attempts += 1
-                                }
-                            }else{
-                                updateBreath()
-                                self.presentationMode.wrappedValue.dismiss()
-                            }
-                        }, label: {
-                            Text("Save")
-                                .foregroundColor(self.breathName == "" ? Color.gray : Color.changeTheme(black: navPop.black))
-                        })
-                    }.padding(.top)
-                    Precautions()
-                        .padding(.top)
-                    InputName(breathName: $breathName)
-                        .modifier(Shake(animatableData: CGFloat(attempts)))
-                    
-                    VStack {
-                        Text("Pattern - in seconds")
-                            .font(Font.custom("Poppins-SemiBold", size: 16, relativeTo: .body))
-                            .padding()
-                            .frame(width: ScreenSize.windowWidth() * 0.9, height: ScreenSize.windowHeight() * 0.054, alignment: .leading)
-                            .background(SomeBackground.headerBackground())
-                        ZStack {
-                            Rectangle()
-                                .fill(Color.clear)
-                                .background(Blur(style: .systemThinMaterial)
-                                                .opacity(0.95))
-                                .cornerRadius(8, corners: [.bottomLeft, .bottomRight])
-                            VStack {
-                                HStack {
-                                    Text("Inhale")
-                                        .font(Font.custom("Poppins-Light", size: 15, relativeTo: .body))
-                                        .frame(width: ScreenSize.windowWidth() * 0.2075)
-                                    Text("Hold")
-                                        .font(Font.custom("Poppins-Light", size: 15, relativeTo: .body))
-                                        .frame(width: ScreenSize.windowWidth() * 0.2075)
-                                    Text("Exhale")
-                                        .font(Font.custom("Poppins-Light", size: 15, relativeTo: .body))
-                                        .frame(width: ScreenSize.windowWidth() * 0.2075)
-                                    Text("Hold")
-                                        .font(Font.custom("Poppins-Light", size: 15, relativeTo: .body))
-                                        .frame(width: ScreenSize.windowWidth() * 0.2075)
-                                }.padding(.top)
-                                CustomBreathingViewPicker(inhaleSelection: $inhale, hold1Selection: $hold1, exhaleSelection: $exhale, hold2Selection: $hold2)
-                                    .frame(height: (226-40))
-                            }
-                        }
-                        .frame(height: (215))
-                    }
-
-                    VStack (spacing : 0) {
-                        Text("Guiding Preferences")
-                            .font(Font.custom("Poppins-SemiBold", size: 16, relativeTo: .body))
-                            .padding()
-                            .frame(width: ScreenSize.windowWidth() * 0.9, height: ScreenSize.windowHeight() * 0.054, alignment: .leading)
-                            .background(SomeBackground.headerBackground())
-                            
-                        GuidingPreferences(isSoundOn: $isSoundOn, isHapticOn: $isHapticOn)
-                            .padding(.vertical)
-                            .background(Rectangle()
-                                            .fill(Color.clear)
-                                            .background(Blur(style: .systemThinMaterial)
-                                                            .opacity(0.95))
-                                            .cornerRadius(8, corners: [.bottomLeft, .bottomRight]))
-                        
-                    }
-                    .frame(width: ScreenSize.windowWidth() * 0.9, alignment: .leading)
-                    .padding(.top, 8)
-                    
+            VStack {
+                HStack{
                     Button(action: {
-                        self.isChooseBackground = true
+                        self.presentationMode.wrappedValue.dismiss()
                     }, label: {
-                        VStack {
-                            Text("Current Background: \(self.background)")
-                            Text("change Background")
-                        }
-                        .foregroundColor(.white)
+                        Image(systemName: "chevron.left")
+                            .padding(8)
                     })
-                    
-                    Button(action: {
-                        isAlert = true
-                    }, label: {
-                        Text("Delete")
-                            .foregroundColor(.white)
-                            .modifier(DeleteButtonModifier())
-                    })
-                    .alert(isPresented: $isAlert){
-                        Alert(title: Text("Are you sure you want to delete  \(breathName)?"), primaryButton: .destructive(Text("Delete")) {
-                            deleteBreathing()
-                            }, secondaryButton: .cancel())
-                    }
                     Spacer()
+                    Text("Edit Breathing")
+                        .font(Font.custom("Poppins-SemiBold", size: 18, relativeTo: .body))
+                        .foregroundColor(Color.changeTheme(black: navPop.black))
+                    Spacer()
+                    Button(action: {
+                        if breathName == ""{
+                            withAnimation(.default) {
+                                self.attempts += 1
+                            }
+                        }else{
+                            updateBreath()
+                            self.presentationMode.wrappedValue.dismiss()
+                        }
+                    }, label: {
+                        Text("Save")
+                            .foregroundColor(self.breathName == "" ? Color.gray : Color.changeTheme(black: navPop.black))
+                    })
+                }.padding(.top)
+                ScrollView(showsIndicators: false) {
+                    VStack (spacing: 16) {
+                        Precautions()
+                            .padding(.top)
+                        InputName(breathName: $breathName)
+                            .modifier(Shake(animatableData: CGFloat(attempts)))
+                        
+                        VStack {
+                            Text("Pattern - in seconds")
+                                .font(Font.custom("Poppins-SemiBold", size: 16, relativeTo: .body))
+                                .padding()
+                                .frame(width: ScreenSize.windowWidth() * 0.9, height: ScreenSize.windowHeight() * 0.054, alignment: .leading)
+                                .background(SomeBackground.headerBackground())
+                            ZStack {
+                                Rectangle()
+                                    .fill(Color.clear)
+                                    .background(Blur(style: .systemThinMaterial)
+                                                    .opacity(0.95))
+                                    .cornerRadius(8, corners: [.bottomLeft, .bottomRight])
+                                VStack {
+                                    HStack {
+                                        Text("Inhale")
+                                            .font(Font.custom("Poppins-Light", size: 15, relativeTo: .body))
+                                            .frame(width: ScreenSize.windowWidth() * 0.2075)
+                                        Text("Hold")
+                                            .font(Font.custom("Poppins-Light", size: 15, relativeTo: .body))
+                                            .frame(width: ScreenSize.windowWidth() * 0.2075)
+                                        Text("Exhale")
+                                            .font(Font.custom("Poppins-Light", size: 15, relativeTo: .body))
+                                            .frame(width: ScreenSize.windowWidth() * 0.2075)
+                                        Text("Hold")
+                                            .font(Font.custom("Poppins-Light", size: 15, relativeTo: .body))
+                                            .frame(width: ScreenSize.windowWidth() * 0.2075)
+                                    }.padding(.top)
+                                    CustomBreathingViewPicker(inhaleSelection: $inhale, hold1Selection: $hold1, exhaleSelection: $exhale, hold2Selection: $hold2)
+                                        .frame(height: (226-40))
+                                }
+                            }
+                            .frame(height: (215))
+                        }
+
+                        VStack (spacing : 0) {
+                            Text("Guiding Preferences")
+                                .font(Font.custom("Poppins-SemiBold", size: 16, relativeTo: .body))
+                                .padding()
+                                .frame(width: ScreenSize.windowWidth() * 0.9, height: ScreenSize.windowHeight() * 0.054, alignment: .leading)
+                                .background(SomeBackground.headerBackground())
+                                
+                            GuidingPreferences(isSoundOn: $isSoundOn, isHapticOn: $isHapticOn)
+                                .padding(.vertical)
+                                .background(Rectangle()
+                                                .fill(Color.clear)
+                                                .background(Blur(style: .systemThinMaterial)
+                                                                .opacity(0.95))
+                                                .cornerRadius(8, corners: [.bottomLeft, .bottomRight]))
+                            
+                        }
+                        .frame(width: ScreenSize.windowWidth() * 0.9, alignment: .leading)
+                        .padding(.top, 8)
+                        
+                        Button(action: {
+                            self.isChooseBackground = true
+                        }, label: {
+                            VStack {
+                                Text("Current Background: \(self.background)")
+                                Text("change Background")
+                            }
+                            .foregroundColor(.white)
+                        })
+                        
+                        Button(action: {
+                            isAlert = true
+                        }, label: {
+                            Text("Delete")
+                                .foregroundColor(.white)
+                                .modifier(DeleteButtonModifier())
+                        })
+                        .alert(isPresented: $isAlert){
+                            Alert(title: Text("Are you sure you want to delete  \(breathName)?"), primaryButton: .destructive(Text("Delete")) {
+                                deleteBreathing()
+                                }, secondaryButton: .cancel())
+                        }
+                        Spacer()
+                    }
+                    .frame(width : ScreenSize.windowWidth() * 0.9)
+                    .navigationBarHidden(true)
+                    .onAppear {
+                        checkIdAndChangeData()
                 }
-                .frame(width : ScreenSize.windowWidth() * 0.9)
-                .navigationBarHidden(true)
-                .onAppear {
-                    checkIdAndChangeData()
-            }
+                }
             }
         }
         .onTapGesture {
