@@ -20,17 +20,55 @@ struct ChooseBackground: View {
     @State var idx = 0
     var playLooping = LoopingPlayer()
     @State var isForest = true
+    @State var hitam = true
     
     var body: some View {
         ZStack {
             playLooping
                 .edgesIgnoringSafeArea(.all)
             VStack {
+                HStack {
+                    Button(action: {
+                        self.isChooseBackground = false
+                    }, label: {
+                        Image(systemName: "chevron.left")
+                            .foregroundColor(hitam ? Color.black : Color.white)
+                            .padding(5)
+                    })
+                    
+                    Spacer()
+                    Text("Select Ambience")
+                        .font(Font.custom("Poppins-SemiBold", size: 18, relativeTo: .body))
+                        .foregroundColor(hitam ? Color.black : Color.white)
+                        .padding(5)
+                        .padding(.leading, 30)
+                    Spacer()
+                    Button(action: {
+                        if idx == 0{
+                            navPop.black = false
+                        }else{
+                            navPop.black = true
+                        }
+                        saveBackground()
+                        self.isChooseBackground = false
+                    }, label: {
+                        Text("Save")
+                            .font(Font.custom("Poppins-Medium", size: 17, relativeTo: .body))
+                            .foregroundColor(hitam ? Color.black : Color.white)
+                            .padding(5)
+                    })
+                    
+                }
+                .padding(.bottom, 80)
+                .frame(width: ScreenSize.windowWidth() * 0.9)
+                
+                
                 Spacer()
                     .frame(width: 100, height: 0.6 * UIScreen.main.bounds.height)
                 
                 HStack {
                     Button(action: {
+                        hitam = false
                         if idx != 0 {
                             idx -= 1
                         }
@@ -38,14 +76,14 @@ struct ChooseBackground: View {
                         isForest = true
                     }, label: {
                         ZStack {
-                            Circle()
-                                .fill(Color.clear)
-                                .frame(width: 100, height: 100)
-                                .background(Blur(style: .systemThinMaterial)
-                                .opacity(isForest == true ? 0.8 : 0.4))
-                                .cornerRadius(100)
-                            Text("Forest")
-                                .foregroundColor(Color.white)
+                            Image("forest_img")
+                                .resizable()
+                                .aspectRatio(contentMode: .fill)
+                                .frame(width: 65, height: 65)
+                                .clipShape(Circle())
+                                .shadow(radius: 10)
+                                .overlay(Circle().stroke(Color.white, lineWidth: 1))
+                                
                         }
                     })
                     
@@ -53,6 +91,7 @@ struct ChooseBackground: View {
                         .frame(width: 100)
                     
                     Button(action: {
+                        hitam = true
                         if idx != BackgroundAssetList.assetList.count - 1 {
                             idx += 1
                         }
@@ -60,26 +99,17 @@ struct ChooseBackground: View {
                         isForest = false
                     }, label: {
                         ZStack {
-                            Circle()
-                                .fill(Color.clear)
-                                .frame(width: 100, height: 100)
-                                .background(Blur(style: .systemThinMaterial)
-                                .opacity(isForest == true ? 0.4 : 0.8))
-                                .cornerRadius(100)
-                            Text("Lake")
-                                .foregroundColor(Color.white)
+                            Image("lake_img")
+                                .resizable()
+                                .aspectRatio(contentMode: .fill)
+                                .frame(width: 65, height: 65)
+                                .clipShape(Circle())
+                                .shadow(radius: 10)
+                                .overlay(Circle().stroke(Color.white, lineWidth: 1))
+                                
                         }
                     })
                 }
-                .padding(.top, 50)
-                
-                Button(action: {
-                    saveBackground()
-                    self.isChooseBackground = false
-                }, label: {
-                    Text("Save")
-                        .foregroundColor(Color.white)
-                })
                 .padding(.top, 50)
             }
         }
@@ -92,10 +122,12 @@ struct ChooseBackground: View {
 extension ChooseBackground {
     func checkBackground() {
         if self.currBackground == "forest" {
+            hitam = false
             self.isForest = true
             self.playLooping.player.moveBackground(name: "forest")
         }
         else {
+            hitam = true
             self.isForest = false
             self.playLooping.player.moveBackground(name: "lake")
         }

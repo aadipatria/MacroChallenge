@@ -59,6 +59,7 @@ struct CustomBreathingView: View {
                 }
                 .padding(.top)
                 .frame(width: ScreenSize.windowWidth() * 0.9)
+                
                 ScrollView(showsIndicators: false) {
                     VStack (spacing : 16) {
                         Precautions()
