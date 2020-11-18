@@ -101,12 +101,12 @@ struct ExtractedView: View {
                 VStack (spacing: 0) {
                     if navPop.page == 1{
                         Image("wind").imageIconModifier()
-                        Text("Breath")
+                        Text("Breathe")
                             .font(Font.custom("Poppins-SemiBold", size: 10, relativeTo: .body))
                             .foregroundColor(.white)
                     }else{
                         Image("wind_gray").imageIconModifier()
-                        Text("Breath")
+                        Text("Breathe")
                             .font(Font.custom("Poppins-SemiBold", size: 10, relativeTo: .body))
                             .foregroundColor(.gray)
                     }
