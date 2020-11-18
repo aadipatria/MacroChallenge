@@ -54,15 +54,14 @@ struct CustomBreathingView: View {
                         }
                     }, label: {
                         Text("Add")
-                            .foregroundColor(self.breathName == "" ? Color.gray : Color.changeTheme(black: navPop.black))
+                            .foregroundColor(Color.changeTheme(black: navPop.black))
                     })
                 }
                 .padding(.top)
-                .padding(.horizontal)
+                .frame(width: ScreenSize.windowWidth() * 0.9)
                 ScrollView(showsIndicators: false) {
                     VStack (spacing : 16) {
                         Precautions()
-                            .padding(.top)
                         InputName(breathName: $breathName)
                             .modifier(Shake(animatableData: CGFloat(attempts)))
                         VStack {
@@ -131,22 +130,6 @@ struct CustomBreathingView: View {
                             .foregroundColor(.white)
                         })
                     }
-                    .navigationBarItems(trailing: Button(action: {
-                        if breathName == ""{
-                            withAnimation(.default) {
-                                self.attempts += 1
-                            }
-
-                        }else{
-                            saveToCoreData()
-                            navPop.addBreath = false
-                        }
-                    }, label: {
-                        Text("Add")
-                            .foregroundColor(self.breathName == "" ? Color.gray : Color.white)
-                    })
-
-                    )
                     .frame(width : ScreenSize.windowWidth() * 0.9)
                     .navigationBarHidden(true)
                 }

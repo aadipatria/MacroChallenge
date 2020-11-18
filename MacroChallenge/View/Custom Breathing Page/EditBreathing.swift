@@ -60,13 +60,13 @@ struct EditBreathing: View {
                         }
                     }, label: {
                         Text("Save")
-                            .foregroundColor(self.breathName == "" ? Color.gray : Color.changeTheme(black: navPop.black))
+                            .foregroundColor(Color.changeTheme(black: navPop.black))
                     })
                 }.padding(.top)
+                .frame(width: ScreenSize.windowWidth() * 0.9)
                 ScrollView(showsIndicators: false) {
                     VStack (spacing: 16) {
                         Precautions()
-                            .padding(.top)
                         InputName(breathName: $breathName)
                             .modifier(Shake(animatableData: CGFloat(attempts)))
                         
@@ -162,6 +162,10 @@ struct EditBreathing: View {
         }
         .fullScreenCover(isPresented: self.$isChooseBackground, content: {
             ChooseBackground(isChooseBackground: $isChooseBackground, currBackground: self.$background)
+                .onDisappear {
+                    navPop.playLooping.player.moveBackground(name: String(self.background))
+                    navPop.playLooping2.player.moveBackground(name: String(self.background))
+                }
         })
     }
 }
