@@ -92,9 +92,9 @@ struct BreathListView: View {
                             .padding()
                             .frame(width: ScreenSize.windowWidth() * 0.9, height: ScreenSize.windowHeight() * 0.1)
                             .background(Rectangle()
-                                            .fill(Color.clear)
+                                            .fill(Color.white.opacity(0.6))
                                             .background(Blur(style: .systemThinMaterial)
-                                                            .opacity(0.95))
+                                                            .opacity(0.5))
                                             .cornerRadius(8))
                         })
                 }

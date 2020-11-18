@@ -69,7 +69,7 @@ struct AddEmergencyContact: View {
                 } label: {
                     Text("Done")
                         .padding(5)
-                        .foregroundColor(self.name == "" ? Color.gray : (self.number == "" ? Color.gray : Color.blue))
+                        .foregroundColor(Color.blue)
                 }
 //                .disabled(self.name == "" ? true : (self.number == "" ? true : false))
             }

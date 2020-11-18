@@ -52,7 +52,7 @@ struct CustomBreathingView: View {
                         }
                     }, label: {
                         Text("Add")
-                            .foregroundColor(self.breathName == "" ? Color.gray : Color.changeTheme(black: navPop.black))
+                            .foregroundColor(Color.changeTheme(black: navPop.black))
                     })
                 }.padding(.top)
                 Precautions()
@@ -68,9 +68,9 @@ struct CustomBreathingView: View {
                             .background(SomeBackground.headerBackground())
                         ZStack {
                             Rectangle()
-                                .fill(Color.clear)
+                                .fill(Color.white.opacity(0.6))
                                 .background(Blur(style: .systemThinMaterial)
-                                                .opacity(0.95))
+                                                .opacity(0.5))
                                 .cornerRadius(8, corners: [.bottomLeft, .bottomRight])
                             VStack {
                                 HStack {
@@ -105,9 +105,9 @@ struct CustomBreathingView: View {
                     GuidingPreferences(isSoundOn: $isSoundOn, isHapticOn: $isHapticOn)
                         .padding(.vertical)
                         .background(Rectangle()
-                                        .fill(Color.clear)
+                                        .fill(Color.white.opacity(0.6))
                                         .background(Blur(style: .systemThinMaterial)
-                                                        .opacity(0.95))
+                                                        .opacity(0.5))
                                         .cornerRadius(8, corners: [.bottomLeft, .bottomRight]))
                     
                 }
@@ -142,9 +142,9 @@ struct Precautions: View {
     var body: some View {
         ZStack {
             Rectangle()
-                .fill(Color.clear)
+                .fill(Color.white.opacity(0.6))
                 .background(Blur(style: .systemThinMaterial)
-                                .opacity(0.95))
+                                .opacity(0.5))
                 .cornerRadius(8)
                 .frame(width: ScreenSize.windowWidth() * 0.9, height: ScreenSize.windowHeight() * 0.14)
             VStack(alignment: .leading) {
@@ -170,9 +170,9 @@ struct InputName: View {
         VStack {
             ZStack{
                 Rectangle()
-                    .fill(Color.clear)
+                    .fill(Color.white.opacity(0.6))
                     .background(Blur(style: .systemThinMaterial)
-                                    .opacity(0.95))
+                                    .opacity(0.5))
                     .cornerRadius(8)
                     .frame(width: ScreenSize.windowWidth() * 0.9, height: ScreenSize.windowHeight() * 0.074)
                 HStack {

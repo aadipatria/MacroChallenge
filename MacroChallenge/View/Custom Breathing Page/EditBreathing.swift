@@ -58,7 +58,7 @@ struct EditBreathing: View {
                         }
                     }, label: {
                         Text("Save")
-                            .foregroundColor(self.breathName == "" ? Color.gray : Color.changeTheme(black: navPop.black))
+                            .foregroundColor(Color.changeTheme(black: navPop.black))
                     })
                 }.padding(.top)
                 Precautions()
@@ -74,9 +74,9 @@ struct EditBreathing: View {
                         .background(SomeBackground.headerBackground())
                     ZStack {
                         Rectangle()
-                            .fill(Color.clear)
+                            .fill(Color.white.opacity(0.6))
                             .background(Blur(style: .systemThinMaterial)
-                                            .opacity(0.95))
+                                            .opacity(0.5))
                             .cornerRadius(8, corners: [.bottomLeft, .bottomRight])
                         VStack {
                             HStack {
@@ -112,9 +112,9 @@ struct EditBreathing: View {
                     GuidingPreferences(isSoundOn: $isSoundOn, isHapticOn: $isHapticOn)
                         .padding(.vertical)
                         .background(Rectangle()
-                                        .fill(Color.clear)
+                                        .fill(Color.white.opacity(0.6))
                                         .background(Blur(style: .systemThinMaterial)
-                                                        .opacity(0.95))
+                                                        .opacity(0.5))
                                         .cornerRadius(8, corners: [.bottomLeft, .bottomRight]))
                     
                 }
