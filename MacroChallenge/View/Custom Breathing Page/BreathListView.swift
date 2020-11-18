@@ -36,6 +36,7 @@ struct BreathListView: View {
                         label: {
                             Image(systemName: "plus")
                                 .foregroundColor(.black)
+                                .padding(5)
                         })
                     
                 }

@@ -23,6 +23,7 @@ struct CustomBreathingView: View {
     @Environment(\.managedObjectContext) var manageObjectContext
     @Environment(\.presentationMode) var presentationMode
     @State var attempts: Int = 0
+    @State var background = "forest"
     
     var body: some View {
         ZStack {
@@ -318,6 +319,7 @@ extension CustomBreathingView {
         breath.sound = isSoundOn
         breath.haptic = isHapticOn
         breath.id = UUID()
+        breath.background = background
         
         do{
             //save ke core data
