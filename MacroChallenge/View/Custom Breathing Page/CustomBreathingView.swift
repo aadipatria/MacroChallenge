@@ -52,7 +52,7 @@ struct CustomBreathingView: View {
                         }
                     }, label: {
                         Text("Add")
-                            .foregroundColor(self.breathName == "" ? Color.gray : Color.changeTheme(black: navPop.black))
+                            .foregroundColor(Color.changeTheme(black: navPop.black))
                     })
                 }.padding(.top)
                 Precautions()

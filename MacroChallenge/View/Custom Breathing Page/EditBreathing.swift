@@ -58,7 +58,7 @@ struct EditBreathing: View {
                         }
                     }, label: {
                         Text("Save")
-                            .foregroundColor(self.breathName == "" ? Color.gray : Color.changeTheme(black: navPop.black))
+                            .foregroundColor(Color.changeTheme(black: navPop.black))
                     })
                 }.padding(.top)
                 Precautions()
