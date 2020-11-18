@@ -29,127 +29,127 @@ struct CustomBreathingView: View {
     
     var body: some View {
         ZStack {
-            VStack (spacing : 16) {
-                HStack{
-                    Button(action: {
-                        self.presentationMode.wrappedValue.dismiss()
-                    }, label: {
-                        Image(systemName: "chevron.left")
-                            .padding(8)
-                    })
-                    Spacer()
-                    Text("Add Breathing")
-                        .font(Font.custom("Poppins-SemiBold", size: 18, relativeTo: .body))
-                        .foregroundColor(Color.changeTheme(black: navPop.black))
-                    Spacer()
-                    Button(action: {
-                        if breathName == ""{
-                            withAnimation(.default) {
-                                self.attempts += 1
-                            }
+            ScrollView(showsIndicators: false) {
+                VStack (spacing : 16) {
+                    HStack{
+                        Button(action: {
+                            self.presentationMode.wrappedValue.dismiss()
+                        }, label: {
+                            Image(systemName: "chevron.left")
+                                .padding(8)
+                        })
+                        Spacer()
+                        Text("Add Breathing")
+                            .font(Font.custom("Poppins-SemiBold", size: 18, relativeTo: .body))
+                            .foregroundColor(Color.changeTheme(black: navPop.black))
+                        Spacer()
+                        Button(action: {
+                            if breathName == ""{
+                                withAnimation(.default) {
+                                    self.attempts += 1
+                                }
 
-                        }else{
-                            saveToCoreData()
-                            navPop.addBreath = false
+                            }else{
+                                saveToCoreData()
+                                navPop.addBreath = false
+                            }
+                        }, label: {
+                            Text("Add")
+                                .foregroundColor(self.breathName == "" ? Color.gray : Color.changeTheme(black: navPop.black))
+                        })
+                    }.padding(.top)
+                    Precautions()
+                        .padding(.top)
+                    InputName(breathName: $breathName)
+                        .modifier(Shake(animatableData: CGFloat(attempts)))
+                    VStack {
+                        Group {
+                            Text("Pattern - in seconds")
+                                .font(Font.custom("Poppins-SemiBold", size: 16, relativeTo: .body))
+                                .padding()
+                                .frame(width: ScreenSize.windowWidth() * 0.9, height: ScreenSize.windowHeight() * 0.054, alignment: .leading)
+                                .background(SomeBackground.headerBackground())
+                            ZStack {
+                                Rectangle()
+                                    .fill(Color.clear)
+                                    .background(Blur(style: .systemThinMaterial)
+                                                    .opacity(0.95))
+                                    .cornerRadius(8, corners: [.bottomLeft, .bottomRight])
+                                VStack {
+                                    HStack {
+                                        Text("Inhale")
+                                            .font(Font.custom("Poppins-Light", size: 15, relativeTo: .body))
+                                            .frame(width: ScreenSize.windowWidth() * 0.2075)
+                                        Text("Hold")
+                                            .font(Font.custom("Poppins-Light", size: 15, relativeTo: .body))
+                                            .frame(width: ScreenSize.windowWidth() * 0.2075)
+                                        Text("Exhale")
+                                            .font(Font.custom("Poppins-Light", size: 15, relativeTo: .body))
+                                            .frame(width: ScreenSize.windowWidth() * 0.2075)
+                                        Text("Hold")
+                                            .font(Font.custom("Poppins-Light", size: 15, relativeTo: .body))
+                                            .frame(width: ScreenSize.windowWidth() * 0.2075)
+                                        
+                                    }.padding(.top)
+                                    CustomBreathingViewPicker(inhaleSelection: $inhale, hold1Selection: $hold1, exhaleSelection: $exhale, hold2Selection: $hold2)
+                                        .frame(height: (226-40))
+                                }
+                            }
+                            .frame(height: (215))
                         }
-                    }, label: {
-                        Text("Add")
-                            .foregroundColor(self.breathName == "" ? Color.gray : Color.changeTheme(black: navPop.black))
-                    })
-                }.padding(.top)
-                Precautions()
-                    .padding(.top)
-                InputName(breathName: $breathName)
-                    .modifier(Shake(animatableData: CGFloat(attempts)))
-                VStack {
-                    Group {
-                        Text("Pattern - in seconds")
+                    }
+                    
+                    VStack (spacing : 0) {
+                        Text("Guiding Preferences")
                             .font(Font.custom("Poppins-SemiBold", size: 16, relativeTo: .body))
                             .padding()
                             .frame(width: ScreenSize.windowWidth() * 0.9, height: ScreenSize.windowHeight() * 0.054, alignment: .leading)
                             .background(SomeBackground.headerBackground())
-                        ZStack {
-                            Rectangle()
-                                .fill(Color.clear)
-                                .background(Blur(style: .systemThinMaterial)
-                                                .opacity(0.95))
-                                .cornerRadius(8, corners: [.bottomLeft, .bottomRight])
-                            VStack {
-                                HStack {
-                                    Text("Inhale")
-                                        .font(Font.custom("Poppins-Light", size: 15, relativeTo: .body))
-                                        .frame(width: ScreenSize.windowWidth() * 0.2075)
-                                    Text("Hold")
-                                        .font(Font.custom("Poppins-Light", size: 15, relativeTo: .body))
-                                        .frame(width: ScreenSize.windowWidth() * 0.2075)
-                                    Text("Exhale")
-                                        .font(Font.custom("Poppins-Light", size: 15, relativeTo: .body))
-                                        .frame(width: ScreenSize.windowWidth() * 0.2075)
-                                    Text("Hold")
-                                        .font(Font.custom("Poppins-Light", size: 15, relativeTo: .body))
-                                        .frame(width: ScreenSize.windowWidth() * 0.2075)
-                                    
-                                }.padding(.top)
-                                CustomBreathingViewPicker(inhaleSelection: $inhale, hold1Selection: $hold1, exhaleSelection: $exhale, hold2Selection: $hold2)
-                                    .frame(height: (226-40))
-                            }
-                        }
-                        .frame(height: (215))
-                    }
-                }
-                
-                VStack (spacing : 0) {
-                    Text("Guiding Preferences")
-                        .font(Font.custom("Poppins-SemiBold", size: 16, relativeTo: .body))
-                        .padding()
-                        .frame(width: ScreenSize.windowWidth() * 0.9, height: ScreenSize.windowHeight() * 0.054, alignment: .leading)
-                        .background(SomeBackground.headerBackground())
+                            
+                        GuidingPreferences(isSoundOn: $isSoundOn, isHapticOn: $isHapticOn)
+                            .padding(.vertical)
+                            .background(Rectangle()
+                                            .fill(Color.clear)
+                                            .background(Blur(style: .systemThinMaterial)
+                                                            .opacity(0.95))
+                                            .cornerRadius(8, corners: [.bottomLeft, .bottomRight]))
                         
-                    GuidingPreferences(isSoundOn: $isSoundOn, isHapticOn: $isHapticOn)
-                        .padding(.vertical)
-                        .background(Rectangle()
-                                        .fill(Color.clear)
-                                        .background(Blur(style: .systemThinMaterial)
-                                                        .opacity(0.95))
-                                        .cornerRadius(8, corners: [.bottomLeft, .bottomRight]))
-                    
-                }
-                .frame(width: ScreenSize.windowWidth() * 0.9, alignment: .leading)
-                .padding(.top, 8)
-                
-                Spacer()
-                
-                Button(action: {
-                    self.isChooseBackground = true
-                }, label: {
-                    VStack {
-                        Text("Current Background : \(self.background)")
-                        Text("Change Background")
                     }
-                    .foregroundColor(.white)
+                    .frame(width: ScreenSize.windowWidth() * 0.9, alignment: .leading)
+                    .padding(.top, 8)
+                    
+                    Button(action: {
+                        self.isChooseBackground = true
+                    }, label: {
+                        VStack {
+                            Text("Current Background : \(self.background)")
+                            Text("Change Background")
+                        }
+                        .foregroundColor(.white)
+                    })
+                }
+                .navigationBarItems(trailing: Button(action: {
+                    if breathName == ""{
+                        withAnimation(.default) {
+                            self.attempts += 1
+                        }
+
+                    }else{
+                        saveToCoreData()
+                        navPop.addBreath = false
+                    }
+                }, label: {
+                    Text("Add")
+                        .foregroundColor(self.breathName == "" ? Color.gray : Color.white)
                 })
+
+                )
+                .frame(width : ScreenSize.windowWidth() * 0.9)
+                .navigationBarHidden(true)
             }
             .background(navPop.playLooping
-                            .frame(width: ScreenSize.windowWidth(), height: ScreenSize.windowHeight(), alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                            .frame(width: ScreenSize.windowWidth(), height: ScreenSize.windowHeight(), alignment: .center)
                             .ignoresSafeArea(.all))
-            .navigationBarItems(trailing: Button(action: {
-                if breathName == ""{
-                    withAnimation(.default) {
-                        self.attempts += 1
-                    }
-
-                }else{
-                    saveToCoreData()
-                    navPop.addBreath = false
-                }
-            }, label: {
-                Text("Add")
-                    .foregroundColor(self.breathName == "" ? Color.gray : Color.white)
-            })
-
-            )
-            .frame(width : ScreenSize.windowWidth() * 0.9)
-            .navigationBarHidden(true)
         }
         .onTapGesture {
             hideKeyboard()
