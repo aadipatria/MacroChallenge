@@ -26,6 +26,33 @@ struct ChooseBackground: View {
             playLooping
                 .edgesIgnoringSafeArea(.all)
             VStack {
+                HStack {
+                    Button(action: {
+                        self.isChooseBackground = false
+                    }, label: {
+                        Image(systemName: "chevron.left")
+                            .foregroundColor(.white)
+                    })
+                    .padding()
+                    .background(Color.blue) //buat tandain arrownya ntar tinggal di hapus
+
+                    Spacer()
+                        .frame(width: 0.6 * ScreenSize.windowWidth())
+
+                    Button(action: {
+                        saveBackground()
+                        self.isChooseBackground = false
+                    }, label: {
+                        Text("Save")
+                            .font(Font.custom("Poppins-SemiBold", size: 18, relativeTo: .body))
+                            .foregroundColor(.black)
+                    })
+                    .padding()
+                    
+                }
+                .padding(.bottom, 80)
+                
+                
                 Spacer()
                     .frame(width: 100, height: 0.6 * UIScreen.main.bounds.height)
                 
@@ -71,15 +98,6 @@ struct ChooseBackground: View {
                         }
                     })
                 }
-                .padding(.top, 50)
-                
-                Button(action: {
-                    saveBackground()
-                    self.isChooseBackground = false
-                }, label: {
-                    Text("Save")
-                        .foregroundColor(Color.white)
-                })
                 .padding(.top, 50)
             }
         }
