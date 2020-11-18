@@ -9,6 +9,7 @@ import Foundation
 import AVFoundation
 
 class AudioPlayer1 {
+    //ini buat bgm
 
   static var audioPlayer:AVAudioPlayer?
 
@@ -26,7 +27,9 @@ class AudioPlayer1 {
                } catch(let error) {
                    print(error.localizedDescription)
                }
-              audioPlayer?.play()
+                audioPlayer?.numberOfLoops = -1
+                audioPlayer?.play()
+            
 
           }catch {
               print("Error")
