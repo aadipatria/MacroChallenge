@@ -45,7 +45,7 @@ struct SomeBackground{
         }
     static func headerBackground() -> some View{
         Rectangle()
-            .fill(Color.clear)
+            .fill(Color.white.opacity(0.8))
             .background(Blur(style: .systemMaterial)
                             .opacity(0.95))
             .cornerRadius(8, corners: [.topLeft, .topRight])
