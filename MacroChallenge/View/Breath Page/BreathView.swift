@@ -234,11 +234,11 @@ struct BreathView: View {
                         print(error)
                     }
                     breath = Breathing(context: self.manageObjectContext)
-                    breath.name = "Lake Test"
-                    breath.inhale = 3
-                    breath.hold1 = 3
-                    breath.exhale = 5
-                    breath.hold2 = 2
+                    breath.name = "Relax"
+                    breath.inhale = 7
+                    breath.hold1 = 0
+                    breath.exhale = 11
+                    breath.hold2 = 0
                     breath.favorite = true
                     breath.haptic = true
                     breath.sound = true
