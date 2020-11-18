@@ -24,6 +24,8 @@ struct CustomBreathingView: View {
     @Environment(\.presentationMode) var presentationMode
     @State var attempts: Int = 0
     @State var background = "forest"
+    @State var id: UUID?
+    @State var isChooseBackground = false
     
     var body: some View {
         ZStack {
@@ -114,15 +116,19 @@ struct CustomBreathingView: View {
                 }
                 .frame(width: ScreenSize.windowWidth() * 0.9, alignment: .leading)
                 .padding(.top, 8)
+                
                 Spacer()
                 
                 Button(action: {
                     self.isChooseBackground = true
                 }, label: {
-                    Text("Choose Background")
+                    VStack {
+                        Text("Current Background : \(self.background)")
+                        Text("Change Background")
+                    }
+                    .foregroundColor(.white)
                 })
             }
-//            .background(Image("ocean").blurBackgroundImageModifier())
             .background(navPop.playLooping
                             .frame(width: ScreenSize.windowWidth(), height: ScreenSize.windowHeight(), alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                             .ignoresSafeArea(.all))
@@ -151,15 +157,9 @@ struct CustomBreathingView: View {
         .onReceive(NotificationCenter.default.publisher(for: UIApplication.willEnterForegroundNotification)) { _ in
             navPop.playLooping.player.playing()
         }
-        .onAppear(perform: {
-            self.id = UUID()
-        })
         .fullScreenCover(isPresented: $isChooseBackground, content: {
-            ChooseBackground(isChooseBackground: $isChooseBackground, currBackground: $currBackground, id: self.id)
+            ChooseBackground(isChooseBackground: $isChooseBackground, currBackground: $background)
                 .environment(\.managedObjectContext, self.manageObjectContext)
-                .onDisappear() {
-                    navPop.playLooping.player.moveBackground(name: "\(self.currBackground)")
-                }
         })
     }
 }

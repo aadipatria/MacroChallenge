@@ -24,6 +24,8 @@ struct EditBreathing: View {
     @Environment(\.presentationMode) var presentationMode
     @EnvironmentObject var navPop : NavigationPopObject
     @State var attempts: Int = 0
+    @State var background: String = ""
+    @State var isChooseBackground = false
     
     //fetch semua breathing dari core data -> next step di onAppear
     @FetchRequest(fetchRequest: Breathing.getAllBreathing()) var breaths: FetchedResults<Breathing>
@@ -34,7 +36,7 @@ struct EditBreathing: View {
         ZStack {
             navPop.playLooping
                 .edgesIgnoringSafeArea(.all)
-            VStack (spacing: 16) {
+            ScrollView {
                 HStack{
                     Button(action: {
                         self.presentationMode.wrappedValue.dismiss()
@@ -100,8 +102,6 @@ struct EditBreathing: View {
                     .frame(height: (215))
                 }
 
-                
-                
                 VStack (spacing : 0) {
                     Text("Guiding Preferences")
                         .font(Font.custom("Poppins-SemiBold", size: 16, relativeTo: .body))
@@ -120,6 +120,17 @@ struct EditBreathing: View {
                 }
                 .frame(width: ScreenSize.windowWidth() * 0.9, alignment: .leading)
                 .padding(.top, 8)
+                
+                Button(action: {
+                    self.isChooseBackground = true
+                }, label: {
+                    VStack {
+                        Text("Current Background: \(self.background)")
+                        Text("change Background")
+                    }
+                    .foregroundColor(.white)
+                })
+                
                 Button(action: {
                     isAlert = true
                 }, label: {
@@ -139,13 +150,16 @@ struct EditBreathing: View {
             .navigationBarHidden(true)
             .onAppear {
                 checkIdAndChangeData()
-        }
+            }
         }
         .onTapGesture {
             hideKeyboard()
         }   .onReceive(NotificationCenter.default.publisher(for: UIApplication.willEnterForegroundNotification)) { _ in
             navPop.playLooping.player.playing()
         }
+        .fullScreenCover(isPresented: self.$isChooseBackground, content: {
+            ChooseBackground(isChooseBackground: $isChooseBackground, currBackground: self.$background)
+        })
     }
 }
 
@@ -162,6 +176,7 @@ extension EditBreathing {
                 self.hold2 = Int(breath.hold2)
                 self.isSoundOn = breath.sound
                 self.isHapticOn = breath.haptic
+                self.background = breath.background!
             }
 
         }
@@ -196,6 +211,7 @@ extension EditBreathing {
                 breath.sound = isSoundOn
                 breath.haptic = isHapticOn
                 breath.id = self.id
+                breath.background = self.background
                 
                 do{
                     try self.manageObjectContext.save()

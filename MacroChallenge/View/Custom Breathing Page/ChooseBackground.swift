@@ -18,11 +18,11 @@ struct ChooseBackground: View {
     @Binding var isChooseBackground: Bool
     @Binding var currBackground: String
     @State var idx = 0
-    var id: UUID?
+    var playLooping = LoopingPlayer()
     
     var body: some View {
         ZStack {
-            navPop.playLooping
+            playLooping
                 .edgesIgnoringSafeArea(.all)
             VStack {
                 Spacer()
@@ -34,7 +34,7 @@ struct ChooseBackground: View {
                         if idx != 0 {
                             idx -= 1
                         }
-                        navPop.playLooping.player.moveBackground(name: "\(BackgroundAssetList.assetList[idx])")
+                        playLooping.player.moveBackground(name: "\(BackgroundAssetList.assetList[idx])")
                     }, label: {
                         Text("Previous")
                             .foregroundColor(Color.white)
@@ -47,7 +47,7 @@ struct ChooseBackground: View {
                         if idx != BackgroundAssetList.assetList.count - 1 {
                             idx += 1
                         }
-                        navPop.playLooping.player.moveBackground(name: "\(BackgroundAssetList.assetList[idx])")
+                        playLooping.player.moveBackground(name: "\(BackgroundAssetList.assetList[idx])")
                     }, label: {
                         Text("Next")
                             .foregroundColor(Color.white)
@@ -65,21 +65,12 @@ struct ChooseBackground: View {
                 .padding(.top, 50)
             }
         }
-        .onAppear(perform: {
-            checkBackground()
-        })
     }
 }
 
 extension ChooseBackground {
     func checkBackground() {
-        for breath in breaths {
-            if self.id == breath.id {
-                self.currBackground = breath.background!
-                navPop.playLooping.player.moveBackground(name: "\(self.currBackground)")
-                break
-            }
-        }
+        self.currBackground = BackgroundAssetList.assetList[idx]
     }
     
     func saveBackground() {
