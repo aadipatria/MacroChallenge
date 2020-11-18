@@ -20,21 +20,13 @@ struct BreathListView: View {
     @State var breathing2DArray = [[String]]()
     @State var edit : Bool = false
     
-//    init() {
-//        UITableView.appearance().tableFooterView = UIView()
-//        UITableView.appearance().separatorStyle = .none
-//        UITableView.appearance().separatorColor = .clear
-//        UITableViewCell.appearance().backgroundColor = UIColor(Color.clear)
-//        UITableView.appearance().backgroundColor = UIColor(Color.clear)
-//      }
-    
     var body: some View {
         
         VStack(spacing : 0){
             HStack {
                 Text("Breathing Library")
                     .font(Font.custom("Poppins-Bold", size: 24, relativeTo: .body))
-                    .foregroundColor(.white)
+                    .foregroundColor(Color.changeTheme(black: navPop.black))
                 Spacer()
                 ZStack {
                     SomeBackground.plusBackground()

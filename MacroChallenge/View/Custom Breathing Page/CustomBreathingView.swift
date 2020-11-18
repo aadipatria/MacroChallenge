@@ -22,10 +22,14 @@ struct CustomBreathingView: View {
     @EnvironmentObject var navPop : NavigationPopObject
     @Environment(\.managedObjectContext) var manageObjectContext
     @State var attempts: Int = 0
+//    var warna : Color = Color.white
     
     init() {
         UINavigationBar.appearance().barTintColor = .clear
         UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .default)
+//        UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: warna]
+//        //Use this if NavigationBarTitle is with displayMode = .inline
+//        UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: warna]
 //        UINavigationBar.appearance().standardAppearance.shadowColor = .clear
 //        UINavigationBar.appearance().scrollEdgeAppearance?.shadowColor = .clear
     }
@@ -109,7 +113,7 @@ struct CustomBreathingView: View {
                 }
             }, label: {
                 Text("Add")
-                    .foregroundColor(self.breathName == "" ? Color.gray : Color.white)
+                    .foregroundColor(self.breathName == "" ? Color.gray : Color.changeTheme(black: navPop.black))
             })
 //            .disabled(self.breathName == "" ? true : false)
             )

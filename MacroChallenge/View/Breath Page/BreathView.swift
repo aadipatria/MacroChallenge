@@ -102,7 +102,7 @@ struct BreathView: View {
                     }, label: {
                         Image (systemName: "chevron.left")
                             .padding(5)
-                            .foregroundColor(Color.changeTheme(black: navPop.black))
+                            .foregroundColor(Color.white)
                             .font(/*@START_MENU_TOKEN@*/.largeTitle/*@END_MENU_TOKEN@*/)
                     })
                     
@@ -119,7 +119,7 @@ struct BreathView: View {
                     }, label: {
                         Image (systemName: "chevron.right")
                             .padding(5)
-                            .foregroundColor(Color.changeTheme(black: navPop.black))
+                            .foregroundColor(Color.white)
                             .font(/*@START_MENU_TOKEN@*/.largeTitle/*@END_MENU_TOKEN@*/)
                     })
                 }
