@@ -53,7 +53,7 @@ struct HomeView: View {
                 
             }
         }
-        .accentColor(Color.changeTheme(black: navPop.black)) /// ini buat ganti back button jd item
+        .accentColor(Color.changeTheme(black: navPop.black2)) /// ini buat ganti back button jd item
         .fullScreenCover(isPresented: self.$needsAppOnboarding) {
             MainOnboardingPage()
         }
