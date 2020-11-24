@@ -30,39 +30,10 @@ struct CustomBreathingView: View {
     var body: some View {
         ZStack {
             VStack {
-                HStack{
-                    Button(action: {
-                        self.presentationMode.wrappedValue.dismiss()
-                    }, label: {
-                        Image(systemName: "chevron.left")
-                            .padding(8)
-                    })
-                    Spacer()
-                    Text("Add Breathing")
-                        .font(Font.custom("Poppins-SemiBold", size: 18, relativeTo: .body))
-                        .foregroundColor(Color.changeTheme(black: navPop.black))
-                    Spacer()
-                    Button(action: {
-                        if breathName == ""{
-                            withAnimation(.default) {
-                                self.attempts += 1
-                            }
-
-                        }else{
-                            saveToCoreData()
-                            navPop.addBreath = false
-                        }
-                    }, label: {
-                        Text("Add")
-                            .foregroundColor(Color.changeTheme(black: navPop.black))
-                    })
-                }
-                .padding(.top)
-                .frame(width: ScreenSize.windowWidth() * 0.9)
-                
                 ScrollView(showsIndicators: false) {
                     VStack (spacing : 16) {
                         Precautions()
+                            .padding(.top, 16)
                         InputName(breathName: $breathName)
                             .modifier(Shake(animatableData: CGFloat(attempts)))
                         VStack {
@@ -143,7 +114,6 @@ struct CustomBreathingView: View {
                         .frame(width: ScreenSize.windowWidth() * 0.9, alignment: .leading)
                     }
                     .frame(width : ScreenSize.windowWidth() * 0.9)
-                    .navigationBarHidden(true)
                 }
             }
         }
@@ -160,6 +130,30 @@ struct CustomBreathingView: View {
         .background(navPop.playLooping
                         .frame(width: ScreenSize.windowWidth(), height: ScreenSize.windowHeight(), alignment: .center)
                         .ignoresSafeArea(.all))
+        .toolbar {
+            ToolbarItem(placement: .principal) {
+                HStack{
+                    Text("Add Breathing")
+                        .font(Font.custom("Poppins-SemiBold", size: 18, relativeTo: .body))
+                        .foregroundColor(Color.changeTheme(black: navPop.black))
+                }
+            }
+        }
+        .navigationBarItems(trailing:                     Button(action: {
+            if breathName == ""{
+                withAnimation(.default) {
+                    self.attempts += 1
+                }
+
+            }else{
+                saveToCoreData()
+                navPop.addBreath = false
+            }
+        }, label: {
+            Text("Add")
+                .foregroundColor(Color.changeTheme(black: navPop.black))
+        }))
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
 
