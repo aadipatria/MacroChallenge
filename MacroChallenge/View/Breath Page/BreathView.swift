@@ -344,7 +344,13 @@ extension BreathView{
         audio = Bool(breaths[index].sound)
         
         if navPop.previous != breaths[index].background{
-            navPop.black = Bool(breaths[index].black)
+            if breaths[index].background == "lake"{
+                navPop.black = true
+                navPop.black2 = true
+            }else{
+                navPop.black = false
+                navPop.black2 = false
+            }
             navPop.playLooping.player.moveBackground(name: breaths[index].background ?? "forest")
             navPop.playLooping2.player.moveBackground(name: breaths[index].background ?? "forest")
             navPop.previous = breaths[index].background ?? "forest"

@@ -117,6 +117,14 @@ struct CustomBreathingView: View {
                 }
             }
         }
+        .onAppear(perform: {
+            navPop.playLooping.player.moveBackground(name: self.background)
+            if self.background == "lake"{
+                navPop.black2 = true
+            }else{
+                navPop.black2 = false
+            }
+        })
         .onTapGesture {
             hideKeyboard()
         }
@@ -135,7 +143,7 @@ struct CustomBreathingView: View {
                 HStack{
                     Text("Add Breathing")
                         .font(Font.custom("Poppins-SemiBold", size: 18, relativeTo: .body))
-                        .foregroundColor(Color.changeTheme(black: navPop.black))
+                        .foregroundColor(Color.changeTheme(black: navPop.black2))
                 }
             }
         }
@@ -151,7 +159,7 @@ struct CustomBreathingView: View {
             }
         }, label: {
             Text("Add")
-                .foregroundColor(Color.changeTheme(black: navPop.black))
+                .foregroundColor(Color.changeTheme(black: navPop.black2))
         }))
         .navigationBarTitleDisplayMode(.inline)
     }
@@ -229,10 +237,10 @@ struct CustomBreathingViewPicker: View {
     @Binding var hold2Selection : Int
     
     //batasnya ganti disni
-    var inhale = [Int](2..<11)
-    var hold1 = [Int](0..<11)
-    var exhale = [Int](2..<11)
-    var hold2 = [Int](0..<11)
+    var inhale = [Int](2..<12)
+    var hold1 = [Int](0..<12)
+    var exhale = [Int](2..<12)
+    var hold2 = [Int](0..<12)
     
     var body: some View {
         ZStack {

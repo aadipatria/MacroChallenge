@@ -31,23 +31,22 @@ struct ChooseBackground: View {
                     Button(action: {
                         self.isChooseBackground = false
                     }, label: {
-                        Image(systemName: "chevron.left")
+                        Text("Cancel")
+                            .font(Font.custom("Poppins-Medium", size: 17, relativeTo: .body))
                             .foregroundColor(hitam ? Color.black : Color.white)
                             .padding(5)
                     })
-                    
                     Spacer()
                     Text("Select Ambience")
                         .font(Font.custom("Poppins-SemiBold", size: 18, relativeTo: .body))
                         .foregroundColor(hitam ? Color.black : Color.white)
                         .padding(5)
-                        .padding(.leading, 30)
                     Spacer()
                     Button(action: {
                         if idx == 0{
-                            navPop.black = false
+                            navPop.black2 = false
                         }else{
-                            navPop.black = true
+                            navPop.black2 = true
                         }
                         saveBackground()
                         self.isChooseBackground = false
@@ -134,6 +133,7 @@ extension ChooseBackground {
     }
     
     func saveBackground() {
+        navPop.playLooping.player.moveBackground(name: String(BackgroundAssetList.assetList[idx]))
         self.currBackground = BackgroundAssetList.assetList[idx]
     }
 }

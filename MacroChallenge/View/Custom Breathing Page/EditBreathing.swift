@@ -146,17 +146,13 @@ struct EditBreathing: View {
         }
         .fullScreenCover(isPresented: self.$isChooseBackground, content: {
             ChooseBackground(isChooseBackground: $isChooseBackground, currBackground: self.$background)
-                .onDisappear {
-                    navPop.playLooping.player.moveBackground(name: String(self.background))
-                    navPop.playLooping2.player.moveBackground(name: String(self.background))
-                }
         })
         .toolbar {
             ToolbarItem(placement: .principal) {
                 HStack{
                     Text("Edit Breathing")
                         .font(Font.custom("Poppins-SemiBold", size: 18, relativeTo: .body))
-                        .foregroundColor(Color.changeTheme(black: navPop.black))
+                        .foregroundColor(Color.changeTheme(black: navPop.black2))
                 }
             }
         }
@@ -171,9 +167,17 @@ struct EditBreathing: View {
             }
         }, label: {
             Text("Save")
-                .foregroundColor(Color.changeTheme(black: navPop.black))
+                .foregroundColor(Color.changeTheme(black: navPop.black2))
         }))
         .navigationBarTitleDisplayMode(.inline)
+        .onAppear(perform: {
+            navPop.playLooping.player.moveBackground(name: self.background)
+            if self.background == "lake"{
+                navPop.black2 = true
+            }else{
+                navPop.black2 = false
+            }
+        })
     }
 }
 
@@ -226,6 +230,12 @@ extension EditBreathing {
                 breath.haptic = isHapticOn
                 breath.id = self.id
                 breath.background = self.background
+                navPop.playLooping2.player.moveBackground(name: self.background)
+                if self.background == "lake"{
+                    navPop.black = true
+                }else{
+                    navPop.black = false
+                }
                 
                 do{
                     try self.manageObjectContext.save()
