@@ -12,13 +12,9 @@ struct HomeView: View {
     @EnvironmentObject var navPop : NavigationPopObject
     @AppStorage("needsAppOnboarding") private var needsAppOnboarding: Bool = true
     @State var playLooping = LoopingPlayer()
-    
     init() {
-        //Use this if NavigationBarTitle is with Large Font
-        UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor.white]
-
-        //Use this if NavigationBarTitle is with displayMode = .inline
-        UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor.white]
+        UINavigationBar.appearance().shadowImage = UIImage()
+        UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .default)
     }
     
     var body: some View {
