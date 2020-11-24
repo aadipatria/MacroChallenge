@@ -33,7 +33,7 @@ struct CustomBreathingView: View {
                 ScrollView(showsIndicators: false) {
                     VStack (spacing : 16) {
                         Precautions()
-                            .padding(.top, 20)
+                            .padding(.top, 16)
                         InputName(breathName: $breathName)
                             .modifier(Shake(animatableData: CGFloat(attempts)))
                         VStack {
@@ -130,8 +130,8 @@ struct CustomBreathingView: View {
         .background(navPop.playLooping
                         .frame(width: ScreenSize.windowWidth(), height: ScreenSize.windowHeight(), alignment: .center)
                         .ignoresSafeArea(.all))
-        .toolbar { // <2>
-            ToolbarItem(placement: .principal) { // <3>
+        .toolbar {
+            ToolbarItem(placement: .principal) {
                 HStack{
                     Text("Add Breathing")
                         .font(Font.custom("Poppins-SemiBold", size: 18, relativeTo: .body))

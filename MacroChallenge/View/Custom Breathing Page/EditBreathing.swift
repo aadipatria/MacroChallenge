@@ -37,36 +37,10 @@ struct EditBreathing: View {
             navPop.playLooping
                 .edgesIgnoringSafeArea(.all)
             VStack {
-                HStack{
-                    Button(action: {
-                        self.presentationMode.wrappedValue.dismiss()
-                    }, label: {
-                        Image(systemName: "chevron.left")
-                            .padding(8)
-                    })
-                    Spacer()
-                    Text("Edit Breathing")
-                        .font(Font.custom("Poppins-SemiBold", size: 18, relativeTo: .body))
-                        .foregroundColor(Color.changeTheme(black: navPop.black))
-                    Spacer()
-                    Button(action: {
-                        if breathName == ""{
-                            withAnimation(.default) {
-                                self.attempts += 1
-                            }
-                        }else{
-                            updateBreath()
-                            self.presentationMode.wrappedValue.dismiss()
-                        }
-                    }, label: {
-                        Text("Save")
-                            .foregroundColor(Color.changeTheme(black: navPop.black))
-                    })
-                }.padding(.top)
-                .frame(width: ScreenSize.windowWidth() * 0.9)
                 ScrollView(showsIndicators: false) {
                     VStack (spacing: 16) {
                         Precautions()
+                            .padding(.top, 16)
                         InputName(breathName: $breathName)
                             .modifier(Shake(animatableData: CGFloat(attempts)))
                         
@@ -159,7 +133,6 @@ struct EditBreathing: View {
                         Spacer()
                     }
                     .frame(width : ScreenSize.windowWidth() * 0.9)
-                    .navigationBarHidden(true)
                     .onAppear {
                         checkIdAndChangeData()
                 }
@@ -178,6 +151,29 @@ struct EditBreathing: View {
                     navPop.playLooping2.player.moveBackground(name: String(self.background))
                 }
         })
+        .toolbar {
+            ToolbarItem(placement: .principal) {
+                HStack{
+                    Text("Edit Breathing")
+                        .font(Font.custom("Poppins-SemiBold", size: 18, relativeTo: .body))
+                        .foregroundColor(Color.changeTheme(black: navPop.black))
+                }
+            }
+        }
+        .navigationBarItems(trailing:                               Button(action: {
+            if breathName == ""{
+                withAnimation(.default) {
+                    self.attempts += 1
+                }
+            }else{
+                updateBreath()
+                self.presentationMode.wrappedValue.dismiss()
+            }
+        }, label: {
+            Text("Save")
+                .foregroundColor(Color.changeTheme(black: navPop.black))
+        }))
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
 
