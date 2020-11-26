@@ -73,6 +73,7 @@
 		CA4261D5255BC08600C32954 /* Poppins-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CA4261D4255BC08600C32954 /* Poppins-Light.ttf */; };
 		CA4261DA255BC0FE00C32954 /* Poppins-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CA4261D9255BC0FE00C32954 /* Poppins-Medium.ttf */; };
 		CA4261DF255BC16300C32954 /* Poppins-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CA4261DE255BC16300C32954 /* Poppins-Regular.ttf */; };
+		CA4367C9256F557300B712F4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9DF78780255D2D1F007A6362 /* Assets.xcassets */; };
 		CA4AD0232555787D00290225 /* BreathExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7D813C2553260B000255EF /* BreathExtension.swift */; };
 		CA7DC47325593917003CE217 /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7DC47225593917003CE217 /* AudioPlayer.swift */; };
 		CA86588625417C8300FD5CB4 /* BreathWatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA86588525417C8300FD5CB4 /* BreathWatchView.swift */; };
@@ -603,6 +604,7 @@
 			files = (
 				9DFAB8A02534405100E81C87 /* Preview Assets.xcassets in Resources */,
 				BC0CBDBD255A9DAA00C7B453 /* (null) in Resources */,
+				CA4367C9256F557300B712F4 /* Assets.xcassets in Resources */,
 				9DFAB89D2534405100E81C87 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

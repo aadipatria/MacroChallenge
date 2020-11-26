@@ -42,9 +42,6 @@ struct EmergencyView: View {
                     Spacer()
                     if !contacts.isEmpty{
                         Button(action: {
-                            if isEdited{
-                                sync()
-                            }
                             isEdited.toggle()
                         }, label: {
                             if isEdited{
@@ -176,10 +173,16 @@ struct EmergencyView: View {
             
             if self.isAddNewContact {
                 AddContactModal(isAddNewContact: $isAddNewContact)
+                    .onDisappear(perform: {
+                        sync()
+                    })
             }
 
             if self.contactEdited {
                 EditContactModal(isContactEdited: self.$contactEdited, name: self.$name, number: self.$number, id: self.$id)
+                    .onDisappear(perform: {
+                        sync()
+                    })
             }
         }
         .padding(.bottom, keyboardHeight - 45)
