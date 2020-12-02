@@ -214,13 +214,13 @@ struct BreathView: View {
                         isBreathing = true
                     }
                 }else{
-                    var breath = Breathing(context: self.manageObjectContext)
+                    let breath = Breathing(context: self.manageObjectContext)
                     breath.name = "Calm"
                     breath.inhale = 4
                     breath.hold1 = 7
                     breath.exhale = 8
                     breath.hold2 = 0
-                    breath.favorite = false
+                    breath.favorite = true
                     breath.haptic = true
                     breath.sound = true
                     breath.id = UUID()
@@ -233,25 +233,25 @@ struct BreathView: View {
                     } catch {
                         print(error)
                     }
-                    breath = Breathing(context: self.manageObjectContext)
-                    breath.name = "Relax"
-                    breath.inhale = 7
-                    breath.hold1 = 0
-                    breath.exhale = 11
-                    breath.hold2 = 0
-                    breath.favorite = true
-                    breath.haptic = true
-                    breath.sound = true
-                    breath.id = UUID()
-                    breath.background = "lake"
-                    breath.black = true
-                    breath.bgm = true
-                    do{
-                        //save ke core data
-                        try self.manageObjectContext.save()
-                    } catch {
-                        print(error)
-                    }
+//                    breath = Breathing(context: self.manageObjectContext)
+//                    breath.name = "Relax"
+//                    breath.inhale = 7
+//                    breath.hold1 = 0
+//                    breath.exhale = 11
+//                    breath.hold2 = 0
+//                    breath.favorite = true
+//                    breath.haptic = true
+//                    breath.sound = true
+//                    breath.id = UUID()
+//                    breath.background = "lake"
+//                    breath.black = true
+//                    breath.bgm = true
+//                    do{
+//                        //save ke core data
+//                        try self.manageObjectContext.save()
+//                    } catch {
+//                        print(error)
+//                    }
                     update()
                 }
                 self.breathingStateHelper = BreathingStateHelper(
