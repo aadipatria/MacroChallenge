@@ -66,6 +66,7 @@
 		BCB202D1255E7F5B0095DE68 /* ScrollArrows.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB202D0255E7F5B0095DE68 /* ScrollArrows.swift */; };
 		BCB202D9255E94EA0095DE68 /* OnboardingPageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB202D8255E94EA0095DE68 /* OnboardingPageControl.swift */; };
 		CA22994D255BBD1300A547C4 /* Poppins-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CA22994C255BBD1300A547C4 /* Poppins-Bold.ttf */; };
+		CA37047A2570F5A3008964CE /* HScrollingModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3704792570F5A3008964CE /* HScrollingModifier.swift */; };
 		CA3FC7BD255D438C003298A0 /* inhale.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CA3FC7BC255D438C003298A0 /* inhale.mp3 */; };
 		CA3FC7C5255D43D6003298A0 /* hold.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CA3FC7C4255D43D6003298A0 /* hold.mp3 */; };
 		CA3FC7CD255D442D003298A0 /* exhale.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CA3FC7CC255D442D003298A0 /* exhale.mp3 */; };
@@ -190,6 +191,7 @@
 		BCB202D0255E7F5B0095DE68 /* ScrollArrows.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollArrows.swift; sourceTree = "<group>"; };
 		BCB202D8255E94EA0095DE68 /* OnboardingPageControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPageControl.swift; sourceTree = "<group>"; };
 		CA22994C255BBD1300A547C4 /* Poppins-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Bold.ttf"; sourceTree = "<group>"; };
+		CA3704792570F5A3008964CE /* HScrollingModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HScrollingModifier.swift; sourceTree = "<group>"; };
 		CA3FC7BC255D438C003298A0 /* inhale.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = inhale.mp3; sourceTree = "<group>"; };
 		CA3FC7C4255D43D6003298A0 /* hold.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = hold.mp3; sourceTree = "<group>"; };
 		CA3FC7CC255D442D003298A0 /* exhale.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = exhale.mp3; sourceTree = "<group>"; };
@@ -439,6 +441,7 @@
 			isa = PBXGroup;
 			children = (
 				CA95C11D25357BEE008C0398 /* BreathView.swift */,
+				CA3704792570F5A3008964CE /* HScrollingModifier.swift */,
 				CA95C12625357C52008C0398 /* AfterBreathingView.swift */,
 				BC7D813C2553260B000255EF /* BreathExtension.swift */,
 				CA88C2DE254ADA6F0046D393 /* Animation */,
@@ -617,6 +620,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BC8B2B48254AA7790091F892 /* AnimatedRing.swift in Sources */,
+				CA37047A2570F5A3008964CE /* HScrollingModifier.swift in Sources */,
 				9DE77B292542D7CA00BCCDB3 /* AddEmergencyContact.swift in Sources */,
 				BC8B2B31254AA5900091F892 /* AnimationSet.swift in Sources */,
 				7585E91D25516654007BF3C5 /* LoopingPlayer.swift in Sources */,
