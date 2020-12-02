@@ -105,7 +105,7 @@ struct BreathView: View {
                                         Blur(style: .regular)
                                             .mask(RoundedRectangle(cornerRadius: 15))
                                     )
-                                    .frame(width: 283, height: 327, alignment: .center)
+                                    .frame(width: 283, height: ScreenSize.windowHeight() * 0.4, alignment: .center)
                                 VStack (spacing : 8){
                                     Text(breaths[i].name!)
                                         .font(Font.custom("Poppins-Bold", size: 28, relativeTo: .body))
@@ -166,6 +166,7 @@ struct BreathView: View {
                         }
                     }
                     .modifier(ScrollingHStackModifier(items: breaths.count, itemWidth: 283, itemSpacing: 30))
+                    .frame(width: 283, height: ScreenSize.windowHeight() * 0.4, alignment: .center)
                     .padding(.bottom)
                     
                     ZStack(alignment: .leading) {
