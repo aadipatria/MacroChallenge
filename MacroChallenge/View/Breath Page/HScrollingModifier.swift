@@ -59,7 +59,7 @@ struct ScrollingHStackModifier: ViewModifier {
                     // Protect from scrolling out of bounds
                     index = min(index, CGFloat(items) - 1)
                     index = max(index, 0)
-                    navPop.indexWarna = items - Int(index) - 1
+                    navPop.indexBreath = items - Int(index) - 1
                     
                     // Set final offset (snapping to item)
                     let newOffset = index * itemWidth + (index - 1) * itemSpacing - (contentWidth / 2.0) + (screenWidth / 2.0) - ((screenWidth - itemWidth) / 2.0) + itemSpacing

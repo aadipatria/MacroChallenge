@@ -358,6 +358,10 @@ struct BreathView: View {
                     self.stopBreathing()
                 }
             })
+            .onChange(of: navPop.indexBreath, perform: { value in
+                index = value
+                update()
+            })
             .navigationBarHidden(true)
 
         }
@@ -377,34 +381,12 @@ struct BreathView: View {
 }
 
 extension BreathView{
-    func changeRight(){
-        if !breaths.isEmpty{
-            if index == breaths.count - 1 {
-                index = 0
-            }else{
-                index += 1
-            }
-            update()
-        }
-    }
-    func changeLeft(){
-        if !breaths.isEmpty{
-            if index == 0 {
-                index = breaths.count - 1
-            }else{
-                index -= 1
-            }
-            update()
-        }
-        
-    }
     func update(){
         inhale = Double(breaths[index].inhale)
         hold1 = Double(breaths[index].hold1)
         exhale = Double(breaths[index].exhale)
         hold2 = Double(breaths[index].hold2)
         name = String(breaths[index].name!)
-        pattern = String(format: "%.0f - %.0f - %.0f - %.0f", self.inhale, self.hold1, self.exhale, self.hold2)
         haptic = Bool(breaths[index].haptic)
         audio = Bool(breaths[index].sound)
         
