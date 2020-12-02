@@ -18,6 +18,7 @@
 		9D7D2713253818B8006D35D2 /* BreathingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7D2712253818B8006D35D2 /* BreathingModel.swift */; };
 		9D7D2714253818B8006D35D2 /* BreathingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7D2712253818B8006D35D2 /* BreathingModel.swift */; };
 		9DB07506256205CF0002DDDD /* HalfModalTrial.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB07505256205CF0002DDDD /* HalfModalTrial.swift */; };
+		9DBDD5982577850F00D1A732 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DBDD5972577850F00D1A732 /* CloudKit.framework */; };
 		9DE77B212542D5A800BCCDB3 /* EmergencyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE77B202542D5A800BCCDB3 /* EmergencyModel.swift */; };
 		9DE77B292542D7CA00BCCDB3 /* AddEmergencyContact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE77B282542D7CA00BCCDB3 /* AddEmergencyContact.swift */; };
 		9DE77B3D2542DE8D00BCCDB3 /* WatchHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE77B3C2542DE8D00BCCDB3 /* WatchHelper.swift */; };
@@ -145,6 +146,8 @@
 		9D7D26E925381317006D35D2 /* MacroChallenge.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MacroChallenge.xcdatamodel; sourceTree = "<group>"; };
 		9D7D2712253818B8006D35D2 /* BreathingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreathingModel.swift; sourceTree = "<group>"; };
 		9DB07505256205CF0002DDDD /* HalfModalTrial.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HalfModalTrial.swift; sourceTree = "<group>"; };
+		9DBDD5922577850D00D1A732 /* MacroChallenge.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MacroChallenge.entitlements; sourceTree = "<group>"; };
+		9DBDD5972577850F00D1A732 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.2.sdk/System/Library/Frameworks/CloudKit.framework; sourceTree = DEVELOPER_DIR; };
 		9DE77B202542D5A800BCCDB3 /* EmergencyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmergencyModel.swift; sourceTree = "<group>"; };
 		9DE77B282542D7CA00BCCDB3 /* AddEmergencyContact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEmergencyContact.swift; sourceTree = "<group>"; };
 		9DE77B3C2542DE8D00BCCDB3 /* WatchHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchHelper.swift; sourceTree = "<group>"; };
@@ -220,6 +223,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9DBDD5982577850F00D1A732 /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -257,6 +261,14 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		9DBDD5962577850F00D1A732 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9DBDD5972577850F00D1A732 /* CloudKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		9DE77AA22541696F00BCCDB3 /* WatchModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -279,6 +291,7 @@
 				9DFAB8802534405000E81C87 /* MacroChallenge WatchKit App */,
 				9DFAB88F2534405100E81C87 /* MacroChallenge WatchKit Extension */,
 				9DFAB8692534404F00E81C87 /* Products */,
+				9DBDD5962577850F00D1A732 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -295,6 +308,7 @@
 		9DFAB86A2534404F00E81C87 /* MacroChallenge */ = {
 			isa = PBXGroup;
 			children = (
+				9DBDD5922577850D00D1A732 /* MacroChallenge.entitlements */,
 				9DF78780255D2D1F007A6362 /* Assets.xcassets */,
 				7585E921255166C2007BF3C5 /* AssetsVideoBerjalan */,
 				9D7D26F62538151E006D35D2 /* Model */,
@@ -838,7 +852,7 @@
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"MacroChallenge WatchKit Extension/Preview Content\"";
-				DEVELOPMENT_TEAM = D89FSBU974;
+				DEVELOPMENT_TEAM = P9W54VNRMY;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "MacroChallenge WatchKit Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -847,7 +861,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 1.04;
-				PRODUCT_BUNDLE_IDENTIFIER = com.ada.hale.watchkitapp.watchkitextension;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ada.hale.breathing.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -863,7 +877,7 @@
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"MacroChallenge WatchKit Extension/Preview Content\"";
-				DEVELOPMENT_TEAM = D89FSBU974;
+				DEVELOPMENT_TEAM = P9W54VNRMY;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "MacroChallenge WatchKit Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -872,7 +886,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 1.04;
-				PRODUCT_BUNDLE_IDENTIFIER = com.ada.hale.watchkitapp.watchkitextension;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ada.hale.breathing.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -890,8 +904,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = D89FSBU974;
+				DEVELOPMENT_TEAM = P9W54VNRMY;
 				IBSC_MODULE = MacroChallenge_WatchKit_Extension;
 				INFOPLIST_FILE = "MacroChallenge WatchKit App/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -900,8 +915,9 @@
 					"@loader_path/../Frameworks",
 				);
 				MARKETING_VERSION = 1.04;
-				PRODUCT_BUNDLE_IDENTIFIER = com.ada.hale.watchkitapp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ada.hale.breathing.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "MacroChallenge/Model/MacroChallenge WatchKit App-Bridging-Header.h";
@@ -919,8 +935,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = D89FSBU974;
+				DEVELOPMENT_TEAM = P9W54VNRMY;
 				IBSC_MODULE = MacroChallenge_WatchKit_Extension;
 				INFOPLIST_FILE = "MacroChallenge WatchKit App/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -929,8 +946,9 @@
 					"@loader_path/../Frameworks",
 				);
 				MARKETING_VERSION = 1.04;
-				PRODUCT_BUNDLE_IDENTIFIER = com.ada.hale.watchkitapp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ada.hale.breathing.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "MacroChallenge/Model/MacroChallenge WatchKit App-Bridging-Header.h";
@@ -946,9 +964,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = MacroChallenge/MacroChallenge.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"MacroChallenge/Preview Content\"";
-				DEVELOPMENT_TEAM = D89FSBU974;
+				DEVELOPMENT_TEAM = P9W54VNRMY;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = MacroChallenge/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -957,7 +976,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.04;
-				PRODUCT_BUNDLE_IDENTIFIER = com.ada.hale;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ada.hale.breathing;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SWIFT_VERSION = 5.0;
@@ -970,9 +989,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = MacroChallenge/MacroChallenge.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"MacroChallenge/Preview Content\"";
-				DEVELOPMENT_TEAM = D89FSBU974;
+				DEVELOPMENT_TEAM = P9W54VNRMY;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = MacroChallenge/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -981,7 +1001,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.04;
-				PRODUCT_BUNDLE_IDENTIFIER = com.ada.hale;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ada.hale.breathing;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SWIFT_VERSION = 5.0;
