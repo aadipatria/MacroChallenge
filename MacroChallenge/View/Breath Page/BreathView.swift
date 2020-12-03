@@ -105,7 +105,7 @@ struct BreathView: View {
                                         Blur(style: .regular)
                                             .mask(RoundedRectangle(cornerRadius: 15))
                                     )
-                                    .frame(width: 300, height: ScreenSize.windowHeight() * 0.42, alignment: .center)
+                                    .frame(width: 300, height: navPop.indexBreath == i ? ScreenSize.windowHeight() * 0.42 : ScreenSize.windowHeight() * 0.35 , alignment: .center)
                                 VStack (spacing : 8){
                                     Text(breaths[i].name!)
                                         .font(Font.custom("Poppins-Bold", size: 28, relativeTo: .body))
@@ -162,6 +162,7 @@ struct BreathView: View {
                                     }
                                 }
                             }
+                            .animation(.easeInOut(duration: 0.5))
                                  
                         }
                     }
@@ -276,6 +277,7 @@ struct BreathView: View {
             }
             .frame(maxHeight: ScreenSize.windowHeight() * 0.52)
             .onAppear(perform: {
+                navPop.indexBreath = 0
                 prepareHaptics()
                 success = true
                 showStop = false
