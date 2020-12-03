@@ -68,6 +68,7 @@ struct BreathView: View {
                                 .padding(30)
                                 .scaleEffect(self.animationSizeScaling)
                                 .onAnimationCompleted(for: self.orbitalEffectScaling, completion: {self.changeState()})
+                                .frame(width: ScreenSize.windowWidth())
 
                             Text(guidanceText)
                                 .font(Font.custom("Poppins-SemiBold", size: 28, relativeTo: .body))
@@ -94,90 +95,100 @@ struct BreathView: View {
                         
                     }
                 }
-                
-                HStack(spacing: 16) {
-                    Button(action: {
-                        changeLeft()
-                    }, label: {
-                        Image (systemName: "chevron.left")
-                            .padding(5)
-                            .foregroundColor(Color.white)
-                            .font(/*@START_MENU_TOKEN@*/.largeTitle/*@END_MENU_TOKEN@*/)
-                    })
-                    
-                    RoundedRectangle(cornerRadius: 15)
-                        .fill(Color.clear)
-                        .frame(maxWidth: ScreenSize.windowWidth() * 0.76, maxHeight: 400)
-                        .background(
-                            Blur(style: .regular)
-                                .mask(RoundedRectangle(cornerRadius: 15))
-                        )
-                    
-                    Button(action: {
-                        changeRight()
-                    }, label: {
-                        Image (systemName: "chevron.right")
-                            .padding(5)
-                            .foregroundColor(Color.white)
-                            .font(/*@START_MENU_TOKEN@*/.largeTitle/*@END_MENU_TOKEN@*/)
-                    })
-                }
-                .opacity(self.uiElementsOpacityScaling * 0.9)
-                .gesture(DragGesture(minimumDistance: 0, coordinateSpace: .local)
-                            .onEnded({ value in
-                                //left
-                                if value.translation.width < -40 {
-                                    changeLeft()
+                VStack (spacing : 0){
+                    LazyHStack(alignment: .center, spacing: 30) {
+                        ForEach(0..<breaths.count) { i in
+                            ZStack {
+                                RoundedRectangle(cornerRadius: 15)
+                                    .fill(Color.clear)
+                                    .background(
+                                        Blur(style: .regular)
+                                            .mask(RoundedRectangle(cornerRadius: 15))
+                                    )
+                                    .frame(width: 300, height: navPop.indexBreath == i ? ScreenSize.windowHeight() * 0.42 : ScreenSize.windowHeight() * 0.35 , alignment: .center)
+                                VStack (spacing : 8){
+                                    Text(breaths[i].name!)
+                                        .font(Font.custom("Poppins-Bold", size: 28, relativeTo: .body))
+                                        .foregroundColor(Color.changeTheme(black: navPop.black))
+                                    Text("\(breaths[i].inhale) - \(breaths[i].hold1) - \(breaths[i].exhale) - \(breaths[i].hold2)")
+                                        .font(Font.custom("Poppins-Medium", size: 18, relativeTo: .body))
+                                        .foregroundColor(Color.changeTheme(black: navPop.black))
+                                    Image(systemName: Bool(breaths[i].favorite) ? "heart.fill" : "heart")
+                                        .foregroundColor(Color.changeTheme(black: navPop.black))
+                                        .font(/*@START_MENU_TOKEN@*/.title2/*@END_MENU_TOKEN@*/)
+                                    HStack{
+                                        Image(navPop.black ? "inhale" : "inhale_w")
+                                            .resizable()
+                                            .aspectRatio(contentMode: .fit)
+                                            .frame(width: 39.5, height: 34, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                                            .padding(.horizontal, 8)
+                                        Text("Inhale for \(breaths[i].inhale) seconds")
+                                            .font(Font.custom("Poppins-Regular", size: 14, relativeTo: .body))
+                                            .foregroundColor(Color.changeTheme(black: navPop.black))
+                                            .frame(width: 150, alignment: .leading)
+                                    }
+                                    HStack{
+                                        Image(navPop.black ? "hold" : "hold_w")
+                                            .resizable()
+                                            .aspectRatio(contentMode: .fit)
+                                            .frame(width: 39.5, height: 34, alignment: .center)
+                                            .padding(.horizontal, 8)
+                                        Text("Hold for \(breaths[i].hold1) seconds")
+                                            .font(Font.custom("Poppins-Regular", size: 14, relativeTo: .body))
+                                            .foregroundColor(Color.changeTheme(black: navPop.black))
+                                            .frame(width: 150, alignment: .leading)
+                                    }
+                                    HStack{
+                                        Image(navPop.black ? "exhale" : "exhale_w")
+                                            .resizable()
+                                            .aspectRatio(contentMode: .fit)
+                                            .frame(width: 39.5, height: 34, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                                            .padding(.horizontal, 8)
+                                        Text("Exhale for \(breaths[i].exhale) seconds")
+                                            .font(Font.custom("Poppins-Regular", size: 14, relativeTo: .body))
+                                            .foregroundColor(Color.changeTheme(black: navPop.black))
+                                            .frame(width: 150, alignment: .leading)
+                                    }
+                                    HStack{
+                                        Image(navPop.black ? "hold" : "hold_w")
+                                            .resizable()
+                                            .aspectRatio(contentMode: .fit)
+                                            .frame(width: 39.5, height: 34, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                                            .padding(.horizontal, 8)
+                                        Text("Hold for \(breaths[i].hold2) seconds")
+                                            .font(Font.custom("Poppins-Regular", size: 14, relativeTo: .body))
+                                            .foregroundColor(Color.changeTheme(black: navPop.black))
+                                            .frame(width: 150, alignment: .leading)
+                                    }
                                 }
-                                //right
-                                if value.translation.width > 40 {
-                                    changeRight()
-                                }
-
-
-                            }))
-                
-                VStack(spacing: 8) {
-                    // show data by index
-                    if !breaths.isEmpty{
-                        Group {
-                            Text(name)
-                                .font(Font.custom("Poppins-Bold", size: 28, relativeTo: .body))
-                                .foregroundColor(Color.changeTheme(black: navPop.black))
-                            Text(pattern)
-                                .fontWeight(.medium)
-                                .foregroundColor(Color.changeTheme(black: navPop.black))
-                                .font(/*@START_MENU_TOKEN@*/.title3/*@END_MENU_TOKEN@*/)
-                            if breaths[index].favorite {
-                                Image(systemName: "heart.fill")
-                                    .foregroundColor(Color.changeTheme(black: navPop.black))
-                                    .font(/*@START_MENU_TOKEN@*/.title2/*@END_MENU_TOKEN@*/)
-                            } else {
-                                Image(systemName: "heart")
-                                    .foregroundColor(Color.changeTheme(black: navPop.black))
-                                    .font(/*@START_MENU_TOKEN@*/.title2/*@END_MENU_TOKEN@*/)
-
                             }
+                            .animation(.easeInOut(duration: 0.5))
+                                 
                         }
                     }
+                    .modifier(ScrollingHStackModifier(items: breaths.count, itemWidth: 300, itemSpacing: 30))
+                    .frame(width: 283, height: ScreenSize.windowHeight() * 0.4, alignment: .center)
+                    .padding(.bottom)
                     
                     ZStack(alignment: .leading) {
-                        Text("Minute(s)")
+                        Text(cycleTime > 1 ? "Minutes" : "Minute")
                             .font(Font.custom("Poppins-Bold", size: 18, relativeTo: .body))
-                            .padding(.leading, 96)
-                            .foregroundColor(Color.changeTheme(black: navPop.black))
-                        
+                            .padding(.leading, 88)
+                            .foregroundColor(Color.white)
+                            .frame(width: 180, alignment: .leading)
+
                         Picker(selection: $cycleTime, label: Text("Picker")) {
                             ForEach(cycleMinutes, id: \.self) { minutes in
                                 Text("\(minutes)")
-                                    .foregroundColor(Color.changeTheme(black: navPop.black))
+                                    .foregroundColor(Color.white)
                                     .font(Font.custom("Poppins-SemiBold", size: 18, relativeTo: .body))
                             }
                         }
-                        .frame(width: 160, height: 150)
+                        .frame(width: 60, height: 150)
                         .clipped()
+                        .padding(.leading)
                     }
-                    
+                    .frame(width: ScreenSize.windowWidth() * 0.9, alignment: .center)
                     Button(action: {
                         self.isBreathing.toggle()
                         if isBreathing{
@@ -196,12 +207,77 @@ struct BreathView: View {
                             .background(RoundedRectangle(cornerRadius: 36).fill(Color(UIColor(.white))))
                     }
                 }
-                .frame(maxWidth: ScreenSize.windowWidth() * 0.72)
-//                .padding(.vertical, 32)
                 .opacity(self.uiElementsOpacityScaling)
+                
+//                HStack(spacing: 16) {
+//                    Button(action: {
+//                        changeLeft()
+//                    }, label: {
+//                        Image (systemName: "chevron.left")
+//                            .padding(5)
+//                            .foregroundColor(Color.white)
+//                            .font(/*@START_MENU_TOKEN@*/.largeTitle/*@END_MENU_TOKEN@*/)
+//                    })
+//
+                        
+//
+//                    Button(action: {
+//                        changeRight()
+//                    }, label: {
+//                        Image (systemName: "chevron.right")
+//                            .padding(5)
+//                            .foregroundColor(Color.white)
+//                            .font(/*@START_MENU_TOKEN@*/.largeTitle/*@END_MENU_TOKEN@*/)
+//                    })
+//                }
+//                .opacity(self.uiElementsOpacityScaling * 0.9)
+//                .gesture(DragGesture(minimumDistance: 0, coordinateSpace: .local)
+//                            .onEnded({ value in
+//                                //left
+//                                if value.translation.width < -40 {
+//                                    changeLeft()
+//                                }
+//                                //right
+//                                if value.translation.width > 40 {
+//                                    changeRight()
+//                                }
+//
+//
+//                            }))
+                
+//                VStack(spacing: 8) {
+//                    // show data by index
+//                    if !breaths.isEmpty{
+//                        Group {
+//                            Text(name)
+//                                .font(Font.custom("Poppins-Bold", size: 28, relativeTo: .body))
+//                                .foregroundColor(Color.changeTheme(black: navPop.black))
+//                            Text(pattern)
+//                                .fontWeight(.medium)
+//                                .foregroundColor(Color.changeTheme(black: navPop.black))
+//                                .font(/*@START_MENU_TOKEN@*/.title3/*@END_MENU_TOKEN@*/)
+//                            if breaths[index].favorite {
+//                                Image(systemName: "heart.fill")
+//                                    .foregroundColor(Color.changeTheme(black: navPop.black))
+//                                    .font(/*@START_MENU_TOKEN@*/.title2/*@END_MENU_TOKEN@*/)
+//                            } else {
+//                                Image(systemName: "heart")
+//                                    .foregroundColor(Color.changeTheme(black: navPop.black))
+//                                    .font(/*@START_MENU_TOKEN@*/.title2/*@END_MENU_TOKEN@*/)
+//
+//                            }
+//                        }
+//                    }
+//
+
+//                }
+//                .frame(maxWidth: ScreenSize.windowWidth() * 0.72)
+////                .padding(.vertical, 32)
+                
             }
             .frame(maxHeight: ScreenSize.windowHeight() * 0.52)
             .onAppear(perform: {
+                navPop.indexBreath = 0
                 prepareHaptics()
                 success = true
                 showStop = false
@@ -260,11 +336,6 @@ struct BreathView: View {
                 )
                 self.updateAnimations()
             })
-            .onTapGesture(count: /*@START_MENU_TOKEN@*/1/*@END_MENU_TOKEN@*/, perform: {
-                if isBreathing{
-                    showStop.toggle()
-                }
-            })
             .onChange(of: breathingState) {newValue in
                 switch newValue {
                 case .none:
@@ -293,6 +364,10 @@ struct BreathView: View {
                     self.stopBreathing()
                 }
             })
+            .onChange(of: navPop.indexBreath, perform: { value in
+                index = value
+                update()
+            })
             .navigationBarHidden(true)
 
         }
@@ -312,34 +387,12 @@ struct BreathView: View {
 }
 
 extension BreathView{
-    func changeRight(){
-        if !breaths.isEmpty{
-            if index == breaths.count - 1 {
-                index = 0
-            }else{
-                index += 1
-            }
-            update()
-        }
-    }
-    func changeLeft(){
-        if !breaths.isEmpty{
-            if index == 0 {
-                index = breaths.count - 1
-            }else{
-                index -= 1
-            }
-            update()
-        }
-        
-    }
     func update(){
         inhale = Double(breaths[index].inhale)
         hold1 = Double(breaths[index].hold1)
         exhale = Double(breaths[index].exhale)
         hold2 = Double(breaths[index].hold2)
         name = String(breaths[index].name!)
-        pattern = String(format: "%.0f - %.0f - %.0f - %.0f", self.inhale, self.hold1, self.exhale, self.hold2)
         haptic = Bool(breaths[index].haptic)
         audio = Bool(breaths[index].sound)
         

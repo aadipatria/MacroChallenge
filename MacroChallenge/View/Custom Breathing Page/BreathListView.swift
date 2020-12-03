@@ -136,6 +136,7 @@ extension BreathListView {
             breathingArray.append(String(breath.sound))
             breathingArray.append(String(breath.haptic))
             breathingArray.append(String(breath.favorite))
+            breathingArray.append(String(breath.background ?? "forest_img"))
             breathingArray.append(breath.id.uuidString)
             breathing2DArray.append(breathingArray)
         }

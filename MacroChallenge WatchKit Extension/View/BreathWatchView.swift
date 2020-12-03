@@ -21,7 +21,25 @@ struct BreathWatchView: View {
     var body: some View {
         List {
             if Storage.userDefault(data: arrayOfBreathing)[0].isEmpty{
-                Text("No Data")
+                NavigationLink(destination : AnimationTestView(name: "Calm", inhale: 4, hold1: 7, exhale: 8, hold2: 0, haptic: true, sound: true),
+                label: {
+                    HStack {
+                        Spacer()
+                        VStack {
+                            Text("Calm")
+                                .foregroundColor(Color.white)
+                            Text("4-7-8-0")
+                                .foregroundColor(Color.white)
+                        }
+                        Spacer()
+                    }
+                })
+                    .frame(height: WKInterfaceDevice.current().screenBounds.height * 0.55, alignment: .center)
+                    .background(Image("forest_img")
+                                    .resizable()
+                                    .cornerRadius(8)
+                                    .frame(width: WKInterfaceDevice.current().screenBounds.width * 0.9 ,height: WKInterfaceDevice.current().screenBounds.height * 0.60, alignment : .center))
+                    
             }else{
                 ForEach(Storage.userDefault(data: arrayOfBreathing).indices, id: \.self){ idx in
                     NavigationLink(
@@ -35,11 +53,17 @@ struct BreathWatchView: View {
                             }
                         })
                         .frame(width: WKInterfaceDevice.current().screenBounds.width * 0.9, height: WKInterfaceDevice.current().screenBounds.height * 0.65, alignment: .center)
-                        .background(Color.blue)
+                        .background(Image("\(Storage.userDefault(data: arrayOfBreathing)[idx][8])_img")
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fit)
+                                        .cornerRadius(8))
+                        .padding(.leading, -8)
+                        .padding(.vertical, -15)
                 }
             }
         }
         .listStyle(CarouselListStyle())
+        .frame(width: WKInterfaceDevice.current().screenBounds.width * 0.9)
         .navigationBarTitle("Breathing")
     }
 }
