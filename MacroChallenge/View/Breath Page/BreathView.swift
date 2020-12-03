@@ -277,7 +277,6 @@ struct BreathView: View {
             }
             .frame(maxHeight: ScreenSize.windowHeight() * 0.52)
             .onAppear(perform: {
-                navPop.indexBreath = 0
                 prepareHaptics()
                 success = true
                 showStop = false
@@ -371,6 +370,11 @@ struct BreathView: View {
             .navigationBarHidden(true)
 
         }
+        .onTapGesture(count: /*@START_MENU_TOKEN@*/1/*@END_MENU_TOKEN@*/, perform: {
+            if isBreathing{
+                showStop.toggle()
+            }
+        })
     }
     func prepareHaptics(){
         guard CHHapticEngine.capabilitiesForHardware().supportsHaptics else {return }
