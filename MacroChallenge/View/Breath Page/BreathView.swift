@@ -117,7 +117,7 @@ struct BreathView: View {
                                         .foregroundColor(Color.changeTheme(black: navPop.black))
                                         .font(/*@START_MENU_TOKEN@*/.title2/*@END_MENU_TOKEN@*/)
                                     HStack{
-                                        Image("inhale")
+                                        Image(navPop.black ? "inhale" : "inhale_w")
                                             .resizable()
                                             .aspectRatio(contentMode: .fit)
                                             .frame(width: 39.5, height: 34, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
@@ -128,7 +128,7 @@ struct BreathView: View {
                                             .frame(width: 150, alignment: .leading)
                                     }
                                     HStack{
-                                        Image("hold")
+                                        Image(navPop.black ? "hold" : "hold_w")
                                             .resizable()
                                             .aspectRatio(contentMode: .fit)
                                             .frame(width: 39.5, height: 34, alignment: .center)
@@ -139,7 +139,7 @@ struct BreathView: View {
                                             .frame(width: 150, alignment: .leading)
                                     }
                                     HStack{
-                                        Image("exhale")
+                                        Image(navPop.black ? "exhale" : "exhale_w")
                                             .resizable()
                                             .aspectRatio(contentMode: .fit)
                                             .frame(width: 39.5, height: 34, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
@@ -150,7 +150,7 @@ struct BreathView: View {
                                             .frame(width: 150, alignment: .leading)
                                     }
                                     HStack{
-                                        Image("hold")
+                                        Image(navPop.black ? "hold" : "hold_w")
                                             .resizable()
                                             .aspectRatio(contentMode: .fit)
                                             .frame(width: 39.5, height: 34, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
@@ -172,8 +172,9 @@ struct BreathView: View {
                     ZStack(alignment: .leading) {
                         Text(cycleTime > 1 ? "Minutes" : "Minute")
                             .font(Font.custom("Poppins-Bold", size: 18, relativeTo: .body))
-                            .padding(.leading, 106)
+                            .padding(.leading, 88)
                             .foregroundColor(Color.white)
+                            .frame(width: 180, alignment: .leading)
 
                         Picker(selection: $cycleTime, label: Text("Picker")) {
                             ForEach(cycleMinutes, id: \.self) { minutes in
@@ -182,9 +183,11 @@ struct BreathView: View {
                                     .font(Font.custom("Poppins-SemiBold", size: 18, relativeTo: .body))
                             }
                         }
-                        .frame(width: 190, height: 150)
+                        .frame(width: 60, height: 150)
                         .clipped()
+                        .padding(.leading)
                     }
+                    .frame(width: ScreenSize.windowWidth() * 0.9, alignment: .center)
                     Button(action: {
                         self.isBreathing.toggle()
                         if isBreathing{
