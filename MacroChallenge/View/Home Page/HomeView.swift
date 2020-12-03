@@ -78,12 +78,12 @@ struct ExtractedView: View {
                 VStack (spacing: 0) {
                     if navPop.page == 0{
                         Image("water").imageIconModifier()
-                        Text("Contact")
+                        Text("Contacts")
                             .font(Font.custom("Poppins-SemiBold", size: 10, relativeTo: .body))
                             .foregroundColor(.white)
                     }else{
                         Image("water_gray").imageIconModifier()
-                        Text("Contact")
+                        Text("Contacts")
                             .font(Font.custom("Poppins-SemiBold", size: 10, relativeTo: .body))
                             .foregroundColor(.gray)
                     }

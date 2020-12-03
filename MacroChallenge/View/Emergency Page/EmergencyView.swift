@@ -36,7 +36,7 @@ struct EmergencyView: View {
         ZStack() {
             VStack(spacing: 0){
                 HStack {
-                    Text("Top Contacts")
+                    Text("Contacts")
                         .font(Font.custom("Poppins-Bold", size: 24, relativeTo: .body))
                         .foregroundColor(Color.changeTheme(black: navPop.black))
                     Spacer()
