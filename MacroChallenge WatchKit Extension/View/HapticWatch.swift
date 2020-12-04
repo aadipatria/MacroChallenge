@@ -22,7 +22,6 @@ struct HapticWatch: View {
         
         Button(action: {
             timer  = Timer.publish(every: 1, on: .main, in: .common)
-            
             timer.connect()
             countTime = 0
             

@@ -399,6 +399,7 @@ extension BreathView{
         name = String(breaths[index].name!)
         haptic = Bool(breaths[index].haptic)
         audio = Bool(breaths[index].sound)
+        pattern = String(format: "%.0f - %.0f - %.0f - %.0f", self.inhale, self.hold1, self.exhale, self.hold2)
         
         if navPop.previous != breaths[index].background{
             if breaths[index].background == "lake"{
