@@ -277,7 +277,6 @@ struct BreathView: View {
             }
             .frame(maxHeight: ScreenSize.windowHeight() * 0.52)
             .onAppear(perform: {
-                navPop.indexBreath = 0
                 prepareHaptics()
                 success = true
                 showStop = false
@@ -371,6 +370,11 @@ struct BreathView: View {
             .navigationBarHidden(true)
 
         }
+        .onTapGesture(count: /*@START_MENU_TOKEN@*/1/*@END_MENU_TOKEN@*/, perform: {
+            if isBreathing{
+                showStop.toggle()
+            }
+        })
     }
     func prepareHaptics(){
         guard CHHapticEngine.capabilitiesForHardware().supportsHaptics else {return }
@@ -395,6 +399,7 @@ extension BreathView{
         name = String(breaths[index].name!)
         haptic = Bool(breaths[index].haptic)
         audio = Bool(breaths[index].sound)
+        pattern = String(format: "%.0f - %.0f - %.0f - %.0f", self.inhale, self.hold1, self.exhale, self.hold2)
         
         if navPop.previous != breaths[index].background{
             if breaths[index].background == "lake"{

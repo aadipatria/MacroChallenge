@@ -230,6 +230,7 @@ extension EditBreathing {
                 breath.haptic = isHapticOn
                 breath.id = self.id
                 breath.background = self.background
+                navPop.previous = self.background
                 navPop.playLooping2.player.moveBackground(name: self.background)
                 if self.background == "lake"{
                     navPop.black = true

@@ -93,6 +93,7 @@ struct ExtractedView: View {
             Spacer()
             Button(action: {
                 navPop.page = 1
+                navPop.indexBreath = 0
             }, label: {
                 VStack (spacing: 0) {
                     if navPop.page == 1{
