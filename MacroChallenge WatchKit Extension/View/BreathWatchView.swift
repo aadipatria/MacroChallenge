@@ -23,17 +23,17 @@ struct BreathWatchView: View {
     var body: some View {
         List {
             if Storage.userDefault(data: arrayOfBreathing)[0].isEmpty{
-                NavigationLink(
-                    destination: AnimationWatchView().environmentObject(self.navPop),
-                    isActive : $navPop.toAnimation,
-                    label: {
-                        EmptyView()
-                    })
-                
                 Text("No Data")
-                Button(action: {navPop.toAnimation = true}) {
-                    RoundedRectangle(cornerRadius: 15)
-                }
+                
+//                NavigationLink(
+//                    destination: AnimationWatchView().environmentObject(self.navPop),
+//                    isActive : $navPop.toAnimation,
+//                    label: {
+//                        EmptyView()
+//                    })
+//                Button(action: {navPop.toAnimation = true}) {
+//                    RoundedRectangle(cornerRadius: 15)
+//                }.buttonStyle(PlainButtonStyle)
                 
             }else{
                 ForEach(Storage.userDefault(data: arrayOfBreathing).indices, id: \.self){ idx in

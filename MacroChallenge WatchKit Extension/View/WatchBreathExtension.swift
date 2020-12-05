@@ -39,8 +39,8 @@ extension AnimationWatchView {
         let numberOfCycles = Int(Double(self.cycleTime * 60) / breathingDuration)
         
 //        navPop.breathCycles = self.cycleTime
-//        navPop.breathCycles = numberOfCycles
-        navPop.breathCycles = 1
+        navPop.breathCycles = numberOfCycles
+//        navPop.breathCycles = 1
     }
     
     func changeState() {
