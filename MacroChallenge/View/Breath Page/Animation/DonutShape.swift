@@ -11,6 +11,7 @@ import SwiftUI
 struct DonutShape: Shape {
     var size: CGFloat = 0.7
     var delta: CGFloat = 0.25
+    var rounded: Bool = false
     
     var animatableData: CGFloat {
         get { delta }
@@ -22,11 +23,40 @@ struct DonutShape: Shape {
             let center = CGPoint(x: rect.midX, y: rect.midY)
             let radius = min(rect.width/2, rect.height/2)
             let deltaDegrees: Angle = .degrees(Double(delta * 360))
+        
+            let capRadius = radius * (1 - size) / 2
+            let coordinateOffset = radius * size + capRadius
+            let roundedOffset = CGFloat(0)
             
             path.addRelativeArc(center: center, radius: radius, startAngle: .degrees(270), delta: deltaDegrees)
+            
+            if rounded {
+                let finalEndPoint = CGPoint(
+                    x: center.x + cos((delta + 0.75) * CGFloat.pi * 2) * coordinateOffset,
+                    y: center.y + sin((delta + 0.75) * CGFloat.pi * 2) * coordinateOffset)
+                
+                path.addRelativeArc(
+                    center: finalEndPoint,
+                    radius: capRadius,
+                    startAngle: .degrees(270 + Double(delta) * 360),
+                    delta: .degrees(180))
+            }
+            
             path.addRelativeArc(center: center, radius: size * radius, startAngle: .degrees(270) + deltaDegrees, delta: -deltaDegrees)
             
-            path.closeSubpath()
+            if rounded {
+                let startEndPoint = CGPoint(
+                    x: center.x + roundedOffset,
+                    y: center.y - coordinateOffset)
+                
+                path.addRelativeArc(
+                    center: startEndPoint,
+                    radius: capRadius,
+                    startAngle: .degrees(90),
+                    delta: .degrees(180))
+            }
+            
+            //path.closeSubpath()
         }//.strokedPath(StrokeStyle(lineWidth: 2, lineCap: .round, lineJoin: .round))
     }
 }

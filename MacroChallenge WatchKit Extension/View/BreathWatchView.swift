@@ -17,11 +17,13 @@ struct BreathWatchView: View {
     //UUID -> 8 = id
     //kalau user ada 3 favorite, 3 pertama di array itu favorite
     @AppStorage("arrayOfBreathing") var arrayOfBreathing = Data()
+    @EnvironmentObject var navPop: NavigationWatchPopObject
+//    @State var toAnimation: Bool? = false
     
     var body: some View {
         List {
             if Storage.userDefault(data: arrayOfBreathing)[0].isEmpty{
-                NavigationLink(destination : AnimationTestView(name: "Calm", inhale: 4, hold1: 7, exhale: 8, hold2: 0, haptic: true, sound: true),
+                NavigationLink(destination : AnimationWatchView(name: "Calm", inhale: 4, hold1: 7, exhale: 8, hold2: 0, haptic: true, sound: true).environmentObject(navPop),
                 label: {
                     HStack {
                         Spacer()
@@ -43,7 +45,7 @@ struct BreathWatchView: View {
             }else{
                 ForEach(Storage.userDefault(data: arrayOfBreathing).indices, id: \.self){ idx in
                     NavigationLink(
-                        destination: AnimationTestView(name: Storage.userDefault(data: arrayOfBreathing)[idx][0], inhale: Double(Storage.userDefault(data: arrayOfBreathing)[idx][1])!, hold1: Double(Storage.userDefault(data: arrayOfBreathing)[idx][2])!, exhale: Double(Storage.userDefault(data: arrayOfBreathing)[idx][3])!, hold2: Double(Storage.userDefault(data: arrayOfBreathing)[idx][4])!, haptic: Bool(Storage.userDefault(data: arrayOfBreathing)[idx][6])!, sound: Bool(Storage.userDefault(data: arrayOfBreathing)[idx][5])!),
+                        destination: AnimationWatchView(name: Storage.userDefault(data: arrayOfBreathing)[idx][0], inhale: Double(Storage.userDefault(data: arrayOfBreathing)[idx][1])!, hold1: Double(Storage.userDefault(data: arrayOfBreathing)[idx][2])!, exhale: Double(Storage.userDefault(data: arrayOfBreathing)[idx][3])!, hold2: Double(Storage.userDefault(data: arrayOfBreathing)[idx][4])!, haptic: Bool(Storage.userDefault(data: arrayOfBreathing)[idx][6])!, sound: Bool(Storage.userDefault(data: arrayOfBreathing)[idx][5])!).environmentObject(navPop),
                         label: {
                             if !Storage.userDefault(data: arrayOfBreathing).isEmpty {
                                 VStack {

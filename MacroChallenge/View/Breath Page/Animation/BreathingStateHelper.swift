@@ -43,6 +43,11 @@ struct BreathingStateHelper {
     }
 
     
+    init(breath: WatchBreathing, animations: [AnimationSet]) {
+        self.updateBreathData(breath: breath)
+        self.updateStateChanges(animations: animations)
+    }
+    
     // MARK: HELPER FUNCTIONS
     func animationPerState(duration: Double, delay: Double? = 0, instantChanges: [() -> ()], animatedChanges: [() -> ()], completion: (() -> ())? = {}) {
         DispatchQueue.main.async {
@@ -60,6 +65,15 @@ struct BreathingStateHelper {
     
     // MARK: OTHER METHODS
     mutating func updateBreathData(breath: Breathing) {
+        self.inhaleDuration = Double(breath.inhale)
+        self.hold1Duration = Double(breath.hold1)
+        self.exhaleDuration = Double(breath.exhale)
+        self.hold2Duration = Double(breath.hold2)
+        
+        self.audioGuidance = breath.sound
+    }
+    
+    mutating func updateBreathData(breath: WatchBreathing) {
         self.inhaleDuration = Double(breath.inhale)
         self.hold1Duration = Double(breath.hold1)
         self.exhaleDuration = Double(breath.exhale)
@@ -131,7 +145,6 @@ struct BreathingStateHelper {
             }
         }
     }
-    
     
     func testCount() {
         print("inhale: \(self.preInhaleActions.count) + \(self.inhaleActions.count)")
