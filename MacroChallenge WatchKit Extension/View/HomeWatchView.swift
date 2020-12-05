@@ -20,6 +20,7 @@ struct HomeWatchView: View {
                     .tag(0)
                 EmergencyWatchView()
                     .tag(1)
+                //CycleSelectionView().tag(2)
             }
         }
     }

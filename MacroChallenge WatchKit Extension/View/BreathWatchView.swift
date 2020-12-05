@@ -17,15 +17,28 @@ struct BreathWatchView: View {
     //UUID -> 8 = id
     //kalau user ada 3 favorite, 3 pertama di array itu favorite
     @AppStorage("arrayOfBreathing") var arrayOfBreathing = Data()
+    @EnvironmentObject var navPop: NavigationWatchPopObject
+//    @State var toAnimation: Bool? = false
     
     var body: some View {
         List {
             if Storage.userDefault(data: arrayOfBreathing)[0].isEmpty{
+                NavigationLink(
+                    destination: AnimationWatchView().environmentObject(self.navPop),
+                    isActive : $navPop.toAnimation,
+                    label: {
+                        EmptyView()
+                    })
+                
                 Text("No Data")
+                Button(action: {navPop.toAnimation = true}) {
+                    RoundedRectangle(cornerRadius: 15)
+                }
+                
             }else{
                 ForEach(Storage.userDefault(data: arrayOfBreathing).indices, id: \.self){ idx in
                     NavigationLink(
-                        destination: AnimationTestView(name: Storage.userDefault(data: arrayOfBreathing)[idx][0], inhale: Double(Storage.userDefault(data: arrayOfBreathing)[idx][1])!, hold1: Double(Storage.userDefault(data: arrayOfBreathing)[idx][2])!, exhale: Double(Storage.userDefault(data: arrayOfBreathing)[idx][3])!, hold2: Double(Storage.userDefault(data: arrayOfBreathing)[idx][4])!, haptic: Bool(Storage.userDefault(data: arrayOfBreathing)[idx][6])!, sound: Bool(Storage.userDefault(data: arrayOfBreathing)[idx][5])!),
+                        destination: AnimationWatchView(name: Storage.userDefault(data: arrayOfBreathing)[idx][0], inhale: Double(Storage.userDefault(data: arrayOfBreathing)[idx][1])!, hold1: Double(Storage.userDefault(data: arrayOfBreathing)[idx][2])!, exhale: Double(Storage.userDefault(data: arrayOfBreathing)[idx][3])!, hold2: Double(Storage.userDefault(data: arrayOfBreathing)[idx][4])!, haptic: Bool(Storage.userDefault(data: arrayOfBreathing)[idx][6])!, sound: Bool(Storage.userDefault(data: arrayOfBreathing)[idx][5])!),
                         label: {
                             if !Storage.userDefault(data: arrayOfBreathing).isEmpty {
                                 VStack {

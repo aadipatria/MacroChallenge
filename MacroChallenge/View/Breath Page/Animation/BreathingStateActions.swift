@@ -27,7 +27,7 @@ extension BreathingStateHelper {
             animatedChanges: self.hold1Actions
         )
         
-        if audioGuidance {
+        if audioGuidance && hold1Duration > 0 {
             AudioPlayer2.playSounds(soundfile: "hold.mp3")
         }
     }
@@ -51,14 +51,14 @@ extension BreathingStateHelper {
             animatedChanges: self.hold2Actions
         )
         
-        if audioGuidance {
+        if audioGuidance && hold1Duration > 0 {
             AudioPlayer2.playSounds(soundfile: "hold.mp3")
         }
     }
     
     func startPreparation() {
-        let duration1: Double = 1
-        let duration2: Double = 1
+        let duration1: Double = 0.2
+        let duration2: Double = 3
         
         self.animationPerState(
             duration: duration1,

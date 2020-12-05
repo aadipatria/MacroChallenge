@@ -72,6 +72,7 @@ struct BreathView: View {
                             Text(guidanceText)
                                 .font(Font.custom("Poppins-SemiBold", size: 28, relativeTo: .body))
                                 .foregroundColor(Color.white)
+                                .animation(nil)
                                 .opacity(self.guidanceTextOpacityScaling)
                         }
                         Spacer()
