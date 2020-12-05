@@ -56,7 +56,6 @@
 		BC0CBDDC255BD81C00C7B453 /* BreathingStateActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0CBDDB255BD81C00C7B453 /* BreathingStateActions.swift */; };
 		BC0CBDE0255BD86400C7B453 /* BreathingStateActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0CBDDB255BD81C00C7B453 /* BreathingStateActions.swift */; };
 		BC0CBDF3255D193100C7B453 /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7DC47225593917003CE217 /* AudioPlayer.swift */; };
-		BC384229256E1A5D00FDE685 /* StartAnimationWatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC384228256E1A5D00FDE685 /* StartAnimationWatchView.swift */; };
 		BC4143E7257A427100C87BA5 /* CycleSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC4143E6257A427100C87BA5 /* CycleSelectionView.swift */; };
 		BC7D812A2552B2EB000255EF /* BreathingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7D81292552B2EB000255EF /* BreathingState.swift */; };
 		BC8B2B31254AA5900091F892 /* AnimationSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8B2B30254AA5900091F892 /* AnimationSet.swift */; };
@@ -69,7 +68,6 @@
 		BCA879DB25653186003D674B /* StopAnimationWatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCA879DA25653186003D674B /* StopAnimationWatchView.swift */; };
 		BCB202D1255E7F5B0095DE68 /* ScrollArrows.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB202D0255E7F5B0095DE68 /* ScrollArrows.swift */; };
 		BCB202D9255E94EA0095DE68 /* OnboardingPageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB202D8255E94EA0095DE68 /* OnboardingPageControl.swift */; };
-		BCE95418256E45A900346428 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9DF78780255D2D1F007A6362 /* Assets.xcassets */; };
 		BCFE898C25651A1F00AF868A /* WatchBreathExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCFE898B25651A1F00AF868A /* WatchBreathExtension.swift */; };
 		BCFE899125651CF500AF868A /* WatchBreathingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCFE899025651CF500AF868A /* WatchBreathingModel.swift */; };
 		BCFE899C25651EA200AF868A /* WatchBreathingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCFE899025651CF500AF868A /* WatchBreathingModel.swift */; };
@@ -188,7 +186,6 @@
 		BC0CBDC5255B993300C7B453 /* AnimationCompletion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationCompletion.swift; sourceTree = "<group>"; };
 		BC0CBDD2255BD0F200C7B453 /* BreathingStateHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreathingStateHelper.swift; sourceTree = "<group>"; };
 		BC0CBDDB255BD81C00C7B453 /* BreathingStateActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreathingStateActions.swift; sourceTree = "<group>"; };
-		BC384228256E1A5D00FDE685 /* StartAnimationWatchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartAnimationWatchView.swift; sourceTree = "<group>"; };
 		BC4143E6257A427100C87BA5 /* CycleSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CycleSelectionView.swift; sourceTree = "<group>"; };
 		BC7D81292552B2EB000255EF /* BreathingState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreathingState.swift; sourceTree = "<group>"; };
 		BC7D813C2553260B000255EF /* BreathExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreathExtension.swift; sourceTree = "<group>"; };
@@ -414,7 +411,6 @@
 				CA8C4F29253D39D1005B99A8 /* EmergencyWatchView.swift */,
 				CA8C4F24253D39BD005B99A8 /* AfterBreathingWatchView.swift */,
 				BC0CBDAC255A9A4800C7B453 /* AnimationWatchView.swift */,
-				BC384228256E1A5D00FDE685 /* StartAnimationWatchView.swift */,
 				BCA879DA25653186003D674B /* StopAnimationWatchView.swift */,
 				BC4143E6257A427100C87BA5 /* CycleSelectionView.swift */,
 				BCFE898B25651A1F00AF868A /* WatchBreathExtension.swift */,
@@ -710,7 +706,6 @@
 				BC0CBDE0255BD86400C7B453 /* BreathingStateActions.swift in Sources */,
 				CACCB3A12552701E0037AE62 /* NavigationWatchPop.swift in Sources */,
 				9D7D26EB25381317006D35D2 /* MacroChallenge.xcdatamodeld in Sources */,
-				BC384229256E1A5D00FDE685 /* StartAnimationWatchView.swift in Sources */,
 				BC0CBDCE255BD01A00C7B453 /* BreathingState.swift in Sources */,
 				BCFE898C25651A1F00AF868A /* WatchBreathExtension.swift in Sources */,
 				BCFE899C25651EA200AF868A /* WatchBreathingModel.swift in Sources */,

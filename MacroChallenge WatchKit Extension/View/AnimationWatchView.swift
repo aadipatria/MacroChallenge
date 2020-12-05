@@ -9,6 +9,7 @@ import SwiftUI
 
 struct AnimationWatchView: View {
     @EnvironmentObject var navPop: NavigationWatchPopObject
+    @Environment(\.presentationMode) var presentationMode
     @State var currentBreath: WatchBreathing = WatchBreathing()
     @State var tabSelection: Int = 0
     @Namespace var animatedRing

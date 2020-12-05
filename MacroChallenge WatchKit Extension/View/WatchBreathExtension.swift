@@ -30,7 +30,7 @@ extension AnimationWatchView {
         breathingStateHelper.endBreathSession()
         
         navPop.breathCycles = 0
-        navPop.toAnimation = false
+        self.presentationMode.wrappedValue.dismiss()
     }
     
     // MARK: HELPER FUNCTIONS

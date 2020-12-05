@@ -11,6 +11,7 @@ struct AfterBreathingWatchView: View {
     @EnvironmentObject var navPop: NavigationWatchPopObject
     @Binding var isBreathing: Bool
     @Binding var afterBreathing: Bool
+    @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
         VStack(alignment: .center, spacing: 4) {
@@ -45,7 +46,7 @@ struct AfterBreathingWatchView: View {
                 Button(action: {
                     self.afterBreathing = false
                     navPop.breathCycles = 0
-                    navPop.toAnimation = false
+                    self.presentationMode.wrappedValue.dismiss()
                 }) {
                     ZStack {
                         Rectangle()
