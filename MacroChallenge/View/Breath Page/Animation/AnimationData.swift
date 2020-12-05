@@ -39,26 +39,64 @@ struct OrbitalAnimationSet {
 struct GuidanceTextSet {
     @Binding var text: String
     @Binding var opacity: Double
-    var breath: Breathing
+    //var breath: Breathing?
+    //var watchBreath: WatchBreathing?
+    
+    var inhale: Double
+    var hold1: Double
+    var exhale: Double
+    var hold2: Double
+    
+    init(text: Binding<String>, opacity: Binding<Double>, breath: Breathing) {
+        self._text = text
+        self._opacity = opacity
+        
+        self.inhale = Double(breath.inhale)
+        self.hold1 = Double(breath.hold1)
+        self.exhale = Double(breath.exhale)
+        self.hold2 = Double(breath.hold2)
+    }
+    
+    init(text: Binding<String>, opacity: Binding<Double>, breath: WatchBreathing) {
+        self._text = text
+        self._opacity = opacity
+        
+        self.inhale = Double(breath.inhale)
+        self.hold1 = Double(breath.hold1)
+        self.exhale = Double(breath.exhale)
+        self.hold2 = Double(breath.hold2)
+    }
     
     func getAnimationSets() -> AnimationSet {
         var animations = AnimationSet()
         
-        animations.preparation2 = {self.opacity = 1.0}
+        animations.preparation1 = {self.opacity = 1.0}
         
-        if breath.inhale > 0 {
+        animations.preparation2 = {
+            self.text = "3"
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                self.text = "2"
+            }
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                self.text = "1"
+            }
+        }
+        
+        if self.inhale > 0 {
             animations.preInhale = {self.text = "Inhale"}
         }
 
-        if breath.hold1 > 0 {
+        if self.hold1 > 0 {
             animations.preHold1 = {self.text = "Hold"}
         }
         
-        if breath.exhale > 0 {
+        if self.exhale > 0 {
             animations.preExhale = {self.text = "Exhale"}
         }
         
-        if breath.hold2 > 0 {
+        if self.hold2 > 0 {
             animations.preHold2 = {self.text = "Hold"}
         }
         

@@ -1,14 +1,13 @@
 //
-//  AnimationHelper.swift
-//  MacroSample
+//  WatchBreathExtension.swift
+//  MacroChallenge WatchKit Extension
 //
-//  Created by Aghawidya Adipatria on 21/10/20.
-//  Copyright © 2020 Aghawidya Adipatria. All rights reserved.
+//  Created by Aghawidya Adipatria on 18/11/20.
 //
 
 import SwiftUI
 
-extension BreathView {
+extension AnimationWatchView {
     
     // MARK: START/STOP BREATHING
     func startBreathing() {
@@ -23,17 +22,25 @@ extension BreathView {
         self.breathingState = .none
         self.cycleRemaining = 0
         
-        cancelHaptic()
         breathingStateHelper.endBreathSession()
+    }
+    
+    func cancelBreathing() {
+        self.cycleRemaining = 0
+        breathingStateHelper.endBreathSession()
+        
+        navPop.breathCycles = 0
+        navPop.toAnimation = false
     }
     
     // MARK: HELPER FUNCTIONS
     func getNumberOfCycles() {
-        let breathingDuration = Int(self.inhale + self.hold1 + self.exhale + self.hold2)
-        let numberOfCycles = Int(self.cycleTime * 60 / breathingDuration)
+        let breathingDuration = self.inhale + self.hold1 + self.exhale + self.hold2
+        let numberOfCycles = Int(Double(self.cycleTime * 60) / breathingDuration)
         
 //        navPop.breathCycles = self.cycleTime
         navPop.breathCycles = numberOfCycles
+//        navPop.breathCycles = 1
     }
     
     func changeState() {
@@ -55,7 +62,7 @@ extension BreathView {
                 self.breathingState = .inhale
             } else {
                 self.isBreathing = false
-                navPop.toBreathing = true
+                self.afterBreathing = true
             }
         }
     }
@@ -68,7 +75,7 @@ extension BreathView {
         let textSet = GuidanceTextSet(
             text: self.$guidanceText,
             opacity: self.$guidanceTextOpacityScaling,
-            breath: breaths[index]
+            breath: currentBreath
         ).getAnimationSets()
         
         let uiSet = UIElementsOpacitySet(
@@ -82,6 +89,6 @@ extension BreathView {
         let allSets = [orbitalSet, textSet, uiSet, animationSet]
         
         self.breathingStateHelper.updateStateChanges(animations: allSets)
-        self.breathingStateHelper.updateBreathData(breath: breaths[index])
+        self.breathingStateHelper.updateBreathData(breath: currentBreath)
     }
 }
